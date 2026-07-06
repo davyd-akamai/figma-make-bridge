@@ -1,0 +1,115 @@
+/* Generated from /tokens/*.json — component.globalHeader + global primitives resolved to hex. */
+:root {
+  --component-globalheader-background: #232326;
+  --component-globalheader-border: #3D3D42;
+  --component-globalheader-icon-default: #D6D6DD;
+  --component-globalheader-icon-hover: #FFFFFF;
+  --component-globalheader-icon-active: #5BB3EA;
+  --component-globalheader-text-default: #D6D6DD;
+  --component-globalheader-text-hover: #FFFFFF;
+  --component-globalheader-badge-background: #D63C42;
+  --component-globalheader-badge-text: #FFFFFF;
+  --component-globalheader-badge-icon: #FFFFFF;
+  --component-globalheader-search-background: #3D3D42;
+  --component-globalheader-search-text-placeholder: #D6D6DD;
+  --component-globalheader-search-text-filled: #FFFFFF;
+  --component-globalheader-search-icon-default: #D6D6DD;
+  --component-globalheader-search-icon-active: #FFFFFF;
+  --component-globalheader-search-icon-hover: #FFFFFF;
+  --component-globalheader-search-border-default: #3D3D42;
+  --component-globalheader-search-border-hover: #696970;
+  --component-globalheader-search-border-active: #A3A3AB;
+
+  --global-spacing-s0: 0;
+  --global-spacing-s2: 2px;
+  --global-spacing-s4: 4px;
+  --global-spacing-s6: 6px;
+  --global-spacing-s8: 8px;
+  --global-spacing-s12: 12px;
+  --global-spacing-s16: 16px;
+  --global-spacing-s20: 20px;
+  --global-spacing-s24: 24px;
+  --global-spacing-s28: 28px;
+  --global-spacing-s32: 32px;
+  --global-spacing-s36: 36px;
+  --global-spacing-s40: 40px;
+  --global-spacing-s48: 48px;
+  --global-spacing-s64: 64px;
+  --global-spacing-s72: 72px;
+  --global-spacing-s96: 96px;
+
+  --global-color-neutrals-5: #F7F7FA;
+  --global-color-neutrals-10: #EDEDF2;
+  --global-color-neutrals-20: #E5E5EA;
+  --global-color-neutrals-30: #D6D6DD;
+  --global-color-neutrals-40: #C2C2CA;
+  --global-color-neutrals-50: #A3A3AB;
+  --global-color-neutrals-60: #83838C;
+  --global-color-neutrals-70: #696970;
+  --global-color-neutrals-80: #515157;
+  --global-color-neutrals-85: #47474D;
+  --global-color-neutrals-90: #3D3D42;
+  --global-color-neutrals-100: #343438;
+  --global-color-neutrals-black: #232326;
+  --global-color-neutrals-white: #FFFFFF;
+
+  --global-color-brand-5: #F5FBFF;
+  --global-color-brand-10: #EDF8FF;
+  --global-color-brand-20: #E1F4FF;
+  --global-color-brand-30: #CEEDFE;
+  --global-color-brand-40: #AFDEF8;
+  --global-color-brand-50: #96CFF0;
+  --global-color-brand-55: #7DCDFF;
+  --global-color-brand-60: #5BB3EA;
+  --global-color-brand-70: #009CDE;
+  --global-color-brand-80: #108AD6;
+  --global-color-brand-90: #0174BC;
+  --global-color-brand-100: #00314D;
+
+  --font-family-brand: 'Nunito Sans';
+  --font-family-code: 'Fira Code';
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-size-xxxs: 0.75rem;
+  --font-size-xxs: 0.813rem;
+  --font-size-xs: 0.875rem;
+  --font-size-s: 1rem;
+  --font-size-m: 1.125rem;
+  --font-size-l: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-xxl: 1.625rem;
+  --font-size-xxxl: 2.25rem;
+  --line-height-xxxs: 1rem;
+  --line-height-xxs: 1.125rem;
+  --line-height-xs: 1.25rem;
+  --line-height-s: 1.5rem;
+  --line-height-m: 1.625rem;
+  --line-height-l: 1.875rem;
+  --line-height-xl: 2rem;
+  --line-height-xxl: 2.375rem;
+  --line-height-xxxl: 2.625rem;
+
+  --alias-action-primary-default: #0174BC;
+  --alias-action-primary-hover: #009CDE;
+  --alias-content-text-base: #FFFFFF;
+
+  --global-color-violet-70: #7259D6;
+
+  --component-sidenavigation-sectionheader-background-default: #3D3D42;
+  --component-sidenavigation-sectionheader-background-hover: #343438;
+  --component-sidenavigation-sectionheader-text-default: #FFFFFF;
+  --component-sidenavigation-sectionheader-text-selected: #5BB3EA;
+  --component-sidenavigation-sectionheader-icon-default: #FFFFFF;
+  --component-sidenavigation-sectionheader-icon-selected: #5BB3EA;
+  --component-sidenavigation-pagetext-default: #FFFFFF;
+  --component-sidenavigation-pagetext-selected: #5BB3EA;
+  --component-sidenavigation-pin-icon-default: #D6D6DD;
+  --component-sidenavigation-pin-icon-hover: #FFFFFF;
+  --component-sidenavigation-scrollbar-thumb: #696970;
+  --component-sidenavigation-divider-background: #3D3D42;
+
+  --component-badge-text: #FFFFFF;
+  --component-badge-new-background: #7259D6;
+  --component-badge-beta-background: #696970;
+}

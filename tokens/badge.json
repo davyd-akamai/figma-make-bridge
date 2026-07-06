@@ -1,0 +1,22 @@
+{
+  "component": {
+    "badge": {
+      "text": {
+        "value": "{global.color.neutrals.white}",
+        "type": "color"
+      },
+      "new": {
+        "background": {
+          "value": "{global.color.violet.70}",
+          "type": "color"
+        }
+      },
+      "beta": {
+        "background": {
+          "value": "{global.color.neutrals.70}",
+          "type": "color"
+        }
+      }
+    }
+  }
+}
