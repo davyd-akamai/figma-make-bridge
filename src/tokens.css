@@ -112,4 +112,10 @@
   --component-badge-text: #FFFFFF;
   --component-badge-new-background: #7259D6;
   --component-badge-beta-background: #696970;
+
+  --component-globalfooter-background: #F7F7FA;
+  --component-globalfooter-border: #D6D6DD;
+  --component-globalfooter-text: #343438;
+  --component-globalfooter-link-default: #0174BC;
+  --component-globalfooter-link-hover: #009CDE;
 }

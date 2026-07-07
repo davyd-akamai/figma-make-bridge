@@ -1,4 +1,5 @@
 node_modules
 dist
+core-design-system
 .claude
 .DS_Store
