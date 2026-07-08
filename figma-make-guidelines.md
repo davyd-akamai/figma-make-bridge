@@ -16,6 +16,36 @@ Guidance for Figma Make's AI on composing UI with this package's components. Thi
 - Theming (light/dark) resolves automatically based on which alias set is active in the surrounding app — components do not take a `theme` prop, and one should not be added.
 - Every exported component already has its tokens wired in. There is no supported per-instance override for a component's colors or spacing via props — customization is a token-file concern, not a prop.
 
+## Typography
+
+- **Every piece of text in the UI must render in this system's brand typeface — `Nunito Sans` (`Fira Code` for code/monospace text only).** Never set a different `font-family`, never fall back to a host environment's default font, and never add your own `<link>`/`@import` for a font — both typefaces are already self-hosted (embedded directly) inside this package's compiled stylesheet, so importing `figma-make-bridge/styles.css` once at the app root is sufficient on its own.
+- Hierarchy is expressed entirely through the generated `.type-*` classes below — one class per Figma text style, each fixing `font-family` + `font-weight` + `font-size` + `line-height` together as a unit. Apply the matching class to every text element; never hand-set `font-size`, `font-weight`, or `line-height` directly, and never mix a `.type-*` class with a manual override of any of those four properties.
+- Picking a class: match it to the text's actual role in the layout, not to how large you want it to look.
+
+| Class | Weight | Size | Use for |
+|---|---|---|---|
+| `type-heading-xxxl` | Bold | 2.25rem | Page-level hero heading (rare — most pages don't need one) |
+| `type-heading-xxl` | Extrabold | 1.625rem | Top-level page title |
+| `type-heading-xl` | Bold | 1.5rem | Major section heading |
+| `type-heading-l` | Bold | 1.25rem | Subsection heading |
+| `type-heading-m` | Bold | 1.125rem | Card/panel/group title |
+| `type-heading-s` | Bold | 0.875rem | Minor heading, compact contexts |
+| `type-heading-xs` | Bold | 0.875rem | Smallest heading, table/list group headers |
+| `type-heading-overline` | Extrabold | 0.75rem | Small uppercase eyebrow/overline label above a heading |
+| `type-body-regular` | Regular | 0.875rem | Default paragraph/body copy |
+| `type-body-semibold` | Semibold | 0.875rem | Emphasized inline body text |
+| `type-body-bold` | Bold | 0.875rem | Strongly emphasized inline body text |
+| `type-body-extrabold` | Extrabold | 0.875rem | Rare, heaviest inline emphasis |
+| `type-body-italic` | Regular italic | 0.875rem | Asides, captions, quoted text |
+| `type-body-list` | Regular | 0.875rem | List item text |
+| `type-label-bold-l` / `-s` / `-xs` | Bold | 1rem / 0.875rem / 0.75rem | Form labels, table headers, emphasized UI labels (by size) |
+| `type-label-semibold-l` / `-s` / `-xs` | Semibold | 1rem / 0.875rem / 0.75rem | Standard UI labels — buttons, nav items, chips (by size) |
+| `type-label-regular-s` / `-xs` | Regular | 0.875rem / 0.75rem | Secondary/de-emphasized UI labels (by size) |
+| `type-label-regular-placeholder` | Regular italic | 0.875rem | Input placeholder text specifically |
+| `type-code` | Regular, `Fira Code` | 0.813rem | Inline code / monospace snippets only |
+
+- If a screen genuinely needs text styling this table doesn't cover, treat that as a gap to flag rather than inventing a one-off `font-size`/`font-weight` value — the same rule as colors and spacing in the Design tokens section above: customization is a token/class-file concern, not something to improvise per-instance.
+
 ## Component reference
 
 ### GlobalHeader
@@ -74,11 +104,11 @@ interface SideNavigationProps {
 
 **Adding a brand-new section (rare):** every section needs an `icon: ReactNode` from [components/icons](components/icons/index.tsx). If no existing icon fits, this is not something to solve with a prop edit — stop and flag that the section needs a real icon exported from Figma as an exact vector. Do not hand-approximate a shape and do not repurpose an unrelated existing icon (e.g. `MoreIcon`) as a placeholder.
 
-**Collapse/expand/pin model:** unpinned (default), the rail rests collapsed (48px, icon-only) and expands to 232px on hover. `pinned={true}` locks the rail to whatever `pinnedExpanded` says (default `true`, i.e. locked open) and disables hover entirely — a permanently-collapsed-but-pinned rail (`pinned pinnedExpanded={false}`) is a valid, supported state, not just "always open." `onPinToggle` fires when the user clicks the pin control; the component does not persist pin state itself.
+**Collapse/expand/pin model:** unpinned (default), the rail rests collapsed (48px, icon-only) and expands to 232px on hover. `pinned={true}` locks the rail to whatever `pinnedExpanded` says (default `true`, i.e. locked open) and disables hover entirely — a permanently-collapsed-but-pinned rail (`pinned pinnedExpanded={false}`) is a valid, supported state, not just "always open." **`pinned`/`onPinToggle` are optional, not a pair you must always supply together:** omit both and the rail manages its own pin state internally (clicking the pin control just works, no wiring needed) — this is the right default for most screens. Only pass `pinned`/`onPinToggle` together when the surrounding app genuinely needs to read or drive pin state from outside (e.g. persisting it, or a "collapse all navs" control elsewhere on the page).
 
 **`menu="full"|"mini"` override:** a narrow escape hatch that forces a static rail with no hover/pin behavior at all — use only for an isolated component preview or a screen that must freeze in one exact state. Default (real app screens) should leave `menu` unset and rely on the interactive hover/pin model above.
 
-**Selection:** `selectedPageId`/`onSelectPage` control which page is active; selecting a page also highlights its parent section header (this is automatic, not something to wire up separately). `defaultOpenSectionIds` controls which accordion sections start expanded — if omitted, only the section containing the initially-selected page starts open.
+**Selection:** same controlled/uncontrolled split as pinning above. **For a screen with one static nav state (the common case, e.g. a single starter/demo screen), omit `selectedPageId` and `onSelectPage` entirely** — the rail tracks its own selection internally and clicking a page just works. **Never pass `selectedPageId` as a fixed/hardcoded value without also passing `onSelectPage`** — that combination *locks* the selection permanently (a plain React controlled-prop rule: a value with no handler to change it can't change), so clicking a different page will visibly do nothing. Only pass both together, wired to real state, when the app actually swaps rendered page content based on which nav item is selected (real multi-page navigation) — and in that case `onSelectPage` must update the same state that drives what's shown in `DefaultCmPageTemplate`'s content slot, not just the nav highlight. `defaultOpenSectionIds` controls which accordion sections start expanded — if omitted, only the section containing the initially-selected page starts open (or no section, if selection is also omitted).
 
 ### Badge
 
@@ -91,6 +121,19 @@ interface BadgeProps {
 
 - Fixed states only: `"new"` renders violet "NEW", `"beta"` renders grey "BETA". There is no label-override prop and none should be added — this mirrors the real Figma component (`cm_global-badge`) exactly, which itself has no free-text variant.
 - Used inline next to a label (e.g. a SideNavigation page row) — compose it via the `badge` field on the relevant data model (see SideNavigation above) rather than rendering `<Badge>` directly in most cases.
+
+### Container
+
+```ts
+interface ContainerProps {
+  children: ReactNode;
+  className?: string;
+}
+```
+
+- A generic bordered content surface (white background, `#D6D6DD` border, 24px horizontal / 16px vertical padding) — use it to group related content inside a page's content slot.
+- **Always spans the full available width of its parent grid/content area, regardless of its children's size.** It never shrinks to fit its content, and multiple `Container`s are never placed side by side in a row — stack them vertically. Do not set an explicit `width`/`max-width` on it or wrap it in a flex row expecting it to sit next to another element.
+- Height is intrinsic to content — do not set a fixed height.
 
 ### Icon pack
 
@@ -143,6 +186,7 @@ const sections: SideNavSection[] = DEFAULT_SIDE_NAV_SECTIONS.map((section) =>
 
 ## Known constraints / things not to attempt
 
+- Never render page content wider than `DefaultCmPageTemplate`'s content slot (`max-width: 1280px`, centered). Everything placed in the `children` slot must stay inside that width — don't break out of it with a wider element or negative margins.
 - Import every component statically. Do not wrap any import from this package in a dynamic `import()` — Figma Make's bundler does not support it.
 - Do not wrap these components in app-shell dependencies (routing providers, app-specific context) — none is required, and adding one is not solving a real constraint.
 - Do not add a `theme` prop to any component, or pass raw hex/inline-style color overrides — theming and customization are both token-file concerns (see Design tokens above), never props.
@@ -150,3 +194,4 @@ const sections: SideNavSection[] = DEFAULT_SIDE_NAV_SECTIONS.map((section) =>
 - Badge: do not add a label-override prop or a third state beyond `"new"`/`"beta"`.
 - SideNavigation: do not invent a badge type beyond `"new"`/`"beta"`; do not add a brand-new section without a real icon (flag it instead, see SideNavigation above); reach for `menu="full"|"mini"` only as a narrow escape hatch, not the default way to render the rail.
 - Layout rule for any row with a trailing element that should sit immediately after a label with a gap (a badge, chevron, or icon): never give the label `flex-1`. That stretches the label to fill all remaining space and pushes the trailing element to the row's far edge instead of leaving a clean gap next to the label. Let the label size to content and rely on the row's `gap`.
+- Container: never place two `Container`s side by side in a row or give one an explicit width — it always fills its parent's full width by design.

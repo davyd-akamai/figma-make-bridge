@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Button from "./Button";
 import { BellIcon, ChevronDownIcon, CommunityIcon, HelpCircleIcon, MenuIcon, PlusIcon, SearchIcon } from "./icons";
 
 // Figma: node 1:882 "cm_header" — https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=1-882
@@ -231,15 +232,14 @@ export default function GlobalHeader({
       </div>
 
       <div className={`flex shrink-0 items-center justify-end ${HEADER_GAP}`}>
-        {/* Create button: hidden on mobile ("no create button") */}
-        <button
-          type="button"
-          onClick={onCreateClick}
-          className="hidden shrink-0 items-center gap-[var(--global-spacing-s4,4px)] bg-[var(--alias-action-primary-default,#0174BC)] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] text-[color:var(--alias-content-text-base,#FFFFFF)] hover:bg-[var(--alias-action-primary-hover,#009CDE)] tablet:flex"
-        >
-          <PlusIcon className="size-4" />
-          <span className="type-label-semibold-s">Create</span>
-        </button>
+        {/* Create button: hidden on mobile ("no create button"). Visibility toggled on a wrapper
+            div, not on Button's own className, so its unconditional `inline-flex` base class never
+            has to fight a `hidden` override for the `display` property. */}
+        <div className="hidden shrink-0 tablet:flex">
+          <Button variant="primary" size="large" onClick={onCreateClick} startIcon={<PlusIcon />}>
+            Create
+          </Button>
+        </div>
 
         <div className={`flex shrink-0 items-center ${HEADER_ICONS_GAP}`}>
           <HeaderIconButton label="Help">

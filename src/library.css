@@ -1,0 +1,35 @@
+/* Brand typefaces (tokens/global.json alias.typography.font-family). Self-hosted via
+   src/fonts.css (base64-embedded @font-face, see that file for why) rather than an external
+   Google Fonts <link>/@import — the previous dev-only index.html linked these directly, which
+   meant they silently never loaded once this package was installed elsewhere (e.g. Figma Make):
+   either the import never made it into the consumer's HTML, or the environment's sandbox
+   didn't allow the cross-origin font fetch. Embedding the font data directly in this stylesheet
+   removes that dependency entirely. */
+@import "./fonts.css";
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./typography.css";
+
+/* GlobalHeader breakpoints per the Figma responsive spec (node 7:183): mobile 320-599,
+   tablet 600-959, desktop 960+. Additive to Tailwind's default screens. */
+@theme {
+  --breakpoint-tablet: 600px;
+  --breakpoint-desktop: 960px;
+}
+
+/* SideNavigation (node 17:2743) uses a 4px custom scrollbar thumb over the menu-items list;
+   a styled native scrollbar gets the same look without reimplementing drag/scroll physics. */
+.side-nav-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--component-sidenavigation-scrollbar-thumb, #696970) transparent;
+}
+.side-nav-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.side-nav-scroll::-webkit-scrollbar-thumb {
+  background: var(--component-sidenavigation-scrollbar-thumb, #696970);
+  border-radius: 2px;
+}
+.side-nav-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}

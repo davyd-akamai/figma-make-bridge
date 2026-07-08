@@ -2,6 +2,8 @@ import { useState, type ReactNode } from "react";
 import GlobalHeader from "../components/GlobalHeader";
 import GlobalFooter from "../components/GlobalFooter";
 import SideNavigation from "../components/SideNavigation";
+import Button, { type ButtonVariant } from "../components/Button";
+import Container from "../components/Container";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
   BellIcon,
@@ -146,6 +148,44 @@ function ResizableTemplatePreview({ title, variant }: { title: string; variant: 
   );
 }
 
+const BUTTON_VARIANTS: ButtonVariant[] = ["primary", "secondary", "link", "danger"];
+
+function ButtonVariantRow({ variant }: { variant: ButtonVariant }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <p className="type-body-regular" style={{ margin: 0, textTransform: "capitalize" }}>
+        {variant}
+      </p>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 12 }}>
+        <Button variant={variant} size="large">
+          Button
+        </Button>
+        <Button variant={variant} size="large" startIcon={<PlusIcon />}>
+          Button
+        </Button>
+        <Button variant={variant} size="large" loading>
+          Button
+        </Button>
+        <Button variant={variant} size="large" disabled>
+          Button
+        </Button>
+        <Button variant={variant} size="small">
+          Button
+        </Button>
+        <Button variant={variant} size="small" startIcon={<PlusIcon />}>
+          Button
+        </Button>
+        <Button variant={variant} size="small" loading>
+          Button
+        </Button>
+        <Button variant={variant} size="small" disabled>
+          Button
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 function TabButton({
   label,
   active,
@@ -204,6 +244,34 @@ function PreviewHarness() {
               {ALL_ICONS.map((Icon, i) => (
                 <Icon key={i} />
               ))}
+            </div>
+          </PreviewSection>
+
+          <PreviewSection title="Button">
+            <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
+              {BUTTON_VARIANTS.map((variant) => (
+                <ButtonVariantRow key={variant} variant={variant} />
+              ))}
+            </div>
+          </PreviewSection>
+
+          <PreviewSection title="Container">
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 12, border: "1px solid #E5E5EA" }}>
+              <Container>
+                <p className="type-body-regular" style={{ margin: 0 }}>
+                  A Container always spans the full width of its parent — it never sizes to its
+                  content's width, only its height.
+                </p>
+              </Container>
+              <Container>
+                <p className="type-heading-xs" style={{ margin: "0 0 8px" }}>
+                  Longer content
+                </p>
+                <p className="type-body-regular" style={{ margin: 0 }}>
+                  This paragraph is here to show the container growing to fit taller content while
+                  keeping its 24px horizontal / 16px vertical padding and full-width sizing.
+                </p>
+              </Container>
             </div>
           </PreviewSection>
 

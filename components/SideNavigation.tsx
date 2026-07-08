@@ -1,4 +1,5 @@
-import { useState, type ReactNode } from "react";
+/// <reference types="vite/client" />
+import { useEffect, useState, type ReactNode } from "react";
 import Badge from "./Badge";
 import {
   BucketIcon,
@@ -217,7 +218,7 @@ export default function SideNavigation({
   selectedPageId,
   onSelectPage,
   defaultOpenSectionIds,
-  pinned = false,
+  pinned,
   onPinToggle,
   pinnedExpanded = true,
   className,
@@ -228,11 +229,31 @@ export default function SideNavigation({
     return new Set(activeSection ? [activeSection.id] : []);
   });
   const [internalSelectedPageId, setInternalSelectedPageId] = useState<string | undefined>(undefined);
+  const [internalPinned, setInternalPinned] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const activePageId = selectedPageId ?? internalSelectedPageId;
+  // `pinned` follows the same controlled/uncontrolled split as `selectedPageId` above: pass it
+  // (with `onPinToggle`) to fully control it from the app, or omit both and the rail manages its
+  // own pin state — omitting `pinned` while still passing `onPinToggle` (rare) still works since
+  // the internal state remains the source of truth.
+  const effectivePinned = pinned ?? internalPinned;
+
+  useEffect(() => {
+    if (import.meta.env?.DEV && selectedPageId !== undefined && !onSelectPage) {
+      console.warn(
+        "SideNavigation: `selectedPageId` was passed without `onSelectPage`, so the selected page is locked to a fixed value and clicking another page has no visible effect. Omit both props to let SideNavigation manage its own selection, or pass both together to fully control it.",
+      );
+    }
+  }, [selectedPageId, onSelectPage]);
 
   const isOverridden = menu !== undefined;
-  const expanded = isOverridden ? menu === "full" : pinned ? pinnedExpanded : isHovered;
+  const expanded = isOverridden ? menu === "full" : effectivePinned ? pinnedExpanded : isHovered;
+
+  function togglePin() {
+    const next = !effectivePinned;
+    if (pinned === undefined) setInternalPinned(next);
+    onPinToggle?.(next);
+  }
 
   function toggleSection(sectionId: string) {
     setOpenSectionIds((prev) => {
@@ -295,12 +316,12 @@ export default function SideNavigation({
       <div className="flex h-[24px] w-full shrink-0 items-center justify-end bg-[var(--global-color-neutrals-90,#3D3D42)] py-[4px] pr-[16px]">
         <button
           type="button"
-          onClick={() => onPinToggle?.(!pinned)}
-          aria-pressed={pinned}
-          aria-label={pinned ? "Unpin navigation" : "Pin navigation"}
+          onClick={togglePin}
+          aria-pressed={effectivePinned}
+          aria-label={effectivePinned ? "Unpin navigation" : "Pin navigation"}
           className="flex size-4 items-center justify-center text-[color:var(--component-sidenavigation-pin-icon-default,#D6D6DD)] hover:text-[color:var(--component-sidenavigation-pin-icon-hover,#FFFFFF)]"
         >
-          <PinIcon filled={pinned} />
+          <PinIcon filled={effectivePinned} />
         </button>
       </div>
     </nav>

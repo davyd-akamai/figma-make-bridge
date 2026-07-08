@@ -118,4 +118,60 @@
   --component-globalfooter-text: #343438;
   --component-globalfooter-link-default: #0174BC;
   --component-globalfooter-link-hover: #009CDE;
+
+  /* component.button — scoped to the 4 Figma-verified types (primary/secondary/link/danger);
+     tokens/button.json also has tertiary/launch entries but those have no rendered Figma swatches
+     to verify against, so no CSS vars are generated for them yet. */
+  --component-button-primary-default-background: #0174BC;
+  --component-button-primary-default-border: #0174BC;
+  --component-button-primary-default-text: #FFFFFF;
+  --component-button-primary-hover-background: #009CDE;
+  --component-button-primary-hover-border: #009CDE;
+  --component-button-primary-hover-text: #FFFFFF;
+  --component-button-primary-active-background: #0174BC;
+  --component-button-primary-active-border: #0174BC;
+  --component-button-primary-active-text: #FFFFFF;
+  --component-button-primary-disabled-background: #E5E5EA;
+  --component-button-primary-disabled-border: #E5E5EA;
+  --component-button-primary-disabled-text: #A3A3AB;
+  --component-button-primary-loading-background: #0174BC;
+  --component-button-primary-loading-border: #0174BC;
+
+  --component-button-secondary-default-background: #FFFFFF;
+  --component-button-secondary-default-border: #0174BC;
+  --component-button-secondary-default-text: #0174BC;
+  --component-button-secondary-hover-background: #EDF8FF;
+  --component-button-secondary-hover-border: #009CDE;
+  --component-button-secondary-hover-text: #0174BC;
+  --component-button-secondary-active-background: #FFFFFF;
+  --component-button-secondary-active-border: #0174BC;
+  --component-button-secondary-active-text: #0174BC;
+  --component-button-secondary-disabled-background: #FFFFFF;
+  --component-button-secondary-disabled-border: #C2C2CA;
+  --component-button-secondary-disabled-text: #A3A3AB;
+  --component-button-secondary-loading-background: #FFFFFF;
+  --component-button-secondary-loading-border: #0174BC;
+
+  --component-button-link-default-text: #0174BC;
+  --component-button-link-hover-text: #009CDE;
+  --component-button-link-active-text: #0174BC;
+  --component-button-link-disabled-text: #A3A3AB;
+
+  --component-button-danger-default-background: #B82329;
+  --component-button-danger-default-border: #B82329;
+  --component-button-danger-default-text: #FFFFFF;
+  --component-button-danger-hover-background: #D63C42;
+  --component-button-danger-hover-border: #D63C42;
+  --component-button-danger-hover-text: #FFFFFF;
+  --component-button-danger-active-background: #B82329;
+  --component-button-danger-active-border: #B82329;
+  --component-button-danger-active-text: #FFFFFF;
+  --component-button-danger-disabled-background: #F9C6C6;
+  --component-button-danger-disabled-border: #F9C6C6;
+  --component-button-danger-disabled-text: #A3A3AB;
+  --component-button-danger-loading-background: #B82329;
+  --component-button-danger-loading-border: #B82329;
+
+  --component-container-background: #FFFFFF;
+  --component-container-border: #D6D6DD;
 }
