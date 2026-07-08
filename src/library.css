@@ -17,6 +17,15 @@
   --breakpoint-desktop: 960px;
 }
 
+/* Baseline brand font for any text that isn't wrapped in a .type-* class — e.g. markup a
+   Figma Make prototype builds itself, or content this library's own consumers intentionally
+   leave untouched (see GUIDELINES.md's incremental-swap notes). .type-* classes still own
+   weight/size/line-height; this only guarantees the family so nothing falls back to a host
+   default font by omission. */
+body {
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
+}
+
 /* SideNavigation (node 17:2743) uses a 4px custom scrollbar thumb over the menu-items list;
    a styled native scrollbar gets the same look without reimplementing drag/scroll physics. */
 .side-nav-scroll {
