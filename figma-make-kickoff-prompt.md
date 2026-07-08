@@ -9,7 +9,7 @@ Paste the current contents of [figma-make-guidelines.md](figma-make-guidelines.m
 ## The prompt
 
 ```
-Add the npm package `figma-make-bridge` (latest published version — currently 0.1.4) as a dependency.
+Add the npm package `figma-make-bridge` (latest published version — currently 0.1.5) as a dependency.
 
 Then build a single starter page:
 - Use `DefaultCmPageTemplate`, composing the default `GlobalHeader`, `SideNavigation` (use the exported `DEFAULT_SIDE_NAV_SECTIONS`), and `GlobalFooter`.
