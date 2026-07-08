@@ -122,6 +122,26 @@ interface BadgeProps {
 - Fixed states only: `"new"` renders violet "NEW", `"beta"` renders grey "BETA". There is no label-override prop and none should be added — this mirrors the real Figma component (`cm_global-badge`) exactly, which itself has no free-text variant.
 - Used inline next to a label (e.g. a SideNavigation page row) — compose it via the `badge` field on the relevant data model (see SideNavigation above) rather than rendering `<Badge>` directly in most cases.
 
+### Button
+
+```ts
+interface ButtonProps {
+  variant?: "primary" | "secondary" | "link" | "danger"; // default "primary"
+  size?: "large" | "small";                               // default "large"
+  loading?: boolean;
+  disabled?: boolean;
+  startIcon?: ReactNode;
+  endIcon?: ReactNode;
+  children: ReactNode;
+  // plus standard <button> props (onClick, type, etc.)
+}
+```
+
+- Fixed set of 4 variants only — `"primary"` (solid, the default/main CTA), `"secondary"` (outlined), `"link"` (text-only, no border/background/fixed height), `"danger"` (solid, destructive actions like delete). Do not invent a `"tertiary"` or `"icon"` variant — neither has a verified Figma spec in this system yet.
+- `loading`: keeps the button's size and hides its label/icons behind a centered spinner — use for an async action in flight (e.g. submitting a form), not as a permanent state.
+- `startIcon`/`endIcon` accept an icon element from [components/icons](components/icons/index.tsx) — same rule as everywhere else in this system: only icons already in the pack, never hand-drawn.
+- This is the only button primitive in the system — do not hand-build a custom `<button>` with inline Tailwind classes anywhere a `Button` would do the job (a row action, a modal's Save/Cancel, a page-level CTA). Reach for `variant`/`size` to fit the context, don't reimplement the visual treatment.
+
 ### Container
 
 ```ts
