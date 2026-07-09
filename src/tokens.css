@@ -174,4 +174,25 @@
 
   --component-container-background: #FFFFFF;
   --component-container-border: #D6D6DD;
+
+  /* component.textField — tokens/textField.json, cross-checked against every resolved hex
+     the Figma node (47:7385) actually renders (get_variable_defs + the exported icon SVGs' own
+     fill colors, which is how the info/close icon color split below was caught). */
+  --component-textfield-background: #FFFFFF;
+  --component-textfield-background-disabled: #EDEDF2;
+  --component-textfield-border-default: #83838C;
+  --component-textfield-border-hover: #3D3D42;
+  --component-textfield-border-focus: #0174BC;
+  --component-textfield-border-error: #D63C42;
+  --component-textfield-border-disabled: #C2C2CA;
+  --component-textfield-label: #343438;
+  --component-textfield-text: #343438;
+  --component-textfield-text-disabled: #A3A3AB;
+  --component-textfield-text-placeholder: #696970;
+  --component-textfield-hint: #696970;
+  --component-textfield-hint-error: #B82329;
+  --component-textfield-icon: #3D3D42;
+  --component-textfield-icon-hover: #009CDE;
+  --component-textfield-icon-active: #0174BC;
+  --component-textfield-info-icon: #696970;
 }

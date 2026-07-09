@@ -4,15 +4,18 @@ import GlobalFooter from "../components/GlobalFooter";
 import SideNavigation from "../components/SideNavigation";
 import Button, { type ButtonVariant } from "../components/Button";
 import Container from "../components/Container";
+import TextField from "../components/TextField";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
   BellIcon,
   BucketIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  CloseIcon,
   CommunityIcon,
   ComputeIcon,
   HelpCircleIcon,
+  InfoIcon,
   MenuIcon,
   MonitorIcon,
   MoreIcon,
@@ -25,14 +28,19 @@ import {
 } from "../components/icons";
 
 // Internal preview/demo harness only — not part of the shipped component library.
+// Keep this in sync with every export from components/icons (minus SpinnerIcon, which needs a
+// dark/colored background to be visible and is previewed in the Button section instead) — it
+// doubles as a visual regression check whenever a new icon is added.
 const ALL_ICONS = [
   BellIcon,
   BucketIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  CloseIcon,
   CommunityIcon,
   ComputeIcon,
   HelpCircleIcon,
+  InfoIcon,
   MenuIcon,
   MonitorIcon,
   MoreIcon,
@@ -143,6 +151,38 @@ function ResizableTemplatePreview({ title, variant }: { title: string; variant: 
           style={{ width: "100%", height: "100%", border: "none", display: "block" }}
           title={`${title} preview`}
         />
+      </div>
+    </div>
+  );
+}
+
+function TextFieldSection() {
+  const [controlledValue, setControlledValue] = useState("Input text");
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" placeholder="Placeholder" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" value={controlledValue} onChange={setControlledValue} helperText="Hint text" />
+      </div>
+      <div style={{ width: 320 }}>
+        <TextField label="Label" labelPosition="left" defaultValue="Input text" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" defaultValue="Input text" errorText="Warning text" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" defaultValue="Input text" disabled helperText="Hint text" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" defaultValue="Input text" readOnly infoIcon infoText="More information about this field" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField placeholder="No label, no info icon" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" placeholder="With info icon" infoIcon infoText="More information about this field" />
       </div>
     </div>
   );
@@ -273,6 +313,10 @@ function PreviewHarness() {
                 </p>
               </Container>
             </div>
+          </PreviewSection>
+
+          <PreviewSection title="Text Field">
+            <TextFieldSection />
           </PreviewSection>
 
           <PreviewSection title="Global Header">

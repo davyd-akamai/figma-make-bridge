@@ -23,6 +23,9 @@ export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/Button
 export { default as Container } from "./components/Container";
 export type { ContainerProps } from "./components/Container";
 
+export { default as TextField } from "./components/TextField";
+export type { TextFieldProps, TextFieldLabelPosition } from "./components/TextField";
+
 export { default as DefaultCmPageTemplate } from "./templates/DefaultCmPageTemplate";
 export type { DefaultCmPageTemplateProps } from "./templates/DefaultCmPageTemplate";
 
