@@ -3,12 +3,15 @@ import GlobalHeader from "../components/GlobalHeader";
 import GlobalFooter from "../components/GlobalFooter";
 import SideNavigation from "../components/SideNavigation";
 import Button, { type ButtonVariant } from "../components/Button";
+import Checkbox from "../components/Checkbox";
+import RadioButton from "../components/RadioButton";
 import Container from "../components/Container";
 import TextField from "../components/TextField";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
   BellIcon,
   BucketIcon,
+  CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   CloseIcon,
@@ -17,6 +20,7 @@ import {
   HelpCircleIcon,
   InfoIcon,
   MenuIcon,
+  MinusIcon,
   MonitorIcon,
   MoreIcon,
   NetworkIcon,
@@ -34,6 +38,7 @@ import {
 const ALL_ICONS = [
   BellIcon,
   BucketIcon,
+  CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   CloseIcon,
@@ -42,6 +47,7 @@ const ALL_ICONS = [
   HelpCircleIcon,
   InfoIcon,
   MenuIcon,
+  MinusIcon,
   MonitorIcon,
   MoreIcon,
   NetworkIcon,
@@ -188,6 +194,116 @@ function TextFieldSection() {
   );
 }
 
+function CheckboxSection() {
+  const [controlledChecked, setControlledChecked] = useState(true);
+  const [items, setItems] = useState([true, false, false]);
+  const allChecked = items.every(Boolean);
+  const someChecked = items.some(Boolean);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+        <Checkbox label="Unchecked" defaultChecked={false} />
+        <Checkbox label="Checked" defaultChecked={true} />
+        <Checkbox label="Indeterminate" indeterminate />
+        <Checkbox
+          label={`Controlled (${controlledChecked ? "checked" : "unchecked"})`}
+          checked={controlledChecked}
+          onChange={setControlledChecked}
+        />
+        <Checkbox label="Disabled unchecked" disabled />
+        <Checkbox label="Disabled checked" defaultChecked disabled />
+        <Checkbox label="Read-only unchecked" readOnly />
+        <Checkbox label="Read-only checked" defaultChecked readOnly />
+        <Checkbox label="With info icon" infoIcon infoText="More information about this option" />
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 24 }}>
+        <span className="type-body-regular">Small size:</span>
+        <Checkbox size="small" label="Unchecked" />
+        <Checkbox size="small" label="Checked" defaultChecked />
+        <Checkbox size="small" label="Indeterminate" indeterminate />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <span className="type-body-regular">Select-all pattern (indeterminate driven by children):</span>
+        <Checkbox
+          label="Select all"
+          checked={allChecked}
+          indeterminate={someChecked && !allChecked}
+          onChange={(checked) => {
+            setItems(items.map(() => checked));
+          }}
+        />
+        <div style={{ display: "flex", gap: 16, paddingLeft: 24 }}>
+          {items.map((checked, i) => (
+            <Checkbox
+              key={i}
+              label={`Item ${i + 1}`}
+              checked={checked}
+              onChange={(next) => {
+                setItems(items.map((v, idx) => (idx === i ? next : v)));
+              }}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function RadioButtonSection() {
+  const [plan, setPlan] = useState("basic");
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+        <RadioButton name="static-demo" label="Unselected" />
+        <RadioButton name="static-demo-2" label="Selected" defaultChecked />
+        <RadioButton name="static-demo" label="Disabled unselected" disabled />
+        <RadioButton name="static-demo-2" label="Disabled selected" defaultChecked disabled />
+        <RadioButton name="static-demo" label="Read-only unselected" readOnly />
+        <RadioButton name="static-demo-2" label="Read-only selected" defaultChecked readOnly />
+        <RadioButton label="With info icon" infoIcon infoText="More information about this option" />
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 24 }}>
+        <span className="type-body-regular">Small size:</span>
+        <RadioButton size="small" name="static-demo-small" label="Unselected" />
+        <RadioButton size="small" name="static-demo-small" label="Selected" defaultChecked />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <span className="type-body-regular">Controlled group (shared state, current: {plan}):</span>
+        <div style={{ display: "flex", gap: 16 }}>
+          <RadioButton
+            name="plan"
+            label="Basic"
+            checked={plan === "basic"}
+            onChange={() => setPlan("basic")}
+          />
+          <RadioButton
+            name="plan"
+            label="Pro"
+            checked={plan === "pro"}
+            onChange={() => setPlan("pro")}
+          />
+          <RadioButton
+            name="plan"
+            label="Enterprise"
+            checked={plan === "enterprise"}
+            onChange={() => setPlan("enterprise")}
+          />
+        </div>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <span className="type-body-regular">Uncontrolled group (native `name` grouping, no state wiring):</span>
+        <div style={{ display: "flex", gap: 16 }}>
+          <RadioButton name="uncontrolled-demo" label="Option A" defaultChecked />
+          <RadioButton name="uncontrolled-demo" label="Option B" />
+          <RadioButton name="uncontrolled-demo" label="Option C" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const BUTTON_VARIANTS: ButtonVariant[] = ["primary", "secondary", "link", "danger"];
 
 function ButtonVariantRow({ variant }: { variant: ButtonVariant }) {
@@ -317,6 +433,14 @@ function PreviewHarness() {
 
           <PreviewSection title="Text Field">
             <TextFieldSection />
+          </PreviewSection>
+
+          <PreviewSection title="Checkbox">
+            <CheckboxSection />
+          </PreviewSection>
+
+          <PreviewSection title="Radio Button">
+            <RadioButtonSection />
           </PreviewSection>
 
           <PreviewSection title="Global Header">

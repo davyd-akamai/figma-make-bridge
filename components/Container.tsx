@@ -1,5 +1,7 @@
-// Figma: core_container [not coded], node 41:2135 —
-// https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=41-2135
+// Figma: Container, node 58:5033 —
+// https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=58-5033
+// (local component published in "Internal ADS library" — the Code Connect mapping target; mirrors
+// the org core_container [not coded] structure. See GUIDELINES.md's Code Connect section for why.)
 // The node itself is an empty, non-auto-layout box (no children, no padding/radius data exposed
 // via get_design_context/get_variable_defs) — background/border are the only values the Figma MCP
 // tools could resolve on it. Padding (24px horizontal / 16px vertical) was confirmed directly by

@@ -325,6 +325,41 @@ export function CloseIcon(props: IconProps) {
   );
 }
 
+// Figma: core_checkmark (node 58:4287, instance inside 58:4716 "Checkbox", Checked=Yes/State=Default)
+// — natively 12x12, used inside the checkbox box. Exported paths had hardcoded fill="white"; kept
+// as fill="currentColor" here so the checkbox can drive icon color per-state via CSS instead.
+export function CheckIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 12 12" size={12} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M1.46967 6.06952C1.76256 5.77663 2.23744 5.77663 2.53033 6.06952L4.93032 8.46951C5.22321 8.76241 5.22321 9.23728 4.93032 9.53017C4.63743 9.82307 4.16255 9.82307 3.86966 9.53017L1.46967 7.13018C1.17678 6.83729 1.17678 6.36242 1.46967 6.06952Z"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.5303 2.86957C10.8232 3.16247 10.8232 3.63734 10.5303 3.93023L4.93032 9.53017C4.63743 9.82307 4.16255 9.82307 3.86966 9.53017C3.57677 9.23728 3.57669 8.76256 3.86958 8.46966L9.46967 2.86957C9.76256 2.57668 10.2374 2.57668 10.5303 2.86957Z"
+      />
+    </BaseIcon>
+  );
+}
+
+// Figma: core_substract (node 58:4299, instance inside 58:4716 "Checkbox", Checked=Indeterminate/
+// State=Default) — natively 12x12, the checkbox's indeterminate dash. Same currentColor treatment
+// as CheckIcon above.
+export function MinusIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 12 12" size={12} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.75 6C10.75 6.41421 10.4142 6.75 10 6.75L2.00001 6.75C1.5858 6.75 1.25001 6.41421 1.25001 6C1.25001 5.58579 1.5858 5.25 2.00001 5.25L10 5.25C10.4142 5.25 10.75 5.58579 10.75 6Z"
+      />
+    </BaseIcon>
+  );
+}
+
 // Figma: core_loading-spinner (node 1:27), exported from the button loading-state instances
 // (44:2137 Primary/white=Yes, 44:2259 Secondary/white=No) — a static two-arc gradient graphic,
 // meant to be rotated via CSS animation rather than an animated asset (same approach CDS's

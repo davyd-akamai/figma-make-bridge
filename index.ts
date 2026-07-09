@@ -26,6 +26,12 @@ export type { ContainerProps } from "./components/Container";
 export { default as TextField } from "./components/TextField";
 export type { TextFieldProps, TextFieldLabelPosition } from "./components/TextField";
 
+export { default as Checkbox } from "./components/Checkbox";
+export type { CheckboxProps, CheckboxSize } from "./components/Checkbox";
+
+export { default as RadioButton } from "./components/RadioButton";
+export type { RadioButtonProps, RadioButtonSize } from "./components/RadioButton";
+
 export { default as DefaultCmPageTemplate } from "./templates/DefaultCmPageTemplate";
 export type { DefaultCmPageTemplateProps } from "./templates/DefaultCmPageTemplate";
 
