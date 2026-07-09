@@ -195,4 +195,80 @@
   --component-textfield-icon-hover: #009CDE;
   --component-textfield-icon-active: #0174BC;
   --component-textfield-info-icon: #696970;
+
+  /* component.checkbox — tokens/checkbox.json, hex values taken directly from get_variable_defs
+     on Figma node 58:4716 (all already-resolved values, no alias chasing needed). Var names keep
+     "indeterminated" (not the correct "indeterminate") to match the literal key Figma's own
+     variables and tokens/checkbox.json use — a typo baked into the source, kept here for 1:1
+     traceability rather than silently "fixed". */
+  --component-checkbox-empty-default-background: #FFFFFF;
+  --component-checkbox-empty-default-border: #83838C;
+  --component-checkbox-empty-default-text: #343438;
+  --component-checkbox-checked-default-background: #0174BC;
+  --component-checkbox-checked-default-icon: #FFFFFF;
+  --component-checkbox-checked-default-text: #343438;
+  --component-checkbox-indeterminated-default-background: #0174BC;
+  --component-checkbox-indeterminated-default-icon: #FFFFFF;
+  --component-checkbox-indeterminated-default-text: #343438;
+  --component-checkbox-empty-hover-border: #009CDE;
+  --component-checkbox-checked-hover-background: #009CDE;
+  --component-checkbox-indeterminated-hover-background: #009CDE;
+  --component-checkbox-empty-active-border: #0174BC;
+  --component-checkbox-checked-active-background: #0174BC;
+  --component-checkbox-indeterminated-active-background: #0174BC;
+  --component-checkbox-empty-disabled-background: #E5E5EA;
+  --component-checkbox-empty-disabled-border: #C2C2CA;
+  --component-checkbox-empty-disabled-text: #A3A3AB;
+  --component-checkbox-checked-disabled-background: #AFDEF8;
+  --component-checkbox-checked-disabled-icon: #FFFFFF;
+  --component-checkbox-checked-disabled-text: #A3A3AB;
+  --component-checkbox-indeterminated-disabled-background: #AFDEF8;
+  --component-checkbox-indeterminated-disabled-icon: #FFFFFF;
+  --component-checkbox-indeterminated-disabled-text: #A3A3AB;
+  --component-checkbox-empty-readonly-border: #C2C2CA;
+  --component-checkbox-empty-readonly-text: #343438;
+  --component-checkbox-checked-readonly-border: #C2C2CA;
+  --component-checkbox-checked-readonly-icon: #A3A3AB;
+  --component-checkbox-checked-readonly-text: #343438;
+  --component-checkbox-indeterminated-readonly-border: #C2C2CA;
+  --component-checkbox-indeterminated-readonly-icon: #A3A3AB;
+  --component-checkbox-indeterminated-readonly-text: #343438;
+
+  /* component.radioButton — tokens/radioButton.json, hex values taken directly from
+     get_variable_defs on Figma node 58:5044 (all already-resolved values, no alias chasing
+     needed). "inactive"/"active" are the top-level (unselected/selected) buckets; "active" also
+     reappears as a per-state name (Figma's Focus state resolves through tokens literally named
+     "active", same quirk as Checkbox/Button) — kept as-is for 1:1 traceability to the token file
+     rather than renaming one of the two for clarity. Read-only has a real background value here
+     (white) — unlike Checkbox's read-only, which has no background key at all. */
+  --component-radiobutton-inactive-default-background: #FFFFFF;
+  --component-radiobutton-inactive-default-border: #83838C;
+  --component-radiobutton-inactive-default-text: #343438;
+  --component-radiobutton-active-default-background: #FFFFFF;
+  --component-radiobutton-active-default-border: #0174BC;
+  --component-radiobutton-active-default-text: #343438;
+  --component-radiobutton-inactive-hover-background: #FFFFFF;
+  --component-radiobutton-inactive-hover-border: #009CDE;
+  --component-radiobutton-inactive-hover-text: #343438;
+  --component-radiobutton-active-hover-background: #FFFFFF;
+  --component-radiobutton-active-hover-border: #009CDE;
+  --component-radiobutton-active-hover-text: #343438;
+  --component-radiobutton-inactive-active-background: #FFFFFF;
+  --component-radiobutton-inactive-active-border: #0174BC;
+  --component-radiobutton-inactive-active-text: #343438;
+  --component-radiobutton-active-active-background: #FFFFFF;
+  --component-radiobutton-active-active-border: #0174BC;
+  --component-radiobutton-active-active-text: #343438;
+  --component-radiobutton-inactive-disabled-background: #E5E5EA;
+  --component-radiobutton-inactive-disabled-border: #C2C2CA;
+  --component-radiobutton-inactive-disabled-text: #A3A3AB;
+  --component-radiobutton-active-disabled-background: #FFFFFF;
+  --component-radiobutton-active-disabled-border: #AFDEF8;
+  --component-radiobutton-active-disabled-text: #A3A3AB;
+  --component-radiobutton-inactive-readonly-background: #FFFFFF;
+  --component-radiobutton-inactive-readonly-border: #C2C2CA;
+  --component-radiobutton-inactive-readonly-text: #343438;
+  --component-radiobutton-active-readonly-background: #FFFFFF;
+  --component-radiobutton-active-readonly-border: #C2C2CA;
+  --component-radiobutton-active-readonly-text: #343438;
 }

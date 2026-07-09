@@ -163,6 +163,32 @@ interface ContainerProps {
 - **Always spans the full available width of its parent grid/content area, regardless of its children's size.** It never shrinks to fit its content, and multiple `Container`s are never placed side by side in a row — stack them vertically. Do not set an explicit `width`/`max-width` on it or wrap it in a flex row expecting it to sit next to another element.
 - Height is intrinsic to content — do not set a fixed height.
 
+### Checkbox
+
+```ts
+interface CheckboxProps {
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onChange?: (checked: boolean) => void;
+  indeterminate?: boolean;
+  label?: string;
+  size?: "small" | "large";        // default "large"
+  disabled?: boolean;
+  readOnly?: boolean;
+  infoIcon?: boolean;
+  infoText?: string;
+  onInfoIconClick?: () => void;
+  className?: string;
+  // plus standard <input> props (name, value, required, etc.)
+}
+```
+
+- **Default `size` is `"large"` (20px) — use it for almost every checkbox on a page:** standalone form fields, settings/preference toggles, filter lists, any checkbox that isn't inside a table row or a dense list. Do not reach for `size="small"` as a general default.
+- **`size="small"` (16px) is reserved for tables and dense list components** — row-selection checkboxes in a table body/header, or list items where vertical space is tight and a 20px control would visually crowd the row. Use it only in those two contexts, not as a general stylistic choice.
+- `indeterminate` is a separate visual flag from `checked`, not a third value of it. For a "select all" checkbox driving a set of child checkboxes, compute it fresh on every render as `someChecked && !allChecked` — it does not clear itself on click, the parent state is what drives it.
+- `readOnly` and `disabled` are both non-interactive but communicate different things and render differently (readOnly: thin border, no fill; disabled: greyed fill) — don't substitute one for the other.
+- `infoIcon`/`infoText`/`onInfoIconClick` follow the same pattern as TextField's info icon (a placeholder for a future Tooltip component) — use only when the label genuinely needs supplementary explanation, not as a decorative default.
+
 ### Icon pack
 
 - One React component per icon in [components/icons](components/icons/index.tsx) — e.g. `ComputeIcon`, `BucketIcon`, `PinIcon`. All accept `size?: number` plus standard SVG props.
@@ -223,3 +249,4 @@ const sections: SideNavSection[] = DEFAULT_SIDE_NAV_SECTIONS.map((section) =>
 - SideNavigation: do not invent a badge type beyond `"new"`/`"beta"`; do not add a brand-new section without a real icon (flag it instead, see SideNavigation above); reach for `menu="full"|"mini"` only as a narrow escape hatch, not the default way to render the rail.
 - Layout rule for any row with a trailing element that should sit immediately after a label with a gap (a badge, chevron, or icon): never give the label `flex-1`. That stretches the label to fill all remaining space and pushes the trailing element to the row's far edge instead of leaving a clean gap next to the label. Let the label size to content and rely on the row's `gap`.
 - Container: never place two `Container`s side by side in a row or give one an explicit width — it always fills its parent's full width by design.
+- Checkbox: default `size` is `"large"`; reach for `size="small"` only inside tables or dense list rows where space is constrained, never as a general/base default.

@@ -1,4 +1,6 @@
-// Figma: core_button, node 44:2128 — https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=44-2128
+// Figma: Button, node 47:14865 — https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=47-14865
+// (local component published in "Internal ADS library" — the Code Connect mapping target; mirrors
+// the org core_button structure. See GUIDELINES.md's Code Connect section for why.)
 // Scoped to the 4 types with fully rendered swatches in that frame: Primary/Secondary/Link/Danger,
 // each x Large/Small x Default/Hover/Active/Disabled/Loading. Figma's component description also
 // lists Tertiary and Launch as types and CDS's ButtonVariant additionally has "icon" — none of those
