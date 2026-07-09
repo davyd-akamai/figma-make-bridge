@@ -1,147 +1,147 @@
 /* Generated from tokens/light.json alias.typography.* + tokens/global.json. */
 /* Each class = one Figma text style (e.g. .type-label-semibold-s == "Label/Semibold S"). */
 .type-body-bold {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
 }
 .type-body-extrabold {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-extrabold);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
 }
 .type-body-italic {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: 400;
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
   font-style: italic;
 }
 .type-body-list {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: 400;
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
 }
 .type-body-regular {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: 400;
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
 }
 .type-body-semibold {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xs);
 }
 .type-code {
-  font-family: var(--font-family-code, 'Nunito Sans');
+  font-family: var(--font-family-code, 'Fira Code'), monospace;
   font-weight: 400;
   font-size: var(--font-size-xxs);
   line-height: var(--line-height-xs);
 }
 .type-heading-l {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-l);
   line-height: var(--line-height-m);
 }
 .type-heading-m {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-m);
   line-height: var(--line-height-s);
 }
 .type-heading-overline {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-extrabold);
   font-size: var(--font-size-xxxs);
   line-height: var(--line-height-xxxs);
 }
 .type-heading-s {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-s);
   line-height: var(--line-height-xs);
 }
 .type-heading-xl {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xl);
   line-height: var(--line-height-l);
 }
 .type-heading-xs {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xxs);
 }
 .type-heading-xxl {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-extrabold);
   font-size: var(--font-size-xxl);
   line-height: var(--line-height-xl);
 }
 .type-heading-xxxl {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xxxl);
   line-height: var(--line-height-xxxl);
 }
 .type-label-bold-l {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-s);
   line-height: var(--line-height-xs);
 }
 .type-label-bold-s {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xxxs);
 }
 .type-label-bold-xs {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-xxxs);
   line-height: 0.875rem;
 }
 .type-label-regular-placeholder {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: 400;
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xxxs);
   font-style: italic;
 }
 .type-label-regular-s {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: 400;
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xxxs);
 }
 .type-label-regular-xs {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: 400;
   font-size: var(--font-size-xxxs);
   line-height: var(--line-height-xxxs);
 }
 .type-label-semibold-l {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-s);
   line-height: var(--line-height-xs);
 }
 .type-label-semibold-s {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-xs);
   line-height: var(--line-height-xxxs);
 }
 .type-label-semibold-xs {
-  font-family: var(--font-family-brand, 'Nunito Sans');
+  font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
   font-weight: var(--font-weight-semibold);
   font-size: var(--font-size-xxxs);
   line-height: var(--line-height-xxxs);

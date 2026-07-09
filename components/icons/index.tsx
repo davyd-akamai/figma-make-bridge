@@ -1,4 +1,4 @@
-import type { SVGProps } from "react";
+import { useId, type SVGProps } from "react";
 
 // Shared icon pack — every icon here is pulled verbatim from Figma via download_assets
 // (defaultFormat: "svg") and hand-normalized to a local viewBox, never hand-approximated.
@@ -8,6 +8,8 @@ import type { SVGProps } from "react";
 //  - core_hamburger-menu (1:916), core_search (1:917): node 1:914 "cm_header" Mobile variant
 //  - core_help-circle (1:895), core_community (1:896), core_notifications (1:897),
 //    core_add (in 1:892 "core_button" instance): node 1:883 "cm_header" Desktop variant
+//  - core_add small (44:2142), core_loading-spinner (1:27, exported via the 44:2137/44:2259
+//    button-loading instances): node 44:2128 "core_button"
 // Default size is 24px, matching this design system's standard icon box; core_chevron and
 // core_pin are natively 16px in Figma and default to that instead — pass `size` to override either.
 export interface IconProps extends SVGProps<SVGSVGElement> {
@@ -294,5 +296,100 @@ export function PlusIcon(props: IconProps) {
         d="M8.665 3.33331C8.665 2.96604 8.36727 2.66831 8 2.66831C7.63273 2.66831 7.335 2.96604 7.335 3.33331V7.335H3.33325C2.96598 7.335 2.66825 7.63273 2.66825 8C2.66825 8.36727 2.96598 8.665 3.33325 8.665H7.335V12.6666C7.335 13.0339 7.63273 13.3316 8 13.3316C8.36727 13.3316 8.665 13.0339 8.665 12.6666V8.665H12.6666C13.0339 8.665 13.3316 8.36727 13.3316 8C13.3316 7.63273 13.0339 7.335 12.6666 7.335H8.665V3.33331Z"
       />
     </BaseIcon>
+  );
+}
+
+// Figma: core_info (node 47:7392, instance inside 47:7385 "core_text-field")
+export function InfoIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 20 20" size={20} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10 3.33333C6.3181 3.33333 3.33333 6.3181 3.33333 10C3.33333 13.6819 6.3181 16.6667 10 16.6667C13.6819 16.6667 16.6667 13.6819 16.6667 10C16.6667 6.3181 13.6819 3.33333 10 3.33333ZM1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10ZM9.16667 5.83333C9.16667 5.3731 9.53976 5 10 5H10.0083C10.4686 5 10.8417 5.3731 10.8417 5.83333C10.8417 6.29357 10.4686 6.66667 10.0083 6.66667H10C9.53976 6.66667 9.16667 6.29357 9.16667 5.83333ZM10 7.91667C10.4602 7.91667 10.8333 8.28976 10.8333 8.75V14.1667C10.8333 14.6269 10.4602 15 10 15C9.53976 15 9.16667 14.6269 9.16667 14.1667V8.75C9.16667 8.28976 9.53976 7.91667 10 7.91667Z"
+      />
+    </BaseIcon>
+  );
+}
+
+// Figma: core_close (node 47:7480/47:7390, instance inside 47:7385 "core_text-field") — natively 16px.
+export function CloseIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 16 16" size={16} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M12.4702 4.47023C12.7299 4.21053 12.7299 3.78947 12.4702 3.52977C12.2105 3.27008 11.7895 3.27008 11.5298 3.52977L8 7.05955L4.47023 3.52977C4.21053 3.27008 3.78947 3.27008 3.52977 3.52977C3.27008 3.78947 3.27008 4.21053 3.52977 4.47023L7.05955 8L3.52977 11.5298C3.27008 11.7895 3.27008 12.2105 3.52977 12.4702C3.78947 12.7299 4.21053 12.7299 4.47023 12.4702L8 8.94045L11.5298 12.4702C11.7895 12.7299 12.2105 12.7299 12.4702 12.4702C12.7299 12.2105 12.7299 11.7895 12.4702 11.5298L8.94045 8L12.4702 4.47023Z"
+      />
+    </BaseIcon>
+  );
+}
+
+// Figma: core_loading-spinner (node 1:27), exported from the button loading-state instances
+// (44:2137 Primary/white=Yes, 44:2259 Secondary/white=No) — a static two-arc gradient graphic,
+// meant to be rotated via CSS animation rather than an animated asset (same approach CDS's
+// spinnerWhiteIcon/spinnerGradientIcon use). Path coordinates normalized into a 16x16 viewBox by
+// subtracting the icon's (26,9) container offset inside the exported 68x34 button frame.
+// `variant="white"` matches primary/danger (solid-fill buttons); `variant="gradient"` matches
+// secondary/link (outline/text buttons) — mirrors which buttons got which spinner in Figma.
+export function SpinnerIcon({
+  variant = "white",
+  size = 16,
+  className,
+  ...props
+}: IconProps & { variant?: "white" | "gradient" }) {
+  const uid = useId();
+  const gradA = `spinner-a-${uid}`;
+  const gradB = `spinner-b-${uid}`;
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={`animate-spin ${className ?? ""}`}
+      {...props}
+    >
+      <path
+        d="M8 2C4.6863 2 2 4.6863 2 8C2 11.3137 4.6863 14 8 14C8.9414 14 9.8321 13.7832 10.625 13.3968"
+        stroke={`url(#${gradA})`}
+        strokeWidth="1.33"
+        strokeLinecap="round"
+      />
+      <path
+        d="M14 8C14 4.6863 11.3137 2 8 2C4.6863 2 2 4.6863 2 8C2 9.7159 2.7203 11.2636 3.875 12.3571"
+        stroke={`url(#${gradB})`}
+        strokeWidth="1.33"
+        strokeLinecap="round"
+      />
+      <defs>
+        {variant === "white" ? (
+          <>
+            <radialGradient id={gradA} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4.125 12.625) rotate(2.24575) scale(6.3799)">
+              <stop stopColor="#FFFFFF" />
+              <stop offset="0.812835" stopColor="#FFFFFF" stopOpacity="0" />
+            </radialGradient>
+            <radialGradient id={gradB} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13.375 5.375) rotate(158.671) scale(14.0901)">
+              <stop offset="0.546875" stopColor="#FFFFFF" />
+              <stop offset="0.854167" stopColor="#FFFFFF" />
+              <stop offset="1" stopColor="#FFFFFF" stopOpacity="0" />
+            </radialGradient>
+          </>
+        ) : (
+          <>
+            <radialGradient id={gradA} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4.125 12.625) rotate(2.24575) scale(6.3799)">
+              <stop stopColor="#00B050" />
+              <stop offset="0.812835" stopColor="#00B050" stopOpacity="0" />
+            </radialGradient>
+            <radialGradient id={gradB} cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11.6562 6.1042) rotate(158.924) scale(12.224)">
+              <stop stopColor="#5BB3EA" stopOpacity="0" />
+              <stop offset="0.328125" stopColor="#108AD6" />
+              <stop offset="0.682292" stopColor="#00B050" />
+            </radialGradient>
+          </>
+        )}
+      </defs>
+    </svg>
   );
 }

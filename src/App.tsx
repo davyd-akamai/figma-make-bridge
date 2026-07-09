@@ -2,15 +2,20 @@ import { useState, type ReactNode } from "react";
 import GlobalHeader from "../components/GlobalHeader";
 import GlobalFooter from "../components/GlobalFooter";
 import SideNavigation from "../components/SideNavigation";
+import Button, { type ButtonVariant } from "../components/Button";
+import Container from "../components/Container";
+import TextField from "../components/TextField";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
   BellIcon,
   BucketIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  CloseIcon,
   CommunityIcon,
   ComputeIcon,
   HelpCircleIcon,
+  InfoIcon,
   MenuIcon,
   MonitorIcon,
   MoreIcon,
@@ -23,14 +28,19 @@ import {
 } from "../components/icons";
 
 // Internal preview/demo harness only — not part of the shipped component library.
+// Keep this in sync with every export from components/icons (minus SpinnerIcon, which needs a
+// dark/colored background to be visible and is previewed in the Button section instead) — it
+// doubles as a visual regression check whenever a new icon is added.
 const ALL_ICONS = [
   BellIcon,
   BucketIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  CloseIcon,
   CommunityIcon,
   ComputeIcon,
   HelpCircleIcon,
+  InfoIcon,
   MenuIcon,
   MonitorIcon,
   MoreIcon,
@@ -146,6 +156,76 @@ function ResizableTemplatePreview({ title, variant }: { title: string; variant: 
   );
 }
 
+function TextFieldSection() {
+  const [controlledValue, setControlledValue] = useState("Input text");
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" placeholder="Placeholder" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" value={controlledValue} onChange={setControlledValue} helperText="Hint text" />
+      </div>
+      <div style={{ width: 320 }}>
+        <TextField label="Label" labelPosition="left" defaultValue="Input text" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" defaultValue="Input text" errorText="Warning text" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" defaultValue="Input text" disabled helperText="Hint text" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" defaultValue="Input text" readOnly infoIcon infoText="More information about this field" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField placeholder="No label, no info icon" />
+      </div>
+      <div style={{ width: 260 }}>
+        <TextField label="Label" placeholder="With info icon" infoIcon infoText="More information about this field" />
+      </div>
+    </div>
+  );
+}
+
+const BUTTON_VARIANTS: ButtonVariant[] = ["primary", "secondary", "link", "danger"];
+
+function ButtonVariantRow({ variant }: { variant: ButtonVariant }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <p className="type-body-regular" style={{ margin: 0, textTransform: "capitalize" }}>
+        {variant}
+      </p>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 12 }}>
+        <Button variant={variant} size="large">
+          Button
+        </Button>
+        <Button variant={variant} size="large" startIcon={<PlusIcon />}>
+          Button
+        </Button>
+        <Button variant={variant} size="large" loading>
+          Button
+        </Button>
+        <Button variant={variant} size="large" disabled>
+          Button
+        </Button>
+        <Button variant={variant} size="small">
+          Button
+        </Button>
+        <Button variant={variant} size="small" startIcon={<PlusIcon />}>
+          Button
+        </Button>
+        <Button variant={variant} size="small" loading>
+          Button
+        </Button>
+        <Button variant={variant} size="small" disabled>
+          Button
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 function TabButton({
   label,
   active,
@@ -205,6 +285,38 @@ function PreviewHarness() {
                 <Icon key={i} />
               ))}
             </div>
+          </PreviewSection>
+
+          <PreviewSection title="Button">
+            <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
+              {BUTTON_VARIANTS.map((variant) => (
+                <ButtonVariantRow key={variant} variant={variant} />
+              ))}
+            </div>
+          </PreviewSection>
+
+          <PreviewSection title="Container">
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 12, border: "1px solid #E5E5EA" }}>
+              <Container>
+                <p className="type-body-regular" style={{ margin: 0 }}>
+                  A Container always spans the full width of its parent — it never sizes to its
+                  content's width, only its height.
+                </p>
+              </Container>
+              <Container>
+                <p className="type-heading-xs" style={{ margin: "0 0 8px" }}>
+                  Longer content
+                </p>
+                <p className="type-body-regular" style={{ margin: 0 }}>
+                  This paragraph is here to show the container growing to fit taller content while
+                  keeping its 24px horizontal / 16px vertical padding and full-width sizing.
+                </p>
+              </Container>
+            </div>
+          </PreviewSection>
+
+          <PreviewSection title="Text Field">
+            <TextFieldSection />
           </PreviewSection>
 
           <PreviewSection title="Global Header">
