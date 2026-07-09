@@ -141,6 +141,14 @@ interface ButtonProps {
 - `loading`: keeps the button's size and hides its label/icons behind a centered spinner — use for an async action in flight (e.g. submitting a form), not as a permanent state.
 - `startIcon`/`endIcon` accept an icon element from [components/icons](components/icons/index.tsx) — same rule as everywhere else in this system: only icons already in the pack, never hand-drawn.
 - This is the only button primitive in the system — do not hand-build a custom `<button>` with inline Tailwind classes anywhere a `Button` would do the job (a row action, a modal's Save/Cancel, a page-level CTA). Reach for `variant`/`size` to fit the context, don't reimplement the visual treatment.
+- **Never pass `Button` directly as the child of a Radix `asChild` trigger** — `PopoverTrigger asChild`, `TooltipTrigger asChild`, `DropdownMenuTrigger asChild`, `DialogTrigger asChild`, or any other Radix primitive using the `asChild` pattern. Radix's `Slot` clones its single child via `cloneElement` and merges its own DOM props onto it, which can clobber `Button`'s own `variant`/`size` props that its internal rendering depends on and crash the render. Instead, wrap `Button` in a plain `<span className="inline-flex">` and make that span the `asChild` target, with `Button` nested inside as a plain visual child — clicks bubble through to the span normally, so behavior is unaffected:
+  ```tsx
+  <PopoverTrigger asChild>
+    <span className="inline-flex">
+      <Button variant="secondary" size="small">Settings</Button>
+    </span>
+  </PopoverTrigger>
+  ```
 
 ### Container
 
