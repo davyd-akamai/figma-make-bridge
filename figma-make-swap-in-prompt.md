@@ -13,7 +13,13 @@ Add (or update) the npm package `figma-make-bridge` to its latest published vers
 
 If this prototype already has its own pre-existing Tailwind-generated styles (i.e. it wasn't built with this library from the start), make sure `figma-make-bridge/styles.css` is imported AFTER the app's own global stylesheet, not before — this library's compiled utility classes can share names with an app's own Tailwind output (`.hidden`, `.flex`, etc.), and whichever stylesheet loads later wins ties in the cascade. If it's already ordered that way, leave it as-is.
 
-Now do a mechanical, checklist-driven pass over this prototype — not a judgment-based "replace everything" pass:
+**Phase 1 — shell, first and in isolation.** Check whether this prototype already composes `GlobalHeader`, `SideNavigation`, and `GlobalFooter` via `DefaultCmPageTemplate`. If it doesn't yet (true for any prototype that predates this library), do this before anything else in this prompt, and confirm it renders correctly before moving on to Phase 2:
+
+- Replace the existing hand-built header/nav/footer with `GlobalHeader`/`SideNavigation`/`GlobalFooter`, composed via `DefaultCmPageTemplate`. Use the exported `DEFAULT_SIDE_NAV_SECTIONS` for the nav unless told otherwise. Don't pass `selectedPageId`/`onSelectPage`/`pinned`/`onPinToggle` unless wiring them to real state that also drives page content — omit them entirely for a single-screen prototype.
+- Move the prototype's existing page content into `DefaultCmPageTemplate`'s content slot unchanged — **except** for one thing: strip any styling on the content's own outer wrapper that's now redundant with what the template already provides — page-level background color, outer padding/margin, max-width/centering. The template owns all of that now; leaving the old wrapper's styling in place doubles up padding or stacks two conflicting backgrounds. List exactly what you removed from the old wrapper as part of your Phase 1 report.
+- Take a screenshot after this phase and check specifically for doubled spacing or a visible background mismatch around the content area before proceeding — this is a visual check, not just "does it render."
+
+**Phase 2 — everything else, checklist-driven, not a judgment-based "replace everything" pass:**
 
 **Step 1 — enumerate before changing anything.** Scan the entire prototype's source for any existing UI element that has an equivalent among the components documented in Guidelines.md's "Component reference" section (buttons, form fields, containers, navigation, etc. — whatever's currently exported). List every match you find, with its file and a short description, before converting anything.
 
@@ -27,9 +33,11 @@ Now do a mechanical, checklist-driven pass over this prototype — not a judgmen
 
 **Step 4 — verify behavior, not just appearance.** Actually interact with every converted element (type into fields, check/uncheck, select options, click buttons) and confirm the underlying state still works correctly, not just that it renders styled correctly.
 
-**Step 5 — report back** the full list from Step 1 with a ✅ (converted and verified), ❌ (attempted but broke — describe how), or ⚠️ (flagged, left as-is, doesn't map) next to each item.
+**Step 5 — report back** the full list from Step 1 with a ✅ (converted and verified), ❌ (attempted but broke — describe how), or ⚠️ (flagged, left as-is, doesn't map) next to each item, plus the Phase 1 shell report if that phase ran.
 ```
 
 ## Keeping this current
 
 This prompt deliberately doesn't name specific components or prop shapes beyond the handful of idiom translations (Checkbox, RadioGroup, Button+asChild) that are unlikely to change — everything else defers to whatever Guidelines.md documents at the time, so this file shouldn't need edits every time a new component ships. Only revisit it if a *new* component introduces its own non-obvious idiom mismatch worth calling out the same way (add it to Step 2 as its own bullet), or if a new class of bug is found that every future swap-in should guard against proactively.
+
+The Phase 1 shell step is deliberately conditional ("if it doesn't already exist") rather than assumed-needed every time — a prototype that's already been through one swap-in shouldn't be told to reinstall a shell it already has.
