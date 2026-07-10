@@ -1,0 +1,66 @@
+name: Sync docs preview styles
+
+# Keeps docs/assets/styles.css (the compiled stylesheet the static preview site at docs/
+# links to) in sync with the real library build, so the public preview never silently drifts
+# from source. See GUIDELINES.md's "Public component preview site" section.
+#
+# Triggers only on pushes that could actually change compiled CSS — never on docs/** itself,
+# so the commit this workflow makes back to main doesn't re-trigger it.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "components/**"
+      - "templates/**"
+      - "tokens/**"
+      - "src/**"
+      - "vite.lib.config.ts"
+      - "package.json"
+      - "package-lock.json"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-docs-styles-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build library (produces dist/styles.css)
+        run: npm run build
+
+      - name: Sync compiled styles into docs/assets
+        id: sync
+        run: |
+          mkdir -p docs/assets
+          if ! cmp -s dist/styles.css docs/assets/styles.css; then
+            cp dist/styles.css docs/assets/styles.css
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Commit and push if changed
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/assets/styles.css
+          git commit -m "chore: sync docs/assets/styles.css with dist/styles.css [skip ci]"
+          git push

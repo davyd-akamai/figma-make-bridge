@@ -7,6 +7,15 @@
    removes that dependency entirely. */
 @import "./fonts.css";
 @import "tailwindcss";
+
+/* Tailwind v4's automatic content detection scans the whole project (respecting .gitignore),
+   which would otherwise pull utility classes out of docs/ — the static preview site's own HTML
+   demo pages — into this library's *published* stylesheet. Those pages intentionally reuse the
+   real components' class strings, but also have their own site-chrome markup that shouldn't
+   inflate what ships to npm. Excluded explicitly rather than relying on docs/ staying free of
+   any class name the real components don't also use. */
+@source not "../docs";
+
 @import "./tokens.css";
 @import "./typography.css";
 
