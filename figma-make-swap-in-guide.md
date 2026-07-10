@@ -10,7 +10,9 @@ If the prototype has never had the library installed, the first swap-in necessar
 
 ## Writing the actual prompt
 
-**"Replace every X" reliably misses instances — ask for a checklist instead.** Twice now, a general instruction like "replace every button/container" converted the first or most prominent instances and silently skipped later, structurally-identical ones (a stat panel identical in structure to an already-converted one; a toolbar button). The fix that works: ask Make to first *enumerate* every remaining instance of the pattern before changing anything, then convert each one, then **report back the enumerated list with a ✅/❌ per item confirming it was actually changed.** This gives you something to check against instead of finding the next straggler by screenshot.
+**"Replace every X" reliably misses instances — ask for a checklist instead.** Multiple times now, a general instruction like "replace every button/container" converted the first or most prominent instances and silently skipped later, structurally-identical ones (a stat panel identical in structure to an already-converted one; a toolbar button). The fix that works: ask Make to first *enumerate* every remaining instance of the pattern before changing anything, then convert each one, then **report back the enumerated list with a ✅/❌ per item confirming it was actually changed.** This gives you something to check against instead of finding the next straggler by screenshot.
+
+**Even the enumerate-first checklist can still undercount within a single file.** A real case: a form had two separate `RadioGroup`s (Mode, and Destination type) — the enumeration found and converted one, and never listed the other at all, not even as a miss. Finding one instance of a source pattern in a file is a signal to check that file specifically for more of the same, not a reason to assume the scan already covered it. `figma-make-swap-in-prompt.md`'s Step 1 now says this explicitly.
 
 **Name specific elements when you already know one's a problem**, don't rely on the category description alone — "the Add Route button in the toolbar" lands more reliably than "buttons in general."
 

@@ -217,6 +217,8 @@ interface TextFieldProps {
 - `clearable` defaults to `true` (shows a × button once the field has a value) — set `false` only when clearing genuinely doesn't make sense (e.g. a fixed/derived value).
 - `readOnly` renders as plain text with no input box or clear button — a different visual from `disabled` (greyed-out but still box-shaped). Use `readOnly` for displaying a value the user can't edit in this context, `disabled` for a value that's temporarily not editable.
 - `infoIcon`/`infoText`/`onInfoIconClick`: same placeholder-for-a-future-Tooltip pattern as `Checkbox` — use only when the label genuinely needs supplementary explanation.
+- **`TextField` has no leading icon.** There is deliberately no leading/start-icon prop on this component — a search-style input with a leading icon is a distinct future `Search` component, not a `TextField` variant. Don't approximate a leading icon by absolutely-positioning one over a `TextField`.
+- **Don't let `TextField` stretch to fill its container by default.** The component itself is `width: 100%` of whatever wraps it, so width is a layout decision made by the surrounding form, not the component. Wrap each field in a container sized to its actual content rather than letting every field in a form stretch edge-to-edge: **~400px is a reasonable default** for a normal single-line field (name, label, a short free-text value), narrower (~160–200px) for something genuinely short like a numeric field, port, or short code, and full-width only when the content itself is long (a URL, a long free-text description). This is a general form-layout rule, not specific to any one field — apply it to every text field a prototype builds, not just ones being converted from something else.
 
 ### RadioButton
 

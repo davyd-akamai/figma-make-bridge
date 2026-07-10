@@ -150,7 +150,7 @@ Driven by a real prototype need: designers use this library to build *new* produ
 
 1. [x] Button — [components/Button.tsx](components/Button.tsx), Figma node 47:14865 (`Button`). See conventions below.
    - **Bug found via real Make swap-in testing (2026-07-09):** Make's first pass at converting a Radix `PopoverTrigger asChild` button crashed the app — Radix's `Slot` clones its single child via `cloneElement`, merging DOM props onto it, and passing `Button` directly as that child let Radix's merge clobber the `variant`/`size` props `Button`'s internal render logic depends on. Not something to fix in `Button` itself (would mean taking on `@radix-ui/react-slot` as a dependency, against the dependency-minimalism direction) — fixed by wrapping `Button` in a plain `<span className="inline-flex">` and making the span the `asChild` target instead, so clicks bubble through normally. Documented as the required pattern in `figma-make-guidelines.md`'s Button section so future Radix-trigger compositions (Tooltip/DropdownMenu/Dialog, not just Popover) don't hit the same crash.
-2. Table
+2. Table — **owns its own bordered wrapper, do not compose it inside `Container`.** Confirmed via real swap-in testing (2026-07-10): `Container`'s fixed 24px/16px padding is wrong for a table — a table wrapper needs to sit flush so header shading/borders reach the edge, a different need than the padded-content-panel case `Container` is actually for. Build Table's own wrapper border/radius/background from tokens directly. **Row actions (edit/delete etc.) use bare icons directly, not a wrapped icon-button component** — no icon-only/ghost `Button` variant is planned; confirmed explicitly, not just an open gap.
 3. Topbar — **not in CDS**, Figma-only source like GlobalHeader/SideNavigation were. Node still needs identifying — likely a breadcrumb + page-title bar sitting below GlobalHeader, but unconfirmed.
 4. [x] Text field — [components/TextField.tsx](components/TextField.tsx), Figma node 47:7385 (`core_text-field`). See conventions below.
 5. Select
@@ -160,6 +160,7 @@ Driven by a real prototype need: designers use this library to build *new* produ
 9. Notification banner/toast
 10. Tabs
 11. [x] Container — [components/Container.tsx](components/Container.tsx), Figma node 58:5033 (`Container`). See conventions below.
+12. Search — the one component that will own a leading-icon input pattern. Confirmed (2026-07-10) `TextField` deliberately does *not* get a leading-icon prop for this reason — a real swap-in left a search bar with an icon overlay unconverted for exactly this gap, and that was the right call, not a miss. Order/priority not yet decided.
 
 Not every product need will have a matching component (e.g. a one-off summary card in the Routing Table prototype isn't a CDS component either) — those get hand-composed directly from `component.*`/`alias.*` tokens rather than forced into a fake shared component, same as any other token-composed custom UI.
 
