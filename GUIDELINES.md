@@ -11,6 +11,8 @@ Starting work in a fresh session? Copy the relevant kickoff prompt as your openi
 - [figma-make-swap-in-prompt.md](figma-make-swap-in-prompt.md) — reusable copy-paste prompt for replacing an existing prototype's ad-hoc UI with real library components, generic across any prototype (not project-specific)
 - [code-connect-kickoff-prompt.md](code-connect-kickoff-prompt.md) — continuing Code Connect mapping work (Button/Container/Checkbox/RadioButton done, more pending) — see this file's own "Code Connect" section for the full record
 
+Non-engineering: [designer-instructions.md](designer-instructions.md) — step-by-step guide for designers using this library in Figma Make, no engineering background assumed. Meant to be shared with the design team as-is.
+
 ## Goal
 
 Build a React component library, extracted from the Akamai internal ADS Figma library, that serves as the SSOT for Figma Make prototypes. What's currently published elsewhere isn't suitable for this purpose — this repo is the canonical source going forward.
