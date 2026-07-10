@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SystemBadge — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="system-badge">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>SystemBadge</h1>
+        <p class="docs-lede">Fixed NEW/BETA label badge — matches Figma's <code>cm_global-badge</code> exactly. Fixed label text and fixed colors, not a generic customizable badge. Renamed from <code>Badge</code> when the general-purpose <a href="badge.html">Badge</a> component (Figma node 76:4205, also literally named "Badge") took over the canonical name.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=29-3416" target="_blank" rel="noopener noreferrer">29:3416</a></span>
+          <span><code class="docs-code">import { SystemBadge } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/SystemBadge.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Types</h2>
+          <p class="docs-section-note">The only two supported values of the <code>type</code> prop.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-dark">
+              <div class="docs-swatch">
+                <span class="docs-demo-label" style="color:#a3a3ab">type="new"</span>
+                <span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-systembadge-text,#FFFFFF)] bg-[var(--component-systembadge-new-background,#7259D6)]">NEW</span>
+              </div>
+              <div class="docs-swatch">
+                <span class="docs-demo-label" style="color:#a3a3ab">type="beta"</span>
+                <span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-systembadge-text,#FFFFFF)] bg-[var(--component-systembadge-beta-background,#696970)]">BETA</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>In context</h2>
+          <p class="docs-section-note">Badges are typically shown inline next to a label, e.g. a SideNavigation page row — see <a href="side-navigation.html">SideNavigation</a>.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-dark">
+              <span class="type-label-semibold-s inline-flex items-center gap-2" style="color:#fff">
+                Identity &amp; Access
+                <span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-systembadge-text,#FFFFFF)] bg-[var(--component-systembadge-new-background,#7259D6)]">NEW</span>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">type</td><td class="docs-prop-type">"beta" | "new"</td><td>—</td><td>Required. Fixed label text (BETA/NEW) is derived from this, not a separate prop.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Overrides the entire default class string when passed.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+</body>
+</html>

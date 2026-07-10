@@ -109,9 +109,42 @@
   --component-sidenavigation-scrollbar-thumb: #696970;
   --component-sidenavigation-divider-background: #3D3D42;
 
-  --component-badge-text: #FFFFFF;
-  --component-badge-new-background: #7259D6;
-  --component-badge-beta-background: #696970;
+  --component-systembadge-text: #FFFFFF;
+  --component-systembadge-new-background: #7259D6;
+  --component-systembadge-beta-background: #696970;
+
+  /* component.badge — general-purpose Badge (node 76:4205). Key naming uses the semantic bucket
+     Figma's own variables use (informative/important/pink/neutral/warning/positive/negative), not
+     the literal Color variant names (Ultramarine/Purple/Pink/Neutral/Amber/Green/Red) the `color`
+     prop takes — same intentional divergence core-design-system's cds-badge documents. */
+  --component-badge-informative-subtle-background: rgba(52, 81, 178, 0.12);
+  --component-badge-informative-subtle-text: #3451B2;
+  --component-badge-informative-accent-background: #3451B2;
+  --component-badge-informative-accent-text: #FFFFFF;
+  --component-badge-important-subtle-background: rgba(117, 59, 189, 0.12);
+  --component-badge-important-subtle-text: #753BBD;
+  --component-badge-important-accent-background: #753BBD;
+  --component-badge-important-accent-text: #FFFFFF;
+  --component-badge-pink-subtle-background: rgba(205, 29, 141, 0.12);
+  --component-badge-pink-subtle-text: #CD1D8D;
+  --component-badge-pink-accent-background: #CD1D8D;
+  --component-badge-pink-accent-text: #FFFFFF;
+  --component-badge-neutral-subtle-background: rgba(81, 81, 87, 0.12);
+  --component-badge-neutral-subtle-text: #515157;
+  --component-badge-neutral-accent-background: #515157;
+  --component-badge-neutral-accent-text: #FFFFFF;
+  --component-badge-warning-subtle-background: rgba(194, 93, 5, 0.12);
+  --component-badge-warning-subtle-text: #C25D05;
+  --component-badge-warning-accent-background: #C25D05;
+  --component-badge-warning-accent-text: #FFFFFF;
+  --component-badge-positive-subtle-background: rgba(19, 130, 70, 0.12);
+  --component-badge-positive-subtle-text: #138246;
+  --component-badge-positive-accent-background: #138246;
+  --component-badge-positive-accent-text: #FFFFFF;
+  --component-badge-negative-subtle-background: rgba(184, 35, 41, 0.12);
+  --component-badge-negative-subtle-text: #B82329;
+  --component-badge-negative-accent-background: #B82329;
+  --component-badge-negative-accent-text: #FFFFFF;
 
   --component-globalfooter-background: #F7F7FA;
   --component-globalfooter-border: #D6D6DD;

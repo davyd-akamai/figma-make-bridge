@@ -1,6 +1,6 @@
 /// <reference types="vite/client" />
 import { useEffect, useState, type ReactNode } from "react";
-import Badge from "./Badge";
+import SystemBadge from "./SystemBadge";
 import {
   BucketIcon,
   ChevronDownIcon,
@@ -203,7 +203,7 @@ function PageRow({ label, badge, selected, onClick }: PageRowProps) {
       >
         {label}
       </span>
-      {badge && <Badge type={badge.type} />}
+      {badge && <SystemBadge type={badge.type} />}
     </button>
   );
 }

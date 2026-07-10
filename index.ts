@@ -15,7 +15,10 @@ export type {
 } from "./components/SideNavigation";
 
 export { default as Badge } from "./components/Badge";
-export type { BadgeProps } from "./components/Badge";
+export type { BadgeProps, BadgeType, BadgeColor } from "./components/Badge";
+
+export { default as SystemBadge } from "./components/SystemBadge";
+export type { SystemBadgeProps } from "./components/SystemBadge";
 
 export { default as Button } from "./components/Button";
 export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/Button";

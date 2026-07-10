@@ -10,6 +10,7 @@
     { id: "side-navigation", label: "SideNavigation", href: "components/side-navigation.html" },
     { id: "global-footer", label: "GlobalFooter", href: "components/global-footer.html" },
     { id: "badge", label: "Badge", href: "components/badge.html" },
+    { id: "system-badge", label: "SystemBadge", href: "components/system-badge.html" },
     { id: "button", label: "Button", href: "components/button.html" },
     { id: "container", label: "Container", href: "components/container.html" },
     { id: "text-field", label: "TextField", href: "components/text-field.html" },

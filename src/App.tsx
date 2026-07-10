@@ -7,6 +7,8 @@ import Checkbox from "../components/Checkbox";
 import RadioButton from "../components/RadioButton";
 import Container from "../components/Container";
 import TextField from "../components/TextField";
+import Badge, { type BadgeType, type BadgeColor } from "../components/Badge";
+import SystemBadge from "../components/SystemBadge";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
   BellIcon,
@@ -17,6 +19,7 @@ import {
   CloseIcon,
   CommunityIcon,
   ComputeIcon,
+  DotIcon,
   HelpCircleIcon,
   InfoIcon,
   MenuIcon,
@@ -44,6 +47,7 @@ const ALL_ICONS = [
   CloseIcon,
   CommunityIcon,
   ComputeIcon,
+  DotIcon,
   HelpCircleIcon,
   InfoIcon,
   MenuIcon,
@@ -304,6 +308,34 @@ function RadioButtonSection() {
   );
 }
 
+const BADGE_COLORS: BadgeColor[] = ["ultramarine", "purple", "pink", "neutral", "amber", "green", "red"];
+const BADGE_TYPES: BadgeType[] = ["subtle", "accent"];
+
+function BadgeSection() {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <span className="type-body-regular">All type &times; color combinations:</span>
+        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {BADGE_TYPES.map((type) => (
+            <div key={type} style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 12 }}>
+              {BADGE_COLORS.map((color) => (
+                <Badge key={color} type={type} color={color} label={`${type} / ${color}`} />
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 12 }}>
+        <span className="type-body-regular">With icon:</span>
+        <Badge type="subtle" color="green" icon label="Active" />
+        <Badge type="accent" color="red" icon label="Failed" />
+        <Badge type="subtle" color="amber" icon label="Pending" />
+      </div>
+    </div>
+  );
+}
+
 const BUTTON_VARIANTS: ButtonVariant[] = ["primary", "secondary", "link", "danger"];
 
 function ButtonVariantRow({ variant }: { variant: ButtonVariant }) {
@@ -441,6 +473,17 @@ function PreviewHarness() {
 
           <PreviewSection title="Radio Button">
             <RadioButtonSection />
+          </PreviewSection>
+
+          <PreviewSection title="Badge">
+            <BadgeSection />
+          </PreviewSection>
+
+          <PreviewSection title="System Badge">
+            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+              <SystemBadge type="new" />
+              <SystemBadge type="beta" />
+            </div>
           </PreviewSection>
 
           <PreviewSection title="Global Header">

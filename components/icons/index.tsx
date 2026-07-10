@@ -428,3 +428,15 @@ export function SpinnerIcon({
     </svg>
   );
 }
+
+// Figma: "Icon" (e.g. node 74:6009, instance inside 76:4205 "Badge") — every color/state swatch of
+// Badge's optional leading icon exported to the same 12x12 solid circle, only the fill color
+// changes (matches the badge's own text color); kept as a plain currentColor dot rather than 8
+// separate per-color assets.
+export function DotIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 12 12" size={12} {...props}>
+      <circle cx="6" cy="6" r="4" />
+    </BaseIcon>
+  );
+}

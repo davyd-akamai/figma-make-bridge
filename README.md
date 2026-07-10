@@ -70,7 +70,8 @@ code-connect-kickoff-prompt.md    Opening-message template for continuing Code C
 | [`SideNavigation`](components/SideNavigation.tsx) | Collapsible left nav rail — sections with pages, hover-to-expand/pin-to-lock interaction, badges | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/side-navigation.html) |
 | [`GlobalFooter`](components/GlobalFooter.tsx) | App footer — links, copyright, responsive stacked/row layout | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/global-footer.html) |
 | [`DefaultCmPageTemplate`](templates/DefaultCmPageTemplate.tsx) | Page shell composing GlobalHeader + SideNavigation + GlobalFooter with a content slot | [↗](https://davyd-akamai.github.io/figma-make-bridge/templates/default-cm-page-template.html) |
-| [`Badge`](components/Badge.tsx) | Fixed NEW/BETA label badge (matches Figma's `cm_global-badge` exactly — not a generic customizable badge) | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/badge.html) |
+| [`Badge`](components/Badge.tsx) | General-purpose status/label badge — subtle/accent types across 7 colors, optional leading icon (matches Figma's `Badge`, node 76:4205) | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/badge.html) |
+| [`SystemBadge`](components/SystemBadge.tsx) | Fixed NEW/BETA label badge (matches Figma's `cm_global-badge` exactly — not a generic customizable badge; renamed from `Badge` once the general-purpose one took over that name) | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/system-badge.html) |
 | [`Button`](components/Button.tsx) | Primary/secondary/link/danger variants, loading state, start/end icons | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/button.html) |
 | [`Container`](components/Container.tsx) | Generic bordered content surface for grouping page content | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/container.html) |
 | [`TextField`](components/TextField.tsx) | Text input with label, helper/error text, clear button, info icon | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/text-field.html) |
@@ -88,7 +89,7 @@ Publish via GitHub Pages: **Settings → Pages → Source: Deploy from a branch 
 
 ## Design tokens
 
-Three-tier system — `global.json` (raw primitives) → `light.json`/`dark.json` (semantic aliases, theme-specific) → per-component token files (`header.json`, `sideNavigation.json`, `badge.json`, `button.json`, `textField.json`, `checkbox.json`, `radioButton.json`, `container.json`, etc.). Components should only ever reference `component.*` or `alias.*` tokens, never `global.*` directly. Full details in [tokens/tokens-structure.md](tokens/tokens-structure.md).
+Three-tier system — `global.json` (raw primitives) → `light.json`/`dark.json` (semantic aliases, theme-specific) → per-component token files (`header.json`, `sideNavigation.json`, `badge.json`, `systemBadge.json`, `button.json`, `textField.json`, `checkbox.json`, `radioButton.json`, `container.json`, etc.). Components should only ever reference `component.*` or `alias.*` tokens, never `global.*` directly. Full details in [tokens/tokens-structure.md](tokens/tokens-structure.md).
 
 ## Extending this library
 

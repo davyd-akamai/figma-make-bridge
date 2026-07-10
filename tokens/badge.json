@@ -1,20 +1,117 @@
 {
   "component": {
     "badge": {
-      "text": {
-        "value": "{global.color.neutrals.white}",
-        "type": "color"
-      },
-      "new": {
-        "background": {
-          "value": "{global.color.violet.70}",
-          "type": "color"
+      "_comment": "Color naming diverges intentionally between the `color` prop (literal Figma Color variant names: ultramarine/purple/pink/neutral/amber/green/red) and these token keys (semantic: informative/important/pink/neutral/warning/positive/negative) — matches Figma's own get_variable_defs output for node 76:4205 and mirrors core-design-system's cds-badge, which documents the same intentional divergence. Note 'amber' resolves to the global orange family (orange.90), not global.color.amber.",
+      "informative": {
+        "subtle": {
+          "background": {
+            "value": "{global.color.ultramarine.90}",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
+            }
+          },
+          "text": { "value": "{global.color.ultramarine.90}", "type": "color" }
+        },
+        "accent": {
+          "background": { "value": "{global.color.ultramarine.90}", "type": "color" },
+          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
         }
       },
-      "beta": {
-        "background": {
-          "value": "{global.color.neutrals.70}",
-          "type": "color"
+      "important": {
+        "subtle": {
+          "background": {
+            "value": "{global.color.purple.90}",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
+            }
+          },
+          "text": { "value": "{global.color.purple.90}", "type": "color" }
+        },
+        "accent": {
+          "background": { "value": "{global.color.purple.90}", "type": "color" },
+          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+        }
+      },
+      "pink": {
+        "subtle": {
+          "background": {
+            "value": "{global.color.pink.90}",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
+            }
+          },
+          "text": { "value": "{global.color.pink.90}", "type": "color" }
+        },
+        "accent": {
+          "background": { "value": "{global.color.pink.90}", "type": "color" },
+          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+        }
+      },
+      "neutral": {
+        "subtle": {
+          "background": {
+            "value": "{global.color.neutrals.80}",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
+            }
+          },
+          "text": { "value": "{global.color.neutrals.80}", "type": "color" }
+        },
+        "accent": {
+          "background": { "value": "{global.color.neutrals.80}", "type": "color" },
+          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+        }
+      },
+      "warning": {
+        "subtle": {
+          "background": {
+            "value": "{global.color.orange.90}",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
+            }
+          },
+          "text": { "value": "{global.color.orange.90}", "type": "color" }
+        },
+        "accent": {
+          "background": { "value": "{global.color.orange.90}", "type": "color" },
+          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+        }
+      },
+      "positive": {
+        "subtle": {
+          "background": {
+            "value": "{global.color.green.90}",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
+            }
+          },
+          "text": { "value": "{global.color.green.90}", "type": "color" }
+        },
+        "accent": {
+          "background": { "value": "{global.color.green.90}", "type": "color" },
+          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+        }
+      },
+      "negative": {
+        "subtle": {
+          "background": {
+            "value": "{global.color.red.90}",
+            "type": "color",
+            "$extensions": {
+              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
+            }
+          },
+          "text": { "value": "{global.color.red.90}", "type": "color" }
+        },
+        "accent": {
+          "background": { "value": "{global.color.red.90}", "type": "color" },
+          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
         }
       }
     }

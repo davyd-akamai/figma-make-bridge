@@ -58,8 +58,8 @@
   function badgeHtml(type) {
     var isNew = type === "new";
     return (
-      '<span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-badge-text,#FFFFFF)] ' +
-      (isNew ? "bg-[var(--component-badge-new-background,#7259D6)]" : "bg-[var(--component-badge-beta-background,#696970)]") +
+      '<span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-systembadge-text,#FFFFFF)] ' +
+      (isNew ? "bg-[var(--component-systembadge-new-background,#7259D6)]" : "bg-[var(--component-systembadge-beta-background,#696970)]") +
       '">' +
       (isNew ? "NEW" : "BETA") +
       "</span>"

@@ -13,9 +13,9 @@
     <div class="site-main">
       <header class="page-header">
         <h1>Badge</h1>
-        <p class="docs-lede">Fixed NEW/BETA label badge — matches Figma's <code>cm_global-badge</code> exactly. Fixed label text and fixed colors, not a generic customizable badge.</p>
+        <p class="docs-lede">General-purpose status/label badge — <code>type</code> (Subtle/Accent) &times; <code>color</code> (7 options), an optional leading dot icon, and free-form label text. Not to be confused with the older, fixed-content <a href="system-badge.html">SystemBadge</a> (NEW/BETA only) — that component kept its own name once this one took over the canonical "Badge" name.</p>
         <div class="docs-meta">
-          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=29-3416" target="_blank" rel="noopener noreferrer">29:3416</a></span>
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=76-4205" target="_blank" rel="noopener noreferrer">76:4205</a></span>
           <span><code class="docs-code">import { Badge } from "figma-make-bridge"</code></span>
           <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Badge.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
         </div>
@@ -23,30 +23,48 @@
 
       <div class="page-body">
         <section class="docs-section">
-          <h2>Types</h2>
-          <p class="docs-section-note">The only two supported values of the <code>type</code> prop.</p>
+          <h2>Type &times; color</h2>
+          <p class="docs-section-note">All 14 combinations of the <code>type</code> and <code>color</code> props. The <code>color</code> prop uses Figma's own literal Color variant names (ultramarine/purple/pink/neutral/amber/green/red) — the underlying tokens resolve through a different, semantic naming (informative/important/pink/neutral/warning/positive/negative), same intentional divergence as core-design-system's <code>cds-badge</code>.</p>
           <div class="docs-demo">
-            <div class="docs-demo-stage is-dark">
-              <div class="docs-swatch">
-                <span class="docs-demo-label" style="color:#a3a3ab">type="new"</span>
-                <span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-badge-text,#FFFFFF)] bg-[var(--component-badge-new-background,#7259D6)]">NEW</span>
+            <div class="docs-demo-stage is-column">
+              <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-informative-subtle-background,rgba(52,81,178,0.12))] text-[color:var(--component-badge-informative-subtle-text,#3451B2)]">subtle / ultramarine</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-important-subtle-background,rgba(117,59,189,0.12))] text-[color:var(--component-badge-important-subtle-text,#753BBD)]">subtle / purple</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-pink-subtle-background,rgba(205,29,141,0.12))] text-[color:var(--component-badge-pink-subtle-text,#CD1D8D)]">subtle / pink</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-neutral-subtle-background,rgba(81,81,87,0.12))] text-[color:var(--component-badge-neutral-subtle-text,#515157)]">subtle / neutral</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-warning-subtle-background,rgba(194,93,5,0.12))] text-[color:var(--component-badge-warning-subtle-text,#C25D05)]">subtle / amber</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-positive-subtle-background,rgba(19,130,70,0.12))] text-[color:var(--component-badge-positive-subtle-text,#138246)]">subtle / green</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-negative-subtle-background,rgba(184,35,41,0.12))] text-[color:var(--component-badge-negative-subtle-text,#B82329)]">subtle / red</span>
               </div>
-              <div class="docs-swatch">
-                <span class="docs-demo-label" style="color:#a3a3ab">type="beta"</span>
-                <span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-badge-text,#FFFFFF)] bg-[var(--component-badge-beta-background,#696970)]">BETA</span>
+              <div style="display:flex; flex-wrap:wrap; gap:12px;">
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-informative-accent-background,#3451B2)] text-[color:var(--component-badge-informative-accent-text,#FFFFFF)]">accent / ultramarine</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-important-accent-background,#753BBD)] text-[color:var(--component-badge-important-accent-text,#FFFFFF)]">accent / purple</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-pink-accent-background,#CD1D8D)] text-[color:var(--component-badge-pink-accent-text,#FFFFFF)]">accent / pink</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-neutral-accent-background,#515157)] text-[color:var(--component-badge-neutral-accent-text,#FFFFFF)]">accent / neutral</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-warning-accent-background,#C25D05)] text-[color:var(--component-badge-warning-accent-text,#FFFFFF)]">accent / amber</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-positive-accent-background,#138246)] text-[color:var(--component-badge-positive-accent-text,#FFFFFF)]">accent / green</span>
+                <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-negative-accent-background,#B82329)] text-[color:var(--component-badge-negative-accent-text,#FFFFFF)]">accent / red</span>
               </div>
             </div>
           </div>
         </section>
 
         <section class="docs-section">
-          <h2>In context</h2>
-          <p class="docs-section-note">Badges are typically shown inline next to a label, e.g. a SideNavigation page row — see <a href="side-navigation.html">SideNavigation</a>.</p>
+          <h2>With icon</h2>
+          <p class="docs-section-note">The <code>icon</code> prop shows a small leading dot matching the badge's own text color — every color/state swatch of Figma's icon export is the same 12x12 solid circle, only the fill color changes.</p>
           <div class="docs-demo">
-            <div class="docs-demo-stage is-dark">
-              <span class="type-label-semibold-s inline-flex items-center gap-2" style="color:#fff">
-                Identity &amp; Access
-                <span class="inline-flex shrink-0 items-center rounded px-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s2,2px)] text-[11px] font-extrabold uppercase tracking-[0.22px] text-[color:var(--component-badge-text,#FFFFFF)] bg-[var(--component-badge-new-background,#7259D6)]">NEW</span>
+            <div class="docs-demo-stage">
+              <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-positive-subtle-background,rgba(19,130,70,0.12))] text-[color:var(--component-badge-positive-subtle-text,#138246)]">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="shrink-0"><circle cx="6" cy="6" r="4"/></svg>
+                Active
+              </span>
+              <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-negative-accent-background,#B82329)] text-[color:var(--component-badge-negative-accent-text,#FFFFFF)]">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="shrink-0"><circle cx="6" cy="6" r="4"/></svg>
+                Failed
+              </span>
+              <span class="inline-flex shrink-0 items-center gap-[var(--global-spacing-s2,2px)] rounded-[4px] px-[var(--global-spacing-s6,6px)] py-[var(--global-spacing-s4,4px)] h-5 min-w-6 box-border font-bold text-[12px] leading-[12px] tracking-[0.12px] whitespace-nowrap bg-[var(--component-badge-warning-subtle-background,rgba(194,93,5,0.12))] text-[color:var(--component-badge-warning-subtle-text,#C25D05)]">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="shrink-0"><circle cx="6" cy="6" r="4"/></svg>
+                Pending
               </span>
             </div>
           </div>
@@ -57,8 +75,11 @@
           <table class="docs-props">
             <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
             <tbody>
-              <tr><td class="docs-prop-name">type</td><td class="docs-prop-type">"beta" | "new"</td><td>—</td><td>Required. Fixed label text (BETA/NEW) is derived from this, not a separate prop.</td></tr>
-              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Overrides the entire default class string when passed.</td></tr>
+              <tr><td class="docs-prop-name">type</td><td class="docs-prop-type">"subtle" | "accent"</td><td>"subtle"</td><td></td></tr>
+              <tr><td class="docs-prop-name">color</td><td class="docs-prop-type">"ultramarine" | "purple" | "pink" | "neutral" | "amber" | "green" | "red"</td><td>"ultramarine"</td><td>"amber" resolves through the global orange color family, not global amber, per Figma's own token.</td></tr>
+              <tr><td class="docs-prop-name">icon</td><td class="docs-prop-type">boolean</td><td>false</td><td>Shows a leading dot matching the text color.</td></tr>
+              <tr><td class="docs-prop-name">label</td><td class="docs-prop-type">string</td><td>"Badge"</td><td></td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Appended after the default classes (not a full override, unlike SystemBadge/GlobalHeader).</td></tr>
             </tbody>
           </table>
         </section>
