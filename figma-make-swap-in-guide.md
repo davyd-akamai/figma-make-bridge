@@ -1,6 +1,8 @@
 # Swapping figma-make-bridge into an existing Make prototype
 
-For a prototype that was built *before* `figma-make-bridge` existed (or before it was installed there) and now needs its ad-hoc UI replaced with real library components — e.g. the Routing Table prototype. Different scenario from [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md), which is for a brand-new file that starts with the library already in place.
+For a prototype that was built *before* `figma-make-bridge` existed (or before it was installed there) and now needs its ad-hoc UI replaced with real library components. Different scenario from [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md), which is for a brand-new file that starts with the library already in place.
+
+**The reusable copy-paste prompt itself lives in [figma-make-swap-in-prompt.md](figma-make-swap-in-prompt.md)** — deliberately generic, works for any prototype, not specific to any one project. This file is the reasoning and troubleshooting behind why that prompt is shaped the way it is; don't fork a one-off version of the prompt for a specific prototype — if something's missing from it, add it there so every future swap-in benefits, the same way each finding below fed back into it.
 
 ## Sequence: shell first, then leaf components, in separate verified passes
 

@@ -7,7 +7,8 @@ Starting work in a fresh session? Copy the relevant kickoff prompt as your openi
 - [page-template-kickoff-prompt.md](page-template-kickoff-prompt.md) — composing existing components into a page-shell template (e.g. the GlobalHeader + SideNavigation + GlobalFooter base layout for Figma Make prototypes)
 - [figma-make-test-guide.md](figma-make-test-guide.md) — connecting the published package to an actual Figma Make prototype and running the first smoke test
 - [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) — reusable copy-paste prompt for starting a fresh Figma Make file with `figma-make-bridge` already connected and an initial screen scaffolded
-- [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) — prompting patterns and troubleshooting for swapping the library into a prototype that already existed before it (e.g. the Routing Table) — different flow than a fresh file
+- [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) — reasoning and troubleshooting behind the swap-in prompt below; different flow than a fresh file
+- [figma-make-swap-in-prompt.md](figma-make-swap-in-prompt.md) — reusable copy-paste prompt for replacing an existing prototype's ad-hoc UI with real library components, generic across any prototype (not project-specific)
 - [code-connect-kickoff-prompt.md](code-connect-kickoff-prompt.md) — continuing Code Connect mapping work (Button/Container/Checkbox/RadioButton done, more pending) — see this file's own "Code Connect" section for the full record
 
 ## Goal
