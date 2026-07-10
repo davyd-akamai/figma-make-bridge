@@ -8,6 +8,7 @@ Starting work in a fresh session? Copy the relevant kickoff prompt as your openi
 - [figma-make-test-guide.md](figma-make-test-guide.md) — connecting the published package to an actual Figma Make prototype and running the first smoke test
 - [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) — reusable copy-paste prompt for starting a fresh Figma Make file with `figma-make-bridge` already connected and an initial screen scaffolded
 - [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) — prompting patterns and troubleshooting for swapping the library into a prototype that already existed before it (e.g. the Routing Table) — different flow than a fresh file
+- [code-connect-kickoff-prompt.md](code-connect-kickoff-prompt.md) — continuing Code Connect mapping work (Button/Container/Checkbox/RadioButton done, more pending) — see this file's own "Code Connect" section for the full record
 
 ## Goal
 
