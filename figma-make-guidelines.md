@@ -189,6 +189,58 @@ interface CheckboxProps {
 - `readOnly` and `disabled` are both non-interactive but communicate different things and render differently (readOnly: thin border, no fill; disabled: greyed fill) — don't substitute one for the other.
 - `infoIcon`/`infoText`/`onInfoIconClick` follow the same pattern as TextField's info icon (a placeholder for a future Tooltip component) — use only when the label genuinely needs supplementary explanation, not as a decorative default.
 
+### TextField
+
+```ts
+interface TextFieldProps {
+  label?: string;
+  labelPosition?: "top" | "left";   // default "top"
+  value?: string;
+  defaultValue?: string;
+  onChange?: (value: string) => void;
+  helperText?: string;
+  errorText?: string;
+  infoIcon?: boolean;
+  infoText?: string;
+  onInfoIconClick?: () => void;
+  clearable?: boolean;              // default true
+  disabled?: boolean;
+  readOnly?: boolean;
+  className?: string;
+  // plus standard <input> props (placeholder, name, required, type, etc.)
+}
+```
+
+- Omit `label` entirely for an unlabeled field (pass an explicit `aria-label` instead). `labelPosition="left"` puts the label beside the field rather than above it — use for compact form rows, not as a general default.
+- `errorText` both shows an error message below the field and switches it into its red-border error state in one prop — don't try to drive the error visual separately from the message.
+- `helperText` is hidden automatically while `errorText` is present — no need to conditionally omit one when passing the other.
+- `clearable` defaults to `true` (shows a × button once the field has a value) — set `false` only when clearing genuinely doesn't make sense (e.g. a fixed/derived value).
+- `readOnly` renders as plain text with no input box or clear button — a different visual from `disabled` (greyed-out but still box-shaped). Use `readOnly` for displaying a value the user can't edit in this context, `disabled` for a value that's temporarily not editable.
+- `infoIcon`/`infoText`/`onInfoIconClick`: same placeholder-for-a-future-Tooltip pattern as `Checkbox` — use only when the label genuinely needs supplementary explanation.
+
+### RadioButton
+
+```ts
+interface RadioButtonProps {
+  checked?: boolean;
+  defaultChecked?: boolean;
+  onChange?: () => void;            // fires only when this radio becomes selected, no argument
+  label?: string;
+  size?: "small" | "large";         // default "large"
+  disabled?: boolean;
+  readOnly?: boolean;
+  infoIcon?: boolean;
+  infoText?: string;
+  onInfoIconClick?: () => void;
+  className?: string;
+  // plus standard <input> props (name, value, required, etc.)
+}
+```
+
+- **Group related radios with a shared `name`** (standard `<input>` prop, passed through) — that's what makes them mutually exclusive. This component does not manage group state itself; each `RadioButton` is independent.
+- `onChange` takes no argument and only fires when this radio *becomes* selected — native radio behavior, clicking one never fires an event on its siblings. Don't expect a call with `false` when a different radio in the group gets selected instead.
+- Same `size`/`disabled`/`readOnly`/`infoIcon` conventions as `Checkbox` — default `size="large"`, reserve `size="small"` for tables/dense lists only.
+
 ### Icon pack
 
 - One React component per icon in [components/icons](components/icons/index.tsx) — e.g. `ComputeIcon`, `BucketIcon`, `PinIcon`. All accept `size?: number` plus standard SVG props.
