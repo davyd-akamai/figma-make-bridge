@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlobalHeader — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="global-header">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>GlobalHeader</h1>
+        <p class="docs-lede">Top app header — logo, search, notifications, account/sign-in. Real CSS breakpoints (mobile 320–599 / tablet 600–959 / desktop 960+), not a manually-selected variant prop.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=1-882" target="_blank" rel="noopener noreferrer">1:882</a></span>
+          <span><code class="docs-code">import { GlobalHeader } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/GlobalHeader.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Live (real breakpoint)</h2>
+          <p class="docs-section-note">Full width of this browser window — resize it to see the header switch between mobile/tablet/desktop layouts live, exactly as it would in an app shell.</p>
+          <div class="docs-demo">
+            <div id="gh-live" style="padding:0;"></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Forced breakpoints</h2>
+          <p class="docs-section-note">Each rendered inside its own <code>&lt;iframe&gt;</code> at a fixed width — a real independent viewport per frame, so all three are visible at once regardless of your window size.</p>
+          <div class="docs-demo">
+            <div style="padding:20px; display:flex; flex-direction:column; gap:16px;">
+              <div>
+                <span class="docs-demo-label">Mobile (375px)</span>
+                <iframe id="gh-frame-mobile" style="width:375px; height:56px; border:1px dashed var(--docs-border); display:block;"></iframe>
+              </div>
+              <div>
+                <span class="docs-demo-label">Tablet (700px)</span>
+                <iframe id="gh-frame-tablet" style="width:700px; height:56px; border:1px dashed var(--docs-border); display:block; max-width:100%;"></iframe>
+              </div>
+              <div>
+                <span class="docs-demo-label">Desktop (1100px)</span>
+                <iframe id="gh-frame-desktop" style="width:1100px; height:56px; border:1px dashed var(--docs-border); display:block; max-width:100%;"></iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Signed out &amp; notification badge</h2>
+          <div class="docs-demo">
+            <div id="gh-signedout" style="padding:0;"></div>
+            <div id="gh-badge" style="padding:0; border-top:1px solid var(--docs-border);"></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">isAuthenticated</td><td class="docs-prop-type">boolean</td><td>true</td><td>Treated as a fixed brand surface, not a per-prototype knob — <code>false</code> is the sign-in-screen exception.</td></tr>
+              <tr><td class="docs-prop-name">user</td><td class="docs-prop-type">{ name, avatarInitial }</td><td>{ name: "CloudUserName", avatarInitial: "C" }</td><td></td></tr>
+              <tr><td class="docs-prop-name">showSearch / searchPlaceholder / onSearchChange</td><td class="docs-prop-type">boolean / string / (value) =&gt; void</td><td>true / — / —</td><td></td></tr>
+              <tr><td class="docs-prop-name">notificationCount</td><td class="docs-prop-type">number</td><td>—</td><td>Shows "9+" above 9.</td></tr>
+              <tr><td class="docs-prop-name">onCreateClick / onSignInClick / onMenuClick</td><td class="docs-prop-type">() =&gt; void</td><td>—</td><td></td></tr>
+              <tr><td class="docs-prop-name">logo</td><td class="docs-prop-type">ReactNode</td><td>Akamai wordmark</td><td>Desktop only.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="global-header.js"></script>
+  <script>
+    (function () {
+      document.getElementById("gh-live").innerHTML = GlobalHeaderDemo.build({});
+      document.getElementById("gh-signedout").innerHTML = GlobalHeaderDemo.build({ isAuthenticated: false });
+      document.getElementById("gh-badge").innerHTML = GlobalHeaderDemo.build({ notificationCount: 12 });
+
+      var headHtml = '<link rel="stylesheet" href="../assets/styles.css"><style>body{margin:0;}</style>';
+      document.getElementById("gh-frame-mobile").srcdoc = headHtml + GlobalHeaderDemo.build({});
+      document.getElementById("gh-frame-tablet").srcdoc = headHtml + GlobalHeaderDemo.build({});
+      document.getElementById("gh-frame-desktop").srcdoc = headHtml + GlobalHeaderDemo.build({});
+    })();
+  </script>
+</body>
+</html>

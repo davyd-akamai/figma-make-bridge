@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlobalFooter — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="global-footer">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>GlobalFooter</h1>
+        <p class="docs-lede">App footer — data-driven links, dynamic copyright, responsive stacked/row layout. Resize the browser (or this stage) below 960px to see it switch from a single row to a stacked column.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=1-926" target="_blank" rel="noopener noreferrer">1:926</a></span>
+          <span><code class="docs-code">import { GlobalFooter } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/GlobalFooter.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Live (real breakpoint)</h2>
+          <p class="docs-section-note">This is the actual page's own viewport width — resize your browser window to see the `desktop:` (960px) breakpoint switch stacking direction.</p>
+          <div class="docs-demo">
+            <div style="padding:0;">
+              <footer class="flex w-full flex-col items-start gap-[var(--global-spacing-s16,16px)] border-t border-solid bg-[var(--component-globalfooter-background,#F7F7FA)] border-[var(--component-globalfooter-border,#D6D6DD)] px-[var(--global-spacing-s16,16px)] py-[var(--global-spacing-s12,12px)] desktop:flex-row desktop:items-center desktop:justify-between">
+                <div class="flex flex-wrap items-center gap-x-[var(--global-spacing-s24,24px)] gap-y-[var(--global-spacing-s8,8px)]">
+                  <a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">v1.133.0</a>
+                  <a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">API Reference</a>
+                  <a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">Provide Feedback</a>
+                </div>
+                <p class="type-body-regular m-0 w-full text-[color:var(--component-globalfooter-text,#343438)] desktop:w-auto desktop:text-right" id="gf-copyright"></p>
+              </footer>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Forced narrow (&lt;960px)</h2>
+          <p class="docs-section-note">Rendered inside a real 400px-wide <code>&lt;iframe&gt;</code> (its own independent viewport) so the stacked mobile/tablet variant is always visible here regardless of your browser window size — a plain narrow <code>&lt;div&gt;</code> wouldn't work, since <code>desktop:</code> is a viewport media query, not a container query.</p>
+          <div class="docs-demo">
+            <div style="padding:16px; display:flex; justify-content:center;">
+              <iframe id="gf-narrow-frame" style="width:400px; height:110px; border:1px dashed var(--docs-border); background:#fff;"></iframe>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">links</td><td class="docs-prop-type">{ id, label, href, target? }[]</td><td>version / API Reference / Provide Feedback</td><td>Data-driven — no hardcoded link slots.</td></tr>
+              <tr><td class="docs-prop-name">copyrightText</td><td class="docs-prop-type">string</td><td><code>© {currentYear} Akamai Technologies, Inc. All Rights Reserved</code></td><td>Year computed at render time, not a fixed brand string.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Overrides the entire default class string when passed.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script>
+    var year = new Date().getFullYear();
+    var text = "© " + year + " Akamai Technologies, Inc. All Rights Reserved";
+    document.getElementById("gf-copyright").textContent = text;
+
+    document.getElementById("gf-narrow-frame").srcdoc =
+      '<link rel="stylesheet" href="../assets/styles.css">' +
+      '<footer class="flex w-full flex-col items-start gap-[var(--global-spacing-s16,16px)] border-t border-solid bg-[var(--component-globalfooter-background,#F7F7FA)] border-[var(--component-globalfooter-border,#D6D6DD)] px-[var(--global-spacing-s16,16px)] py-[var(--global-spacing-s12,12px)] desktop:flex-row desktop:items-center desktop:justify-between">' +
+      '<div class="flex flex-wrap items-center gap-x-[var(--global-spacing-s24,24px)] gap-y-[var(--global-spacing-s8,8px)]">' +
+      '<a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">v1.133.0</a>' +
+      '<a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">API Reference</a>' +
+      '<a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">Provide Feedback</a>' +
+      '</div>' +
+      '<p class="type-body-regular m-0 w-full text-[color:var(--component-globalfooter-text,#343438)] desktop:w-auto desktop:text-right">' + text + '</p>' +
+      '</footer>';
+  </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RadioButton — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="radio-button">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>RadioButton</h1>
+        <p class="docs-lede">Radio input, small/large sizes. Selected-state styling is driven entirely by the hidden input's real <code>:checked</code> pseudo-class (<code>peer-checked:</code>) — no JS-computed state, so a native <code>name</code> group is mutually exclusive purely via browser DOM behavior, exactly like the real component.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=58-5044" target="_blank" rel="noopener noreferrer">58:5044</a></span>
+          <span><code class="docs-code">import { RadioButton } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/RadioButton.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Native grouping (uncontrolled)</h2>
+          <p class="docs-section-note">Three real <code>&lt;input type="radio"&gt;</code>s sharing <code>name="plan"</code> — click any of them. No JS coordinates the visual, it's pure <code>peer-checked:</code> CSS, same as the React component.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div style="display:flex; flex-direction:column; gap:12px;">
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="radio" name="plan" class="peer sr-only" checked />
+                    <span aria-hidden="true" class="box-border shrink-0 rounded-full border border-solid size-[20px] peer-checked:border-[5px] border-[var(--component-radiobutton-inactive-default-border,#83838C)] bg-[var(--component-radiobutton-inactive-default-background,#FFFFFF)] peer-checked:border-[var(--component-radiobutton-active-default-border,#0174BC)] peer-checked:bg-[var(--component-radiobutton-active-default-background,#FFFFFF)] peer-hover:border-[var(--component-radiobutton-inactive-hover-border,#009CDE)] peer-checked:peer-hover:border-[var(--component-radiobutton-active-hover-border,#009CDE)]"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-default-text,#343438)]">Nanode 1GB — $5/mo</span>
+                </label>
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="radio" name="plan" class="peer sr-only" />
+                    <span aria-hidden="true" class="box-border shrink-0 rounded-full border border-solid size-[20px] peer-checked:border-[5px] border-[var(--component-radiobutton-inactive-default-border,#83838C)] bg-[var(--component-radiobutton-inactive-default-background,#FFFFFF)] peer-checked:border-[var(--component-radiobutton-active-default-border,#0174BC)] peer-checked:bg-[var(--component-radiobutton-active-default-background,#FFFFFF)] peer-hover:border-[var(--component-radiobutton-inactive-hover-border,#009CDE)] peer-checked:peer-hover:border-[var(--component-radiobutton-active-hover-border,#009CDE)]"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-default-text,#343438)]">Linode 2GB — $12/mo</span>
+                </label>
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="radio" name="plan" class="peer sr-only" />
+                    <span aria-hidden="true" class="box-border shrink-0 rounded-full border border-solid size-[20px] peer-checked:border-[5px] border-[var(--component-radiobutton-inactive-default-border,#83838C)] bg-[var(--component-radiobutton-inactive-default-background,#FFFFFF)] peer-checked:border-[var(--component-radiobutton-active-default-border,#0174BC)] peer-checked:bg-[var(--component-radiobutton-active-default-background,#FFFFFF)] peer-hover:border-[var(--component-radiobutton-inactive-hover-border,#009CDE)] peer-checked:peer-hover:border-[var(--component-radiobutton-active-hover-border,#009CDE)]"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-default-text,#343438)]">Linode 4GB — $24/mo</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Small size</h2>
+          <p class="docs-section-note">16px circle, 4px selected border-width (vs. 5px at large).</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div style="display:flex; flex-direction:column; gap:10px;">
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="radio" name="plan-small" class="peer sr-only" checked />
+                    <span aria-hidden="true" class="box-border shrink-0 rounded-full border border-solid size-[16px] peer-checked:border-[4px] border-[var(--component-radiobutton-inactive-default-border,#83838C)] bg-[var(--component-radiobutton-inactive-default-background,#FFFFFF)] peer-checked:border-[var(--component-radiobutton-active-default-border,#0174BC)] peer-checked:bg-[var(--component-radiobutton-active-default-background,#FFFFFF)]"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-default-text,#343438)]">Row A</span>
+                </label>
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="radio" name="plan-small" class="peer sr-only" />
+                    <span aria-hidden="true" class="box-border shrink-0 rounded-full border border-solid size-[16px] peer-checked:border-[4px] border-[var(--component-radiobutton-inactive-default-border,#83838C)] bg-[var(--component-radiobutton-inactive-default-background,#FFFFFF)] peer-checked:border-[var(--component-radiobutton-active-default-border,#0174BC)] peer-checked:bg-[var(--component-radiobutton-active-default-background,#FFFFFF)]"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-default-text,#343438)]">Row B</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Disabled &amp; read-only</h2>
+          <p class="docs-section-note">Read-only resolves to a real white background (not transparent) — different from Checkbox's read-only, per each component's own token file.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage">
+              <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-not-allowed">
+                <span class="relative inline-flex shrink-0 items-center">
+                  <input type="radio" name="disabled-off" class="peer sr-only" disabled />
+                  <span aria-hidden="true" class="box-border shrink-0 rounded-full border border-solid size-[20px] border-[var(--component-radiobutton-inactive-disabled-border,#C2C2CA)] bg-[var(--component-radiobutton-inactive-disabled-background,#E5E5EA)]"></span>
+                </span>
+                <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-disabled-text,#A3A3AB)]">Disabled, unselected</span>
+              </label>
+              <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-not-allowed">
+                <span class="relative inline-flex shrink-0 items-center">
+                  <input type="radio" name="disabled-on" class="peer sr-only" disabled checked />
+                  <span aria-hidden="true" class="box-border shrink-0 rounded-full border-[5px] border-solid size-[20px] border-[var(--component-radiobutton-active-disabled-border,#AFDEF8)] bg-[var(--component-radiobutton-active-disabled-background,#FFFFFF)]"></span>
+                </span>
+                <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-disabled-text,#A3A3AB)]">Disabled, selected</span>
+              </label>
+              <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-not-allowed">
+                <span class="relative inline-flex shrink-0 items-center">
+                  <input type="radio" name="readonly-on" class="peer sr-only" disabled checked />
+                  <span aria-hidden="true" class="box-border shrink-0 rounded-full border-[5px] border-solid size-[20px] border-[var(--component-radiobutton-active-readonly-border,#C2C2CA)] bg-[var(--component-radiobutton-active-readonly-background,#FFFFFF)]"></span>
+                </span>
+                <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-radiobutton-inactive-default-text,#343438)]">Read-only, selected</span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">checked / defaultChecked</td><td class="docs-prop-type">boolean</td><td>false</td><td></td></tr>
+              <tr><td class="docs-prop-name">onChange</td><td class="docs-prop-type">() =&gt; void</td><td>—</td><td>Takes no argument — native radio <code>change</code> only fires on select, never on deselect, so it's always <code>true</code>.</td></tr>
+              <tr><td class="docs-prop-name">size</td><td class="docs-prop-type">"small" | "large"</td><td>"large"</td><td></td></tr>
+              <tr><td class="docs-prop-name">label</td><td class="docs-prop-type">string</td><td>—</td><td></td></tr>
+              <tr><td class="docs-prop-name">disabled / readOnly</td><td class="docs-prop-type">boolean</td><td>false</td><td></td></tr>
+              <tr><td class="docs-prop-name">infoIcon / infoText / onInfoIconClick</td><td class="docs-prop-type">boolean / string / () =&gt; void</td><td>false</td><td>Same Tooltip-basement pattern as Checkbox/TextField.</td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">No <code>RadioGroup</code> wrapper is built — native <code>name</code>-based grouping (shown above) or a consumer-lifted <code>selected === value</code> comparison per radio both work with zero extra markup.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+</body>
+</html>

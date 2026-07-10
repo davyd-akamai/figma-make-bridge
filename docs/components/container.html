@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Container — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="container">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Container</h1>
+        <p class="docs-lede">Generic bordered content surface for grouping page content — background + border + fixed padding + a children slot. Always spans the full available width of its parent; never sizes to content.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=58-5033" target="_blank" rel="noopener noreferrer">58:5033</a></span>
+          <span><code class="docs-code">import { Container } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Container.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Basic usage</h2>
+          <p class="docs-section-note">24px horizontal / 16px vertical padding, full-width by design — stacked, never placed side by side.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div class="box-border w-full border border-solid bg-[var(--component-container-background,#FFFFFF)] border-[var(--component-container-border,#D6D6DD)] px-[var(--global-spacing-s24,24px)] py-[var(--global-spacing-s16,16px)]">
+                <p class="type-heading-s" style="margin:0 0 4px;">Routing table</p>
+                <p class="type-body-regular" style="margin:0; color:#696970;">Any content composed by the consumer — Container itself stays a plain box, never a card with header/footer regions.</p>
+              </div>
+              <div class="box-border w-full border border-solid bg-[var(--component-container-background,#FFFFFF)] border-[var(--component-container-border,#D6D6DD)] px-[var(--global-spacing-s24,24px)] py-[var(--global-spacing-s16,16px)]">
+                <p class="type-heading-s" style="margin:0 0 4px;">Second panel</p>
+                <p class="type-body-regular" style="margin:0; color:#696970;">Real-world usage confirmed against an actual Akamai Cloud prototype: two Containers stacked full-width.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required. Header row/section bar/table composition is the consumer's job.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Appended after the default classes (not a full override, unlike Badge/GlobalHeader).</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+</body>
+</html>

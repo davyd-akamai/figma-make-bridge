@@ -40,6 +40,8 @@ templates/            Page-shell templates composing multiple components (Defaul
 tokens/               Design tokens: global primitives → semantic aliases → per-component
 tokens/tokens-structure.md   Full explanation of the token architecture and validation rules
 src/                  Vite app shell + the preview harness (App.tsx) + compiled token/typography CSS
+docs/                 Public static preview site (plain HTML/CSS/JS, no build step) — one page per
+                       component/template, published via GitHub Pages, see "Components" below
 index.ts              Root barrel export — the package's public API surface
 vite.lib.config.ts    Library-mode build config (npm run build) — separate from the dev-only vite.config.ts
 scripts/copy-guidelines.mjs   Build step that copies figma-make-guidelines.md into dist/Guidelines.md
@@ -60,21 +62,29 @@ code-connect-kickoff-prompt.md    Opening-message template for continuing Code C
 
 ## Components
 
-| Component | What it is |
-|---|---|
-| [`GlobalHeader`](components/GlobalHeader.tsx) | Top app header — logo, search, notifications, account/sign-in, responsive across mobile/tablet/desktop |
-| [`SideNavigation`](components/SideNavigation.tsx) | Collapsible left nav rail — sections with pages, hover-to-expand/pin-to-lock interaction, badges |
-| [`GlobalFooter`](components/GlobalFooter.tsx) | App footer — links, copyright, responsive stacked/row layout |
-| [`DefaultCmPageTemplate`](templates/DefaultCmPageTemplate.tsx) | Page shell composing GlobalHeader + SideNavigation + GlobalFooter with a content slot |
-| [`Badge`](components/Badge.tsx) | Fixed NEW/BETA label badge (matches Figma's `cm_global-badge` exactly — not a generic customizable badge) |
-| [`Button`](components/Button.tsx) | Primary/secondary/link/danger variants, loading state, start/end icons |
-| [`Container`](components/Container.tsx) | Generic bordered content surface for grouping page content |
-| [`TextField`](components/TextField.tsx) | Text input with label, helper/error text, clear button, info icon |
-| [`Checkbox`](components/Checkbox.tsx) | Checkbox with indeterminate state, small/large sizes |
-| [`RadioButton`](components/RadioButton.tsx) | Radio input, small/large sizes — grouping is via native `name`, not a wrapper component |
-| [`components/icons`](components/icons/index.tsx) | Every icon used across components, one component per icon |
+**[Browse a live preview of every component ↗](https://davyd-akamai.github.io/figma-make-bridge/)** — a static HTML/CSS/JS site (`docs/`, no React, no build step) with one page per component and template, mirroring the real markup/tokens/interaction behavior of the source below. See "Component preview site" further down for how it's built and kept in sync.
+
+| Component | What it is | Preview |
+|---|---|---|
+| [`GlobalHeader`](components/GlobalHeader.tsx) | Top app header — logo, search, notifications, account/sign-in, responsive across mobile/tablet/desktop | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/global-header.html) |
+| [`SideNavigation`](components/SideNavigation.tsx) | Collapsible left nav rail — sections with pages, hover-to-expand/pin-to-lock interaction, badges | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/side-navigation.html) |
+| [`GlobalFooter`](components/GlobalFooter.tsx) | App footer — links, copyright, responsive stacked/row layout | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/global-footer.html) |
+| [`DefaultCmPageTemplate`](templates/DefaultCmPageTemplate.tsx) | Page shell composing GlobalHeader + SideNavigation + GlobalFooter with a content slot | [↗](https://davyd-akamai.github.io/figma-make-bridge/templates/default-cm-page-template.html) |
+| [`Badge`](components/Badge.tsx) | Fixed NEW/BETA label badge (matches Figma's `cm_global-badge` exactly — not a generic customizable badge) | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/badge.html) |
+| [`Button`](components/Button.tsx) | Primary/secondary/link/danger variants, loading state, start/end icons | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/button.html) |
+| [`Container`](components/Container.tsx) | Generic bordered content surface for grouping page content | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/container.html) |
+| [`TextField`](components/TextField.tsx) | Text input with label, helper/error text, clear button, info icon | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/text-field.html) |
+| [`Checkbox`](components/Checkbox.tsx) | Checkbox with indeterminate state, small/large sizes | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/checkbox.html) |
+| [`RadioButton`](components/RadioButton.tsx) | Radio input, small/large sizes — grouping is via native `name`, not a wrapper component | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/radio-button.html) |
+| [`components/icons`](components/icons/index.tsx) | Every icon used across components, one component per icon | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/icons.html) |
 
 Check [GUIDELINES.md](GUIDELINES.md)'s "Content-tier components" section for what's currently planned next (Table, Topbar, Select, Drawer, Notification banner/toast, Tabs).
+
+### Component preview site
+
+`docs/` is a standalone static site — plain HTML/CSS/JS, no React and no build step — with one page per component and one per template, kept in a directory structure that mirrors the source split (`docs/components/`, `docs/templates/`). Each page reuses the library's own compiled stylesheet (`docs/assets/styles.css`, copied from `npm run build`'s `dist/styles.css` — regenerate it after any component change) and hand-mirrors the exact class names/CSS custom properties the real component renders, so colors/spacing/typography come from the same tokens, not a re-guessed approximation. Interactive components (Button, Checkbox, SideNavigation, TextField, ...) ship a small vanilla-JS reimplementation of their real interaction logic (hover-expand/pin, indeterminate toggling, controlled clear buttons, etc.) rather than static screenshots. Shared site chrome (nav sidebar, page layout) lives in `docs/assets/site.css`/`docs/assets/shell.js`, kept separate from the library's own styles so nothing here leaks into the actual component output.
+
+Publish via GitHub Pages: **Settings → Pages → Source: Deploy from a branch → Branch: `main`, folder: `/docs`**. Preview locally with any static file server, e.g. `npx serve docs`.
 
 ## Design tokens
 

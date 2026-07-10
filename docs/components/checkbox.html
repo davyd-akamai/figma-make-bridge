@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkbox — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="checkbox">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Checkbox</h1>
+        <p class="docs-lede">Checkbox with a real indeterminate state, small/large sizes. Native <code>&lt;input type="checkbox"&gt;</code> visually hidden, custom-drawn box as its sibling — real keyboard/click/form semantics for free.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=58-4716" target="_blank" rel="noopener noreferrer">58:4716</a></span>
+          <span><code class="docs-code">import { Checkbox } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Checkbox.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">Click the checkbox itself, or toggle the states below. <code>indeterminate</code> is a plain prop — like the native DOM property, clicking does not clear it automatically.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="padding-bottom:16px;">
+              <div style="width:100%;">
+                <div class="docs-toolbar">
+                  <label style="display:flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:600;"><input type="checkbox" id="cb-size" /> size="small"</label>
+                  <label style="display:flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:600;"><input type="checkbox" id="cb-indeterminate" /> indeterminate</label>
+                  <label style="display:flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:600;"><input type="checkbox" id="cb-disabled" /> disabled</label>
+                  <label style="display:flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:600;"><input type="checkbox" id="cb-readonly" /> readOnly</label>
+                </div>
+              </div>
+              <div class="flex items-start gap-[var(--global-spacing-s4,4px)]">
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input id="cb-input" type="checkbox" class="peer sr-only" />
+                    <span id="cb-box" aria-hidden="true"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-checkbox-empty-default-text,#343438)]">Enable feature</span>
+                </label>
+              </div>
+            </div>
+            <pre style="margin:0;padding:16px 32px;border-top:1px solid var(--docs-border);background:var(--docs-code-bg);color:var(--docs-code-text);overflow-x:auto;"><code id="cb-code" class="docs-code"></code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Select-all pattern</h2>
+          <p class="docs-section-note">The parent's <code>indeterminate</code> is recomputed from its children's checked state on every change — matching the note in GUIDELINES.md that a "select all" parent must own this, not the checkbox itself.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column" id="select-all-demo">
+              <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer" style="margin-bottom:12px;">
+                <span class="relative inline-flex shrink-0 items-center">
+                  <input id="sa-parent" type="checkbox" class="peer sr-only" />
+                  <span id="sa-parent-box" aria-hidden="true" class="box-border flex shrink-0 items-center justify-center border border-solid size-[20px] p-[var(--global-spacing-s4,4px)] border-[var(--component-checkbox-empty-default-border,#83838C)] bg-[var(--component-checkbox-empty-default-background,#FFFFFF)]"></span>
+                </span>
+                <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-checkbox-empty-default-text,#343438)]">Select all Linodes</span>
+              </label>
+              <div style="padding-left: 28px; display:flex; flex-direction:column; gap:8px;">
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="checkbox" class="sa-child peer sr-only" checked />
+                    <span class="sa-child-box box-border flex shrink-0 items-center justify-center border border-solid size-[20px] p-[var(--global-spacing-s4,4px)]" aria-hidden="true"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-checkbox-empty-default-text,#343438)]">web-server-01</span>
+                </label>
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="checkbox" class="sa-child peer sr-only" />
+                    <span class="sa-child-box box-border flex shrink-0 items-center justify-center border border-solid size-[20px] p-[var(--global-spacing-s4,4px)]" aria-hidden="true"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-checkbox-empty-default-text,#343438)]">web-server-02</span>
+                </label>
+                <label class="flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer">
+                  <span class="relative inline-flex shrink-0 items-center">
+                    <input type="checkbox" class="sa-child peer sr-only" />
+                    <span class="sa-child-box box-border flex shrink-0 items-center justify-center border border-solid size-[20px] p-[var(--global-spacing-s4,4px)]" aria-hidden="true"></span>
+                  </span>
+                  <span class="type-label-regular-s pt-[var(--global-spacing-s2,2px)] text-[color:var(--component-checkbox-empty-default-text,#343438)]">db-primary</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">checked / defaultChecked</td><td class="docs-prop-type">boolean</td><td>false</td><td>Controlled/uncontrolled split, same pattern as SideNavigation's <code>selectedPageId</code>.</td></tr>
+              <tr><td class="docs-prop-name">onChange</td><td class="docs-prop-type">(checked: boolean) =&gt; void</td><td>—</td><td></td></tr>
+              <tr><td class="docs-prop-name">indeterminate</td><td class="docs-prop-type">boolean</td><td>false</td><td>Purely visual, consumer-controlled — set via a <code>useRef</code>/DOM property, same as native.</td></tr>
+              <tr><td class="docs-prop-name">size</td><td class="docs-prop-type">"small" | "large"</td><td>"large"</td><td>Small is reserved for tables/dense lists, not a general compact variant.</td></tr>
+              <tr><td class="docs-prop-name">label</td><td class="docs-prop-type">string</td><td>—</td><td>Omit for an unlabeled checkbox (needs explicit <code>aria-label</code>).</td></tr>
+              <tr><td class="docs-prop-name">disabled / readOnly</td><td class="docs-prop-type">boolean</td><td>false</td><td>Both render as real <code>disabled</code> on the native input, with distinct (not just dimmed) box styling.</td></tr>
+              <tr><td class="docs-prop-name">infoIcon / infoText / onInfoIconClick</td><td class="docs-prop-type">boolean / string / () =&gt; void</td><td>false</td><td>Tooltip-basement pattern — renders a native <code>title</code> until a real Tooltip component exists.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="checkbox.js"></script>
+  <script>
+    (function () {
+      var parent = document.getElementById("sa-parent");
+      var parentBox = document.getElementById("sa-parent-box");
+      var children = Array.prototype.slice.call(document.querySelectorAll(".sa-child"));
+      var CHECK_SVG =
+        '<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="text-[color:var(--component-checkbox-checked-default-icon,#FFFFFF)]"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.46967 6.06952C1.76256 5.77663 2.23744 5.77663 2.53033 6.06952L4.93032 8.46951C5.22321 8.76241 5.22321 9.23728 4.93032 9.53017C4.63743 9.82307 4.16255 9.82307 3.86966 9.53017L1.46967 7.13018C1.17678 6.83729 1.17678 6.36242 1.46967 6.06952Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10.5303 2.86957C10.8232 3.16247 10.8232 3.63734 10.5303 3.93023L4.93032 9.53017C4.63743 9.82307 4.16255 9.82307 3.86966 9.53017C3.57677 9.23728 3.57669 8.76256 3.86958 8.46966L9.46967 2.86957C9.76256 2.57668 10.2374 2.57668 10.5303 2.86957Z"/></svg>';
+      var MINUS_SVG =
+        '<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="text-[color:var(--component-checkbox-indeterminated-default-icon,#FFFFFF)]"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.75 6C10.75 6.41421 10.4142 6.75 10 6.75L2.00001 6.75C1.5858 6.75 1.25001 6.41421 1.25001 6C1.25001 5.58579 1.5858 5.25 2.00001 5.25L10 5.25C10.4142 5.25 10.75 5.58579 10.75 6Z"/></svg>';
+
+      function paintChild(input, box) {
+        var checked = input.checked;
+        box.className =
+          "sa-child-box box-border flex shrink-0 items-center justify-center border border-solid size-[20px] p-[var(--global-spacing-s4,4px)] " +
+          (checked
+            ? "border-[var(--component-checkbox-checked-default-background,#0174BC)] bg-[var(--component-checkbox-checked-default-background,#0174BC)]"
+            : "border-[var(--component-checkbox-empty-default-border,#83838C)] bg-[var(--component-checkbox-empty-default-background,#FFFFFF)]");
+        box.innerHTML = checked ? CHECK_SVG : "";
+      }
+
+      function recomputeParent() {
+        var checkedCount = children.filter(function (c) { return c.checked; }).length;
+        var allChecked = checkedCount === children.length;
+        var someChecked = checkedCount > 0 && !allChecked;
+        parent.checked = allChecked;
+        parent.indeterminate = someChecked;
+        parentBox.className =
+          "box-border flex shrink-0 items-center justify-center border border-solid size-[20px] p-[var(--global-spacing-s4,4px)] " +
+          (allChecked
+            ? "border-[var(--component-checkbox-checked-default-background,#0174BC)] bg-[var(--component-checkbox-checked-default-background,#0174BC)]"
+            : someChecked
+              ? "border-[var(--component-checkbox-indeterminated-default-background,#0174BC)] bg-[var(--component-checkbox-indeterminated-default-background,#0174BC)]"
+              : "border-[var(--component-checkbox-empty-default-border,#83838C)] bg-[var(--component-checkbox-empty-default-background,#FFFFFF)]");
+        parentBox.innerHTML = allChecked ? CHECK_SVG : someChecked ? MINUS_SVG : "";
+      }
+
+      children.forEach(function (child) {
+        var box = child.nextElementSibling;
+        paintChild(child, box);
+        child.addEventListener("change", function () {
+          paintChild(child, box);
+          recomputeParent();
+        });
+      });
+
+      parent.addEventListener("change", function () {
+        children.forEach(function (child) {
+          child.checked = parent.checked;
+          paintChild(child, child.nextElementSibling);
+        });
+        recomputeParent();
+      });
+
+      recomputeParent();
+    })();
+  </script>
+</body>
+</html>

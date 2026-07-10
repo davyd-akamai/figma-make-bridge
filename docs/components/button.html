@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="button">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Button</h1>
+        <p class="docs-lede">Primary/secondary/link/danger variants, large/small sizes, a loading state that overlays a spinner without resizing the button, and auto-scaled start/end icons.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=47-14865" target="_blank" rel="noopener noreferrer">47:14865</a></span>
+          <span><code class="docs-code">import { Button } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Button.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">Real hover/active states — try hovering or clicking the button below. Loading/disabled toggle the same class swap the React component does internally.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="padding-bottom: 16px;">
+              <div style="width:100%;">
+                <div class="docs-toolbar">
+                  <span class="docs-demo-label" style="align-self:center;margin:0 4px 0 0;">variant</span>
+                  <div data-pb-group="variant" style="display:flex;gap:6px;">
+                    <button class="docs-toolbar-btn is-active" data-value="primary">primary</button>
+                    <button class="docs-toolbar-btn" data-value="secondary">secondary</button>
+                    <button class="docs-toolbar-btn" data-value="link">link</button>
+                    <button class="docs-toolbar-btn" data-value="danger">danger</button>
+                  </div>
+                </div>
+                <div class="docs-toolbar">
+                  <span class="docs-demo-label" style="align-self:center;margin:0 4px 0 0;">size</span>
+                  <div data-pb-group="size" style="display:flex;gap:6px;">
+                    <button class="docs-toolbar-btn is-active" data-value="large">large</button>
+                    <button class="docs-toolbar-btn" data-value="small">small</button>
+                  </div>
+                </div>
+                <div class="docs-toolbar">
+                  <label style="display:flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:600;"><input type="checkbox" id="pb-icon" /> startIcon</label>
+                  <label style="display:flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:600;"><input type="checkbox" id="pb-loading" /> loading</label>
+                  <label style="display:flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:600;"><input type="checkbox" id="pb-disabled" /> disabled</label>
+                </div>
+              </div>
+              <div style="padding: 12px 0;">
+                <button id="pb-preview" type="button">Create resource</button>
+              </div>
+            </div>
+            <pre style="margin:0;padding:16px 32px;border-top:1px solid var(--docs-border);background:var(--docs-code-bg);color:var(--docs-code-text);overflow-x:auto;"><code id="pb-code" class="docs-code"></code></pre>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>All variants</h2>
+          <p class="docs-section-note">Large size, default state. Hover any button to see its real hover/active colors.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage">
+              <button type="button" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-primary-default-background,#0174BC)] border-[var(--component-button-primary-default-border,#0174BC)] text-[color:var(--component-button-primary-default-text,#FFFFFF)] hover:bg-[var(--component-button-primary-hover-background,#009CDE)] hover:border-[var(--component-button-primary-hover-border,#009CDE)] hover:text-[color:var(--component-button-primary-hover-text,#FFFFFF)] active:bg-[var(--component-button-primary-active-background,#0174BC)] active:border-[var(--component-button-primary-active-border,#0174BC)] active:text-[color:var(--component-button-primary-active-text,#FFFFFF)]"><span>Primary</span></button>
+              <button type="button" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Secondary</span></button>
+              <button type="button" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-auto p-0 type-label-semibold-s cursor-pointer border-none bg-transparent text-[color:var(--component-button-link-default-text,#0174BC)] hover:text-[color:var(--component-button-link-hover-text,#009CDE)] active:text-[color:var(--component-button-link-active-text,#0174BC)]"><span>Link</span></button>
+              <button type="button" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-danger-default-background,#B82329)] border-[var(--component-button-danger-default-border,#B82329)] text-[color:var(--component-button-danger-default-text,#FFFFFF)] hover:bg-[var(--component-button-danger-hover-background,#D63C42)] hover:border-[var(--component-button-danger-hover-border,#D63C42)] hover:text-[color:var(--component-button-danger-hover-text,#FFFFFF)] active:bg-[var(--component-button-danger-active-background,#B82329)] active:border-[var(--component-button-danger-active-border,#B82329)] active:text-[color:var(--component-button-danger-active-text,#FFFFFF)]"><span>Danger</span></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Disabled &amp; loading</h2>
+          <div class="docs-demo">
+            <div class="docs-demo-stage">
+              <button type="button" disabled class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-not-allowed border border-solid bg-[var(--component-button-primary-disabled-background,#E5E5EA)] border-[var(--component-button-primary-disabled-border,#E5E5EA)] text-[color:var(--component-button-primary-disabled-text,#A3A3AB)]"><span>Disabled</span></button>
+              <button type="button" disabled class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-not-allowed border border-solid text-transparent bg-[var(--component-button-primary-loading-background,#0174BC)] border-[var(--component-button-primary-loading-border,#0174BC)]">
+                <span>Loading</span>
+                <span aria-hidden="true" class="absolute inset-0 m-auto flex items-center justify-center">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="animate-spin"><path d="M8 2C4.6863 2 2 4.6863 2 8C2 11.3137 4.6863 14 8 14C8.9414 14 9.8321 13.7832 10.625 13.3968" stroke="url(#bw-a)" stroke-width="1.33" stroke-linecap="round"/><path d="M14 8C14 4.6863 11.3137 2 8 2C4.6863 2 2 4.6863 2 8C2 9.7159 2.7203 11.2636 3.875 12.3571" stroke="url(#bw-b)" stroke-width="1.33" stroke-linecap="round"/><defs><radialGradient id="bw-a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4.125 12.625) rotate(2.24575) scale(6.3799)"><stop stop-color="#FFFFFF"/><stop offset="0.812835" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient><radialGradient id="bw-b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(13.375 5.375) rotate(158.671) scale(14.0901)"><stop offset="0.546875" stop-color="#FFFFFF"/><stop offset="0.854167" stop-color="#FFFFFF"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient></defs></svg>
+                </span>
+              </button>
+              <button type="button" disabled class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-not-allowed border border-solid text-transparent bg-[var(--component-button-secondary-loading-background,#FFFFFF)] border-[var(--component-button-secondary-loading-border,#0174BC)]">
+                <span>Loading</span>
+                <span aria-hidden="true" class="absolute inset-0 m-auto flex items-center justify-center">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="animate-spin"><path d="M8 2C4.6863 2 2 4.6863 2 8C2 11.3137 4.6863 14 8 14C8.9414 14 9.8321 13.7832 10.625 13.3968" stroke="url(#bg-a)" stroke-width="1.33" stroke-linecap="round"/><path d="M14 8C14 4.6863 11.3137 2 8 2C4.6863 2 2 4.6863 2 8C2 9.7159 2.7203 11.2636 3.875 12.3571" stroke="url(#bg-b)" stroke-width="1.33" stroke-linecap="round"/><defs><radialGradient id="bg-a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4.125 12.625) rotate(2.24575) scale(6.3799)"><stop stop-color="#00B050"/><stop offset="0.812835" stop-color="#00B050" stop-opacity="0"/></radialGradient><radialGradient id="bg-b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11.6562 6.1042) rotate(158.924) scale(12.224)"><stop stop-color="#5BB3EA" stop-opacity="0"/><stop offset="0.328125" stop-color="#108AD6"/><stop offset="0.682292" stop-color="#00B050"/></radialGradient></defs></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">variant</td><td class="docs-prop-type">"primary" | "secondary" | "link" | "danger"</td><td>"primary"</td><td>Only these 4 have rendered Figma swatches — Tertiary/Launch/icon exist in tokens/CDS but were deliberately left out.</td></tr>
+              <tr><td class="docs-prop-name">size</td><td class="docs-prop-type">"large" | "small"</td><td>"large"</td><td></td></tr>
+              <tr><td class="docs-prop-name">loading</td><td class="docs-prop-type">boolean</td><td>false</td><td>Keeps the button's size, hides content, overlays a spinner. Implies disabled.</td></tr>
+              <tr><td class="docs-prop-name">startIcon / endIcon</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Auto-scaled to 16px (large) / 12px (small) unless the passed element already sets its own size.</td></tr>
+              <tr><td class="docs-prop-name">disabled</td><td class="docs-prop-type">boolean</td><td>false</td><td></td></tr>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="button.js"></script>
+</body>
+</html>

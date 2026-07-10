@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DefaultCmPageTemplate — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="default-cm-page-template">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>DefaultCmPageTemplate</h1>
+        <p class="docs-lede">Composes GlobalHeader + SideNavigation + GlobalFooter into the base page shell every Figma Make prototype is built inside. The header scrolls away with the page; SideNavigation is <code>position: sticky</code> and tracks how much of the header is still visible so its bottom edge (and pin button) always stays flush with the viewport; the footer lands at the bottom on short pages via the standard "sticky footer" flex trick.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=17-5086" target="_blank" rel="noopener noreferrer">17:5086</a></span>
+          <span><code class="docs-code">import { DefaultCmPageTemplate } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/templates/DefaultCmPageTemplate.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Live preview</h2>
+          <p class="docs-section-note">Rendered inside its own <code>&lt;iframe&gt;</code> (its own real viewport and scroll container), fixed at 1040px wide so it clears the 960px desktop breakpoint and SideNavigation shows — scroll horizontally if your window is narrower. Enough placeholder content is included to scroll vertically too — try it, to see the header scroll away while SideNavigation stays pinned, and hover/click the rail exactly as on its own page.</p>
+          <div class="docs-demo" style="overflow-x:auto;">
+            <iframe id="tpl-frame" style="width:1040px; height:640px; border:0; display:block;"></iframe>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Content slot</h2>
+          <p class="docs-section-note">The "Page Content &amp; Paddings" region: max-width 1280px, centered, 16px left/right + 24px top + 32px bottom padding. A decorative 12-column grid overlay in the source Figma frame is a design-time guide only and isn't reproduced here, per that component's own Figma description.</p>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required. Rendered into the content slot.</td></tr>
+              <tr><td class="docs-prop-name">headerProps</td><td class="docs-prop-type">Omit&lt;GlobalHeaderProps, "className"&gt;</td><td>—</td><td></td></tr>
+              <tr><td class="docs-prop-name">sideNavProps</td><td class="docs-prop-type">Omit&lt;SideNavigationProps, "className"&gt;</td><td>—</td><td></td></tr>
+              <tr><td class="docs-prop-name">footerProps</td><td class="docs-prop-type">Omit&lt;GlobalFooterProps, "className"&gt;</td><td>—</td><td></td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">Below 960px, SideNavigation is hidden entirely (no drawer/overlay state exists in the source Figma file) — the shell always composes all three sub-components, there's no "sidenav-less full-width" variant.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script>
+    (function () {
+      var frame = document.getElementById("tpl-frame");
+      frame.addEventListener("load", function () {
+        var doc = frame.contentDocument;
+        var win = frame.contentWindow;
+
+        // Mount GlobalHeader (static demo build) and SideNavigation (interactive) exactly like
+        // DefaultCmPageTemplate.tsx composes them, plus the header-visibility-tracking sticky
+        // height calc that template's own useEffect performs.
+        doc.getElementById("tpl-header").innerHTML = win.GlobalHeaderDemo.build({});
+        win.SideNavDemo.create(doc.getElementById("tpl-sidenav-inner"), {
+          defaultOpenSectionIds: ["compute"],
+          defaultSelectedPageId: "linodes",
+        });
+
+        var HEADER_HEIGHT = 56;
+        var navWrapper = doc.getElementById("tpl-sidenav-wrapper");
+        function updateNavHeight() {
+          var visibleHeaderHeight = Math.max(0, HEADER_HEIGHT - win.scrollY);
+          navWrapper.style.height = win.innerHeight - visibleHeaderHeight + "px";
+        }
+        updateNavHeight();
+        win.addEventListener("scroll", updateNavHeight, { passive: true });
+        win.addEventListener("resize", updateNavHeight);
+      });
+
+      frame.srcdoc =
+        '<!doctype html><html><head><meta charset="utf-8">' +
+        '<link rel="stylesheet" href="../assets/styles.css">' +
+        '<script src="../components/global-header.js"><\/script>' +
+        '<script src="../components/side-navigation.js"><\/script>' +
+        '<style>body{margin:0;}</style>' +
+        '</head><body>' +
+        '<div class="flex min-h-screen w-full flex-col">' +
+        '<div id="tpl-header"></div>' +
+        '<div class="flex flex-1">' +
+        '<div id="tpl-sidenav-wrapper" class="hidden shrink-0 desktop:block" style="position:sticky; top:0; bottom:0;">' +
+        '<div id="tpl-sidenav-inner" style="height:100%;"></div>' +
+        '</div>' +
+        '<div class="flex min-w-0 flex-1 flex-col">' +
+        '<main class="flex flex-1 justify-center">' +
+        '<div class="w-full max-w-[1280px] px-[var(--global-spacing-s16,16px)] pt-[var(--global-spacing-s24,24px)] pb-[var(--global-spacing-s32,32px)]">' +
+        '<h1 class="type-heading-xl" style="margin:0 0 16px;">Routing Table</h1>' +
+        '<p class="type-body-regular" style="color:#696970; max-width:60ch;">This is placeholder content standing in for a real Figma Make prototype screen, tall enough to make the page actually scroll so the sticky SideNavigation behavior is visible below.</p>' +
+        Array.from({ length: 14 })
+          .map(function (_, i) {
+            return '<div class="box-border w-full border border-solid bg-[var(--component-container-background,#FFFFFF)] border-[var(--component-container-border,#D6D6DD)] px-[var(--global-spacing-s24,24px)] py-[var(--global-spacing-s16,16px)]" style="margin-top:16px;"><p class="type-heading-s" style="margin:0 0 4px;">Section ' + (i + 1) + '</p><p class="type-body-regular" style="margin:0; color:#696970;">Placeholder content block to create scrollable page height.</p></div>';
+          })
+          .join("") +
+        '</div>' +
+        '</main>' +
+        '<div id="tpl-footer"></div>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<script>' +
+        'document.getElementById("tpl-footer").outerHTML = ' +
+        JSON.stringify(
+          '<footer class="flex w-full flex-col items-start gap-[var(--global-spacing-s16,16px)] border-t border-solid bg-[var(--component-globalfooter-background,#F7F7FA)] border-[var(--component-globalfooter-border,#D6D6DD)] px-[var(--global-spacing-s16,16px)] py-[var(--global-spacing-s12,12px)] desktop:flex-row desktop:items-center desktop:justify-between"><div class="flex flex-wrap items-center gap-x-[var(--global-spacing-s24,24px)] gap-y-[var(--global-spacing-s8,8px)]"><a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">v1.133.0</a><a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">API Reference</a><a href="#" class="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline">Provide Feedback</a></div><p class="type-body-regular m-0 w-full text-[color:var(--component-globalfooter-text,#343438)] desktop:w-auto desktop:text-right">© ' +
+            new Date().getFullYear() +
+            ' Akamai Technologies, Inc. All Rights Reserved</p></footer>'
+        ) +
+        ';' +
+        '<\/script>' +
+        '</body></html>';
+    })();
+  </script>
+</body>
+</html>

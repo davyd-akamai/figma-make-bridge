@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>figma-make-bridge — Component preview</title>
+  <meta name="description" content="Live preview of every component and page template currently migrated into figma-make-bridge, the SSOT component library for Figma Make prototypes." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body data-root="" data-repo="davyd-akamai/figma-make-bridge">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <div class="docs-hero">
+        <h1>figma-make-bridge</h1>
+        <p>
+          A live preview of every component and page template currently migrated into this
+          library — the single source of truth for Figma Make prototypes, extracted from
+          Akamai's internal ADS Figma library. Each page below renders the real markup, CSS
+          custom properties, and interaction behavior the React source produces, hand-mirrored
+          in plain HTML/CSS/JS (no React, no build step) so it's viewable anywhere.
+        </p>
+        <p style="margin-top: 12px; font-size: 0.875rem;">
+          See <a href="https://github.com/davyd-akamai/figma-make-bridge" target="_blank" rel="noopener noreferrer">the repo</a>
+          for source, and <a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/GUIDELINES.md" target="_blank" rel="noopener noreferrer">GUIDELINES.md</a>
+          for the decision log behind each component.
+        </p>
+      </div>
+
+      <div class="page-body" style="padding-top: 32px;">
+        <div class="docs-section">
+          <h2>Components</h2>
+          <p class="docs-section-note">The individual building blocks — shell chrome (header/nav/footer) and content-tier controls (button, form fields).</p>
+          <div class="docs-card-grid">
+            <a class="docs-card" href="components/global-header.html">
+              <h3>GlobalHeader</h3>
+              <p>Top app header — logo, search, notifications, account/sign-in, responsive across mobile/tablet/desktop.</p>
+            </a>
+            <a class="docs-card" href="components/side-navigation.html">
+              <h3>SideNavigation</h3>
+              <p>Collapsible left nav rail — hover-to-expand/pin-to-lock, accordion sections, page badges.</p>
+            </a>
+            <a class="docs-card" href="components/global-footer.html">
+              <h3>GlobalFooter</h3>
+              <p>App footer — links, copyright, responsive stacked/row layout.</p>
+            </a>
+            <a class="docs-card" href="components/badge.html">
+              <h3>Badge</h3>
+              <p>Fixed NEW/BETA label badge.</p>
+            </a>
+            <a class="docs-card" href="components/button.html">
+              <h3>Button</h3>
+              <p>Primary/secondary/link/danger variants, loading state, start/end icons.</p>
+            </a>
+            <a class="docs-card" href="components/container.html">
+              <h3>Container</h3>
+              <p>Generic bordered content surface for grouping page content.</p>
+            </a>
+            <a class="docs-card" href="components/text-field.html">
+              <h3>TextField</h3>
+              <p>Text input with label, helper/error text, clear button, info icon.</p>
+            </a>
+            <a class="docs-card" href="components/checkbox.html">
+              <h3>Checkbox</h3>
+              <p>Checkbox with indeterminate state, small/large sizes.</p>
+            </a>
+            <a class="docs-card" href="components/radio-button.html">
+              <h3>RadioButton</h3>
+              <p>Radio input, small/large sizes — native <code>name</code>-based grouping.</p>
+            </a>
+            <a class="docs-card" href="components/icons.html">
+              <h3>Icons</h3>
+              <p>Every icon used across components, pulled as exact vectors from Figma.</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="docs-section">
+          <h2>Templates</h2>
+          <p class="docs-section-note">Page-shell templates composing multiple components into a full layout.</p>
+          <div class="docs-card-grid">
+            <a class="docs-card" href="templates/default-cm-page-template.html">
+              <h3>DefaultCmPageTemplate</h3>
+              <p>Composes GlobalHeader + SideNavigation + GlobalFooter with a content slot — the base shell for Figma Make prototypes.</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/shell.js"></script>
+</body>
+</html>

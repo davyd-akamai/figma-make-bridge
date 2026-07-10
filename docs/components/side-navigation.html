@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SideNavigation — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="side-navigation">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>SideNavigation</h1>
+        <p class="docs-lede">Collapsible left nav rail — unpinned rests collapsed (48px, icon-only) and expands to 232px on hover; pinned locks the rail to a fixed state and ignores hover. Accordion sections, page selection, exact-vector icons, NEW/BETA badges.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=17-2719" target="_blank" rel="noopener noreferrer">17:2719</a></span>
+          <span><code class="docs-code">import { SideNavigation } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/SideNavigation.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Unpinned (hover to expand)</h2>
+          <p class="docs-section-note">Rests collapsed at 48px. Hover anywhere over the rail to expand it to 232px; move away to collapse again. Click a section header to open/close it, click a page row to select it (its parent section header turns blue).</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-dark" style="padding:0; align-items:stretch;">
+              <div id="sn-unpinned" style="height:520px;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Pinned + expanded</h2>
+          <p class="docs-section-note">Pinned locks the rail — hover no longer has any effect. The pin icon fills solid to indicate the locked state.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-dark" style="padding:0; align-items:stretch;">
+              <div id="sn-pinned" style="height:520px;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Pinned + collapsed (mini rail)</h2>
+          <p class="docs-section-note">Pin doesn't only mean "locked open" — <code>pinnedExpanded=false</code> locks a permanently-collapsed, icon-only rail. Click the pin to unpin and confirm hover takes over again.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-dark" style="padding:0; align-items:stretch;">
+              <div id="sn-mini" style="height:400px;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">menu</td><td class="docs-prop-type">"full" | "mini"</td><td>—</td><td>Explicit override: force a static rail with no hover/pin behavior. Narrow escape hatch for isolated previews, not a default rendering path.</td></tr>
+              <tr><td class="docs-prop-name">sections</td><td class="docs-prop-type">SideNavSection[]</td><td><code>DEFAULT_SIDE_NAV_SECTIONS</code> (exported)</td><td>Extend the default array for new pages rather than authoring a parallel one from scratch.</td></tr>
+              <tr><td class="docs-prop-name">selectedPageId / onSelectPage</td><td class="docs-prop-type">string / (pageId, sectionId) =&gt; void</td><td>—</td><td>Controlled/uncontrolled split. Passing one without the other logs a dev warning.</td></tr>
+              <tr><td class="docs-prop-name">pinned / onPinToggle</td><td class="docs-prop-type">boolean / (pinned) =&gt; void</td><td>—</td><td>Same controlled/uncontrolled split as selection.</td></tr>
+              <tr><td class="docs-prop-name">pinnedExpanded</td><td class="docs-prop-type">boolean</td><td>true</td><td>Which resting state a pinned rail shows. Ignored while unpinned.</td></tr>
+              <tr><td class="docs-prop-name">defaultOpenSectionIds</td><td class="docs-prop-type">string[]</td><td>section containing the initially-selected page</td><td></td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="side-navigation.js"></script>
+  <script>
+    SideNavDemo.create(document.getElementById("sn-unpinned"), {
+      defaultOpenSectionIds: ["compute"],
+      defaultSelectedPageId: "linodes",
+    });
+    SideNavDemo.create(document.getElementById("sn-pinned"), {
+      defaultPinned: true,
+      pinnedExpanded: true,
+      defaultOpenSectionIds: ["networking"],
+      defaultSelectedPageId: "vpc",
+    });
+    SideNavDemo.create(document.getElementById("sn-mini"), {
+      defaultPinned: true,
+      pinnedExpanded: false,
+      defaultOpenSectionIds: ["monitor"],
+      defaultSelectedPageId: "metrics",
+    });
+  </script>
+</body>
+</html>

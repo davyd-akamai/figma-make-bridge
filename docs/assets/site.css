@@ -1,0 +1,372 @@
+/* Site chrome for the figma-make-bridge component preview site — kept separate from
+   styles.css (the library's own compiled Tailwind output, copied verbatim from dist/).
+   Nothing in here should leak into a demo's own markup; demo markup uses only the
+   library's real component/alias/global CSS custom properties and Tailwind classes,
+   the same ones the React components themselves emit. */
+
+:root {
+  --docs-bg: #ffffff;
+  --docs-bg-inset: #f7f7fa;
+  --docs-border: #e5e5ea;
+  --docs-text: #232326;
+  --docs-text-muted: #696970;
+  --docs-link: #0174bc;
+  --docs-link-hover: #009cde;
+  --docs-code-bg: #232326;
+  --docs-code-text: #ededf2;
+  --docs-nav-width: 260px;
+}
+
+:root[data-theme="dark"] {
+  --docs-bg: #232326;
+  --docs-bg-inset: #343438;
+  --docs-border: #47474d;
+  --docs-text: #f7f7fa;
+  --docs-text-muted: #c2c2ca;
+  --docs-link: #5bb3ea;
+  --docs-link-hover: #7dcdff;
+  --docs-code-bg: #17171a;
+  --docs-code-text: #ededf2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --docs-bg: #232326;
+    --docs-bg-inset: #343438;
+    --docs-border: #47474d;
+    --docs-text: #f7f7fa;
+    --docs-text-muted: #c2c2ca;
+    --docs-link: #5bb3ea;
+    --docs-link-hover: #7dcdff;
+    --docs-code-bg: #17171a;
+    --docs-code-text: #ededf2;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--docs-bg);
+  color: var(--docs-text);
+}
+
+body {
+  font-family: var(--font-family-brand, "Nunito Sans"), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--docs-link);
+}
+a:hover {
+  color: var(--docs-link-hover);
+}
+
+code,
+.docs-code {
+  font-family: var(--font-family-code, "Fira Code"), monospace;
+  font-size: 0.8125rem;
+}
+
+/* ---- Shell layout: sidebar nav + main column ---- */
+
+#site-shell {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+#site-nav {
+  width: var(--docs-nav-width);
+  flex-shrink: 0;
+  border-right: 1px solid var(--docs-border);
+  background: var(--docs-bg-inset);
+  padding: 20px 0 40px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.docs-nav-brand {
+  display: block;
+  padding: 0 20px 16px;
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--docs-text);
+  border-bottom: 1px solid var(--docs-border);
+  margin-bottom: 12px;
+}
+.docs-nav-brand span {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--docs-text-muted);
+  margin-top: 2px;
+}
+
+.docs-nav-group-title {
+  padding: 0 20px;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--docs-text-muted);
+  margin: 16px 0 6px;
+}
+
+.docs-nav-link {
+  display: block;
+  padding: 6px 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--docs-text);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+.docs-nav-link:hover {
+  background: var(--docs-border);
+  color: var(--docs-text);
+}
+.docs-nav-link.is-active {
+  border-left-color: var(--docs-link);
+  color: var(--docs-link);
+  background: var(--docs-border);
+}
+
+.docs-nav-footer {
+  padding: 16px 20px 0;
+  margin-top: 16px;
+  border-top: 1px solid var(--docs-border);
+}
+.docs-nav-footer a {
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.site-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.page-header {
+  padding: 32px 40px 24px;
+  border-bottom: 1px solid var(--docs-border);
+}
+
+.page-header h1 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+.page-header p.docs-lede {
+  margin: 0 0 12px;
+  color: var(--docs-text-muted);
+  max-width: 60ch;
+  font-size: 0.9375rem;
+}
+
+.docs-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 0.8125rem;
+  color: var(--docs-text-muted);
+}
+.docs-meta a {
+  font-weight: 600;
+}
+
+.page-body {
+  padding: 32px 40px 80px;
+  max-width: 1100px;
+}
+
+.docs-section {
+  margin-bottom: 48px;
+}
+
+.docs-section h2 {
+  font-size: 1.125rem;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+
+.docs-section p.docs-section-note {
+  margin: 0 0 16px;
+  color: var(--docs-text-muted);
+  font-size: 0.875rem;
+  max-width: 70ch;
+}
+
+.docs-demo {
+  border: 1px solid var(--docs-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--docs-bg-inset);
+}
+
+.docs-demo-stage {
+  padding: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.docs-demo-stage.is-dark {
+  background: #232326;
+}
+
+.docs-demo-stage.is-column {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.docs-demo-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--docs-text-muted);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.docs-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* ---- Props table ---- */
+
+table.docs-props {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8125rem;
+}
+table.docs-props th,
+table.docs-props td {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--docs-border);
+  vertical-align: top;
+}
+table.docs-props th {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--docs-text-muted);
+}
+table.docs-props td.docs-prop-name {
+  font-family: var(--font-family-code, "Fira Code"), monospace;
+  white-space: nowrap;
+  font-weight: 600;
+}
+table.docs-props td.docs-prop-type {
+  font-family: var(--font-family-code, "Fira Code"), monospace;
+  color: var(--docs-link);
+}
+
+/* ---- Landing page cards ---- */
+
+.docs-hero {
+  padding: 48px 40px 32px;
+  border-bottom: 1px solid var(--docs-border);
+  max-width: 900px;
+}
+.docs-hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+.docs-hero p {
+  color: var(--docs-text-muted);
+  font-size: 1rem;
+  max-width: 65ch;
+}
+
+.docs-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.docs-card {
+  display: block;
+  border: 1px solid var(--docs-border);
+  border-radius: 8px;
+  padding: 16px;
+  text-decoration: none;
+  color: var(--docs-text);
+  background: var(--docs-bg-inset);
+  transition: border-color 0.15s ease;
+}
+.docs-card:hover {
+  border-color: var(--docs-link);
+}
+.docs-card h3 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--docs-text);
+}
+.docs-card p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--docs-text-muted);
+}
+
+/* ---- Small controls used inside demos (buttons to change demo state, not library UI) ---- */
+
+.docs-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.docs-toolbar-btn {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--docs-border);
+  background: var(--docs-bg);
+  color: var(--docs-text);
+  cursor: pointer;
+}
+.docs-toolbar-btn:hover {
+  border-color: var(--docs-link);
+}
+.docs-toolbar-btn.is-active {
+  border-color: var(--docs-link);
+  background: var(--docs-link);
+  color: #fff;
+}
+
+@media (max-width: 720px) {
+  #site-shell {
+    flex-direction: column;
+  }
+  #site-nav {
+    position: static;
+    height: auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--docs-border);
+  }
+  .page-header,
+  .page-body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
