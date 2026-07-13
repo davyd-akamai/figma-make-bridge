@@ -304,4 +304,21 @@
   --component-radiobutton-active-readonly-background: #FFFFFF;
   --component-radiobutton-active-readonly-border: #C2C2CA;
   --component-radiobutton-active-readonly-text: #343438;
+
+  --component-tabs-default-text: #343438;
+  --component-tabs-default-icon: #3D3D42;
+  --component-tabs-default-border: #C2C2CA;
+  --component-tabs-hover-text: #009CDE;
+  --component-tabs-hover-icon: #009CDE;
+  --component-tabs-active-text: #0174BC;
+  --component-tabs-active-icon: #0174BC;
+  --component-tabs-active-border: #0174BC;
+  --component-tabs-disabled-text: #A3A3AB;
+  --component-tabs-disabled-icon: #A3A3AB;
+  --component-tabs-ellipsis-icon: #3D3D42;
+  --component-tabs-ellipsis-icon-hover: #009CDE;
+  --component-tabs-overflowmenu-background: #FFFFFF;
+  --component-tabs-overflowmenu-text: #343438;
+  --component-tabs-overflowmenu-hover-background: #EDF8FF;
+  --component-tabs-overflowmenu-shadow-color: rgba(58,59,63,0.18);
 }

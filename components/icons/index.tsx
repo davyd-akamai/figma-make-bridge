@@ -440,3 +440,17 @@ export function DotIcon(props: IconProps) {
     </BaseIcon>
   );
 }
+
+// Figma: "arrow" (node 71:4215, the optional leading-icon slot's placeholder asset inside
+// `.base-tab-horizontal`, node 71:4262) — natively 16px.
+export function ArrowLeftIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 16 16" size={16} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.1382 4.1953C7.3985 4.4556 7.3985 4.8777 7.1382 5.1381L4.9429 7.3333H12.6667C13.0349 7.3333 13.3334 7.6318 13.3334 8C13.3334 8.3682 13.0349 8.6667 12.6667 8.6667H4.9429L7.1382 10.8619C7.3985 11.1223 7.3985 11.5444 7.1382 11.8047C6.8778 12.0651 6.4557 12.0651 6.1953 11.8047L2.862 8.4714C2.6017 8.2111 2.6017 7.7889 2.862 7.5286L6.1953 4.1953C6.4557 3.9349 6.8778 3.9349 7.1382 4.1953Z"
+      />
+    </BaseIcon>
+  );
+}

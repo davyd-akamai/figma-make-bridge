@@ -9,8 +9,10 @@ import Container from "../components/Container";
 import TextField from "../components/TextField";
 import Badge, { type BadgeType, type BadgeColor } from "../components/Badge";
 import SystemBadge from "../components/SystemBadge";
+import TabsHorizontal, { type TabsHorizontalTab } from "../components/TabsHorizontal";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
+  ArrowLeftIcon,
   BellIcon,
   BucketIcon,
   CheckIcon,
@@ -39,6 +41,7 @@ import {
 // dark/colored background to be visible and is previewed in the Button section instead) — it
 // doubles as a visual regression check whenever a new icon is added.
 const ALL_ICONS = [
+  ArrowLeftIcon,
   BellIcon,
   BucketIcon,
   CheckIcon,
@@ -336,6 +339,60 @@ function BadgeSection() {
   );
 }
 
+const TABS_WITH_EXTRAS: TabsHorizontalTab[] = [
+  { id: "overview", label: "Overview", icon: <ArrowLeftIcon size={16} /> },
+  { id: "configuration", label: "Configuration", badge: "New" },
+  { id: "monitoring", label: "Monitoring" },
+  { id: "activity", label: "Activity log" },
+  { id: "access", label: "Access control", disabled: true },
+  { id: "tags", label: "Tags" },
+];
+
+function TabsHorizontalSection() {
+  const [largeSelected, setLargeSelected] = useState("overview");
+  const [smallSelected, setSmallSelected] = useState("overview");
+  const [overflowSelected, setOverflowSelected] = useState("overview");
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <span className="type-body-regular">Large — icon, badge, and disabled tab:</span>
+        <TabsHorizontal
+          size="large"
+          tabs={TABS_WITH_EXTRAS}
+          selectedTabId={largeSelected}
+          onSelectTab={setLargeSelected}
+          aria-label="Large tabs example"
+        />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <span className="type-body-regular">Small:</span>
+        <TabsHorizontal
+          size="small"
+          tabs={TABS_WITH_EXTRAS}
+          selectedTabId={smallSelected}
+          onSelectTab={setSmallSelected}
+          aria-label="Small tabs example"
+        />
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <span className="type-body-regular">
+          Collapsible: container is too narrow for every tab, so trailing tabs move into the "..."
+          overflow menu (selected: {overflowSelected}):
+        </span>
+        <div style={{ width: 320 }}>
+          <TabsHorizontal
+            size="large"
+            selectedTabId={overflowSelected}
+            onSelectTab={setOverflowSelected}
+            aria-label="Collapsible tabs example"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const BUTTON_VARIANTS: ButtonVariant[] = ["primary", "secondary", "link", "danger"];
 
 function ButtonVariantRow({ variant }: { variant: ButtonVariant }) {
@@ -477,6 +534,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Badge">
             <BadgeSection />
+          </PreviewSection>
+
+          <PreviewSection title="Tabs Horizontal">
+            <TabsHorizontalSection />
           </PreviewSection>
 
           <PreviewSection title="System Badge">
