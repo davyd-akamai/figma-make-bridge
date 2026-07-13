@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TabsHorizontal — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="tabs-horizontal">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>TabsHorizontal</h1>
+        <p class="docs-lede">A horizontal tab strip — small/large sizes, optional leading icon and trailing badge per tab, disabled tabs, and a real measured collapsible-overflow behavior: when the row runs out of room, trailing tabs move into a "..." dropdown instead of wrapping or clipping.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=74-5959" target="_blank" rel="noopener noreferrer">74:5959</a></span>
+          <span><code class="docs-code">import { TabsHorizontal } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/TabsHorizontal.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">Click a tab to select it. "Overview" has a leading icon, "Configuration" has a badge, "Access control" is disabled.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div style="width:100%;">
+                <div class="docs-toolbar">
+                  <span class="docs-demo-label" style="align-self:center;margin:0 4px 0 0;">size</span>
+                  <div data-th-group="size" style="display:flex;gap:6px;">
+                    <button class="docs-toolbar-btn is-active" data-value="large">large</button>
+                    <button class="docs-toolbar-btn" data-value="small">small</button>
+                  </div>
+                </div>
+              </div>
+              <div style="width:100%; padding-top: 12px;">
+                <div id="th-playground"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Collapsible overflow</h2>
+          <p class="docs-section-note">Drag the bottom-right handle to shrink the row — trailing tabs are measured for real (not CSS-clipped) and swapped for a "..." button once they no longer fit, matching Figma's documented collapsible behavior. Click "..." to open the overflow menu.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column">
+              <div id="th-collapsible-stage" style="position:relative; width:340px; min-width:120px; max-width:100%; border:1px dashed var(--docs-border); padding:8px 24px 8px 8px;">
+                <div id="th-collapsible"></div>
+                <div id="th-collapsible-handle" style="position:absolute; right:2px; bottom:2px; width:14px; height:14px; cursor:ew-resize;" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" style="color:var(--docs-border);"><path d="M13 1L1 13M13 6.5L6.5 13M13 12V13H12" stroke="currentColor" stroke-width="1.2"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">tabs</td><td class="docs-prop-type">{ id, label, icon?, badge?, disabled? }[]</td><td>6-tab example set</td><td>Data-driven — one object per tab, no hardcoded content.</td></tr>
+              <tr><td class="docs-prop-name">size</td><td class="docs-prop-type">"small" | "large"</td><td>"large"</td><td></td></tr>
+              <tr><td class="docs-prop-name">selectedTabId / defaultSelectedTabId</td><td class="docs-prop-type">string</td><td>first enabled tab</td><td>Controlled/uncontrolled split, same pattern as SideNavigation's <code>selectedPageId</code>.</td></tr>
+              <tr><td class="docs-prop-name">onSelectTab</td><td class="docs-prop-type">(tabId: string) =&gt; void</td><td>—</td><td></td></tr>
+              <tr><td class="docs-prop-name">moreLabel</td><td class="docs-prop-type">string</td><td>"More tabs"</td><td>Accessible label for the overflow "..." button.</td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">Renders tab headers only, no content-panel slot — matches what the Figma component itself contains; panel content is the consumer's job to compose.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="tabs-horizontal.js"></script>
+</body>
+</html>

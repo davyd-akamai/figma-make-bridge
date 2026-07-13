@@ -16,6 +16,7 @@
     { id: "text-field", label: "TextField", href: "components/text-field.html" },
     { id: "checkbox", label: "Checkbox", href: "components/checkbox.html" },
     { id: "radio-button", label: "RadioButton", href: "components/radio-button.html" },
+    { id: "tabs-horizontal", label: "TabsHorizontal", href: "components/tabs-horizontal.html" },
     { id: "icons", label: "Icons", href: "components/icons.html" },
   ];
 
