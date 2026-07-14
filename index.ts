@@ -41,6 +41,20 @@ export type { TabsHorizontalProps, TabsHorizontalTab, TabsHorizontalSize } from 
 export { default as Drawer } from "./components/Drawer";
 export type { DrawerProps, DrawerSize } from "./components/Drawer";
 
+export { default as Table } from "./components/Table";
+export type {
+  TableProps,
+  TableColumn,
+  TableRowData,
+  TableAction,
+  TableCellType,
+  TableHeaderVariant,
+  TableSortDirection,
+  TableLinkValue,
+  TableIconTextValue,
+  TableBadgeValue,
+} from "./components/Table";
+
 export { default as DefaultCmPageTemplate } from "./templates/DefaultCmPageTemplate";
 export type { DefaultCmPageTemplateProps } from "./templates/DefaultCmPageTemplate";
 

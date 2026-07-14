@@ -332,4 +332,29 @@
   --component-drawer-elevation-right: -16px 0px 32px 0px rgba(61,61,66,0.18);
   --component-drawer-scrollbar-thumb: #E5E5EA;
   --component-drawer-scrollbar-track: #F7F7FA;
+
+  /* component.table — tokens/table.json, nodes 47:4956/47:6961. headerNested is pre-seeded but has
+     no matching Figma swatch anywhere in the file (same "unused until evidenced" precedent as
+     Button's tertiary/launch) — left out of Table.tsx's headerVariant prop for now. */
+  --component-table-headerfilled-background: #E5E5EA;
+  --component-table-headerfilled-text: #343438;
+  --component-table-headerfilled-border: #A3A3AB;
+  --component-table-headerfilled-icon-default: #696970;
+  --component-table-headerfilled-icon-hover: #009CDE;
+  --component-table-headerfilled-icon-active: #0174BC;
+  --component-table-headeroutlined-border: #A3A3AB;
+  --component-table-headeroutlined-text: #343438;
+  --component-table-headeroutlined-icon-default: #696970;
+  --component-table-headeroutlined-icon-hover: #009CDE;
+  --component-table-headeroutlined-icon-active: #0174BC;
+  --component-table-row-border: #D6D6DD;
+  --component-table-row-icon-default: #3D3D42;
+  --component-table-row-icon-disabled: #A3A3AB;
+  --component-table-row-icon-hover: #009CDE;
+  --component-table-row-background-default: #FFFFFF;
+  --component-table-row-background-zebra: #F7F7FA;
+  --component-table-row-background-hover: #EDF8FF;
+  --component-table-row-text-default: #343438;
+  --component-table-row-text-placeholder: #696970;
+  --component-table-row-text-link: #0174BC;
 }
