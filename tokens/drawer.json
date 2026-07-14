@@ -1,0 +1,46 @@
+{
+  "component": {
+    "drawer": {
+      "background": {
+        "value": "{alias.background.normal}",
+        "type": "color"
+      },
+      "text": {
+        "value": "{alias.content.text.primary.default}",
+        "type": "color"
+      },
+      "icon": {
+        "default": {
+          "value": "{alias.content.icon.primary.default}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "value": "{alias.border.normal}",
+        "type": "color"
+      },
+      "overlay": {
+        "value": "{alias.background.overlay}",
+        "type": "color",
+        "description": "Backdrop dimming behind the panel — same alias token used for modal dimming (node 47:13869 confirms the drawer reuses it, not a drawer-specific color)"
+      },
+      "elevation": {
+        "right": {
+          "value": "{alias.elevation.drawer.right}",
+          "type": "boxShadow",
+          "description": "Only the right-side elevation is wired up — Figma's Drawer component (47:8675) has no Position property/variant, only Size, so left/top/bottom stay unused pre-seeded entries in alias.elevation.drawer until a real swatch demonstrates them"
+        }
+      },
+      "scrollbar": {
+        "thumb": {
+          "value": "{alias.background.neutralsubtle}",
+          "type": "color"
+        },
+        "track": {
+          "value": "{alias.background.neutral}",
+          "type": "color"
+        }
+      }
+    }
+  }
+}

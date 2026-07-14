@@ -38,6 +38,9 @@ export type { RadioButtonProps, RadioButtonSize } from "./components/RadioButton
 export { default as TabsHorizontal } from "./components/TabsHorizontal";
 export type { TabsHorizontalProps, TabsHorizontalTab, TabsHorizontalSize } from "./components/TabsHorizontal";
 
+export { default as Drawer } from "./components/Drawer";
+export type { DrawerProps, DrawerSize } from "./components/Drawer";
+
 export { default as DefaultCmPageTemplate } from "./templates/DefaultCmPageTemplate";
 export type { DefaultCmPageTemplateProps } from "./templates/DefaultCmPageTemplate";
 

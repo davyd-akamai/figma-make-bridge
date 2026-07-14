@@ -10,6 +10,7 @@ import TextField from "../components/TextField";
 import Badge, { type BadgeType, type BadgeColor } from "../components/Badge";
 import SystemBadge from "../components/SystemBadge";
 import TabsHorizontal, { type TabsHorizontalTab } from "../components/TabsHorizontal";
+import Drawer, { type DrawerSize } from "../components/Drawer";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
   ArrowLeftIcon,
@@ -459,6 +460,143 @@ function TabButton({
   );
 }
 
+// Each size demos a different footer composition on purpose — the footer is a plain `footer?`
+// slot, not a fixed 3-button schema, so which buttons appear (and whether a Link button is even
+// present) is a per-drawer designer decision, not something the component enforces.
+const DRAWER_DEMOS: { size: DrawerSize; label: string; footer: "all-three" | "no-link" | "single" }[] = [
+  { size: "default", label: "Default (480px)", footer: "all-three" },
+  { size: "small", label: "Small (300px)", footer: "no-link" },
+  { size: "flexible", label: "Flexible (min 300px)", footer: "single" },
+];
+
+function DrawerLongContent() {
+  return (
+    <>
+      {Array.from({ length: 20 }).map((_, i) => (
+        <p key={i} className="type-body-regular" style={{ margin: 0 }}>
+          Content block {i + 1}. This paragraph exists only to give the drawer enough content
+          height to overflow the panel, so the two footer-button placements below can be compared.
+        </p>
+      ))}
+    </>
+  );
+}
+
+function DrawerSection() {
+  const [openSize, setOpenSize] = useState<DrawerSize | null>(null);
+  const [noFooterOpen, setNoFooterOpen] = useState(false);
+  const [stickyFooterOpen, setStickyFooterOpen] = useState(false);
+  const [inlineFooterOpen, setInlineFooterOpen] = useState(false);
+
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+      {DRAWER_DEMOS.map(({ size, label }) => (
+        <Button key={size} variant="secondary" onClick={() => setOpenSize(size)}>
+          Open {label}
+        </Button>
+      ))}
+      <Button variant="secondary" onClick={() => setNoFooterOpen(true)}>
+        Open without footer/icon
+      </Button>
+      <Button variant="secondary" onClick={() => setStickyFooterOpen(true)}>
+        Open long content — sticky footer
+      </Button>
+      <Button variant="secondary" onClick={() => setInlineFooterOpen(true)}>
+        Open long content — buttons after content
+      </Button>
+
+      {DRAWER_DEMOS.map(({ size, label, footer }) => (
+        <Drawer
+          key={size}
+          open={openSize === size}
+          onClose={() => setOpenSize(null)}
+          size={size}
+          title="Header title"
+          icon={<HelpCircleIcon size={24} />}
+          footer={
+            footer === "all-three" ? (
+              <>
+                <Button variant="link" onClick={() => setOpenSize(null)}>
+                  Button
+                </Button>
+                <Button variant="secondary" onClick={() => setOpenSize(null)}>
+                  Cancel
+                </Button>
+                <Button variant="primary" onClick={() => setOpenSize(null)}>
+                  Apply
+                </Button>
+              </>
+            ) : footer === "no-link" ? (
+              <>
+                <Button variant="secondary" onClick={() => setOpenSize(null)}>
+                  Cancel
+                </Button>
+                <Button variant="primary" onClick={() => setOpenSize(null)}>
+                  Apply
+                </Button>
+              </>
+            ) : (
+              <Button variant="primary" onClick={() => setOpenSize(null)}>
+                Done
+              </Button>
+            )
+          }
+        >
+          <p className="type-body-regular" style={{ margin: 0 }}>
+            {label} drawer content goes here. This slot is fully consumer-composed — the drawer only
+            owns the header, optional footer, and scroll behavior around it. The footer buttons
+            shown here are just one example composition — how many buttons, and whether a Link
+            button is included at all, is a per-drawer design decision, not something this
+            component enforces.
+          </p>
+        </Drawer>
+      ))}
+
+      <Drawer open={noFooterOpen} onClose={() => setNoFooterOpen(false)} title="Header title">
+        <p className="type-body-regular" style={{ margin: 0 }}>
+          A drawer with no leading icon and no footer — both are optional.
+        </p>
+      </Drawer>
+
+      {/* Sticky footer: buttons passed via `footer` sit outside the scrollable area and stay
+          pinned to the bottom of the drawer regardless of scroll position. */}
+      <Drawer
+        open={stickyFooterOpen}
+        onClose={() => setStickyFooterOpen(false)}
+        title="Sticky footer"
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setStickyFooterOpen(false)}>
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={() => setStickyFooterOpen(false)}>
+              Apply
+            </Button>
+          </>
+        }
+      >
+        <DrawerLongContent />
+      </Drawer>
+
+      {/* Buttons after content: no `footer` prop at all — Cancel/Apply are just the last
+          elements of `children`, so they scroll away with the rest of the content instead of
+          staying pinned. Both placements are valid; which one to use is a design decision the
+          `footer` slot doesn't force either way. */}
+      <Drawer open={inlineFooterOpen} onClose={() => setInlineFooterOpen(false)} title="Buttons after content">
+        <DrawerLongContent />
+        <div style={{ display: "flex", justifyContent: "flex-end", gap: 12 }}>
+          <Button variant="secondary" onClick={() => setInlineFooterOpen(false)}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={() => setInlineFooterOpen(false)}>
+            Apply
+          </Button>
+        </div>
+      </Drawer>
+    </div>
+  );
+}
+
 export default function App() {
   const frameParam = new URLSearchParams(window.location.search).get("frame");
   if (frameParam === "template") {
@@ -538,6 +676,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Tabs Horizontal">
             <TabsHorizontalSection />
+          </PreviewSection>
+
+          <PreviewSection title="Drawer">
+            <DrawerSection />
           </PreviewSection>
 
           <PreviewSection title="System Badge">

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drawer — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="drawer">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Drawer</h1>
+        <p class="docs-lede">Overlay panel sliding in from the right — default/small/flexible sizes, an optional leading header icon, and an optional sticky footer. Focus-trapped, closes on the close button, backdrop click, or Esc.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=47-8675" target="_blank" rel="noopener noreferrer">47:8675</a></span>
+          <span><code class="docs-code">import { Drawer } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Drawer.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">Each size below demos a different footer composition on purpose — the footer is a plain optional slot, not a fixed 3-button schema. Which buttons appear (and whether a Link button is even present) is a per-drawer design decision, not something the component enforces.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage">
+              <button type="button" id="dr-open-default" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open Default (480px)</span></button>
+              <button type="button" id="dr-open-small" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open Small (300px)</span></button>
+              <button type="button" id="dr-open-flexible" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open Flexible (min 300px)</span></button>
+              <button type="button" id="dr-open-nofooter" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open without footer/icon</span></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Overflowing content — footer placement</h2>
+          <p class="docs-section-note">When content is taller than the drawer, action buttons can either be passed via <code>footer</code> (pinned outside the scroll area, always visible) or rendered as the last elements of <code>children</code> (scrolls away with the rest of the content). Both are valid, supported patterns — <code>footer</code> doesn't force either one.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage">
+              <button type="button" id="dr-open-sticky" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open long content — sticky footer</span></button>
+              <button type="button" id="dr-open-inline" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open long content — buttons after content</span></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">open</td><td class="docs-prop-type">boolean</td><td>—</td><td>Required, fully controlled — this component never manages its own visibility.</td></tr>
+              <tr><td class="docs-prop-name">onClose</td><td class="docs-prop-type">() =&gt; void</td><td>—</td><td>Required. Fired by the close button, backdrop click, and Esc.</td></tr>
+              <tr><td class="docs-prop-name">title</td><td class="docs-prop-type">string</td><td>"Header title"</td><td></td></tr>
+              <tr><td class="docs-prop-name">icon</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Optional leading icon before the title.</td></tr>
+              <tr><td class="docs-prop-name">size</td><td class="docs-prop-type">"default" | "small" | "flexible"</td><td>"default"</td><td>480px / 300px / min 300px–90vw. No <code>position</code> prop — Figma has no Position variant, every swatch slides from the right.</td></tr>
+              <tr><td class="docs-prop-name">footer</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Sticky, pinned outside the scrollable content area. Omit and place buttons at the end of <code>children</code> instead for a non-sticky placement.</td></tr>
+              <tr><td class="docs-prop-name">overlay</td><td class="docs-prop-type">boolean</td><td>true</td><td>Backdrop behind the panel.</td></tr>
+              <tr><td class="docs-prop-name">closeOnOverlayClick</td><td class="docs-prop-type">boolean</td><td>true</td><td></td></tr>
+              <tr><td class="docs-prop-name">closeOnEsc</td><td class="docs-prop-type">boolean</td><td>true</td><td></td></tr>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Fully consumer-composed, scrolls independently when it overflows.</td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">No <code>scrollbar</code> prop — unlike Figma's own generated code (a static decorative thumb graphic in a non-scrolling mockup), the content area here always auto-scrolls on overflow with a permanently-branded scrollbar, same treatment SideNavigation's menu list already established.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="drawer.js"></script>
+</body>
+</html>
