@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="table">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Table</h1>
+        <p class="docs-lede">Data-driven header/body table — sortable columns, row selection, row expansion (including nested tables), and multiple cell types (text/link/icon &amp; text/badge/action icons/action menu/custom). Layout is CSS Grid, not nested flexbox rows, so column widths stay identical between the header and every body row.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=47-4956" target="_blank" rel="noopener noreferrer">47:4956</a></span>
+          <span><code class="docs-code">import { Table } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Table.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">Sortable (click Name or Region), selectable (checkboxes, indeterminate select-all), expandable (caret in the first column). Zebra striping is intentionally off here — it's a UX restriction on expandable tables, <code>Table</code> forces it off whenever both are set.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div id="tbl-playground" style="width:100%;"></div>
+              <p id="tbl-playground-state" class="type-body-regular" style="margin:8px 0 0;"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Cell types</h2>
+          <p class="docs-section-note">One example of every cell type Figma's breakdown demonstrates. "Checkbox with icon &amp; text" and "Radio with icon &amp; text" compose the real Checkbox/RadioButton via <code>cellType="custom"</code> rather than a dedicated cell type each. "Select [not coded]" and "Switcher [not coded]" are deliberately not shown — no Select or Switch component exists in this library yet, and this repo doesn't fabricate a placeholder for a component that isn't real. Figma's own "[Don't use] Checkbox &amp; text" variant is also deliberately excluded. The first column ("Text only") doubles as the "Expandable text" demo via the table's own <code>expandable</code> prop.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div id="tbl-cell-types" style="width:100%;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Header variations</h2>
+          <p class="docs-section-note">Filled (default, grey) vs. outlined (white) header, labeled vs. icon-only columns, and the select-all checkbox. Icon-only columns get a fixed 36px width, matching Figma's isolated "Icon only" cell exactly — not a content-hug approximation.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="align-items:flex-start;flex-wrap:wrap;gap:24px;">
+              <div style="display:flex;flex-direction:column;gap:8px;width:220px;">
+                <span class="docs-demo-label">Filled, sortable, info icon</span>
+                <div id="tbl-hv-filled"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;width:220px;">
+                <span class="docs-demo-label">Outlined, sortable, info icon</span>
+                <div id="tbl-hv-outlined"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;width:120px;">
+                <span class="docs-demo-label">Filled, icon-only</span>
+                <div id="tbl-hv-filled-icon"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;width:120px;">
+                <span class="docs-demo-label">Outlined, icon-only</span>
+                <div id="tbl-hv-outlined-icon"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px;width:220px;">
+                <span class="docs-demo-label">Select-all checkbox</span>
+                <div id="tbl-hv-selectable"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Nested table</h2>
+          <p class="docs-section-note">An expanded row rendering a second, independent <code>Table</code> — nesting is just ordinary composition, there's no special-cased "nested" mode. Per design decision, a nested table always keeps the default filled (grey) header and passes <code>bordered={false}</code>, since it sits inside the outer expanded row's own border and shouldn't paint a second outline.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div id="tbl-nested" style="width:100%;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Compact, zebra, outlined</h2>
+          <p class="docs-section-note">Outlined header, zebra-striped rows, bare action-icon buttons (Delete disabled while the instance is running). The "Actions" column carries a real text label but still hugs its content instead of stretching — <code>actionIcons</code>/<code>actionMenu</code> columns never compete for row width, labeled or not.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column">
+              <div id="tbl-compact" style="width:100%;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">columns / rows</td><td class="docs-prop-type">TableColumn[] / TableRowData[]</td><td>small example set</td><td>Fully data-driven — no hardcoded content.</td></tr>
+              <tr><td class="docs-prop-name">headerVariant</td><td class="docs-prop-type">"filled" | "outlined"</td><td>"filled"</td><td></td></tr>
+              <tr><td class="docs-prop-name">zebra</td><td class="docs-prop-type">boolean</td><td>false</td><td>Forced off whenever <code>expandable</code> is true (dev console warning).</td></tr>
+              <tr><td class="docs-prop-name">bordered</td><td class="docs-prop-type">boolean</td><td>true</td><td>Set false when nesting a Table inside another Table's <code>renderExpandedContent</code>.</td></tr>
+              <tr><td class="docs-prop-name">selectable / selectedRowIds / onSelectedRowIdsChange</td><td class="docs-prop-type">boolean / string[] / fn</td><td>—</td><td>Controlled/uncontrolled split. Injects a checkbox into the first column's cell (and the header's select-all).</td></tr>
+              <tr><td class="docs-prop-name">expandable / renderExpandedContent / expandedRowIds</td><td class="docs-prop-type">boolean / (row) =&gt; ReactNode / string[]</td><td>—</td><td>Injects an expand caret into the first column's cell.</td></tr>
+              <tr><td class="docs-prop-name">sortColumnKey / sortDirection / onSortChange</td><td class="docs-prop-type">string / "asc"|"desc" / fn</td><td>—</td><td>Fully controlled — Table never reorders <code>rows</code> itself, only tracks/displays sort state.</td></tr>
+              <tr><td class="docs-prop-name">TableColumn.cellType</td><td class="docs-prop-type">"text" | "link" | "iconText" | "badge" | "actionIcons" | "actionMenu" | "custom"</td><td>"text"</td><td>"custom" is the escape hatch for Button/Switch/Select/Checkbox+text/Radio+text cells.</td></tr>
+              <tr><td class="docs-prop-name">TableColumn.width</td><td class="docs-prop-type">string</td><td>—</td><td>CSS grid track value. Omit for an equal flexible share (<code>1fr</code>); columns with no <code>header</code> label default to a fixed 36px; <code>actionIcons</code>/<code>actionMenu</code> default to <code>max-content</code>.</td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">No composed "Table" instance (with toolbar/pagination/search) exists anywhere in the Figma file — only header/cell primitives. This component stays scoped to header+body rows; consumers compose pagination/search/toolbar around it.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="table.js"></script>
+</body>
+</html>

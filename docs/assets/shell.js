@@ -12,6 +12,7 @@
     { id: "badge", label: "Badge", href: "components/badge.html" },
     { id: "system-badge", label: "SystemBadge", href: "components/system-badge.html" },
     { id: "button", label: "Button", href: "components/button.html" },
+    { id: "table", label: "Table", href: "components/table.html" },
     { id: "container", label: "Container", href: "components/container.html" },
     { id: "text-field", label: "TextField", href: "components/text-field.html" },
     { id: "checkbox", label: "Checkbox", href: "components/checkbox.html" },
