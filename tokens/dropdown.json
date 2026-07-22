@@ -1,0 +1,40 @@
+{
+  "component": {
+    "dropdown": {
+      "background": {
+        "default": {
+          "value": "{alias.interaction.background.primary}",
+          "type": "color",
+          "description": "Dropdown panel background"
+        },
+        "hover": {
+          "value": "{alias.interaction.background.tertiary}",
+          "type": "color",
+          "description": "Hovered/highlighted item background"
+        }
+      },
+      "text": {
+        "default": {
+          "value": "{alias.content.text.primary.default}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{alias.content.text.primary.disabled}",
+          "type": "color"
+        },
+        "description": {
+          "value": "{alias.content.text.secondary.default}",
+          "type": "color",
+          "description": "Empty-state message text (node 91:4101) — Figma's own variable is literally named component/dropdown/text/description"
+        }
+      },
+      "elevation": {
+        "s": {
+          "value": "{alias.elevation.s}",
+          "type": "boxShadow",
+          "description": "Drop shadow behind the floating dropdown panel"
+        }
+      }
+    }
+  }
+}

@@ -8,8 +8,8 @@ Let's build a new component for `figma-make-bridge`: **[COMPONENT NAME]**.
 
 Figma reference(s):
 - Main component: [URL with node-id]
-- Internal components / detail breakdown (if there's a separate section like SideNavigation had): [URL with node-id]
-- Interactions / states (if there's a separate annotated section): [URL with node-id]
+- Internal components / detail breakdown: [URL with node-id]
+- Interactions / states: [URL with node-id]
 
 Before doing anything else, read the repo's root `GUIDELINES.md` — it has the established conventions and known gotchas from GlobalHeader and SideNavigation, and I want this component to follow the same patterns, specifically:
 

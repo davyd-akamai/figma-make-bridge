@@ -101,11 +101,11 @@
 // `zebra` is forced off whenever `expandable` is true — a UX restriction per user decision, not a
 // visual bug: alternating row shading reads ambiguously once rows can expand to variable heights.
 
-import { Fragment, type ReactNode, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { Fragment, type ReactNode, useRef, useState } from "react";
 import { CaretIcon, DeleteIcon, DownloadIcon, EditIcon, InfoIcon, MoreIcon, SortIcon, StatusAlertIcon } from "./icons";
 import Checkbox from "./Checkbox";
 import Badge, { type BadgeColor, type BadgeType } from "./Badge";
+import Popover from "./internal/Popover";
 
 export type TableHeaderVariant = "filled" | "outlined";
 export type TableSortDirection = "asc" | "desc";
@@ -358,45 +358,7 @@ function RowActionMenu<T extends TableRowData>({
   rowIndex: number;
 }) {
   const [open, setOpen] = useState(false);
-  const [position, setPosition] = useState<{ top: number; right: number } | null>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
-  const menuRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    if (!open) return;
-    const onOutside = (e: MouseEvent) => {
-      const target = e.target as Node;
-      if (triggerRef.current?.contains(target)) return;
-      if (menuRef.current?.contains(target)) return;
-      setOpen(false);
-    };
-    const onEscape = (e: globalThis.KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    const onReposition = () => {
-      if (!triggerRef.current) return;
-      const rect = triggerRef.current.getBoundingClientRect();
-      setPosition({ top: rect.bottom, right: window.innerWidth - rect.right });
-    };
-    document.addEventListener("mousedown", onOutside);
-    document.addEventListener("keydown", onEscape);
-    window.addEventListener("scroll", onReposition, true);
-    window.addEventListener("resize", onReposition);
-    return () => {
-      document.removeEventListener("mousedown", onOutside);
-      document.removeEventListener("keydown", onEscape);
-      window.removeEventListener("scroll", onReposition, true);
-      window.removeEventListener("resize", onReposition);
-    };
-  }, [open]);
-
-  function handleToggle() {
-    if (!open && triggerRef.current) {
-      const rect = triggerRef.current.getBoundingClientRect();
-      setPosition({ top: rect.bottom, right: window.innerWidth - rect.right });
-    }
-    setOpen((v) => !v);
-  }
 
   return (
     <>
@@ -406,46 +368,43 @@ function RowActionMenu<T extends TableRowData>({
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="More actions"
-        onClick={handleToggle}
-        className={`flex shrink-0 items-center justify-center ${ROW_ICON_DEFAULT} ${ROW_ICON_HOVER}`}
+        onClick={() => setOpen((v) => !v)}
+        className={`flex shrink-0 cursor-pointer items-center justify-center ${ROW_ICON_DEFAULT} ${ROW_ICON_HOVER}`}
       >
         <MoreIcon size={20} />
       </button>
-      {open &&
-        position &&
-        createPortal(
-          <div
-            ref={menuRef}
-            role="menu"
-            aria-label="More actions"
-            style={{ position: "fixed", top: position.top, right: position.right }}
-            className="z-50 flex min-w-[160px] flex-col items-stretch py-[var(--global-spacing-s4,4px)] bg-white shadow-[0px_2px_8px_0px_rgba(58,59,63,0.18)]"
-          >
-            {actions.map((action) => {
-              const disabled = typeof action.disabled === "function" ? action.disabled(row) : action.disabled;
-              return (
-                <button
-                  key={action.label}
-                  type="button"
-                  role="menuitem"
-                  disabled={disabled}
-                  onClick={() => {
-                    if (disabled) return;
-                    action.onClick(row, rowIndex);
-                    setOpen(false);
-                  }}
-                  className={`type-label-regular-s flex items-center gap-[var(--global-spacing-s8,8px)] py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[var(--global-spacing-s8,8px)] text-left disabled:cursor-not-allowed disabled:text-[color:var(--component-table-row-icon-disabled,#A3A3AB)] ${
-                    disabled ? "" : `${ROW_TEXT_DEFAULT} hover:bg-[var(--component-table-row-background-hover,#EDF8FF)]`
-                  }`}
-                >
-                  {action.icon}
-                  {action.label}
-                </button>
-              );
-            })}
-          </div>,
-          document.body,
-        )}
+      <Popover
+        open={open}
+        onClose={() => setOpen(false)}
+        anchorRef={triggerRef}
+        align="end"
+        role="menu"
+        aria-label="More actions"
+        className="flex min-w-[160px] flex-col items-stretch py-[var(--global-spacing-s4,4px)] bg-white shadow-[0px_2px_8px_0px_rgba(58,59,63,0.18)]"
+      >
+        {actions.map((action) => {
+          const disabled = typeof action.disabled === "function" ? action.disabled(row) : action.disabled;
+          return (
+            <button
+              key={action.label}
+              type="button"
+              role="menuitem"
+              disabled={disabled}
+              onClick={() => {
+                if (disabled) return;
+                action.onClick(row, rowIndex);
+                setOpen(false);
+              }}
+              className={`type-label-regular-s flex items-center gap-[var(--global-spacing-s8,8px)] py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[var(--global-spacing-s8,8px)] text-left disabled:cursor-not-allowed disabled:text-[color:var(--component-table-row-icon-disabled,#A3A3AB)] ${
+                disabled ? "" : `cursor-pointer ${ROW_TEXT_DEFAULT} hover:bg-[var(--component-table-row-background-hover,#EDF8FF)]`
+              }`}
+            >
+              {action.icon}
+              {action.label}
+            </button>
+          );
+        })}
+      </Popover>
     </>
   );
 }

@@ -357,4 +357,94 @@
   --component-table-row-text-default: #343438;
   --component-table-row-text-placeholder: #696970;
   --component-table-row-text-link: #0174BC;
+
+  /* component.select — tokens/select.json, node 47:7683. Hex values cross-checked against
+     get_variable_defs on the node (all already-resolved, no alias chasing needed). `label` isn't
+     itself a select.json key — it's the same shared "component/label/text" var TextField's own
+     label also resolves to (#343438), given its own dedicated CSS var here for 1:1 traceability. */
+  --component-select-label: #343438;
+  --component-select-default-background: #FFFFFF;
+  --component-select-default-border: #83838C;
+  --component-select-default-text: #696970;
+  --component-select-default-icon: #3D3D42;
+  --component-select-default-hinttext: #696970;
+  --component-select-default-infoicon: #696970;
+  --component-select-hover-background: #FFFFFF;
+  --component-select-hover-border: #3D3D42;
+  --component-select-hover-text: #696970;
+  --component-select-hover-icon: #3D3D42;
+  --component-select-filled-background: #FFFFFF;
+  --component-select-filled-border: #83838C;
+  --component-select-filled-text: #343438;
+  --component-select-disabled-background: #EDEDF2;
+  --component-select-disabled-border: #C2C2CA;
+  --component-select-disabled-text: #A3A3AB;
+  --component-select-disabled-icon: #A3A3AB;
+  --component-select-error-background: #FFFFFF;
+  --component-select-error-border: #D63C42;
+  --component-select-error-hinttext: #B82329;
+  --component-select-focusempty-background: #FFFFFF;
+  --component-select-focusempty-border: #0174BC;
+  --component-select-focusempty-text: #696970;
+  --component-select-focus-background: #FFFFFF;
+  --component-select-focus-border: #0174BC;
+  --component-select-focus-text: #343438;
+  --component-select-readonly-background: #FFFFFF;
+  --component-select-readonly-text: #343438;
+
+  /* component.dropdown — tokens/dropdown.json, scoped for now to what Select's own internal
+     popover uses (background/text/elevation). Intentionally minimal — the richer Dropdown item
+     types (checkbox multi-select, categories, search) are a separate, not-yet-built component
+     (node 77:4363); extend this file additively if/when that component is built. */
+  --component-dropdown-background-default: #FFFFFF;
+  --component-dropdown-background-hover: #EDF8FF;
+  --component-dropdown-text-default: #343438;
+  --component-dropdown-text-disabled: #A3A3AB;
+  --component-dropdown-text-description: #696970;
+  --component-dropdown-elevation-s: 0px 2px 8px 0px rgba(58,59,63,0.18);
+
+  /* component.search — tokens/search.json, node 91:3834 (`Search-field`). Pre-seeded (same "Jan 12
+     batch" precedent as Button/TextField/Select), hex values cross-checked against get_variable_defs
+     on the node. Every state carries two distinct icon colors: `searchicon` for the fixed leading
+     magnifying-glass glyph, `icon` for the trailing clear/chevron buttons (only rendered in the
+     filled/error/focus states — present here anyway for structural consistency, same precedent as
+     Select's unused-but-specified buckets). */
+  --component-search-default-background: #FFFFFF;
+  --component-search-default-border: #83838C;
+  --component-search-default-text: #696970;
+  --component-search-default-icon: #3D3D42;
+  --component-search-default-searchicon: #696970;
+  --component-search-default-hinttext: #696970;
+  --component-search-hover-background: #FFFFFF;
+  --component-search-hover-border: #3D3D42;
+  --component-search-hover-text: #696970;
+  --component-search-hover-icon: #3D3D42;
+  --component-search-hover-searchicon: #696970;
+  --component-search-focusempty-background: #FFFFFF;
+  --component-search-focusempty-border: #0174BC;
+  --component-search-focusempty-text: #696970;
+  --component-search-focusempty-icon: #3D3D42;
+  --component-search-focusempty-searchicon: #696970;
+  --component-search-filled-background: #FFFFFF;
+  --component-search-filled-border: #83838C;
+  --component-search-filled-text: #343438;
+  --component-search-filled-icon: #3D3D42;
+  --component-search-filled-searchicon: #696970;
+  --component-search-disabled-background: #EDEDF2;
+  --component-search-disabled-border: #C2C2CA;
+  --component-search-disabled-text: #A3A3AB;
+  --component-search-disabled-icon: #A3A3AB;
+  --component-search-disabled-searchicon: #A3A3AB;
+  --component-search-disabled-hinttext: #696970;
+  --component-search-error-background: #FFFFFF;
+  --component-search-error-border: #D63C42;
+  --component-search-error-text: #343438;
+  --component-search-error-icon: #3D3D42;
+  --component-search-error-searchicon: #696970;
+  --component-search-error-hinttext: #B82329;
+  --component-search-focus-background: #FFFFFF;
+  --component-search-focus-border: #0174BC;
+  --component-search-focus-text: #343438;
+  --component-search-focus-icon: #3D3D42;
+  --component-search-focus-searchicon: #696970;
 }

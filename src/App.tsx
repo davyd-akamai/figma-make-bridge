@@ -7,6 +7,8 @@ import Checkbox from "../components/Checkbox";
 import RadioButton from "../components/RadioButton";
 import Container from "../components/Container";
 import TextField from "../components/TextField";
+import Select, { type SelectOption } from "../components/Select";
+import Search from "../components/Search";
 import Badge, { type BadgeType, type BadgeColor } from "../components/Badge";
 import SystemBadge from "../components/SystemBadge";
 import TabsHorizontal, { type TabsHorizontalTab } from "../components/TabsHorizontal";
@@ -210,6 +212,153 @@ function TextFieldSection() {
       </div>
       <div style={{ width: 260 }}>
         <TextField label="Label" placeholder="With info icon" infoIcon infoText="More information about this field" />
+      </div>
+    </div>
+  );
+}
+
+const REGION_OPTIONS: SelectOption[] = [
+  { value: "us-east", label: "US, Newark, NJ (us-east)", icon: <ServerIcon size={16} /> },
+  { value: "us-southeast", label: "US, Atlanta, GA (us-southeast)", icon: <ServerIcon size={16} /> },
+  { value: "eu-central", label: "GE, Frankfurt (eu-central)", icon: <NetworkIcon size={16} /> },
+  { value: "fr-par", label: "FR, Paris (fr-par)", icon: <NetworkIcon size={16} /> },
+  { value: "gb-lon", label: "GB, London (gb-lon)", icon: <NetworkIcon size={16} />, disabled: true },
+];
+
+function SelectSection() {
+  const [controlledValue, setControlledValue] = useState<string | null>("item-2");
+  const [tagOptions, setTagOptions] = useState<SelectOption[]>([
+    { value: "prod", label: "production" },
+    { value: "staging", label: "staging" },
+  ]);
+  const [tagValue, setTagValue] = useState<string | null>("prod");
+  const [createdLog, setCreatedLog] = useState<string[]>([]);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+        <div style={{ width: 260 }}>
+          <Select label="Label" placeholder="Select" />
+        </div>
+        <div style={{ width: 260 }}>
+          <Select
+            label="Label"
+            value={controlledValue}
+            onChange={(v) => setControlledValue(v)}
+            helperText="Hint text"
+          />
+        </div>
+        <div style={{ width: 320 }}>
+          <Select label="Label" labelPosition="left" options={REGION_OPTIONS} defaultValue="us-east" />
+        </div>
+        <div style={{ width: 260 }}>
+          <Select label="Label" errorText="This field is required" />
+        </div>
+        <div style={{ width: 260 }}>
+          <Select label="Label" defaultValue="item-1" disabled helperText="Hint text" />
+        </div>
+        <div style={{ width: 260 }}>
+          <Select label="Label" defaultValue="item-1" readOnly infoIcon infoText="More information about this field" />
+        </div>
+        <div style={{ width: 260 }}>
+          <Select placeholder="No label, no info icon" />
+        </div>
+        <div style={{ width: 280 }}>
+          <Select label="Label" options={REGION_OPTIONS} placeholder="With icons + info icon" infoIcon infoText="More information about this field" />
+        </div>
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+        <div style={{ width: 260 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            Not creatable (type "xyz" — empty state)
+          </p>
+          <Select placeholder="Type to filter" />
+        </div>
+        <div style={{ width: 280 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            Creatable — type a new tag and hit Enter
+          </p>
+          <Select
+            options={tagOptions}
+            value={tagValue}
+            onChange={(v) => setTagValue(v)}
+            creatable
+            onCreateOption={(query) => {
+              const option: SelectOption = { value: query, label: query };
+              setTagOptions((prev) => [...prev, option]);
+              setTagValue(query);
+              setCreatedLog((prev) => [...prev, query]);
+            }}
+            placeholder="Select or create a tag"
+          />
+          {createdLog.length > 0 && (
+            <p className="type-label-regular-xs" style={{ margin: "8px 0 0", color: "#696970" }}>
+              Created: {createdLog.join(", ")}
+            </p>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const SEARCH_SUGGESTIONS = ["DNS", "DNS servers", "DNS locales", "DNS over HTTPS"];
+
+function SearchSection() {
+  const [controlledValue, setControlledValue] = useState("DNS servers");
+  const [submittedLog, setSubmittedLog] = useState<string[]>([]);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+        <div style={{ width: 260 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            Default (no dropdown feature)
+          </p>
+          <Search placeholder="Search" />
+        </div>
+        <div style={{ width: 260 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            Controlled, with helper text
+          </p>
+          <Search value={controlledValue} onChange={setControlledValue} helperText="Hint text" />
+        </div>
+        <div style={{ width: 260 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            Disabled
+          </p>
+          <Search defaultValue="" disabled helperText="Hint text" />
+        </div>
+        <div style={{ width: 260 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            Error
+          </p>
+          <Search defaultValue="Search" errorText="Warning text" />
+        </div>
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+        <div style={{ width: 260 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            With suggestions — type "DNS"
+          </p>
+          <Search
+            defaultValue="DNS3"
+            suggestions={SEARCH_SUGGESTIONS}
+            onSelectSuggestion={(s) => setSubmittedLog((prev) => [...prev, `selected: ${s}`])}
+            onSearch={(v) => setSubmittedLog((prev) => [...prev, `searched: ${v}`])}
+          />
+        </div>
+        <div style={{ width: 260 }}>
+          <p className="type-label-bold-s" style={{ margin: "0 0 8px" }}>
+            With suggestions — no matches (type "xyz")
+          </p>
+          <Search suggestions={SEARCH_SUGGESTIONS} />
+        </div>
+        {submittedLog.length > 0 && (
+          <p className="type-label-regular-xs" style={{ margin: 0, width: "100%", color: "#696970" }}>
+            Events: {submittedLog.join(" · ")}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -1078,6 +1227,14 @@ function PreviewHarness() {
 
           <PreviewSection title="Text Field">
             <TextFieldSection />
+          </PreviewSection>
+
+          <PreviewSection title="Select">
+            <SelectSection />
+          </PreviewSection>
+
+          <PreviewSection title="Search">
+            <SearchSection />
           </PreviewSection>
 
           <PreviewSection title="Checkbox">

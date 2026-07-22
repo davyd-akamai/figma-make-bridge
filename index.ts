@@ -29,6 +29,12 @@ export type { ContainerProps } from "./components/Container";
 export { default as TextField } from "./components/TextField";
 export type { TextFieldProps, TextFieldLabelPosition } from "./components/TextField";
 
+export { default as Select } from "./components/Select";
+export type { SelectProps, SelectOption, SelectLabelPosition } from "./components/Select";
+
+export { default as Search } from "./components/Search";
+export type { SearchProps } from "./components/Search";
+
 export { default as Checkbox } from "./components/Checkbox";
 export type { CheckboxProps, CheckboxSize } from "./components/Checkbox";
 

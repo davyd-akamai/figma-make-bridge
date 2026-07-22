@@ -36,7 +36,6 @@
 import {
   type KeyboardEvent,
   type ReactNode,
-  useEffect,
   useId,
   useLayoutEffect,
   useMemo,
@@ -45,6 +44,7 @@ import {
 } from "react";
 import { MoreIcon } from "./icons";
 import Badge from "./Badge";
+import Popover from "./internal/Popover";
 
 export type TabsHorizontalSize = "small" | "large";
 
@@ -114,9 +114,9 @@ function tabButtonClassName(size: TabsHorizontalSize, selected: boolean, disable
     return `${base} ${TAB_TYPE_DEFAULT[size]} border-transparent text-[color:var(--component-tabs-disabled-text,#A3A3AB)] cursor-not-allowed`;
   }
   if (selected) {
-    return `${base} ${TAB_TYPE_ACTIVE[size]} border-[var(--component-tabs-active-border,#0174BC)] text-[color:var(--component-tabs-active-text,#0174BC)]`;
+    return `${base} ${TAB_TYPE_ACTIVE[size]} cursor-pointer border-[var(--component-tabs-active-border,#0174BC)] text-[color:var(--component-tabs-active-text,#0174BC)]`;
   }
-  return `${base} ${TAB_TYPE_DEFAULT[size]} border-transparent text-[color:var(--component-tabs-default-text,#343438)] hover:text-[color:var(--component-tabs-hover-text,#009CDE)]`;
+  return `${base} ${TAB_TYPE_DEFAULT[size]} cursor-pointer border-transparent text-[color:var(--component-tabs-default-text,#343438)] hover:text-[color:var(--component-tabs-hover-text,#009CDE)]`;
 }
 
 function tabIconClassName(selected: boolean, disabled: boolean) {
@@ -180,67 +180,56 @@ function OverflowMenu({
   triggerRef: (el: HTMLButtonElement | null) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement | null>(null);
+  const anchorRef = useRef<HTMLButtonElement | null>(null);
   const box = ELLIPSIS_BOX[size];
 
-  useEffect(() => {
-    if (!open) return;
-    const onOutside = (e: MouseEvent) => {
-      if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false);
-    };
-    const onEscape = (e: globalThis.KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-    document.addEventListener("mousedown", onOutside);
-    document.addEventListener("keydown", onEscape);
-    return () => {
-      document.removeEventListener("mousedown", onOutside);
-      document.removeEventListener("keydown", onEscape);
-    };
-  }, [open]);
-
   return (
-    <div ref={rootRef} className="relative shrink-0">
+    <div className="shrink-0">
       <button
-        ref={triggerRef}
+        ref={(el) => {
+          anchorRef.current = el;
+          triggerRef(el);
+        }}
         type="button"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={moreLabel}
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center justify-end border-b border-solid border-[var(--component-tabs-default-border,#C2C2CA)] text-[color:var(--component-tabs-ellipsis-icon,#3D3D42)] hover:text-[color:var(--component-tabs-ellipsis-icon-hover,#009CDE)] ${box.className}`}
+        className={`flex cursor-pointer items-center justify-end border-b border-solid border-[var(--component-tabs-default-border,#C2C2CA)] text-[color:var(--component-tabs-ellipsis-icon,#3D3D42)] hover:text-[color:var(--component-tabs-ellipsis-icon-hover,#009CDE)] ${box.className}`}
       >
         <MoreIcon size={box.iconSize} />
       </button>
-      {open && (
-        <div
-          role="menu"
-          aria-label={moreLabel}
-          className="absolute right-0 top-full z-10 flex min-w-[160px] flex-col items-stretch py-[var(--global-spacing-s4,4px)] bg-[var(--component-tabs-overflowmenu-background,#FFFFFF)] shadow-[0px_2px_8px_0px_var(--component-tabs-overflowmenu-shadow-color,rgba(58,59,63,0.18))]"
-        >
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              type="button"
-              role="menuitemradio"
-              aria-checked={tab.id === selectedTabId}
-              disabled={tab.disabled}
-              onClick={() => {
-                if (tab.disabled) return;
-                onSelect(tab.id);
-                setOpen(false);
-              }}
-              className={`type-label-regular-s flex items-center gap-[var(--global-spacing-s8,8px)] py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[var(--global-spacing-s8,8px)] text-left disabled:cursor-not-allowed disabled:text-[color:var(--component-tabs-disabled-text,#A3A3AB)] ${
-                tab.disabled
-                  ? ""
-                  : "text-[color:var(--component-tabs-overflowmenu-text,#343438)] hover:bg-[var(--component-tabs-overflowmenu-hover-background,#EDF8FF)]"
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-      )}
+      <Popover
+        open={open}
+        onClose={() => setOpen(false)}
+        anchorRef={anchorRef}
+        align="end"
+        role="menu"
+        aria-label={moreLabel}
+        className="flex min-w-[160px] flex-col items-stretch py-[var(--global-spacing-s4,4px)] bg-[var(--component-tabs-overflowmenu-background,#FFFFFF)] shadow-[0px_2px_8px_0px_var(--component-tabs-overflowmenu-shadow-color,rgba(58,59,63,0.18))]"
+      >
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            type="button"
+            role="menuitemradio"
+            aria-checked={tab.id === selectedTabId}
+            disabled={tab.disabled}
+            onClick={() => {
+              if (tab.disabled) return;
+              onSelect(tab.id);
+              setOpen(false);
+            }}
+            className={`type-label-regular-s flex items-center gap-[var(--global-spacing-s8,8px)] py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[var(--global-spacing-s8,8px)] text-left disabled:cursor-not-allowed disabled:text-[color:var(--component-tabs-disabled-text,#A3A3AB)] ${
+              tab.disabled
+                ? ""
+                : "cursor-pointer text-[color:var(--component-tabs-overflowmenu-text,#343438)] hover:bg-[var(--component-tabs-overflowmenu-hover-background,#EDF8FF)]"
+            }`}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </Popover>
     </div>
   );
 }

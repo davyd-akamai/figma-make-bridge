@@ -98,7 +98,7 @@ export default function TextField({
       onClick={onInfoIconClick}
       title={infoText}
       aria-label={infoText ?? "More information"}
-      className="flex h-[34px] shrink-0 items-center justify-center px-[var(--global-spacing-s8,8px)] text-[color:var(--component-textfield-info-icon,#696970)]"
+      className="flex h-[34px] shrink-0 cursor-pointer items-center justify-center px-[var(--global-spacing-s8,8px)] text-[color:var(--component-textfield-info-icon,#696970)]"
     >
       <InfoIcon size={20} />
     </button>
@@ -159,7 +159,7 @@ export default function TextField({
                 type="button"
                 onClick={handleClear}
                 aria-label="Clear field"
-                className="flex shrink-0 items-center justify-center text-[color:var(--component-textfield-icon,#3D3D42)] hover:text-[color:var(--component-textfield-icon-hover,#009CDE)] active:text-[color:var(--component-textfield-icon-active,#0174BC)]"
+                className="flex shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-textfield-icon,#3D3D42)] hover:text-[color:var(--component-textfield-icon-hover,#009CDE)] active:text-[color:var(--component-textfield-icon-active,#0174BC)]"
               >
                 <CloseIcon size={16} />
               </button>
