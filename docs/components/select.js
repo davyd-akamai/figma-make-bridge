@@ -89,12 +89,32 @@
       closeDropdown();
     }
 
+    var lastRect = null;
+    var positionLoopId = null;
+
     function positionList() {
       if (!listWrapEl || !fieldRef) return;
       var rect = fieldRef.getBoundingClientRect();
       listWrapEl.style.top = rect.bottom + "px";
       listWrapEl.style.left = rect.left + "px";
       listWrapEl.style.width = rect.width + "px";
+      lastRect = rect;
+    }
+
+    // `scroll`/`resize` don't cover every reason the field can move while the dropdown is open —
+    // e.g. a layout shift from a late web-font swap (font-display: swap) reflows the page with no
+    // event of its own. A stale position leaves the dropdown rendered somewhere the field no longer
+    // is, so a click that looks correct actually lands on the page behind it (closing without
+    // selecting, since that's an "outside" click). Poll the field's rect every frame while open —
+    // cheap, self-cancels the moment the dropdown closes, and catches every cause at once instead of
+    // guessing which event to listen for.
+    function positionLoop() {
+      if (!listWrapEl || !fieldRef) return;
+      var rect = fieldRef.getBoundingClientRect();
+      if (!lastRect || rect.top !== lastRect.top || rect.left !== lastRect.left || rect.width !== lastRect.width) {
+        positionList();
+      }
+      positionLoopId = requestAnimationFrame(positionLoop);
     }
 
     function removeList() {
@@ -102,6 +122,11 @@
         listWrapEl.remove();
         listWrapEl = null;
         listEl = null;
+        lastRect = null;
+        if (positionLoopId) {
+          cancelAnimationFrame(positionLoopId);
+          positionLoopId = null;
+        }
         document.removeEventListener("mousedown", onOutside);
         window.removeEventListener("scroll", positionList, true);
         window.removeEventListener("resize", positionList);
@@ -122,6 +147,7 @@
       listWrapEl.style.position = "fixed";
       listWrapEl.style.zIndex = "1000";
       positionList();
+      positionLoopId = requestAnimationFrame(positionLoop);
 
       listEl = document.createElement("ul");
       listEl.setAttribute("role", "listbox");
@@ -138,6 +164,7 @@
         var li = document.createElement("li");
         li.setAttribute("role", "option");
         li.dataset.index = index;
+        li.dataset.disabled = option.disabled ? "true" : "false";
         var isDisabled = !!option.disabled;
         var highlighted = index === state.highlighted;
         li.className =
@@ -159,7 +186,7 @@
         li.addEventListener("mouseenter", function () {
           if (isDisabled) return;
           state.highlighted = index;
-          paint();
+          updateHighlight();
         });
         li.addEventListener("mousedown", function (e) { e.preventDefault(); });
         li.addEventListener("click", function () { selectOption(option); });
@@ -197,6 +224,26 @@
       window.addEventListener("resize", positionList);
     }
 
+    // Toggling the highlighted row on hover/arrow-key nav must NOT go through paint() — paint()
+    // tears down and recreates every option <li> via innerHTML, and real mouse movement naturally
+    // fires mouseenter on several rows in a row while travelling toward the one the user actually
+    // clicks. Each rebuild replaces those DOM nodes with new ones, and rebuilding mid-gesture races
+    // the browser's own (partly async, especially for a `position:fixed` layer) input targeting:
+    // the click can be dispatched against a node that paint() already replaced by the time it
+    // resolves, so `e.target` reports something stale (observed as `<body>`) even though a fresh
+    // `elementsFromPoint` at the same coordinates correctly finds the option. Toggling just the
+    // hover class on the existing nodes keeps every option element's identity stable for the whole
+    // time the dropdown is open, which removes the race instead of just narrowing its window.
+    var HIGHLIGHT_CLASS = "bg-[var(--component-dropdown-background-hover,#EDF8FF)]";
+    function updateHighlight() {
+      if (!listEl) return;
+      Array.prototype.forEach.call(listEl.querySelectorAll('[role="option"]'), function (li) {
+        if (li.dataset.disabled === "true") return;
+        var idx = Number(li.dataset.index);
+        li.classList.toggle(HIGHLIGHT_CLASS, idx === state.highlighted);
+      });
+    }
+
     function moveHighlight(delta) {
       var list = filteredOptions();
       if (list.length === 0) return;
@@ -225,12 +272,12 @@
         case "ArrowDown":
           e.preventDefault();
           moveHighlight(1);
-          paint();
+          updateHighlight();
           break;
         case "ArrowUp":
           e.preventDefault();
           moveHighlight(-1);
-          paint();
+          updateHighlight();
           break;
         case "Enter":
           e.preventDefault();
