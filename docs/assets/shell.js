@@ -15,6 +15,8 @@
     { id: "table", label: "Table", href: "components/table.html" },
     { id: "container", label: "Container", href: "components/container.html" },
     { id: "text-field", label: "TextField", href: "components/text-field.html" },
+    { id: "select", label: "Select", href: "components/select.html" },
+    { id: "search", label: "Search", href: "components/search.html" },
     { id: "checkbox", label: "Checkbox", href: "components/checkbox.html" },
     { id: "radio-button", label: "RadioButton", href: "components/radio-button.html" },
     { id: "tabs-horizontal", label: "TabsHorizontal", href: "components/tabs-horizontal.html" },

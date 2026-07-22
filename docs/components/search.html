@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="search">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Search</h1>
+        <p class="docs-lede">Leading-icon search input — the one component in this library that owns that pattern (TextField deliberately doesn't). An optional <code>suggestions</code> list turns it into a type-to-filter autocomplete with a "No items found" empty state.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=91-3834" target="_blank" rel="noopener noreferrer">91:3834</a></span>
+          <span><code class="docs-code">import { Search } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Search.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>States</h2>
+          <p class="docs-section-note">Default/controlled/disabled/error — no dropdown feature on any of these (the <code>suggestions</code> prop is omitted).</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="align-items:flex-start;">
+              <div style="width:220px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">Default</p>
+                <div data-search-demo data-search-config='{"placeholder":"Search"}'></div>
+              </div>
+              <div style="width:220px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">Controlled, with helper text</p>
+                <div data-search-demo data-search-config='{"value":"DNS servers","helperText":"Hint text"}'></div>
+              </div>
+              <div style="width:220px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">Disabled</p>
+                <div data-search-demo data-search-config='{"disabled":true,"helperText":"Hint text"}'></div>
+              </div>
+              <div style="width:220px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">Error</p>
+                <div data-search-demo data-search-config='{"value":"Search","errorText":"Warning text"}'></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Suggestions dropdown</h2>
+          <p class="docs-section-note">Left: type "DNS" to see the matching suggestions list (click one, or arrow-key + Enter, to select it). Right: type anything else (e.g. "xyz") to see the "No items found" empty state — Figma's own literal copy for this row.</p>
+          <div class="docs-demo" style="overflow: visible;">
+            <div class="docs-demo-stage" style="align-items:flex-start;">
+              <div style="width:260px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">With suggestions — type "DNS"</p>
+                <div data-search-demo data-search-config='{"value":"DNS3","suggestions":["DNS","DNS servers","DNS locales","DNS over HTTPS"]}'></div>
+              </div>
+              <div style="width:260px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">With suggestions — no matches (type "xyz")</p>
+                <div data-search-demo data-search-config='{"suggestions":["DNS","DNS servers","DNS locales","DNS over HTTPS"]}'></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">value / defaultValue / onChange</td><td class="docs-prop-type">string</td><td>— / "" / —</td><td>Controlled/uncontrolled split. The input's own text is the query — no separate "selected value" state.</td></tr>
+              <tr><td class="docs-prop-name">onSearch</td><td class="docs-prop-type">(value) =&gt; void</td><td>—</td><td>Fires on Enter when no suggestion is actively highlighted — the raw-query submit event.</td></tr>
+              <tr><td class="docs-prop-name">suggestions</td><td class="docs-prop-type">string[]</td><td>—</td><td>Omit entirely for a plain search box with no dropdown ever. Pass an array (even empty) to enable local, case-insensitive substring filtering.</td></tr>
+              <tr><td class="docs-prop-name">onSelectSuggestion</td><td class="docs-prop-type">(suggestion) =&gt; void</td><td>—</td><td>Fires when a suggestion is clicked or selected via Enter.</td></tr>
+              <tr><td class="docs-prop-name">noResultsMessage</td><td class="docs-prop-type">string</td><td>"No items found"</td><td>Figma's own literal copy for the empty-state row (node 91:3811).</td></tr>
+              <tr><td class="docs-prop-name">helperText / errorText</td><td class="docs-prop-type">string</td><td>—</td><td>helperText is hidden while errorText is shown; errorText also switches the border to error red.</td></tr>
+              <tr><td class="docs-prop-name">clearable</td><td class="docs-prop-type">boolean</td><td>true</td><td>Clear (×) button shows whenever the field has a value and isn't disabled — independent of whether the dropdown is open.</td></tr>
+              <tr><td class="docs-prop-name">disabled</td><td class="docs-prop-type">boolean</td><td>false</td><td>No <code>readOnly</code> state exists — this component's Figma file has no such variant.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="search.js"></script>
+</body>
+</html>

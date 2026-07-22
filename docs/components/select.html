@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Select — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="select">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Select</h1>
+        <p class="docs-lede">Single-select combobox — always type-to-filter, with an optional per-option leading icon, a "Create" row, and an empty-state row for queries that match nothing.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=47-7683" target="_blank" rel="noopener noreferrer">47:7683</a></span>
+          <span><code class="docs-code">import { Select } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Select.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">Click to open, type to filter. Every instance below is a real, independent Select — try clearing, reopening, and picking a different option.</p>
+          <div class="docs-demo" style="overflow: visible;">
+            <div class="docs-demo-stage" style="align-items:flex-start;">
+              <div style="width:220px;" data-select-demo data-select-config='{"label":"Label","placeholder":"Select","options":[{"value":"item-1","label":"Item 1"},{"value":"item-2","label":"Item 2"},{"value":"item-3","label":"Item 3"}]}'></div>
+              <div style="width:220px;" data-select-demo data-select-config='{"label":"Label","placeholder":"Select","value":"item-2","helperText":"Hint text","options":[{"value":"item-1","label":"Item 1"},{"value":"item-2","label":"Item 2"},{"value":"item-3","label":"Item 3"}]}'></div>
+              <div style="width:320px;" data-select-demo data-select-config='{"label":"Label","labelPosition":"left","value":"us-east","options":[{"value":"us-east","label":"US, Newark, NJ (us-east)","icon":"server"},{"value":"us-southeast","label":"US, Atlanta, GA (us-southeast)","icon":"server"},{"value":"eu-central","label":"GE, Frankfurt (eu-central)","icon":"network"},{"value":"gb-lon","label":"GB, London (gb-lon)","icon":"network","disabled":true}]}'></div>
+              <div style="width:220px;" data-select-demo data-select-config='{"label":"Label","placeholder":"Select","errorText":"This field is required","options":[{"value":"item-1","label":"Item 1"}]}'></div>
+              <div style="width:220px;" data-select-demo data-select-config='{"label":"Label","placeholder":"Select","value":"item-1","disabled":true,"helperText":"Hint text","options":[{"value":"item-1","label":"Item 1"}]}'></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Type-to-filter, Create, and empty state</h2>
+          <p class="docs-section-note">Left: no matches renders the empty-state row (<code>creatable</code> is false — try typing "xyz"). Right: <code>creatable</code> is true, so a no-match query renders a <code>Create "…"</code> row instead — press Enter or click it to add and select the new tag.</p>
+          <div class="docs-demo" style="overflow: visible;">
+            <div class="docs-demo-stage" style="align-items:flex-start;">
+              <div style="width:260px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">Not creatable</p>
+                <div data-select-demo data-select-config='{"placeholder":"Type to filter","options":[{"value":"item-1","label":"Item 1"},{"value":"item-2","label":"Item 2"},{"value":"item-3","label":"Item 3"}]}'></div>
+              </div>
+              <div style="width:280px;">
+                <p class="type-label-bold-s" style="margin:0 0 8px;">Creatable — type a new tag and hit Enter</p>
+                <div data-select-demo data-select-config='{"placeholder":"Select or create a tag","creatable":true,"value":"prod","options":[{"value":"prod","label":"production"},{"value":"staging","label":"staging"}]}'></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">options</td><td class="docs-prop-type">{ value, label, icon?, disabled? }[]</td><td>[]</td><td>Optional per-option leading icon slot (covers Dropdown's "With icon"/flag item types, minus the checkbox).</td></tr>
+              <tr><td class="docs-prop-name">value / defaultValue / onChange</td><td class="docs-prop-type">string | null</td><td>— / null / —</td><td>Controlled/uncontrolled split, same as every other field in this library.</td></tr>
+              <tr><td class="docs-prop-name">label / labelPosition</td><td class="docs-prop-type">string / "top" | "left"</td><td>— / "top"</td><td>Omitting <code>label</code> renders no label at all.</td></tr>
+              <tr><td class="docs-prop-name">helperText / errorText</td><td class="docs-prop-type">string</td><td>—</td><td>helperText is hidden while errorText is shown; errorText also switches the border to error red.</td></tr>
+              <tr><td class="docs-prop-name">infoIcon / infoText / onInfoIconClick</td><td class="docs-prop-type">boolean / string / () =&gt; void</td><td>false</td><td>Tooltip-basement pattern, same as TextField.</td></tr>
+              <tr><td class="docs-prop-name">clearable</td><td class="docs-prop-type">boolean</td><td>true</td><td>Clear (×) button shows only when a value is selected and the field isn't disabled.</td></tr>
+              <tr><td class="docs-prop-name">creatable / onCreateOption</td><td class="docs-prop-type">boolean / (query) =&gt; void</td><td>false</td><td>When true, a no-match query renders a <code>Create "…"</code> row instead of the empty-state message. Select never mutates its own <code>options</code> — the consumer adds (and selects) the new option.</td></tr>
+              <tr><td class="docs-prop-name">emptyMessage</td><td class="docs-prop-type">string</td><td>"No options available"</td><td>Shown when the query matches nothing and <code>creatable</code> is false.</td></tr>
+              <tr><td class="docs-prop-name">disabled / readOnly</td><td class="docs-prop-type">boolean</td><td>false</td><td>readOnly renders a plain, non-interactive value row — no border, no dropdown.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="select.js"></script>
+</body>
+</html>
