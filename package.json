@@ -21,7 +21,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build --config vite.lib.config.ts && node scripts/copy-guidelines.mjs",
+    "tokens": "node scripts/generate-tokens.mjs",
+    "build": "npm run tokens && vite build --config vite.lib.config.ts && node scripts/copy-guidelines.mjs",
     "prepublishOnly": "npm run build"
   },
   "peerDependencies": {

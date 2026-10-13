@@ -3,3 +3,4 @@ dist
 core-design-system
 .claude
 .DS_Store
+.vscode

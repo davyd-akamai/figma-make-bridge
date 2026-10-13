@@ -68,7 +68,11 @@ export default function DefaultCmPageTemplate({
   }, []);
 
   return (
-    <div className={className ?? "flex min-h-screen w-full flex-col"}>
+    // Inline so a consumer `className` (which replaces the default classes) can't drop the page background.
+    <div
+      className={className ?? "flex min-h-screen w-full flex-col"}
+      style={{ background: "var(--alias-background-neutral, #F7F7FA)" }}
+    >
       <GlobalHeader {...headerProps} />
       <div className="flex flex-1">
         <div

@@ -12,5 +12,6 @@
     "jsx": "react-jsx",
     "strict": true
   },
-  "include": ["src", "components"]
+  "include": ["src", "components"],
+"exclude": ["**/*.figma.ts"]
 }
