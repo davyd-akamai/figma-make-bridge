@@ -6,7 +6,7 @@ Every component here is built dual-purpose from the start: usable as normal Reac
 
 ## Status
 
-Published and in active use. `figma-make-bridge@0.1.8` is live on the public npm registry and has been connected to real Figma Make prototypes (see [GUIDELINES.md](GUIDELINES.md)'s "First real Make swap-in" section for what that's already surfaced). The public listing is a temporary/throwaway home — see "Figma Make packaging" below for the plan to move to Akamai's private registry.
+Published and in active use. The latest published version of `figma-make-bridge` is live on the public npm registry and has been connected to real Figma Make prototypes (see [GUIDELINES.md](GUIDELINES.md)'s "First real Make swap-in" section for what that's already surfaced). The public listing is a temporary/throwaway home — see "Figma Make packaging" below for the plan to move to Akamai's private registry.
 
 If you're a designer looking to *use* this library in a prototype rather than build it, start at [designer-instructions.md](designer-instructions.md) instead of this file.
 
@@ -44,6 +44,7 @@ docs/                 Public static preview site (plain HTML/CSS/JS, no build st
                        component/template, published via GitHub Pages, see "Components" below
 index.ts              Root barrel export — the package's public API surface
 vite.lib.config.ts    Library-mode build config (npm run build) — separate from the dev-only vite.config.ts
+scripts/generate-tokens.mjs   Build step (npm run tokens) that generates src/tokens.css from tokens/*.json
 scripts/copy-guidelines.mjs   Build step that copies figma-make-guidelines.md into dist/Guidelines.md
 
 GUIDELINES.md                 Living decision log — the source of truth for *why*, read this first
@@ -77,9 +78,14 @@ code-connect-kickoff-prompt.md    Opening-message template for continuing Code C
 | [`TextField`](components/TextField.tsx) | Text input with label, helper/error text, clear button, info icon | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/text-field.html) |
 | [`Checkbox`](components/Checkbox.tsx) | Checkbox with indeterminate state, small/large sizes | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/checkbox.html) |
 | [`RadioButton`](components/RadioButton.tsx) | Radio input, small/large sizes — grouping is via native `name`, not a wrapper component | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/radio-button.html) |
+| [`Select`](components/Select.tsx) | Single-select dropdown with type-to-filter, optional per-option icon, Create/empty-state rows | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/select.html) |
+| [`Search`](components/Search.tsx) | Search input with leading icon and optional suggestions dropdown | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/search.html) |
+| [`TabsHorizontal`](components/TabsHorizontal.tsx) | Tab headers with automatic overflow menu, small/large sizes | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/tabs-horizontal.html) |
+| [`Drawer`](components/Drawer.tsx) | Right-hand slide-in panel with overlay, sticky footer slot, small/default/flexible sizes | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/drawer.html) |
+| [`Table`](components/Table.tsx) | Data table — sortable, selectable, expandable rows, typed cell types, row actions | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/table.html) |
 | [`components/icons`](components/icons/index.tsx) | Every icon used across components, one component per icon | [↗](https://davyd-akamai.github.io/figma-make-bridge/components/icons.html) |
 
-Check [GUIDELINES.md](GUIDELINES.md)'s "Content-tier components" section for what's currently planned next (Table, Topbar, Select, Drawer, Notification banner/toast, Tabs).
+Check [GUIDELINES.md](GUIDELINES.md)'s "Content-tier components" section for what's currently planned next (Topbar, Notification banner/toast).
 
 ### Component preview site
 
@@ -106,4 +112,4 @@ If you're building or converting a prototype rather than working on the library 
 
 ## Figma Make packaging
 
-Published to the public npm registry as a temporary home (`figma-make-bridge`, currently `0.1.8`) to prove the install-in-a-real-prototype flow works end to end — see [GUIDELINES.md](GUIDELINES.md)'s "Packaging" section for the full build setup. Moving to Akamai's private registry still requires an org admin to confirm it's enabled and create a scope; see GUIDELINES.md's "Figma Make private registry" section for that checklist. Every publish also ships [figma-make-guidelines.md](figma-make-guidelines.md) as `dist/Guidelines.md`, the file Figma Make's AI reads for how to use the library correctly.
+Published to the public npm registry as a temporary home (`figma-make-bridge`, latest published version) to prove the install-in-a-real-prototype flow works end to end — see [GUIDELINES.md](GUIDELINES.md)'s "Packaging" section for the full build setup. Moving to Akamai's private registry still requires an org admin to confirm it's enabled and create a scope; see GUIDELINES.md's "Figma Make private registry" section for that checklist. Every publish also ships [figma-make-guidelines.md](figma-make-guidelines.md) as `dist/Guidelines.md`, the file Figma Make's AI reads for how to use the library correctly.

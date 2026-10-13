@@ -364,7 +364,7 @@
         var iconOnly = document.createElement("div");
         iconOnly.setAttribute("role", "columnheader");
         iconOnly.className =
-          "flex min-w-0 items-center justify-center gap-[var(--global-spacing-s16,16px)] px-[var(--global-spacing-s8,8px)] py-[var(--global-spacing-s10,10px)] border-b border-solid " +
+          "flex min-w-0 items-center justify-center gap-[var(--global-spacing-s16,16px)] px-[var(--global-spacing-s8,8px)] py-[10px] border-b border-solid " +
           c.bg + " " + c.border + " " + c.iconDefault;
         if (column.headerIcon) iconOnly.innerHTML = ICONS[column.headerIcon];
         return iconOnly;
@@ -423,7 +423,7 @@
       var cell = document.createElement("div");
       cell.setAttribute("role", "cell");
       cell.className =
-        "flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s10,10px)] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] border-b border-solid " +
+        "flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[10px] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] border-b border-solid " +
         ROW_BORDER + " " + rowBg + " " + ROW_HOVER_GROUP;
 
       if (isFirst && config.selectable) {

@@ -304,7 +304,7 @@ function HeaderCell<T extends TableRowData>({
     return (
       <div
         role="columnheader"
-        className={`flex min-w-0 items-center justify-center gap-[var(--global-spacing-s16,16px)] px-[var(--global-spacing-s8,8px)] py-[var(--global-spacing-s10,10px)] border-b border-solid ${c.bg} ${c.border} ${c.iconDefault}`}
+        className={`flex min-w-0 items-center justify-center gap-[var(--global-spacing-s16,16px)] px-[var(--global-spacing-s8,8px)] py-[10px] border-b border-solid ${c.bg} ${c.border} ${c.iconDefault}`}
       >
         {column.headerIcon}
       </div>
@@ -592,7 +592,7 @@ export default function Table<T extends TableRowData = TableRowData>({
                 <div
                   key={column.key}
                   role="cell"
-                  className={`flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s10,10px)] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] border-b border-solid ${ROW_BORDER} ${rowBg} ${ROW_HOVER_GROUP}`}
+                  className={`flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[10px] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] border-b border-solid ${ROW_BORDER} ${rowBg} ${ROW_HOVER_GROUP}`}
                 >
                   {colIndex === 0 && selectable && (
                     <Checkbox

@@ -9,7 +9,7 @@ Paste the current contents of [figma-make-guidelines.md](figma-make-guidelines.m
 ## The prompt
 
 ```
-Add the npm package `figma-make-bridge` (latest published version — currently 0.1.9) as a dependency.
+Add the npm package `figma-make-bridge` latest published version as a dependency.
 
 Then build a single starter page:
 - Use `DefaultCmPageTemplate`, composing the default `GlobalHeader`, `SideNavigation` (use the exported `DEFAULT_SIDE_NAV_SECTIONS`), and `GlobalFooter`.
@@ -21,4 +21,4 @@ Then build a single starter page:
 
 ## Keeping this current
 
-The version number in the prompt is a snapshot, not a guarantee — bump it whenever you publish a new one (see [GUIDELINES.md](GUIDELINES.md)'s "Packaging" section for what's actually live), or just say "latest" and drop the parenthetical entirely if keeping the number in sync becomes annoying.
+The prompt deliberately says "latest published version" instead of a version number, so it never needs a bump when a new version is published (see [GUIDELINES.md](GUIDELINES.md)'s "Packaging" section for what's actually live).

@@ -32,9 +32,12 @@ This is for converting an existing prototype — one that has its own hand-built
 
 ## When Make flags something as "no match"
 
-Not everything is in the library yet — this is expected, not a failure. Two options:
-- **One-off, unlikely to repeat elsewhere:** it's fine for Make to build it as a custom piece, as long as it still uses our design tokens, typography classes, and spacing — never raw hex colors, arbitrary fonts, or invented spacing values. Guidelines.md already tells Make this.
-- **Something you expect other prototypes will also need** (a component, not a one-off layout): flag it to the library team rather than letting every prototype quietly reinvent its own version. That's exactly how the library grows — each component so far came from a real prototype need.
+Not everything is in the library yet — this is expected, not a failure. Guidelines.md tells Make to work down a fixed order ("Components first"):
+1. **Use a library component** if one fits.
+2. **Compose from library components plus layout** if no single component fits.
+3. **Only if neither works, build a custom element** — styled with our color alias variables (`--alias-*`, never raw hex, rgb or named colors; a global color variable only as a rare last resort that Make must call out), the global spacing scale and the typography classes. Make is told to say so in its reply, so you will see it listed.
+
+Make is also told not to invent variants or props on library components. If a reply says something was built custom, and you expect other prototypes will also need it (a component, not a one-off layout), flag it to the library team rather than letting every prototype quietly reinvent its own version. That's exactly how the library grows — each component so far came from a real prototype need.
 
 ## Quick reference
 
@@ -48,4 +51,4 @@ Not everything is in the library yet — this is expected, not a failure. Two op
 
 ## If you get stuck
 
-Don't work around a missing component with fully custom, un-tokenized code — that's exactly the drift this library exists to prevent. Flag it instead.
+Don't work around a missing component with fully custom, un-tokenized code — that's exactly the drift this library exists to prevent. Follow the "Components first" order above and flag it instead.

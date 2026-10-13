@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^for f in button textField tabs sideNavigation; do echo \"== \\$f\"; node /tmp/dump2\\.mjs tokens/\\$f\\.json \\| cut -d'\\|' -f1,3 ; done \\| head -400; git log --oneline \\| head; git diff --stat$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
