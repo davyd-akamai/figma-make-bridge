@@ -4,8 +4,8 @@
 
 - This kit (`@make-kits/ads-components`) ships the `figma-make-bridge` package. Its guidelines are in `node_modules/@make-kits/ads-components/guidelines/`.
 - It supersedes any previously published version of this design system. Do not blend in patterns from an older kit.
-- Stack: React 18 + Vite.
-- Peer dependencies: `react` and `react-dom` (^18.3). Never bundle or duplicate them.
+- Stack: React 18.3 or 19 + Vite.
+- Peer dependencies: `react` and `react-dom` (^18.3.1 || ^19.0.0). Never bundle or duplicate them.
 
 ## Styles
 

@@ -12,7 +12,7 @@ This file is for people building the library (it does not ship in the package). 
 
 ## Stack
 
-React 18 · Vite · Tailwind CSS v4 · TypeScript
+React 18.3 or 19 · Vite · Tailwind CSS v4 · TypeScript
 
 ## Getting started
 

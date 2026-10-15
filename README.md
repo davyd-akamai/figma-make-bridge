@@ -42,4 +42,4 @@ The stylesheet contains the design tokens, the `.type-*` text classes and the em
 
 ## Peer dependencies
 
-`react` and `react-dom` (^18.3).
+`react` and `react-dom` (^18.3.1 || ^19.0.0).
