@@ -225,6 +225,9 @@ Tokens reference other tokens using curly brace syntax:
 **INFO** - Modified design system components should still use component/alias tokens
 - If a button is modified, it should still reference `{component.button.*}` tokens
 
+### Rule 7: Figma wins
+**ERROR** - If a token JSON and Figma disagree, Figma is correct and the JSON is fixed. Never change Figma, or adjust a component, to match a stale JSON. See `tokens/SOURCES.md` for each file's Figma source.
+
 ## Token Type Mapping
 
 | Figma Property | Expected Token Category |

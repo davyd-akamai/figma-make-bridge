@@ -35,6 +35,8 @@ Three-tier system, documented in full in [tokens/tokens-structure.md](tokens/tok
 
 Rule of thumb: components should reference `component.*` or `alias.*` tokens, never `global.*` directly.
 
+**Figma wins:** if a token JSON and Figma disagree, Figma is correct and the JSON is fixed. Per-file Figma sources are listed in [tokens/SOURCES.md](tokens/SOURCES.md).
+
 `src/tokens.css` is generated, not hand-maintained: `scripts/generate-tokens.mjs` (`npm run tokens`, also run at the start of `npm run build`) reads `tokens/global.json`, `tokens/light.json` and every component token file and writes one light-theme `:root` block — component, global, font, and `--alias-*` (color + elevation) variables. The generator emits the light theme only and does not read `dark.json`; dark overrides can be added later through the same script.
 
 `generate-tokens.mjs` also contains a `legacyNames()` list of hand-mapped variable names, kept so existing CSS variable names don't change. New tokens should not be added there: they follow the JSON key path (lowercased, joined with `-`) and are picked up automatically. Any token change requires re-running `npm run tokens` and committing the result. Variable names that Figma-era components already consume but that don't mirror the JSON key path (e.g. `--component-textfield-border-default`, `--component-tabs-*`, `--component-button-*-active-*`) live in the script's `legacyNames()` list, each pointing at its JSON source.

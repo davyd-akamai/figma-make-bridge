@@ -1,0 +1,27 @@
+# Token Sources
+
+Figma file: Internal ADS library (`BP7Y1Gc9sz2HLrcXFHMFhg`). Figma is the source of truth: if a JSON file and Figma disagree, Figma is correct and the JSON is fixed.
+
+Node IDs below are taken from the header comments of the matching component in `components/`. Variable-level verification is only recorded where stated.
+
+| Token file | Figma source (node) | Status |
+|---|---|---|
+| `badge.json` | `Badge` (76:4205) | node from component header; variables not re-verified |
+| `button.json` | `Button` (47:14865) | node from component header; variables not re-verified |
+| `checkbox.json` | `core_checkbox` (58:4716), `.base-checkbox` (58:4359) | node from component header; variables not re-verified |
+| `container.json` | `Container` (58:5033) | node from component header; variables not re-verified |
+| `drawer.json` | `Drawer` (47:8675) | node from component header; variables not re-verified |
+| `dropdown.json` | `Dropdown` (77:4363), used by Select | node from Select header; variables not re-verified |
+| `footer.json` | `cm_footer` (1:926) | node from component header; variables not re-verified |
+| `header.json` | `cm_header` (1:882) | node from component header; variables not re-verified |
+| `menuButton.json` | no component in this repo cites a node | source unknown; to be confirmed in Figma |
+| `radioButton.json` | `Radio-button` (58:5044) | node from component header; variables not re-verified |
+| `search.json` | `Search-field` (91:3834) | node from component header; variables not re-verified |
+| `select.json` | `Select` (47:7683) | node from component header; variables not re-verified |
+| `sideNavigation.json` | `cm_side-navigation` (17:2719) | **global tokens only, verified against 17:2719** |
+| `systemBadge.json` | `cm_global-badge` (29:3416) | node from component header; variables not re-verified |
+| `table.json` | `core_table-column` (47:4956) | node from component header; variables not re-verified |
+| `tabs.json` | `Tabs-horizontal` (74:5959) | node from component header; variables not re-verified |
+| `textField.json` | `core_text-field` (47:7385) | node from component header; variables not re-verified |
+
+`global.json`, `light.json` and `dark.json` are the primitive and theme-alias layers, not component sources.
