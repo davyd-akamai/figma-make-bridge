@@ -96,7 +96,7 @@ Publish via GitHub Pages: **Settings → Pages → Source: Deploy from a branch 
 
 ## Design tokens
 
-Three-tier system — `global.json` (raw primitives) → `light.json`/`dark.json` (semantic aliases, theme-specific) → per-component token files (`header.json`, `sideNavigation.json`, `badge.json`, `systemBadge.json`, `button.json`, `textField.json`, `checkbox.json`, `radioButton.json`, `container.json`, etc.). Components should only ever reference `component.*` or `alias.*` tokens, never `global.*` directly. Full details in [tokens/tokens-structure.md](tokens/tokens-structure.md).
+Three-tier system — `global.json` (raw primitives) → `light.json`/`dark.json` (semantic aliases, theme-specific) → per-component token files (`header.json`, `sideNavigation.json`, `badge.json`, `systemBadge.json`, `button.json`, `textField.json`, `checkbox.json`, `radioButton.json`, `container.json`, etc.). Use `alias.*` for anything that must flip in dark mode. Use `global.*` only for parts that stay the same in both modes (global header, selected side-nav item). `component.*` variables in `src/tokens.css` are light-only literals and do not flip. Full details in [tokens/tokens-structure.md](tokens/tokens-structure.md).
 
 ## Extending this library
 
