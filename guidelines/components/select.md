@@ -11,7 +11,7 @@ Single-select dropdown with type-to-filter.
 ## Import
 
 ```tsx
-import { Select, type SelectProps, type SelectOption, type SelectLabelPosition } from "@make-kits/ads-components";
+import { Select, type SelectProps, type SelectOption, type SelectLabelPosition } from "figma-make-bridge";
 ```
 
 ## Props

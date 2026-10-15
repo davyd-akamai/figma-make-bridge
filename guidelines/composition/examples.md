@@ -7,7 +7,7 @@ Copy these patterns. They use only valid props. Read the matching component file
 Defaults cover almost every case. `DefaultCmPageTemplate` supplies header, side navigation and footer (composition/page-shell.md).
 
 ```tsx
-import { Container, DefaultCmPageTemplate } from "@make-kits/ads-components";
+import { Container, DefaultCmPageTemplate } from "figma-make-bridge";
 
 export default function Page() {
   return (
@@ -29,7 +29,7 @@ Selection is controlled and wired to the content that is shown.
 
 ```tsx
 import { useState } from "react";
-import { DefaultCmPageTemplate } from "@make-kits/ads-components";
+import { DefaultCmPageTemplate } from "figma-make-bridge";
 
 export default function App() {
   const [pageId, setPageId] = useState("linodes");
@@ -44,7 +44,7 @@ export default function App() {
 ## Adding a product to an existing section, with a badge
 
 ```tsx
-import { DEFAULT_SIDE_NAV_SECTIONS, DefaultCmPageTemplate, type SideNavSection } from "@make-kits/ads-components";
+import { DEFAULT_SIDE_NAV_SECTIONS, DefaultCmPageTemplate, type SideNavSection } from "figma-make-bridge";
 
 const sections: SideNavSection[] = DEFAULT_SIDE_NAV_SECTIONS.map((section) =>
   section.id === "compute"
@@ -65,7 +65,7 @@ export default function Page() {
 A narrow escape hatch, not the default (components/side-navigation.md).
 
 ```tsx
-import { SideNavigation } from "@make-kits/ads-components";
+import { SideNavigation } from "figma-make-bridge";
 
 <SideNavigation menu="mini" />;
 ```
@@ -76,7 +76,7 @@ The consumer sorts the rows (components/table.md).
 
 ```tsx
 import { useState } from "react";
-import { Table, type TableColumn, type TableRowData, type TableSortDirection } from "@make-kits/ads-components";
+import { Table, type TableColumn, type TableRowData, type TableSortDirection } from "figma-make-bridge";
 
 const columns: TableColumn[] = [
   { key: "name", header: "Name", sortable: true, accessor: (row) => row.name },
@@ -104,7 +104,7 @@ export default function Instances({ data }: { data: TableRowData[] }) {
 
 ```tsx
 import { useState } from "react";
-import { Button, Drawer } from "@make-kits/ads-components";
+import { Button, Drawer } from "figma-make-bridge";
 
 export default function EditPanel() {
   const [open, setOpen] = useState(false);

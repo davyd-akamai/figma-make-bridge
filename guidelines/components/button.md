@@ -11,7 +11,7 @@ The only button primitive in the system.
 ## Import
 
 ```tsx
-import { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "@make-kits/ads-components";
+import { Button, type ButtonProps, type ButtonVariant, type ButtonSize } from "figma-make-bridge";
 ```
 
 ## Props

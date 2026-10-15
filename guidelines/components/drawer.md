@@ -11,7 +11,7 @@ Right-hand slide-in panel with a title, scrolling content and an optional sticky
 ## Import
 
 ```tsx
-import { Drawer, type DrawerProps, type DrawerSize } from "@make-kits/ads-components";
+import { Drawer, type DrawerProps, type DrawerSize } from "figma-make-bridge";
 ```
 
 ## Props

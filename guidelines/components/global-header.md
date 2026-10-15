@@ -11,7 +11,7 @@ Top product bar with logo, search, create button, help/community/notification ic
 ## Import
 
 ```tsx
-import { GlobalHeader, type GlobalHeaderProps, type GlobalHeaderUser } from "@make-kits/ads-components";
+import { GlobalHeader, type GlobalHeaderProps, type GlobalHeaderUser } from "figma-make-bridge";
 ```
 
 ## Props

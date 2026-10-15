@@ -2,17 +2,17 @@
 
 ## Package
 
-- `@make-kits/ads-components` is the component library for app UI in this prototype.
+- This kit (`@make-kits/ads-components`) ships the `figma-make-bridge` package. Its guidelines are in `node_modules/@make-kits/ads-components/guidelines/`.
 - It supersedes any previously published version of this design system. Do not blend in patterns from an older kit.
 - Stack: React 18 + Vite.
 - Peer dependencies: `react` and `react-dom` (^18.3). Never bundle or duplicate them.
 
 ## Styles
 
-Import the stylesheet once at the app root, next to the components.
+Import the stylesheet once, in `index.css`.
 
-```tsx
-import "@make-kits/ads-components/styles.css";
+```css
+@import 'figma-make-bridge/styles.css';
 ```
 
 - The stylesheet contains the design tokens (CSS custom properties), the generated `.type-*` classes and the embedded `Nunito Sans` and `Fira Code` fonts.
@@ -22,11 +22,11 @@ import "@make-kits/ads-components/styles.css";
 
 ## Imports
 
-- Import every component statically from `"@make-kits/ads-components"`.
+- Import every component statically from `"figma-make-bridge"`.
 - Never wrap an import from this package in a dynamic `import()`. The bundler does not support it.
 
 ```tsx
-import { Button, Container } from "@make-kits/ads-components";
+import { Button, Container } from "figma-make-bridge";
 ```
 
 ## Self-contained components

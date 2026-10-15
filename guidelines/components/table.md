@@ -11,7 +11,7 @@ Data table with typed cells, sorting, row selection and row expansion.
 ## Import
 
 ```tsx
-import { Table, type TableProps, type TableColumn, type TableRowData, type TableAction, type TableSortDirection } from "@make-kits/ads-components";
+import { Table, type TableProps, type TableColumn, type TableRowData, type TableAction, type TableSortDirection } from "figma-make-bridge";
 ```
 
 ## Props

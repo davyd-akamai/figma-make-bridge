@@ -6,7 +6,7 @@ Read this before writing any text.
 
 - Every piece of text renders in the brand typeface `Nunito Sans`. Code and monospace text only use `Fira Code`.
 - Never set a different `font-family`. Never fall back to a host environment's default font.
-- Never add your own `<link>` or `@import` for a font. Both typefaces are embedded in `@make-kits/ads-components/styles.css`. Importing it once is enough (see setup.md).
+- Never add your own `<link>` or `@import` for a font. Both typefaces are embedded in `figma-make-bridge/styles.css`. Importing it once is enough (see setup.md).
 - Hierarchy comes only from the generated `.type-*` classes below. One class per text style. Each fixes `font-family`, `font-weight`, `font-size` and `line-height` together.
 - Apply the matching class to every text element.
 - Never hand-set `font-size`, `font-weight` or `line-height`. Never mix a `.type-*` class with a manual override of any of those four.

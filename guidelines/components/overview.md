@@ -54,6 +54,7 @@ Never invent these. If you are tempted to, say so in the reply before building c
 | Notification / Toast | `Toast`, `Snackbar`, `Notification`, `Banner` |
 | Topbar / Breadcrumb | `Topbar`, `Breadcrumb`, `Breadcrumbs` |
 | Pagination | `Pagination`, `Pager` |
+| Menu button | `MenuButton`. Not available. Use `Button` plus custom UI and announce it. |
 
 Also not available: a mobile navigation drawer, tab content panels, a table toolbar.
 

@@ -4,7 +4,7 @@ Read this before using any icon.
 
 ## Rules
 
-- The pack has one React component per icon, exported from `@make-kits/ads-components` by name.
+- The pack has one React component per icon, exported from `figma-make-bridge` by name.
 - Only the icons listed below exist. Never hand-draw an icon inline. Never use another icon library.
 - All icons accept `size?: number` plus standard SVG props.
 - Icons render in `currentColor`. Color them by setting the text color of a parent (see foundations/colors.md). Never put a raw color on the icon.
@@ -45,7 +45,7 @@ Extra props:
 ## Import
 
 ```tsx
-import { ComputeIcon, PlusIcon, type IconProps } from "@make-kits/ads-components";
+import { ComputeIcon, PlusIcon, type IconProps } from "figma-make-bridge";
 ```
 
 ## Usage

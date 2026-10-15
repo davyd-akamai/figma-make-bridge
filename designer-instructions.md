@@ -1,54 +1,52 @@
-# Using figma-make-bridge in Figma Make — a guide for designers
+# Using the ADS kit in Make — a guide for designers
 
-`figma-make-bridge` is our shared component library — the single source of truth for how product UI should look and behave across Figma Make prototypes. This guide walks through everything you need to do, step by step, no engineering background assumed.
+`@make-kits/ads-components` is our shared component kit for Make prototypes. It contains the components and the guidelines that tell Make how to use them. This guide covers what you need to do, step by step. No engineering background needed.
 
-## Three things, three different mechanics
+## How it works
 
-Before the steps below, it helps to know these are three separate things — none of them get "uploaded" anywhere:
+Two things, and neither is pasted anywhere:
 
-1. **The component library** (the actual buttons, fields, navigation, etc.) — an npm package Make installs like any other dependency.
-2. **Guidelines.md** — a text file that teaches Figma Make's AI *how* to use the library correctly (which prop to reach for, sizing rules, what not to do). You paste its contents into Figma Make's own **Guidelines / project instructions field** — a settings area for that specific project, not the chat. Do this once per prototype, and again any time the library gets updated.
-3. **Prompts** — one-time messages you copy and paste into Make's chat to kick off a specific piece of work (starting a new file, or converting an existing one). You just type them in like any other request — nothing to attach or install.
+1. **The kit** — the buttons, fields, navigation and so on, plus a `guidelines/` folder that teaches Make how to use them (which prop to use, sizing rules, which colors to take, what not to do). You attach the kit to your Make file. Make reads the guidelines itself from `node_modules/@make-kits/ads-components/guidelines/`. There is no Guidelines field to fill in.
+2. **Prompts** — optional messages you copy into Make's chat to start a specific job (a new page, or converting an existing prototype).
 
-You'll always do #1 and #2 first, then use one of the prompts in #3 depending on which situation below you're in.
+Inside the kit, components are imported from `figma-make-bridge` and the stylesheet is loaded with `@import 'figma-make-bridge/styles.css';` in `index.css`. The prompts below already say this, so you do not need to remember it.
 
-## Situation A: Starting a brand-new prototype
+## Situation A: Starting a new prototype
 
-1. **Add the library.** In Figma Make's chat, ask it to add the npm package `figma-make-bridge` (latest version) as a dependency. Or just use the copy-paste prompt in step 3 below — it includes this.
-2. **Paste the Guidelines.** Open [guidelines/Guidelines.md](guidelines/Guidelines.md) in this repo, copy its full contents, and paste them into Figma Make's Guidelines/project-instructions field for your file.
-3. **Kick off the starter page.** Copy the prompt from [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) and paste it into Make's chat. It scaffolds a starting screen using the shared header/navigation/footer shell.
-4. **Verify it rendered correctly.** Follow the checklist in [figma-make-test-guide.md](figma-make-test-guide.md) — real colors/fonts (not browser defaults), navigation actually works, no console errors.
-5. **Build your feature.** As you prompt Make to add whatever your prototype actually needs (a table, a form, a settings panel...), keep steering it toward the library: mention `figma-make-bridge` components by name where you know one exists, and check Guidelines.md's "Component reference" section for what's available before assuming something needs to be built from scratch.
+1. **Attach the kit.** Add `@make-kits/ads-components` to your Make file.
+2. **Kick off the starter page.** Copy the prompt from [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) into Make's chat. It scaffolds a starting screen with the shared header, navigation and footer.
+3. **Check it rendered correctly.** Use the checklist in [figma-make-test-guide.md](figma-make-test-guide.md): real colors and fonts (not browser defaults), working navigation, no console errors.
+4. **Build your feature.** Ask Make for what you need (a table, a form, a settings panel). Name library components where you know one exists. Make is told to build only what you ask for, so be specific.
 
-## Situation B: You already have a prototype with its own custom-built UI
+## Situation B: Converting an existing prototype
 
-This is for converting an existing prototype — one that has its own hand-built buttons, forms, etc. — over to the shared library.
+For a prototype with its own hand-built buttons, forms and so on.
 
-1. **Add the library and paste the Guidelines**, same as steps 1–2 above, if this prototype doesn't have them yet.
-2. **Run the swap-in prompt.** Copy the prompt from [figma-make-swap-in-prompt.md](figma-make-swap-in-prompt.md) and paste it into Make's chat. It asks Make to find everything in your prototype that has a match in the library, convert it, and report back exactly what it changed.
-3. **Read the report.** Make will list every element it found with a ✅ (converted), ❌ (tried, broke — worth a closer look), or ⚠️ (no match, left alone) next to each one.
-4. **Spot-check it yourself.** Click through the actual prototype — not just how it looks, but whether it still works (typing, clicking, selecting). A screenshot with an arrow pointing at whatever looks wrong is the fastest way to get help if something's off.
-5. **If something looks broken that wasn't before,** check [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) first — a couple of known, expected quirks are documented there (e.g. some unrelated styling shifting after a fix, which is a known tradeoff, not a new bug).
+1. **Attach the kit** if it is not attached yet.
+2. **Run the swap-in prompt.** Copy [figma-make-swap-in-prompt.md](figma-make-swap-in-prompt.md) into Make's chat. Make finds everything that has a library match, converts it, and reports back.
+3. **Read the report.** Each item is marked ✅ (converted), ❌ (tried, broke — look closer) or ⚠️ (no match, left alone).
+4. **Click through the prototype.** Check that typing, clicking and selecting still work, not just the look. A screenshot with an arrow on what looks wrong is the fastest way to get help.
+5. **If something broke that worked before,** see [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) for known quirks.
 
-## When Make flags something as "no match"
+## When Make says "no component fits"
 
-Not everything is in the library yet — this is expected, not a failure. Guidelines.md tells Make to work down a fixed order ("Components first"):
-1. **Use a library component** if one fits.
-2. **Compose from library components plus layout** if no single component fits.
-3. **Only if neither works, build a custom element** — styled with our color alias variables (`--alias-*`, never raw hex, rgb or named colors; a global color variable only as a rare last resort that Make must call out), the global spacing scale and the typography classes. Make is told to say so in its reply, so you will see it listed.
+Not everything is in the kit yet. That is expected. The guidelines tell Make to:
 
-Make is also told not to invent variants or props on library components. If a reply says something was built custom, and you expect other prototypes will also need it (a component, not a one-off layout), flag it to the library team rather than letting every prototype quietly reinvent its own version. That's exactly how the library grows — each component so far came from a real prototype need.
+1. **Use a library component** whenever one exists for the job, exactly as it is.
+2. **Say so in its reply** before building custom UI when none fits.
+3. **Take colors in this order** for custom UI: the tokens in the nearest component's Tokens section, then `--alias-*` variables, then `--global-color-*` (and say so in the reply). Spacing and text classes come from the kit's scales.
+
+Make is also told not to invent variants, states, sizes or colors, and not to add pages, sections or copy you did not ask for. If a reply says something was built custom and other prototypes will probably need it, tell the library team so it can become a real component.
 
 ## Quick reference
 
 | I need to... | Use this |
 |---|---|
-| See what's in the library and how to use it | [guidelines/Guidelines.md](guidelines/Guidelines.md) (paste into Make's Guidelines field) |
-| Start a brand-new prototype | [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) |
+| Start a new prototype | [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) |
 | Convert an existing prototype | [figma-make-swap-in-prompt.md](figma-make-swap-in-prompt.md) |
-| Understand *why* the swap prompt works the way it does, or troubleshoot | [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) |
-| Confirm a fresh install actually works | [figma-make-test-guide.md](figma-make-test-guide.md) |
+| Troubleshoot a conversion | [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) |
+| Confirm a fresh setup works | [figma-make-test-guide.md](figma-make-test-guide.md) |
 
 ## If you get stuck
 
-Don't work around a missing component with fully custom, un-tokenized code — that's exactly the drift this library exists to prevent. Follow the "Components first" order above and flag it instead.
+Do not work around a missing component with fully custom, un-tokenized code. Ask Make to say what is missing and flag it to the library team.

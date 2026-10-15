@@ -10,7 +10,7 @@ Fixed NEW or BETA marker shown inline next to a label.
 ## Import
 
 ```tsx
-import { SystemBadge, type SystemBadgeProps } from "@make-kits/ads-components";
+import { SystemBadge, type SystemBadgeProps } from "figma-make-bridge";
 ```
 
 ## Props

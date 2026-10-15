@@ -11,7 +11,7 @@ Left product navigation rail with accordion sections, page rows, badges and a pi
 ## Import
 
 ```tsx
-import { SideNavigation, DEFAULT_SIDE_NAV_SECTIONS, type SideNavSection, type SideNavPage } from "@make-kits/ads-components";
+import { SideNavigation, DEFAULT_SIDE_NAV_SECTIONS, type SideNavSection, type SideNavPage } from "figma-make-bridge";
 ```
 
 ## Props

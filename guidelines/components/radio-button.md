@@ -11,7 +11,7 @@ One choice from a group of options.
 ## Import
 
 ```tsx
-import { RadioButton, type RadioButtonProps, type RadioButtonSize } from "@make-kits/ads-components";
+import { RadioButton, type RadioButtonProps, type RadioButtonSize } from "figma-make-bridge";
 ```
 
 ## Props

@@ -1,14 +1,17 @@
 # Guidelines
 
-Build prototypes using ONLY the components in `@make-kits/ads-components`. Apply the rules in this file on every task.
+Build prototypes using ONLY the components in this kit (`@make-kits/ads-components`). Apply the rules in this file on every task.
 
 ## Import
 
-Import components from `@make-kits/ads-components` and the stylesheet from `@make-kits/ads-components/styles.css`. Import the stylesheet once at the app root.
+Import components from `figma-make-bridge`. Load the stylesheet once in `index.css`.
+
+```css
+@import 'figma-make-bridge/styles.css';
+```
 
 ```tsx
-import "@make-kits/ads-components/styles.css";
-import { Button, Container } from "@make-kits/ads-components";
+import { Button, Container } from "figma-make-bridge";
 ```
 
 ## Rules

@@ -11,7 +11,7 @@ Bottom bar with a link list and a copyright line.
 ## Import
 
 ```tsx
-import { GlobalFooter, type GlobalFooterProps, type GlobalFooterLink } from "@make-kits/ads-components";
+import { GlobalFooter, type GlobalFooterProps, type GlobalFooterLink } from "figma-make-bridge";
 ```
 
 ## Props

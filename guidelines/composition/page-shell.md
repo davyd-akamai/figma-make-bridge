@@ -7,7 +7,7 @@ Read this before building any page layout.
 ## Import
 
 ```tsx
-import { DefaultCmPageTemplate, type DefaultCmPageTemplateProps } from "@make-kits/ads-components";
+import { DefaultCmPageTemplate, type DefaultCmPageTemplateProps } from "figma-make-bridge";
 ```
 
 ## Props

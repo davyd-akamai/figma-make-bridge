@@ -6,7 +6,7 @@ How to connect the published package to an actual Figma Make prototype and run a
 
 ## 1. Connect the package and scaffold the first screen
 
-Open a Figma Make file (new or existing prototype) and use [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) — it covers pasting the guidelines, adding the dependency, and the initial-screen prompt in one reusable place, so it's not duplicated here.
+Open a Figma Make file (new or existing prototype) and use [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) — it covers attaching the kit and the initial-screen prompt in one reusable place, so it's not duplicated here. The kit carries its own guidelines; nothing is pasted into Make's instructions field.
 
 No `.npmrc`/auth-token setup is needed for any of this — that's only required once we move off the temporary public-npm listing onto Akamai's private registry (see GUIDELINES.md).
 

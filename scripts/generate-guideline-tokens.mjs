@@ -53,7 +53,7 @@ for (const file of files) {
   const [rootKey, tree] = Object.entries(json.component ?? json)[0];
   const target = findGuideline(basename(file, ".json"), rootKey);
   if (!target) {
-    console.warn(`warning: no component guideline for ${file}; skipped`);
+    console.log(`info: ${file}: no component yet, skipped`);
     continue;
   }
   const lines = [];

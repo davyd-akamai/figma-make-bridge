@@ -11,7 +11,7 @@ Plain bordered content surface that groups related content inside a page's conte
 ## Import
 
 ```tsx
-import { Container, type ContainerProps } from "@make-kits/ads-components";
+import { Container, type ContainerProps } from "figma-make-bridge";
 ```
 
 ## Props
