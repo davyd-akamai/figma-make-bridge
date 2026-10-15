@@ -6,7 +6,7 @@ Read this before writing any custom spacing, padding, margin or gap.
 
 - Spacing comes from the global scale: `var(--global-spacing-<step>)`.
 - Use only the steps below. Do not invent steps. Do not use raw `px` values for spacing.
-- Spacing is exempt from the alias-first tier rule in foundations/colors.md. Use `--global-spacing-*` directly.
+- Spacing is exempt from the token order in foundations/colors.md. Use `--global-spacing-*` directly.
 
 ## Scale
 

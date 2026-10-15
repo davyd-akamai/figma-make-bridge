@@ -11,7 +11,7 @@ Left product navigation rail with accordion sections, page rows, badges and a pi
 ## Import
 
 ```tsx
-import { SideNavigation, DEFAULT_SIDE_NAV_SECTIONS, type SideNavSection, type SideNavPage } from "figma-make-bridge";
+import { SideNavigation, DEFAULT_SIDE_NAV_SECTIONS, type SideNavSection, type SideNavPage } from "@make-kits/ads-components";
 ```
 
 ## Props
@@ -67,3 +67,4 @@ Hardcoded `selectedPageId` without `onSelectPage`, and a from-scratch `sections`
 - **`menu` override:** forces a static rail with no hover or pin. Use only for an isolated preview or a frozen state. Real screens leave `menu` unset.
 - **Selection:** for one static nav state, omit `selectedPageId` and `onSelectPage`. NEVER pass a hardcoded `selectedPageId` without `onSelectPage`. It locks the selection and clicks do nothing. For real multi-page navigation pass both, and make `onSelectPage` update the same state that drives the page content. See composition/page-shell.md.
 - Never pass `className`. It replaces the default classes and strips the rail styling.
+- **Fixed dark surface:** the side navigation rail stays dark in both light and dark mode. Its colors come from global tokens, listed in the Tokens section below. Do not add theme-specific overrides.

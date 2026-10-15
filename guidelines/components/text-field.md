@@ -11,7 +11,7 @@ Single-line text input with label, helper text, error state and clear button.
 ## Import
 
 ```tsx
-import { TextField, type TextFieldProps, type TextFieldLabelPosition } from "figma-make-bridge";
+import { TextField, type TextFieldProps, type TextFieldLabelPosition } from "@make-kits/ads-components";
 ```
 
 ## Props

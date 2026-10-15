@@ -4,7 +4,7 @@ Reusable starting point for a fresh Figma Make file: connects `figma-make-bridge
 
 ## Before sending the prompt below
 
-Paste the current contents of [figma-make-guidelines.md](figma-make-guidelines.md) into Figma Make's own Guidelines/project-instructions field — do this first, so its AI already has our component, token, and typography rules in context before it generates anything.
+Paste the current contents of [guidelines/Guidelines.md](guidelines/Guidelines.md) into Figma Make's own Guidelines/project-instructions field — do this first, so its AI already has our component, token, and typography rules in context before it generates anything.
 
 ## The prompt
 

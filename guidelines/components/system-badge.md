@@ -10,7 +10,7 @@ Fixed NEW or BETA marker shown inline next to a label.
 ## Import
 
 ```tsx
-import { SystemBadge, type SystemBadgeProps } from "figma-make-bridge";
+import { SystemBadge, type SystemBadgeProps } from "@make-kits/ads-components";
 ```
 
 ## Props
@@ -40,5 +40,5 @@ import { SystemBadge, type SystemBadgeProps } from "figma-make-bridge";
 
 ## Known footguns
 
-- Content is fixed. There is no label-override prop and none should be added. It mirrors the real Figma component, which has no free-text variant.
+- Content is fixed. There is no label-override prop and none should be added. There is no free-text variant.
 - Never pass `className`. It replaces the default classes and strips the badge styling.

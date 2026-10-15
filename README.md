@@ -45,10 +45,10 @@ docs/                 Public static preview site (plain HTML/CSS/JS, no build st
 index.ts              Root barrel export — the package's public API surface
 vite.lib.config.ts    Library-mode build config (npm run build) — separate from the dev-only vite.config.ts
 scripts/generate-tokens.mjs   Build step (npm run tokens) that generates src/tokens.css from tokens/*.json
-scripts/copy-guidelines.mjs   Build step that copies figma-make-guidelines.md into dist/Guidelines.md
+scripts/copy-guidelines.mjs   Build step that copies guidelines/ into dist/guidelines/
 
 GUIDELINES.md                 Living decision log — the source of truth for *why*, read this first
-figma-make-guidelines.md      The package-facing Guidelines.md Figma Make's AI reads — ships inside dist/
+guidelines/                   The package-facing guidelines folder Figma Make's AI reads — ships as dist/guidelines/
 designer-instructions.md      Plain-language, step-by-step guide for designers — share this with the design team
 figma-make-kickoff-prompt.md      Copy-paste prompt: start a brand-new Figma Make prototype with the library installed
 figma-make-test-guide.md          Checklist for verifying a fresh install actually works
@@ -112,4 +112,4 @@ If you're building or converting a prototype rather than working on the library 
 
 ## Figma Make packaging
 
-Published to the public npm registry as a temporary home (`figma-make-bridge`, latest published version) to prove the install-in-a-real-prototype flow works end to end — see [GUIDELINES.md](GUIDELINES.md)'s "Packaging" section for the full build setup. Moving to Akamai's private registry still requires an org admin to confirm it's enabled and create a scope; see GUIDELINES.md's "Figma Make private registry" section for that checklist. Every publish also ships [figma-make-guidelines.md](figma-make-guidelines.md) as `dist/Guidelines.md`, the file Figma Make's AI reads for how to use the library correctly.
+Published to the public npm registry as a temporary home (`figma-make-bridge`, latest published version) to prove the install-in-a-real-prototype flow works end to end — see [GUIDELINES.md](GUIDELINES.md)'s "Packaging" section for the full build setup. Moving to Akamai's private registry still requires an org admin to confirm it's enabled and create a scope; see GUIDELINES.md's "Figma Make private registry" section for that checklist. Every publish also ships [guidelines/](guidelines) as `dist/guidelines/`, the folder Figma Make's AI reads for how to use the library correctly.

@@ -15,7 +15,7 @@ You'll always do #1 and #2 first, then use one of the prompts in #3 depending on
 ## Situation A: Starting a brand-new prototype
 
 1. **Add the library.** In Figma Make's chat, ask it to add the npm package `figma-make-bridge` (latest version) as a dependency. Or just use the copy-paste prompt in step 3 below — it includes this.
-2. **Paste the Guidelines.** Open [figma-make-guidelines.md](figma-make-guidelines.md) in this repo, copy its full contents, and paste them into Figma Make's Guidelines/project-instructions field for your file.
+2. **Paste the Guidelines.** Open [guidelines/Guidelines.md](guidelines/Guidelines.md) in this repo, copy its full contents, and paste them into Figma Make's Guidelines/project-instructions field for your file.
 3. **Kick off the starter page.** Copy the prompt from [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) and paste it into Make's chat. It scaffolds a starting screen using the shared header/navigation/footer shell.
 4. **Verify it rendered correctly.** Follow the checklist in [figma-make-test-guide.md](figma-make-test-guide.md) — real colors/fonts (not browser defaults), navigation actually works, no console errors.
 5. **Build your feature.** As you prompt Make to add whatever your prototype actually needs (a table, a form, a settings panel...), keep steering it toward the library: mention `figma-make-bridge` components by name where you know one exists, and check Guidelines.md's "Component reference" section for what's available before assuming something needs to be built from scratch.
@@ -43,7 +43,7 @@ Make is also told not to invent variants or props on library components. If a re
 
 | I need to... | Use this |
 |---|---|
-| See what's in the library and how to use it | [figma-make-guidelines.md](figma-make-guidelines.md) (paste into Make's Guidelines field) |
+| See what's in the library and how to use it | [guidelines/Guidelines.md](guidelines/Guidelines.md) (paste into Make's Guidelines field) |
 | Start a brand-new prototype | [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) |
 | Convert an existing prototype | [figma-make-swap-in-prompt.md](figma-make-swap-in-prompt.md) |
 | Understand *why* the swap prompt works the way it does, or troubleshoot | [figma-make-swap-in-guide.md](figma-make-swap-in-guide.md) |

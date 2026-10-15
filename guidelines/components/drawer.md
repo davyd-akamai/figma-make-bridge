@@ -11,7 +11,7 @@ Right-hand slide-in panel with a title, scrolling content and an optional sticky
 ## Import
 
 ```tsx
-import { Drawer, type DrawerProps, type DrawerSize } from "figma-make-bridge";
+import { Drawer, type DrawerProps, type DrawerSize } from "@make-kits/ads-components";
 ```
 
 ## Props
@@ -57,7 +57,7 @@ Missing required `open` and `onClose`, and `position` and `size="large"` do not 
 
 - Visibility is fully controlled. Keep an `open` boolean in state. Set it `true` from a trigger (for example a `Button`) and `false` in `onClose`.
 - `onClose` fires for the close icon, Esc and overlay click. All handled by the component.
-- `footer` is a plain slot for library `Button`s. Figma's spec allows up to 3: typically a `link` and a `secondary` Cancel plus a `primary` CTA, right-aligned.
+- `footer` is a plain slot for library `Button`s. Use up to 3: typically a `link` and a `secondary` Cancel plus a `primary` CTA, right-aligned.
 - The footer is pinned below the scrolling content. For long content, put actions in `footer` to keep them visible, or at the end of `children` if they should scroll.
 - `children` scroll automatically when taller than the panel. Do not add your own scroll container.
 - Focus is trapped inside the open drawer, the page behind is scroll-locked, and focus returns to the previous element on close. Built in.

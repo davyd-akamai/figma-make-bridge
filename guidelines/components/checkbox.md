@@ -12,7 +12,7 @@ On/off choice, with an indeterminate state for select-all.
 ## Import
 
 ```tsx
-import { Checkbox, type CheckboxProps, type CheckboxSize } from "figma-make-bridge";
+import { Checkbox, type CheckboxProps, type CheckboxSize } from "@make-kits/ads-components";
 ```
 
 ## Props

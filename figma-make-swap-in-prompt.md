@@ -4,7 +4,7 @@ Reusable starting point for replacing an existing Make prototype's ad-hoc UI wit
 
 ## Before sending the prompt below
 
-Paste the current contents of [figma-make-guidelines.md](figma-make-guidelines.md) into Figma Make's Guidelines/project-instructions field — every component this prompt can match against is documented there, and that list grows over time, so always use the current version, not a saved copy.
+Paste the current contents of [guidelines/Guidelines.md](guidelines/Guidelines.md) into Figma Make's Guidelines/project-instructions field — every component this prompt can match against is documented there, and that list grows over time, so always use the current version, not a saved copy.
 
 ## The prompt
 

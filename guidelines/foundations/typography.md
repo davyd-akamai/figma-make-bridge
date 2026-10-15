@@ -6,12 +6,12 @@ Read this before writing any text.
 
 - Every piece of text renders in the brand typeface `Nunito Sans`. Code and monospace text only use `Fira Code`.
 - Never set a different `font-family`. Never fall back to a host environment's default font.
-- Never add your own `<link>` or `@import` for a font. Both typefaces are embedded in `figma-make-bridge/styles.css`. Importing it once is enough (see setup.md).
-- Hierarchy comes only from the generated `.type-*` classes below. One class per Figma text style. Each fixes `font-family`, `font-weight`, `font-size` and `line-height` together.
+- Never add your own `<link>` or `@import` for a font. Both typefaces are embedded in `@make-kits/ads-components/styles.css`. Importing it once is enough (see setup.md).
+- Hierarchy comes only from the generated `.type-*` classes below. One class per text style. Each fixes `font-family`, `font-weight`, `font-size` and `line-height` together.
 - Apply the matching class to every text element.
 - Never hand-set `font-size`, `font-weight` or `line-height`. Never mix a `.type-*` class with a manual override of any of those four.
 - Pick a class by the text's role in the layout, not by how large you want it to look.
-- Text is exempt from the alias-first tier rule. Use the `.type-*` classes directly. Text color still follows foundations/colors.md.
+- Text is exempt from the token order. Use the `.type-*` classes directly. Text color still follows foundations/colors.md.
 
 ## Classes
 

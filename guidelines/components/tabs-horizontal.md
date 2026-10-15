@@ -11,7 +11,7 @@ Horizontal tab headers with automatic overflow. Headers only: there is no conten
 ## Import
 
 ```tsx
-import { TabsHorizontal, type TabsHorizontalProps, type TabsHorizontalTab, type TabsHorizontalSize } from "figma-make-bridge";
+import { TabsHorizontal, type TabsHorizontalProps, type TabsHorizontalTab, type TabsHorizontalSize } from "@make-kits/ads-components";
 ```
 
 ## Props

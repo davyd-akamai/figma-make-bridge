@@ -11,7 +11,7 @@ Standalone search input with a fixed leading search icon and optional suggestion
 ## Import
 
 ```tsx
-import { Search, type SearchProps } from "figma-make-bridge";
+import { Search, type SearchProps } from "@make-kits/ads-components";
 ```
 
 ## Props

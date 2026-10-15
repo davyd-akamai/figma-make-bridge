@@ -1,28 +1,28 @@
 # Colors
 
-Read this before writing ANY custom color. It applies only to custom UI (Components-first step 3). Library components carry their own tokens.
+Read this before writing ANY custom color. It applies only to custom UI (custom UI, see Guidelines.md). Library components carry their own tokens.
 
 ## Rules
 
-- IMPORTANT: Colors use alias variables: `var(--alias-...)`.
-- IMPORTANT: `--global-color-*` is a rare last resort, allowed only when no alias variable fits. If you use one, mention it in the reply (which variable, why no alias fit).
+- IMPORTANT: For custom UI, follow the token order in Guidelines.md: first the tokens in the nearest library component's Tokens section, then `--alias-*` variables, then `--global-color-*`.
+- IMPORTANT: `--global-color-*` comes last. Use it only when no alias variable fits. If you use one, say so in the reply (which variable, why no alias fit).
 - IMPORTANT: Never use a raw hex, `rgb()`, `rgba()`, `hsl()` or a named color (`white`, `red`, ...) anywhere.
 - The package exposes three tiers as CSS custom properties: `--global-*` (primitives: palette, spacing), `--alias-*` (semantic colors and elevation), `--component-*` (per-component values). Font primitives are `--font-*` and `--line-height-*`.
-- Library components already use their own `--component-*` variables. Never reference `--component-*` in app code. Never pass color overrides to a library component. Per-instance customization is not possible.
+- Library components already use their own `--component-*` variables. Never reference `--component-*` in app code. Never pass color overrides to a library component.
 - Only the variable names in this file exist. Do not invent `--alias-*` names.
-- Spacing and text are exempt from this tier rule (see foundations/spacing.md and foundations/typography.md).
+- Spacing and text are exempt from this token order (see foundations/spacing.md and foundations/typography.md).
 
 ## Decision tree
 
 1. Is there a library component for this UI? Use it. Stop. No custom color needed.
 2. Composing from library components? Style only layout. Stop.
-3. Custom element needed? Pick the alias variable from the tables below by role (text, icon, border, background, action, interaction, accent).
-4. No alias fits? Use `--global-color-*` as a rare last resort, and mention it in the reply.
+3. Custom element needed? Say so in the reply. Start from the tokens in the nearest library component's Tokens section. Otherwise pick the alias variable from the tables below by role (text, icon, border, background, action, interaction, accent).
+4. No alias fits? Use `--global-color-*` last, and say so in the reply.
 5. Never fall through to hex, rgb, hsl or named colors.
 
 ## Alias reference
 
-Variable name = `--alias-` + path, lowercase, no separators inside a word (camelCase keys become lowercase, e.g. `primaryhover`). "No description" means the source gives no usage note. The guidance there is derived from the name only.
+Variable name = `--alias-` + path, lowercase, no separators inside a word (camelCase keys become lowercase, e.g. `primaryhover`). "No description" means there is no usage note. The guidance there is derived from the name only.
 
 **Text** `--alias-content-text-<name>`
 
@@ -105,7 +105,7 @@ Variable name = `--alias-` + path, lowercase, no separators inside a word (camel
 | `background-secondaryhover` | Hover color for a calendar date range |
 | `background-secondary`, `background-secondaryactive`, `background-tertiary`, `background-tertiaryhover`, `background-tertiaryactive`, `background-neutral`, `background-neutralhover`, `background-neutralactive`, `background-disabled` | No description: background states by name |
 
-**Accent** `--alias-accent-<hue>-primary` and `--alias-accent-<hue>-secondary`. No descriptions in the source. By name and value: `primary` is the solid color, `secondary` is a 12% translucent tint of the same hue. Hues: `info`, `neutral`, `warning`, `negative`, `positive`, `important`, `recommendation`, `pink`, `violet`. Also `--alias-accent-disabled`.
+**Accent** `--alias-accent-<hue>-primary` and `--alias-accent-<hue>-secondary`. No usage notes. By name and value: `primary` is the solid color, `secondary` is a 12% translucent tint of the same hue. Hues: `info`, `neutral`, `warning`, `negative`, `positive`, `important`, `recommendation`, `pink`, `violet`. Also `--alias-accent-disabled`.
 
 **Elevation** `--alias-elevation-<name>` (box-shadow values: use with `box-shadow`, never as a color)
 
@@ -116,7 +116,7 @@ Variable name = `--alias-` + path, lowercase, no separators inside a word (camel
 | `l` | Shadow for modals |
 | `drawer-right`, `drawer-left`, `drawer-top`, `drawer-bottom` | Drawer elevation by the side the drawer appears from |
 
-**Chart** (no descriptions in the source; by name only). Use for data visualization, not general UI.
+**Chart** (no usage notes; by name only). Use for data visualization, not general UI.
 
 - `--alias-chart-neutral`
 - `--alias-chart-categorical-<1..22>-primary` / `-inactive` / `-transparent` (one series color per number; `inactive` and `transparent` are lighter/translucent variants of that series color)
@@ -125,7 +125,7 @@ Variable name = `--alias-` + path, lowercase, no separators inside a word (camel
 
 ## Examples
 
-Correct (custom callout, step 3 only):
+Correct (custom callout, only when no library component fits):
 
 ```tsx
 <div

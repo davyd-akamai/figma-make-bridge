@@ -1,6 +1,7 @@
-import { copyFileSync } from "node:fs";
+import { cpSync, existsSync, rmSync } from "node:fs";
 
-// figma-make-guidelines.md lives at the repo root (see GUIDELINES.md's filename note —
-// macOS's case-insensitive filesystem can't have Guidelines.md and GUIDELINES.md side by
-// side). It only becomes Guidelines.md once it lands in dist/, a different directory.
-copyFileSync("figma-make-guidelines.md", "dist/Guidelines.md");
+// Only guidelines/ is copied into dist/. Repo-level docs stay out of the package.
+if (!existsSync("guidelines")) throw new Error("guidelines/ folder not found");
+rmSync("dist/guidelines", { recursive: true, force: true });
+cpSync("guidelines", "dist/guidelines", { recursive: true });
+console.log("copied guidelines/ -> dist/guidelines/");

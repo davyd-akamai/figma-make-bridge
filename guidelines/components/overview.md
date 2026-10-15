@@ -43,7 +43,7 @@ Icons: foundations/icons.md.
 
 ## Components that do NOT exist yet
 
-Never invent these. If you are tempted to, follow Components-first step 2 (compose from library components) or step 3 (custom element, state it in the reply).
+Never invent these. If you are tempted to, say so in the reply before building custom UI, then follow the token order in Guidelines.md.
 
 | Missing | Also forbidden as a name or import |
 |---|---|
@@ -55,13 +55,13 @@ Never invent these. If you are tempted to, follow Components-first step 2 (compo
 | Topbar / Breadcrumb | `Topbar`, `Breadcrumb`, `Breadcrumbs` |
 | Pagination | `Pagination`, `Pager` |
 
-Also not available: a dark theme, a mobile navigation drawer, tab content panels, a table toolbar.
+Also not available: a mobile navigation drawer, tab content panels, a table toolbar.
 
 ## Rules for all components
 
 - Do not invent variants, props or states. No extra `variant` values, no new props, no `theme`.
 - Do not hand-build what a library component already does: buttons, inputs, selects, tabs, tables, drawers, badges, headers, footers.
-- Never pass raw colors, or `style`/`className` color overrides, to a library component. Customization is a token-file concern, never a prop.
+- Never pass raw colors, or `style`/`className` color overrides, to a library component. Customization is never a prop.
 - `infoIcon` on form fields is a placeholder for a future Tooltip. It shows only the browser's native `title` text.
 - Form field width: `TextField`, `Select` and `Search` fill 100% of their wrapper. Size the wrapper. Do not let them stretch edge-to-edge.
   - About 400px for a normal single-line field (name, label, short free text).

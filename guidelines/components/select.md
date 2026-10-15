@@ -5,13 +5,13 @@ Single-select dropdown with type-to-filter.
 ## When to use / when not to use
 
 - Use to pick one value from a list of options.
-- Do NOT use it for multi-select, checkbox items, grouped lists or async loading. None exist. Flag the gap (Components-first step 3). Do not fake it with `Select`.
+- Do NOT use it for multi-select, checkbox items, grouped lists or async loading. None exist. Say so in the reply. Do not fake it with `Select`.
 - For a short visible group, `RadioButton` may fit better (components/radio-button.md).
 
 ## Import
 
 ```tsx
-import { Select, type SelectProps, type SelectOption, type SelectLabelPosition } from "figma-make-bridge";
+import { Select, type SelectProps, type SelectOption, type SelectLabelPosition } from "@make-kits/ads-components";
 ```
 
 ## Props

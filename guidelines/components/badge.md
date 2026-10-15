@@ -11,7 +11,7 @@ General-purpose status or category label: a fixed 20px-tall single-line pill.
 ## Import
 
 ```tsx
-import { Badge, type BadgeProps, type BadgeType, type BadgeColor } from "figma-make-bridge";
+import { Badge, type BadgeProps, type BadgeType, type BadgeColor } from "@make-kits/ads-components";
 ```
 
 ## Props
