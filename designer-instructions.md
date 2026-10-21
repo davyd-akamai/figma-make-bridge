@@ -6,7 +6,7 @@
 
 Two things, and neither is pasted anywhere:
 
-1. **The kit** — the buttons, fields, navigation and so on, plus a `guidelines/` folder that teaches Make how to use them (which prop to use, sizing rules, which colors to take, what not to do). You attach the kit to your Make file. Make reads the guidelines itself from `node_modules/@make-kits/ads-components/guidelines/`. There is no Guidelines field to fill in.
+1. **The kit** — the buttons, fields, navigation and so on, plus a `guidelines/` folder that teaches Make how to use them (which prop to use, sizing rules, which colors to take, what not to do). You attach the kit to your Make file. There is no Guidelines field to fill in.
 2. **Prompts** — optional messages you copy into Make's chat to start a specific job (a new page, or converting an existing prototype).
 
 Inside the kit, components are imported from `figma-make-bridge` and the stylesheet is loaded with `@import 'figma-make-bridge/styles.css';` in `index.css`. The prompts below already say this, so you do not need to remember it.
@@ -14,7 +14,7 @@ Inside the kit, components are imported from `figma-make-bridge` and the stylesh
 ## Situation A: Starting a new prototype
 
 1. **Attach the kit.** Add `@make-kits/ads-components` to your Make file.
-2. **Kick off the starter page.** Copy the prompt from [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) into Make's chat. It scaffolds a starting screen with the shared header, navigation and footer.
+2. **Kick off the starter page.** Copy the prompt from [figma-make-kickoff-prompt.md](figma-make-kickoff-prompt.md) into Make's chat. The setup block in it is required: the kit's own guidelines are empty placeholders, so without it Make does not find the library. It scaffolds a starting screen with the shared header, navigation and footer.
 3. **Check it rendered correctly.** Use the checklist in [figma-make-test-guide.md](figma-make-test-guide.md): real colors and fonts (not browser defaults), working navigation, no console errors.
 4. **Build your feature.** Ask Make for what you need (a table, a form, a settings panel). Name library components where you know one exists. Make is told to build only what you ask for, so be specific.
 
@@ -50,3 +50,7 @@ Make is also told not to invent variants, states, sizes or colors, and not to ad
 ## If you get stuck
 
 Do not work around a missing component with fully custom, un-tokenized code. Ask Make to say what is missing and flag it to the library team.
+
+## Known issues
+
+- If Make says there are no components, the setup block was left out. Add it and ask again.
