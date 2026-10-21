@@ -1,117 +1,202 @@
 {
   "component": {
     "badge": {
-      "_comment": "Color naming diverges intentionally between the `color` prop (literal Figma Color variant names: ultramarine/purple/pink/neutral/amber/green/red) and these token keys (semantic: informative/important/pink/neutral/warning/positive/negative) — matches Figma's own get_variable_defs output for node 76:4205 and mirrors core-design-system's cds-badge, which documents the same intentional divergence. Note 'amber' resolves to the global orange family (orange.90), not global.color.amber.",
       "informative": {
         "subtle": {
           "background": {
-            "value": "{global.color.ultramarine.90}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
-            }
+            "value": "{alias.accent.info.secondary}",
+            "type": "color"
           },
-          "text": { "value": "{global.color.ultramarine.90}", "type": "color" }
+          "text": {
+            "value": "{alias.accent.info.primary}",
+            "type": "color"
+          }
         },
         "accent": {
-          "background": { "value": "{global.color.ultramarine.90}", "type": "color" },
-          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
-        }
-      },
-      "important": {
-        "subtle": {
           "background": {
-            "value": "{global.color.purple.90}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
-            }
+            "value": "{alias.accent.info.primary}",
+            "type": "color"
           },
-          "text": { "value": "{global.color.purple.90}", "type": "color" }
-        },
-        "accent": {
-          "background": { "value": "{global.color.purple.90}", "type": "color" },
-          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
-        }
-      },
-      "pink": {
-        "subtle": {
-          "background": {
-            "value": "{global.color.pink.90}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
-            }
-          },
-          "text": { "value": "{global.color.pink.90}", "type": "color" }
-        },
-        "accent": {
-          "background": { "value": "{global.color.pink.90}", "type": "color" },
-          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
         }
       },
       "neutral": {
         "subtle": {
           "background": {
-            "value": "{global.color.neutrals.80}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
-            }
+            "value": "{alias.accent.neutral.secondary}",
+            "type": "color"
           },
-          "text": { "value": "{global.color.neutrals.80}", "type": "color" }
+          "text": {
+            "value": "{alias.accent.neutral.primary}",
+            "type": "color"
+          }
         },
         "accent": {
-          "background": { "value": "{global.color.neutrals.80}", "type": "color" },
-          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+          "background": {
+            "value": "{alias.accent.neutral.primary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
         }
       },
       "warning": {
         "subtle": {
           "background": {
-            "value": "{global.color.orange.90}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
-            }
+            "value": "{alias.accent.warning.secondary}",
+            "type": "color"
           },
-          "text": { "value": "{global.color.orange.90}", "type": "color" }
+          "text": {
+            "value": "{alias.accent.warning.primary}",
+            "type": "color"
+          }
         },
         "accent": {
-          "background": { "value": "{global.color.orange.90}", "type": "color" },
-          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
-        }
-      },
-      "positive": {
-        "subtle": {
           "background": {
-            "value": "{global.color.green.90}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
-            }
+            "value": "{alias.accent.warning.primary}",
+            "type": "color"
           },
-          "text": { "value": "{global.color.green.90}", "type": "color" }
-        },
-        "accent": {
-          "background": { "value": "{global.color.green.90}", "type": "color" },
-          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
         }
       },
       "negative": {
         "subtle": {
           "background": {
-            "value": "{global.color.red.90}",
-            "type": "color",
-            "$extensions": {
-              "studio.tokens": { "modify": { "type": "alpha", "value": "0.12", "space": "lch" } }
-            }
+            "value": "{alias.accent.negative.secondary}",
+            "type": "color"
           },
-          "text": { "value": "{global.color.red.90}", "type": "color" }
+          "text": {
+            "value": "{alias.accent.negative.primary}",
+            "type": "color"
+          }
         },
         "accent": {
-          "background": { "value": "{global.color.red.90}", "type": "color" },
-          "text": { "value": "{global.color.neutrals.white}", "type": "color" }
+          "background": {
+            "value": "{alias.accent.negative.primary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
+        }
+      },
+      "positive": {
+        "subtle": {
+          "background": {
+            "value": "{alias.accent.positive.secondary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.accent.positive.primary}",
+            "type": "color"
+          }
+        },
+        "accent": {
+          "background": {
+            "value": "{alias.accent.positive.primary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
+        }
+      },
+      "important": {
+        "subtle": {
+          "background": {
+            "value": "{alias.accent.important.secondary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.accent.important.primary}",
+            "type": "color"
+          }
+        },
+        "accent": {
+          "background": {
+            "value": "{alias.accent.important.primary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
+        }
+      },
+      "recommendation": {
+        "subtle": {
+          "background": {
+            "value": "{alias.accent.recommendation.secondary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.accent.recommendation.primary}",
+            "type": "color"
+          }
+        },
+        "accent": {
+          "background": {
+            "value": "{alias.accent.recommendation.primary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
+        }
+      },
+      "violet": {
+        "subtle": {
+          "background": {
+            "value": "{alias.accent.violet.secondary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.accent.violet.primary}",
+            "type": "color"
+          }
+        },
+        "accent": {
+          "background": {
+            "value": "{alias.accent.violet.primary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
+        }
+      },
+      "pink": {
+        "subtle": {
+          "background": {
+            "value": "{alias.accent.pink.secondary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.accent.pink.primary}",
+            "type": "color"
+          }
+        },
+        "accent": {
+          "background": {
+            "value": "{alias.accent.pink.primary}",
+            "type": "color"
+          },
+          "text": {
+            "value": "{alias.content.text.base}",
+            "type": "color"
+          }
         }
       }
     }
