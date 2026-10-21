@@ -1,6 +1,16 @@
 {
   "component": {
     "sideNavigation": {
+      "container": {
+        "background": {
+          "value": "{global.color.neutrals.90}",
+          "type": "color"
+        },
+        "border": {
+          "value": "{global.color.neutrals.80}",
+          "type": "color"
+        }
+      },
       "sectionHeader": {
         "background": {
           "default": {
@@ -10,6 +20,10 @@
           "hover": {
             "value": "{global.color.neutrals.100}",
             "type": "color"
+          },
+          "selected": {
+            "value": "{global.color.neutrals.90}",
+            "type": "color"
           }
         },
         "text": {
@@ -17,13 +31,57 @@
             "value": "{global.color.neutrals.white}",
             "type": "color"
           },
+          "hover": {
+            "value": "{global.color.neutrals.white}",
+            "type": "color"
+          },
           "selected": {
-            "value": "{global.color.brand.60}",
+            "value": "{global.color.neutrals.white}",
             "type": "color"
           }
         },
         "icon": {
           "default": {
+            "value": "{global.color.neutrals.white}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{global.color.brand.60}",
+            "type": "color"
+          },
+          "selected": {
+            "value": "{global.color.brand.60}",
+            "type": "color"
+          }
+        },
+        "chevron": {
+          "default": {
+            "value": "{global.color.neutrals.white}",
+            "type": "color"
+          }
+        }
+      },
+      "page": {
+        "background": {
+          "default": {
+            "value": "{global.color.neutrals.90}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{global.color.neutrals.100}",
+            "type": "color"
+          },
+          "selected": {
+            "value": "{global.color.neutrals.100}",
+            "type": "color"
+          }
+        },
+        "text": {
+          "default": {
+            "value": "{global.color.neutrals.white}",
+            "type": "color"
+          },
+          "hover": {
             "value": "{global.color.neutrals.white}",
             "type": "color"
           },
@@ -33,14 +91,26 @@
           }
         }
       },
-      "pageText": {
-        "default": {
-          "value": "{global.color.neutrals.white}",
+      "divider": {
+        "background": {
+          "value": "{global.color.neutrals.90}",
           "type": "color"
-        },
-        "selected": {
-          "value": "{global.color.brand.60}",
-          "type": "color"
+        }
+      },
+      "mini": {
+        "background": {
+          "default": {
+            "value": "{global.color.neutrals.90}",
+            "type": "color"
+          },
+          "hover": {
+            "value": "{global.color.neutrals.100}",
+            "type": "color"
+          },
+          "selected": {
+            "value": "{global.color.neutrals.90}",
+            "type": "color"
+          }
         }
       },
       "pin": {

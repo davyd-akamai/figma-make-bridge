@@ -80,7 +80,7 @@
     var scrollArea = document.createElement("div");
     scrollArea.className = "side-nav-scroll min-w-0 flex-1 overflow-y-auto overflow-x-hidden";
     var footer = document.createElement("div");
-    footer.className = "flex h-[24px] w-full shrink-0 items-center justify-end bg-[var(--global-color-neutrals-90,#3D3D42)] py-[4px] pr-[16px]";
+    footer.className = "flex h-[24px] w-full shrink-0 items-center justify-end bg-[var(--component-sidenavigation-container-background,#3D3D42)] py-[4px] pr-[16px]";
     var pinBtn = document.createElement("button");
     pinBtn.type = "button";
     pinBtn.className = "flex size-4 items-center justify-center text-[color:var(--component-sidenavigation-pin-icon-default,#D6D6DD)] hover:text-[color:var(--component-sidenavigation-pin-icon-hover,#FFFFFF)]";
@@ -98,8 +98,7 @@
       var exp = expanded();
       nav.style.width = exp ? "232px" : "48px";
       nav.className =
-        "flex h-full flex-col overflow-hidden bg-[var(--global-color-neutrals-90,#3D3D42)] transition-[width] duration-200 ease-in-out" +
-        (!exp ? " border-r border-solid border-[var(--global-color-neutrals-80,#515157)]" : "");
+        "flex h-full flex-col overflow-hidden border-r border-solid border-[var(--component-sidenavigation-container-border,#515157)] bg-[var(--component-sidenavigation-container-background,#3D3D42)] transition-[width] duration-200 ease-in-out";
 
       scrollArea.innerHTML = "";
       sections.forEach(function (section) {
@@ -107,19 +106,19 @@
         var sectionSelected = section.pages.some(function (p) { return p.id === selectedPageId; });
         var wrap = document.createElement("div");
 
-        var textIconColor = sectionSelected
-          ? "var(--component-sidenavigation-sectionheader-text-selected,#5BB3EA)"
-          : "var(--component-sidenavigation-sectionheader-text-default,#FFFFFF)";
+        var iconColor = sectionSelected
+          ? "text-[color:var(--component-sidenavigation-sectionheader-icon-selected,#5BB3EA)]"
+          : "text-[color:var(--component-sidenavigation-sectionheader-icon-default,#FFFFFF)] group-hover:text-[color:var(--component-sidenavigation-sectionheader-icon-hover,#5BB3EA)]";
 
         var headerBtn = document.createElement("button");
         headerBtn.type = "button";
         headerBtn.setAttribute("aria-expanded", open);
         headerBtn.className =
-          "flex h-[48px] w-[232px] shrink-0 cursor-pointer items-center gap-[12px] bg-[var(--component-sidenavigation-sectionheader-background-default,#3D3D42)] pl-[12px] pr-[8px] hover:bg-[var(--component-sidenavigation-sectionheader-background-hover,#343438)]";
+          "group flex h-[48px] w-[232px] shrink-0 cursor-pointer items-center gap-[12px] bg-[var(--component-sidenavigation-sectionheader-background-default,#3D3D42)] pl-[12px] pr-[8px] hover:bg-[var(--component-sidenavigation-sectionheader-background-hover,#343438)]";
         headerBtn.innerHTML =
-          '<span class="size-6 shrink-0" style="color:' + textIconColor + '"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' + ICONS[section.icon] + "</svg></span>" +
-          '<span class="type-heading-overline min-w-px flex-1 text-left uppercase tracking-[0.36px]" style="color:' + textIconColor + '">' + section.label + "</span>" +
-          '<span class="shrink-0" style="color:' + textIconColor + '"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' + (open ? CHEVRON_UP : CHEVRON_DOWN) + "</svg></span>";
+          '<span class="size-6 shrink-0 ' + iconColor + '"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' + ICONS[section.icon] + "</svg></span>" +
+          '<span class="type-heading-overline min-w-px flex-1 text-left uppercase tracking-[0.36px] text-[color:var(--component-sidenavigation-sectionheader-text-default,#FFFFFF)] group-hover:text-[color:var(--component-sidenavigation-sectionheader-text-hover,#FFFFFF)]">' + section.label + "</span>" +
+          '<span class="shrink-0 text-[color:var(--component-sidenavigation-sectionheader-chevron-default,#FFFFFF)]"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">' + (open ? CHEVRON_UP : CHEVRON_DOWN) + "</svg></span>";
         headerBtn.addEventListener("click", function () {
           if (openSectionIds.has(section.id)) openSectionIds.delete(section.id);
           else openSectionIds.add(section.id);
@@ -134,11 +133,16 @@
             row.type = "button";
             if (selected) row.setAttribute("aria-current", "page");
             row.className =
-              "flex h-8 w-[232px] shrink-0 items-center gap-[12px] bg-[var(--global-color-neutrals-90,#3D3D42)] pl-[48px] pr-[8px] hover:bg-[var(--global-color-neutrals-100,#343438)]";
+              "flex h-8 w-[232px] shrink-0 items-center gap-[12px] pl-[48px] pr-[8px] hover:bg-[var(--component-sidenavigation-page-background-hover,#343438)] " +
+              (selected
+                ? "bg-[var(--component-sidenavigation-page-background-selected,#343438)]"
+                : "bg-[var(--component-sidenavigation-page-background-default,#3D3D42)]");
             row.innerHTML =
-              '<span class="type-label-semibold-s min-w-0 truncate text-left" style="color:' +
-              (selected ? "var(--component-sidenavigation-pagetext-selected,#5BB3EA)" : "var(--component-sidenavigation-pagetext-default,#FFFFFF)") +
-              ";font-weight:" + (selected ? 700 : 600) + '">' + page.label + "</span>" +
+              '<span class="type-label-semibold-s min-w-0 truncate text-left ' +
+              (selected
+                ? "text-[color:var(--component-sidenavigation-page-text-selected,#5BB3EA)]"
+                : "text-[color:var(--component-sidenavigation-page-text-default,#FFFFFF)] hover:text-[color:var(--component-sidenavigation-page-text-hover,#FFFFFF)]") +
+              '" style="font-weight:' + (selected ? 700 : 600) + '">' + page.label + "</span>" +
               (page.badge ? badgeHtml(page.badge) : "");
             row.addEventListener("click", function () {
               selectedPageId = page.id;

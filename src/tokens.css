@@ -362,14 +362,28 @@
   --component-select-focus-infoicon: #696970;
   --component-select-readonly-background: #FFFFFF;
   --component-select-readonly-text: #343438;
+  --component-sidenavigation-container-background: #3D3D42;
+  --component-sidenavigation-container-border: #515157;
   --component-sidenavigation-sectionheader-background-default: #3D3D42;
   --component-sidenavigation-sectionheader-background-hover: #343438;
+  --component-sidenavigation-sectionheader-background-selected: #3D3D42;
   --component-sidenavigation-sectionheader-text-default: #FFFFFF;
-  --component-sidenavigation-sectionheader-text-selected: #5BB3EA;
+  --component-sidenavigation-sectionheader-text-hover: #FFFFFF;
+  --component-sidenavigation-sectionheader-text-selected: #FFFFFF;
   --component-sidenavigation-sectionheader-icon-default: #FFFFFF;
+  --component-sidenavigation-sectionheader-icon-hover: #5BB3EA;
   --component-sidenavigation-sectionheader-icon-selected: #5BB3EA;
-  --component-sidenavigation-pagetext-default: #FFFFFF;
-  --component-sidenavigation-pagetext-selected: #5BB3EA;
+  --component-sidenavigation-sectionheader-chevron-default: #FFFFFF;
+  --component-sidenavigation-page-background-default: #3D3D42;
+  --component-sidenavigation-page-background-hover: #343438;
+  --component-sidenavigation-page-background-selected: #343438;
+  --component-sidenavigation-page-text-default: #FFFFFF;
+  --component-sidenavigation-page-text-hover: #FFFFFF;
+  --component-sidenavigation-page-text-selected: #5BB3EA;
+  --component-sidenavigation-divider-background: #3D3D42;
+  --component-sidenavigation-mini-background-default: #3D3D42;
+  --component-sidenavigation-mini-background-hover: #343438;
+  --component-sidenavigation-mini-background-selected: #3D3D42;
   --component-sidenavigation-pin-icon-default: #D6D6DD;
   --component-sidenavigation-pin-icon-hover: #FFFFFF;
   --component-sidenavigation-scrollbar-thumb: #696970;
@@ -757,7 +771,6 @@
   --component-tabs-overflowmenu-text: #343438;
   --component-tabs-overflowmenu-hover-background: #EDF8FF;
   --component-tabs-overflowmenu-shadow-color: rgba(58,59,63,0.18);
-  --component-sidenavigation-divider-background: #3D3D42;
   --component-select-label: #343438;
 
   /* alias tokens (light) — color + elevation; typography composites are the .type-* classes */

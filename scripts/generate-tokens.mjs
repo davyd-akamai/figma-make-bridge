@@ -141,8 +141,6 @@ function legacyNames() {
     ["component-tabs-overflowmenu-shadow-color", "shadowColor:alias.elevation.s"],
   );
 
-  // No sideNavigation divider token exists in the JSON; it matches the section-header surface.
-  list.push(["component-sidenavigation-divider-background", "component.sideNavigation.sectionHeader.background.default"]);
   list.push(["component-select-label", "{alias.content.text.primary.default}"]);
   return list;
 }
