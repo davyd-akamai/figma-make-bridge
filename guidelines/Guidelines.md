@@ -34,6 +34,11 @@ import { Button, Container } from "figma-make-bridge";
 - IMPORTANT: Spacing uses `--global-spacing-*`. Text uses `.type-*` classes.
 - IMPORTANT: Library components already carry their own tokens. Never restyle them with custom colors, `style` or `className`.
 - IMPORTANT: Do not add fonts, font links or CSS resets.
+- IMPORTANT: Page titles, headings and body text inherit the page template's text color. Do not add color classes or hard-coded colors to them. The page background comes from the template. Custom text colors use `--alias-content-text-*`, custom backgrounds use `--alias-background-*`, then `--global-color-*`. No Tailwind color utilities (`text-black`, `bg-white`, `bg-gray-*`, `bg-slate-*`).
+
+## Before finishing
+
+Scan your code for hard-coded colors (hex, rgb, Tailwind color classes, non-ADS variables). Replace them with ADS variables, or report them in the reply.
 
 ## READ BEFORE USE
 

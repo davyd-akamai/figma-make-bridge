@@ -44,7 +44,7 @@ import { GlobalHeader, type GlobalHeaderProps, type GlobalHeaderUser } from "fig
 ## Incorrect
 
 ```tsx
-<GlobalHeader type="tablet" className="bg-slate-900" />
+<GlobalHeader type="tablet" />
 ```
 
 ## Known footguns

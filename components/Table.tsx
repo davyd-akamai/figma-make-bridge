@@ -247,7 +247,7 @@ const HEADER_VARIANT_CLASSES: Record<
     iconActive: "text-[color:var(--component-table-headerfilled-icon-active,#0174BC)]",
   },
   outlined: {
-    bg: "bg-white",
+    bg: "bg-[var(--alias-background-normal,#FFFFFF)]",
     text: "text-[color:var(--component-table-headeroutlined-text,#343438)]",
     border: "border-[var(--component-table-headeroutlined-border,#A3A3AB)]",
     iconDefault: "text-[color:var(--component-table-headeroutlined-icon-default,#696970)]",
@@ -380,7 +380,7 @@ function RowActionMenu<T extends TableRowData>({
         align="end"
         role="menu"
         aria-label="More actions"
-        className="flex min-w-[160px] flex-col items-stretch py-[var(--global-spacing-s4,4px)] bg-white shadow-[0px_2px_8px_0px_rgba(58,59,63,0.18)]"
+        className="flex min-w-[160px] flex-col items-stretch py-[var(--global-spacing-s4,4px)] bg-[var(--alias-background-normal,#FFFFFF)] shadow-[0px_2px_8px_0px_rgba(58,59,63,0.18)]"
       >
         {actions.map((action) => {
           const disabled = typeof action.disabled === "function" ? action.disabled(row) : action.disabled;

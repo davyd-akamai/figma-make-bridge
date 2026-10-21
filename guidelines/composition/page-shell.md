@@ -32,6 +32,7 @@ import { DefaultCmPageTemplate, type DefaultCmPageTemplateProps } from "figma-ma
 - The template provides the page background (`--alias-background-neutral`, the light grey page color).
 - The slot is `max-width: 1280px`, horizontally centered, with built-in padding: 16px left and right, 24px top, 32px bottom.
 - The template owns background, centering, max-width and outer padding. Do NOT add your own page background, centering wrapper, `max-width` or outer padding around the page content.
+- The template also sets the default text color (`--alias-content-text-primary-default`). Page titles and body text inherit it. Do not set a text color on them. Custom text that needs another color uses an `--alias-content-text-*` variable. Never use a hard-coded color, a Tailwind color class, or a template variable such as `--foreground`.
 - Never render content wider than 1280px. Never break out with negative margins.
 - Inside the slot, stack `Container`s vertically (components/container.md).
 - Do not put a `Table` in a `Container` (components/table.md).
