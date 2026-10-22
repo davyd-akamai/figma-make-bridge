@@ -19,6 +19,7 @@
     { id: "search", label: "Search", href: "components/search.html" },
     { id: "checkbox", label: "Checkbox", href: "components/checkbox.html" },
     { id: "radio-button", label: "RadioButton", href: "components/radio-button.html" },
+    { id: "breadcrumbs", label: "Breadcrumbs", href: "components/breadcrumbs.html" },
     { id: "tabs-horizontal", label: "TabsHorizontal", href: "components/tabs-horizontal.html" },
     { id: "drawer", label: "Drawer", href: "components/drawer.html" },
     { id: "icons", label: "Icons", href: "components/icons.html" },

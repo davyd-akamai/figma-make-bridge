@@ -28,6 +28,8 @@ const guidelineFiles = new Set(readdirSync(guidelinesDir).filter((f) => f.endsWi
 
 function findGuideline(fileBase, rootKey) {
   const names = [kebabCase(rootKey), kebabCase(fileBase)];
+  // Singular token file, plural component guideline (breadcrumb.json -> breadcrumbs.md).
+  for (const n of [...names]) names.push(`${n}s`);
   for (const n of names) if (guidelineFiles.has(n)) return n;
   for (const n of names) {
     const hits = [...guidelineFiles].filter((g) => g.startsWith(`${n}-`));

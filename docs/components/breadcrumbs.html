@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breadcrumbs — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="breadcrumbs">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Breadcrumbs</h1>
+        <p class="docs-lede">Location trail from the root to the current page. Earlier items are links followed by a "/" separator; the last item is the bold current page, optionally renamable inline (pencil on hover, text field with confirm/cancel). Any item can carry a BETA/NEW marker.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=123-4284" target="_blank" rel="noopener noreferrer">123:4284</a> · states <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=123-4208" target="_blank" rel="noopener noreferrer">123:4208</a></span>
+          <span><code class="docs-code">import { Breadcrumbs } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Breadcrumbs.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Trail lengths</h2>
+          <p class="docs-section-note">1 to 5 items, matching Figma's swatches. Hover a non-last item to see the underline.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column" id="bc-lengths" style="align-items:flex-start;"></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Interactive — navigation, badge, rename</h2>
+          <p class="docs-section-note">Click "Compute" or "Instances" to navigate. Hover the last item and click the pencil to rename: Enter or ✓ confirms, Escape or ✕ cancels. "Instances" carries a BETA badge.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column" style="align-items:flex-start;">
+              <div id="bc-interactive"></div>
+              <p class="type-label-regular-s" id="bc-state"></p>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">items</td><td class="docs-prop-type">{ id?, label, href?, onClick?, badge? }[]</td><td>"Breadcrumb" / "Last Item Title"</td><td>Data-driven. The last item is the current page: never a link.</td></tr>
+              <tr><td class="docs-prop-name">onNavigate</td><td class="docs-prop-type">(item, index) =&gt; void</td><td>—</td><td>Fires for non-last items, after the item's own <code>onClick</code>.</td></tr>
+              <tr><td class="docs-prop-name">editable</td><td class="docs-prop-type">boolean</td><td>false</td><td>Adds the pencil on last-item hover/focus.</td></tr>
+              <tr><td class="docs-prop-name">onRename</td><td class="docs-prop-type">(title: string) =&gt; void</td><td>—</td><td>Trimmed title, only when non-empty and changed. The component never edits <code>items</code>.</td></tr>
+              <tr><td class="docs-prop-name">badge (item)</td><td class="docs-prop-type">"beta" | "new"</td><td>—</td><td>Fixed <a href="system-badge.html">SystemBadge</a>.</td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">No collapse/overflow behavior — Figma has none; long trails wrap.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="breadcrumbs.js"></script>
+</body>
+</html>

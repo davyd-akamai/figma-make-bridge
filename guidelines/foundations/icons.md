@@ -33,7 +33,7 @@ Default size 16px:
 
 Default size 12px:
 
-`CheckIcon`, `MinusIcon`, `DotIcon`
+`CheckIcon`, `CheckmarkIcon`, `MinusIcon`, `DotIcon`
 
 Extra props:
 

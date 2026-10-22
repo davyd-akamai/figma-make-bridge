@@ -7,6 +7,7 @@ Node IDs below are taken from the header comments of the matching component in `
 | Token file | Figma source (node) | Status |
 |---|---|---|
 | `badge.json` | `Badge` (76:4205) | node from component header; variables not re-verified |
+| `breadcrumb.json` | `Breadcrumbs` (123:4284), `.breadcrumb-item` (123:4208) | node from component header; variables not re-verified |
 | `button.json` | `Button` (47:14865) | node from component header; variables not re-verified |
 | `checkbox.json` | `core_checkbox` (58:4716), `.base-checkbox` (58:4359) | node from component header; variables not re-verified |
 | `container.json` | `Container` (58:5033) | node from component header; variables not re-verified |

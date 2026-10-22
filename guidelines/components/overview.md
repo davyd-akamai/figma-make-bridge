@@ -19,6 +19,7 @@ Read this file before using any component. Then read the file for that component
 | TextField | Single-line text input | components/text-field.md |
 | Select | Single-select dropdown | components/select.md |
 | Search | Search box with optional suggestions | components/search.md |
+| Breadcrumbs | Location trail with optional inline rename of the current page | components/breadcrumbs.md |
 | TabsHorizontal | Tab headers (no panels) | components/tabs-horizontal.md |
 | Table | Data table with sort, select, expand | components/table.md |
 | Drawer | Right-hand slide-in panel | components/drawer.md |
@@ -37,6 +38,7 @@ Icons: foundations/icons.md.
 - Pick one value from a list -> `Select`.
 - Pick one option from a visible group -> `RadioButton`.
 - Toggle or multi-pick -> `Checkbox`.
+- Show where the user is in a hierarchy -> `Breadcrumbs`.
 - Switch between views -> `TabsHorizontal` + your own content.
 - Rows of data -> `Table`.
 - Edit or detail panel -> `Drawer`.
@@ -52,7 +54,7 @@ Never invent these. If you are tempted to, say so in the reply before building c
 | Switch | `Switch`, `Toggle` |
 | Dropdown (multi-select, grouped) | `Dropdown`, `DropdownMenu`, `MultiSelect`, `Combobox` |
 | Notification / Toast | `Toast`, `Snackbar`, `Notification`, `Banner` |
-| Topbar / Breadcrumb | `Topbar`, `Breadcrumb`, `Breadcrumbs` |
+| Topbar | `Topbar` |
 | Pagination | `Pagination`, `Pager` |
 | Menu button | `MenuButton`. Not available. Use `Button` plus custom UI and announce it. |
 

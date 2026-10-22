@@ -37,6 +37,13 @@
   --component-badge-pink-subtle-text: #CD1D8D;
   --component-badge-pink-accent-background: #CD1D8D;
   --component-badge-pink-accent-text: #FFFFFF;
+  --component-breadcrumb-normal-text-default: #696970;
+  --component-breadcrumb-lastitem-text-default: #343438;
+  --component-breadcrumb-lastitem-text-hover-text-default: #343438;
+  --component-breadcrumb-lastitem-text-hover-text-icon-default: #3D3D42;
+  --component-breadcrumb-lastitem-text-hover-text-icon-hover: #009CDE;
+  --component-breadcrumb-lastitem-icon-default: #3D3D42;
+  --component-breadcrumb-separator-text-default: #696970;
   --component-button-primary-default-background: #0174BC;
   --component-button-primary-default-text: #FFFFFF;
   --component-button-primary-default-icon: #FFFFFF;

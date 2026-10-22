@@ -9,6 +9,7 @@ import Container from "../components/Container";
 import TextField from "../components/TextField";
 import Select, { type SelectOption } from "../components/Select";
 import Search from "../components/Search";
+import Breadcrumbs, { type BreadcrumbsItem } from "../components/Breadcrumbs";
 import Badge, { type BadgeType, type BadgeColor } from "../components/Badge";
 import SystemBadge from "../components/SystemBadge";
 import TabsHorizontal, { type TabsHorizontalTab } from "../components/TabsHorizontal";
@@ -21,6 +22,7 @@ import {
   BucketIcon,
   CaretIcon,
   CheckIcon,
+  CheckmarkIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   CloseIcon,
@@ -56,6 +58,7 @@ const ALL_ICONS = [
   BucketIcon,
   CaretIcon,
   CheckIcon,
+  CheckmarkIcon,
   ChevronDownIcon,
   ChevronUpIcon,
   CloseIcon,
@@ -498,6 +501,40 @@ function BadgeSection() {
         <Badge type="accent" color="red" icon label="Failed" />
         <Badge type="subtle" color="amber" icon label="Pending" />
       </div>
+    </div>
+  );
+}
+
+const CRUMBS: BreadcrumbsItem[] = [
+  { id: "compute", label: "Compute", href: "#compute" },
+  { id: "instances", label: "Instances", badge: "beta", href: "#instances" },
+  { id: "web-1", label: "web-server-01" },
+];
+
+function BreadcrumbsSection() {
+  const [trail, setTrail] = useState<BreadcrumbsItem[]>(CRUMBS);
+  const [lastNav, setLastNav] = useState("none");
+  const [renamed, setRenamed] = useState("none");
+  const demo = (n: number): BreadcrumbsItem[] =>
+    [...Array.from({ length: n - 1 }, (_, i) => ({ id: `b${i}`, label: "Breadcrumb" })), { id: "last", label: "Last Item Title" }];
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      {[1, 2, 3, 4, 5].map((n) => (
+        <Breadcrumbs key={n} items={demo(n)} />
+      ))}
+      <p className="type-label-bold-s">Interactive (nav + badge + editable last item)</p>
+      <Breadcrumbs
+        items={trail}
+        editable
+        onNavigate={(item) => setLastNav(item.label)}
+        onRename={(title) => {
+          setRenamed(title);
+          setTrail((t) => t.map((it, i) => (i === t.length - 1 ? { ...it, label: title } : it)));
+        }}
+      />
+      <p className="type-label-regular-s" data-testid="crumbs-state">
+        Last navigated: {lastNav} · Renamed to: {renamed}
+      </p>
     </div>
   );
 }
@@ -1247,6 +1284,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Badge">
             <BadgeSection />
+          </PreviewSection>
+
+          <PreviewSection title="Breadcrumbs">
+            <BreadcrumbsSection />
           </PreviewSection>
 
           <PreviewSection title="Tabs Horizontal">

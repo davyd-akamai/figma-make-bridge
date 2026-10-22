@@ -20,6 +20,9 @@ export type { BadgeProps, BadgeType, BadgeColor } from "./components/Badge";
 export { default as SystemBadge } from "./components/SystemBadge";
 export type { SystemBadgeProps } from "./components/SystemBadge";
 
+export { default as Breadcrumbs, DEFAULT_BREADCRUMBS_ITEMS } from "./components/Breadcrumbs";
+export type { BreadcrumbsProps, BreadcrumbsItem } from "./components/Breadcrumbs";
+
 export { default as Button } from "./components/Button";
 export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/Button";
 

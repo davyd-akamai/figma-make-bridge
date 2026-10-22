@@ -1,0 +1,54 @@
+{
+  "component": {
+    "breadcrumb": {
+      "normal": {
+        "text": {
+          "default": {
+            "value": "{alias.content.text.secondary.default}",
+            "type": "color"
+          }
+        }
+      },
+      "lastItem": {
+        "text": {
+          "default": {
+            "value": "{alias.content.text.primary.default}",
+            "type": "color"
+          },
+          "hover": {
+            "text": {
+              "default": {
+                "value": "{alias.content.text.primary.default}",
+                "type": "color"
+              },
+              "icon": {
+                "default": {
+                  "value": "{alias.content.icon.primary.default}",
+                  "type": "color"
+                },
+                "hover": {
+                  "value": "{alias.content.icon.primary.hover}",
+                  "type": "color"
+                }
+              }
+            }
+          }
+        },
+        "icon": {
+          "default": {
+            "value": "{alias.content.icon.primary.default}",
+            "type": "color"
+          }
+        }
+      },
+      "separator": {
+        "text": {
+          "default": {
+            "value": "{alias.content.text.secondary.default}",
+            "type": "color"
+          }
+        }
+      }
+    }
+  }
+}
