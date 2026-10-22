@@ -15,6 +15,7 @@ import SystemBadge from "../components/SystemBadge";
 import TabsHorizontal, { type TabsHorizontalTab } from "../components/TabsHorizontal";
 import Drawer, { type DrawerSize } from "../components/Drawer";
 import Modal from "../components/Modal";
+import NotificationBanner, { type NotificationBannerType } from "../components/NotificationBanner";
 import Table, { type TableColumn, type TableRowData, type TableSortDirection } from "../components/Table";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
@@ -33,7 +34,9 @@ import {
   DotIcon,
   DownloadIcon,
   EditIcon,
+  FailureFilledIcon,
   HelpCircleIcon,
+  InfoFilledIcon,
   InfoIcon,
   MenuIcon,
   MinusIcon,
@@ -46,7 +49,9 @@ import {
   ServerIcon,
   SortIcon,
   StatusAlertIcon,
+  SuccessFilledIcon,
   UserIcon,
+  WarningFilledIcon,
 } from "../components/icons";
 
 // Internal preview/demo harness only — not part of the shipped component library.
@@ -69,7 +74,9 @@ const ALL_ICONS = [
   DotIcon,
   DownloadIcon,
   EditIcon,
+  FailureFilledIcon,
   HelpCircleIcon,
+  InfoFilledIcon,
   InfoIcon,
   MenuIcon,
   MinusIcon,
@@ -82,7 +89,9 @@ const ALL_ICONS = [
   ServerIcon,
   SortIcon,
   StatusAlertIcon,
+  SuccessFilledIcon,
   UserIcon,
+  WarningFilledIcon,
 ];
 
 function PreviewSection({ title, children }: { title: string; children: ReactNode }) {
@@ -1086,6 +1095,43 @@ function DrawerLongContent() {
   );
 }
 
+function NotificationBannerSection() {
+  const types: NotificationBannerType[] = ["info", "warning", "success", "error", "secondary"];
+  const [dismissed, setDismissed] = useState<Set<NotificationBannerType>>(new Set());
+  const visible = types.filter((t) => !dismissed.has(t));
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 605 }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+        {types.map((t) => (
+          <NotificationBanner key={t} type={t} dismissible={false}>
+            The record is available for all users on all reports.
+          </NotificationBanner>
+        ))}
+      </div>
+      <h3 className="type-label-bold-s">With action + dismiss (controlled)</h3>
+      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+        {visible.map((t) => (
+          <NotificationBanner
+            key={t}
+            type={t}
+            onDismiss={() => setDismissed((prev) => new Set(prev).add(t))}
+            action={<Button variant="link">Take an action</Button>}
+          >
+            The record is available for all users on all reports.
+          </NotificationBanner>
+        ))}
+        {visible.length === 0 && (
+          <Button variant="secondary" onClick={() => setDismissed(new Set())}>Restore banners</Button>
+        )}
+      </div>
+      <h3 className="type-label-bold-s">Long text wraps</h3>
+      <NotificationBanner type="warning" action={<Button variant="link">Take an action</Button>}>
+        Your account has reached 90% of its monthly transfer quota. Additional usage is billed at the standard overage rate until the quota resets at the start of the next billing period.
+      </NotificationBanner>
+    </div>
+  );
+}
+
 function ModalSection() {
   const [basicOpen, setBasicOpen] = useState(false);
   const [iconOpen, setIconOpen] = useState(false);
@@ -1351,6 +1397,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Modal">
             <ModalSection />
+          </PreviewSection>
+
+          <PreviewSection title="Notification Banner">
+            <NotificationBannerSection />
           </PreviewSection>
 
           <PreviewSection title="System Badge">

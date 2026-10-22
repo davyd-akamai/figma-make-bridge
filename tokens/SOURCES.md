@@ -17,6 +17,8 @@ Node IDs below are taken from the header comments of the matching component in `
 | `header.json` | `cm_header` (1:882) | node from component header; variables not re-verified |
 | `modal.json` | `Modal` (123:4666) | variables checked via get_variable_defs; overlay/elevation added additively |
 | `menuButton.json` | no component in this repo cites a node | source unknown; to be confirmed in Figma |
+| `notificationBanner.json` | `Notification banner` (123:5210) | variable colors cross-checked against the exported icon/frame fills (all matched); pre-seeded, used as-is |
+| `notificationToast.json` | none yet | pre-seeded, no component built |
 | `radioButton.json` | `Radio-button` (58:5044) | node from component header; variables not re-verified |
 | `search.json` | `Search-field` (91:3834) | node from component header; variables not re-verified |
 | `select.json` | `Select` (47:7683) | node from component header; variables not re-verified |

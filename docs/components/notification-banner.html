@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NotificationBanner — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="notification-banner">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>NotificationBanner</h1>
+        <p class="docs-lede">Full-width inline message with a status icon, text, an optional action and an optional dismiss button. Five types. Width fills its parent, clamped between 240px and 1000px.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=123-5210" target="_blank" rel="noopener noreferrer">123:5210</a></span>
+          <span><code class="docs-code">import { NotificationBanner } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/NotificationBanner.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Types</h2>
+          <p class="docs-section-note">Info, warning, success, error and secondary, without the dismiss button (<code>dismissible={false}</code>).</p>
+          <div class="docs-demo"><div class="docs-demo-stage" style="display:flex;flex-direction:column;align-items:stretch;gap:14px;max-width:605px;" id="nb-types"></div></div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Action + dismiss</h2>
+          <p class="docs-section-note">The action is a link-variant Button passed through the <code>action</code> slot. Click × to dismiss: the demo plays the consumer's role and removes the banner itself.</p>
+          <div class="docs-demo"><div class="docs-demo-stage" style="display:flex;flex-direction:column;align-items:stretch;gap:14px;max-width:605px;" id="nb-controlled"></div></div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Long text</h2>
+          <p class="docs-section-note">Text wraps; the icon and × stay aligned to the first line.</p>
+          <div class="docs-demo"><div class="docs-demo-stage" style="display:flex;flex-direction:column;align-items:stretch;gap:14px;max-width:605px;" id="nb-long"></div></div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required. The message text.</td></tr>
+              <tr><td class="docs-prop-name">type</td><td class="docs-prop-type">"info" | "warning" | "success" | "error" | "secondary"</td><td>"info"</td><td>Picks colors and the status icon. No <code>tip</code> type (no Figma swatch).</td></tr>
+              <tr><td class="docs-prop-name">dismissible</td><td class="docs-prop-type">boolean</td><td>true</td><td>Shows the × button.</td></tr>
+              <tr><td class="docs-prop-name">onDismiss</td><td class="docs-prop-type">() =&gt; void</td><td>—</td><td>Fired by the ×. Dismissal is fully controlled: the banner never hides itself, the consumer removes it. No auto-dismiss timer.</td></tr>
+              <tr><td class="docs-prop-name">action</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Right-aligned before the ×. Compose with <code>&lt;Button variant="link"&gt;</code>.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td></td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">Status icon colors follow the light/dark mode through the alias icon tokens; only the warning icon's "!" is a fixed dark.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="notification-banner.js"></script>
+</body>
+</html>
