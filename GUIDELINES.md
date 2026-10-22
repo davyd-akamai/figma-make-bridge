@@ -264,7 +264,7 @@ Rule of thumb: components should reference `component.*` or `alias.*` tokens, ne
   - **a11y call not in Figma:** `role="alert"` for error/warning, `role="status"` for the rest; × is a real `<button aria-label="Dismiss">`.
   - **Retrofit check:** `guidelines/components/overview.md` previously listed "Notification / Toast / Banner" as non-existent; narrowed to Toast only.
   - **Docs site (`docs/`) added:** [docs/components/notification-banner.html](docs/components/notification-banner.html) + [notification-banner.js](docs/components/notification-banner.js) (types, action + controlled dismiss with a restore button, long text, props table), `docs/index.html` card, `docs/assets/shell.js` nav entry, the four new icons on `docs/components/icons.html`, and `docs/assets/styles.css` re-copied from `dist/styles.css`. The JS mirrors the `.tsx` class strings verbatim. Verified on the `docs-static` server: 42px banners, colors/icon fills, dismiss/restore, zero console errors.
-  - **Not done:** Code Connect mapping.
+  - **Code Connect:** [components/Modal.figma.ts](components/Modal.figma.ts) maps `123:4666` → `Modal` (static example with the two footer `Button`s; the node has no properties/variants, and its title layer is auto-named after its own content so `findText` on it would break on any edit; `open`/`onClose` are runtime state). Prerequisites were already met — Modal is a local, published component in "Internal ADS library" — and both nested footer Buttons already resolved to `Button`. Confirmed via `get_code_connect_map`; same `snippet: null` read-back caveat as every other mapping.
 
 ## Package-facing Guidelines.md (drafted ahead of packaging)
 
