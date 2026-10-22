@@ -71,7 +71,7 @@
 // uses Tailwind's `group`/`group-hover:` pair on the `display: contents` row wrapper rather than a
 // plain `:hover` class, since a `display: contents` element has no box of its own to hover.
 //
-// `bordered` (default true) controls the outer wrapper's border/rounded-corner/background — set to
+// `bordered` (default true) controls the outer wrapper's border/background — set to
 // false when nesting a `Table` inside another `Table`'s `renderExpandedContent`, so the nested
 // table doesn't paint a second, redundant outline right next to the outer expanded-row's own
 // border. A nested table should also always use the default `headerVariant="filled"` (grey) rather
@@ -173,7 +173,7 @@ export interface TableProps<T extends TableRowData = TableRowData> {
   headerVariant?: TableHeaderVariant;
   /** Alternating row background shading. Default false, matching CDS's own opt-in `zebra`. */
   zebra?: boolean;
-  /** Outer border/rounded-corner/background. Default true — set false when nesting a `Table`
+  /** Outer border/background. Default true — set false when nesting a `Table`
    * inside another `Table`'s `renderExpandedContent`, so it doesn't paint a redundant outline. */
   bordered?: boolean;
   selectable?: boolean;
@@ -563,7 +563,7 @@ export default function Table<T extends TableRowData = TableRowData>({
       role="table"
       aria-label={ariaLabel}
       style={{ gridTemplateColumns: buildGridTemplateColumns(columns) }}
-      className={`grid ${bordered ? `border border-solid ${ROW_BORDER} rounded-[4px] overflow-hidden` : ""} ${className ?? ""}`}
+      className={`grid ${bordered ? `border border-solid ${ROW_BORDER} overflow-hidden` : ""} ${className ?? ""}`}
     >
       <div role="row" className="contents">
         {columns.map((column, i) => (

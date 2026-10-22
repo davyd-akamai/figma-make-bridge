@@ -14,19 +14,23 @@ Import components from `figma-make-bridge`. Load the stylesheet once in `index.c
 import { Button, Container } from "figma-make-bridge";
 ```
 
+## Styling rules
+
+- Use library components exactly as they are. Do not add `className`, `style` props or CSS that changes their look (colors, borders, radius, fonts). Layout wrappers around a component are fine. Take colors only from the component's Tokens section.
+- All corners are square. Use no border radius on any element, including tables, cards, inputs, panels and custom UI. Do not add `rounded-*` classes or `border-radius` styles. Exceptions: shapes that are round by definition (radio buttons, avatars, notification dots). Add any other radius only if the prompt explicitly asks for it for that element.
+- Build only what the prompt asks for.
+
 ## Rules
 
-1. **Use library components exactly as they are.** Do not restyle them. Do not invent variants, states, sizes or colors. Do not rebuild a library component with custom markup.
-2. **Colors come from the token list.** Each component guideline has a Tokens section. Take the component's colors only from that list. Do not deviate.
-3. **Build only what the prompt asks for.** No extra pages, sections, features, states or copy.
-4. **Use only library components** when one exists for the job. If none fits, say so in the reply before building custom UI. Then follow the token order in rule 5.
-5. **Token order for custom UI:**
+1. **Do not invent variants, states, sizes or colors.** Do not rebuild a library component with custom markup.
+2. **Use only library components** when one exists for the job. If none fits, say so in the reply before building custom UI. Then follow the token order in rule 3.
+3. **Token order for custom UI:**
    1. The tokens listed in the nearest library component's Tokens section, used as the alias or global they point to.
    2. `--alias-*` variables.
    3. `--global-color-*` variables. If you use one, say so in the reply.
 
    Spacing and `.type-*` classes are exempt from this order.
-6. **Everything you need is in this package.** Do not look for other sources of tokens, styles or component specs. If something is missing, say so in the reply.
+4. **Everything you need is in this package.** Do not look for other sources of tokens, styles or component specs. If something is missing, say so in the reply.
 
 ## Hard rules
 
@@ -39,6 +43,12 @@ import { Button, Container } from "figma-make-bridge";
 ## Before finishing
 
 Scan your code for hard-coded colors (hex, rgb, Tailwind color classes, non-ADS variables). Replace them with ADS variables, or report them in the reply.
+
+## Page structure
+
+Page templates (product landing page, resource details page) are in composition/page-shell.md.
+
+When a page is a detail page below a product landing page, read `components/breadcrumbs.md` and use the breadcrumb as the page header, not a page title.
 
 ## READ BEFORE USE
 

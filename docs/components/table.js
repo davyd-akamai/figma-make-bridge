@@ -305,7 +305,7 @@
     container.innerHTML = "";
     container.style.gridTemplateColumns = buildGridTemplateColumns(config.columns);
     container.className =
-      "grid " + (bordered ? "border border-solid " + ROW_BORDER + " rounded-[4px] overflow-hidden" : "");
+      "grid " + (bordered ? "border border-solid " + ROW_BORDER + " overflow-hidden" : "");
     container.setAttribute("role", "table");
 
     function selectedCount() {

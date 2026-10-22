@@ -2,6 +2,16 @@
 
 Location trail from the root to the current page. The last item is the current page; every earlier item is clickable and followed by a "/" separator.
 
+## When to use
+
+- A product landing page (for example the Firewalls list) has NO breadcrumb. It shows a page title (for example "Firewalls"), the main call to action, and the page content (usually a table).
+- A detail page below a landing page has a breadcrumb and NO separate page title. The breadcrumb replaces the title.
+- The first breadcrumb item is the product name (for example "Firewalls"). It links back to the landing page.
+- The last breadcrumb item is the name of the current resource (for example the firewall name). It is not a link.
+- Intermediate levels, if any, appear between them in order.
+- Never show a breadcrumb and a page title together on the same page.
+- Example: clicking a firewall in the Firewalls table opens its details page. The header is `Firewalls / my-firewall-01`.
+
 ## When to use / when not to use
 
 - Use at the top of a page content area to show hierarchy and let users go back up.

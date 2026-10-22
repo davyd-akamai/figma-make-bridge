@@ -10,6 +10,19 @@ Read this before building any page layout.
 import { DefaultCmPageTemplate, type DefaultCmPageTemplateProps } from "figma-make-bridge";
 ```
 
+## Page templates
+
+Product landing page:
+
+1. Page title (for example "Firewalls")
+2. Main call to action
+3. Content (usually a `Table`)
+
+Resource details page (below a landing page):
+
+1. `Breadcrumbs` as the page header (components/breadcrumbs.md). No page title.
+2. Content
+
 ## Props
 
 | Prop | Type | Default | Notes |
