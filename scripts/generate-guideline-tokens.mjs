@@ -26,8 +26,11 @@ const cssName = (ref) => `--${ref.split(".").map((k) => k.toLowerCase()).join("-
 
 const guidelineFiles = new Set(readdirSync(guidelinesDir).filter((f) => f.endsWith(".md")).map((f) => f.slice(0, -3)));
 
+// Token files whose guideline has a different name (notificationToast.json -> toast.md).
+const GUIDELINE_ALIASES = { "notification-toast": "toast" };
+
 function findGuideline(fileBase, rootKey) {
-  const names = [kebabCase(rootKey), kebabCase(fileBase)];
+  const names = [kebabCase(rootKey), kebabCase(fileBase)].map((n) => GUIDELINE_ALIASES[n] ?? n);
   // Singular token file, plural component guideline (breadcrumb.json -> breadcrumbs.md).
   for (const n of [...names]) names.push(`${n}s`);
   for (const n of names) if (guidelineFiles.has(n)) return n;

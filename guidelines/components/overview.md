@@ -25,6 +25,7 @@ Read this file before using any component. Then read the file for that component
 | Drawer | Right-hand slide-in panel | components/drawer.md |
 | Modal | Centered confirmation/dialog box | components/modal.md |
 | NotificationBanner | Inline status message with optional action and dismiss | components/notification-banner.md |
+| Toast | Floating bottom-right notification, auto-dismisses after 5s | components/toast.md |
 
 Icons: foundations/icons.md.
 
@@ -46,6 +47,7 @@ Icons: foundations/icons.md.
 - Edit or detail panel -> `Drawer`.
 - Short confirmation or blocking question -> `Modal`.
 - Inline status message inside a page (info, warning, success, error) -> `NotificationBanner`.
+- Brief floating feedback after an action (auto-dismisses) -> `Toast`.
 
 ## Components that do NOT exist yet
 
@@ -56,7 +58,7 @@ Never invent these. If you are tempted to, say so in the reply before building c
 | Tooltip | `Tooltip`, `Popover` as a public component |
 | Switch | `Switch`, `Toggle` |
 | Dropdown (multi-select, grouped) | `Dropdown`, `DropdownMenu`, `MultiSelect`, `Combobox` |
-| Toast (floating, auto-dismissing notification) | `Toast`, `Snackbar`, `Notification` |
+| Toast stack / queue / `toast.open()` service | `ToastContainer`, `ToastProvider`, `useToast`, `Snackbar` |
 | Topbar | `Topbar` |
 | Pagination | `Pagination`, `Pager` |
 | Menu button | `MenuButton`. Not available. Use `Button` plus custom UI and announce it. |

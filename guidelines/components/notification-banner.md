@@ -6,7 +6,7 @@ Full-width inline message with a status icon, text, an optional action and an op
 
 - Use for page-level or section-level status messages: info, warning, success, error, or a neutral secondary note.
 - Do NOT use for blocking confirmations. Use `Modal`.
-- Do NOT use for floating, auto-dismissing messages. There is no `Toast`.
+- Do NOT use for floating, auto-dismissing messages. Use `Toast`.
 - Fills the width of its parent, clamped between 240px and 1000px. Constrain the wrapper if you need it narrower than 1000px.
 
 ## Import

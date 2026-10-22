@@ -294,6 +294,7 @@
   --component-notificationtoast-error-iconbackground: #D63C42;
   --component-notificationtoast-error-border: #D63C42;
   --component-notificationtoast-error-statusicon: #FFFFFF;
+  --component-notificationtoast-elevation-s: 0px 2px 8px 0px rgba(58,59,63,0.18);
   --component-radiobutton-inactive-default-background: #FFFFFF;
   --component-radiobutton-inactive-default-border: #83838C;
   --component-radiobutton-inactive-default-text: #343438;

@@ -16,6 +16,7 @@ import TabsHorizontal, { type TabsHorizontalTab } from "../components/TabsHorizo
 import Drawer, { type DrawerSize } from "../components/Drawer";
 import Modal from "../components/Modal";
 import NotificationBanner, { type NotificationBannerType } from "../components/NotificationBanner";
+import Toast, { type ToastType } from "../components/Toast";
 import Table, { type TableColumn, type TableRowData, type TableSortDirection } from "../components/Table";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
@@ -35,8 +36,10 @@ import {
   DownloadIcon,
   EditIcon,
   FailureFilledIcon,
+  FailureOutlineIcon,
   HelpCircleIcon,
   InfoFilledIcon,
+  InfoOutlineIcon,
   InfoIcon,
   MenuIcon,
   MinusIcon,
@@ -50,8 +53,10 @@ import {
   SortIcon,
   StatusAlertIcon,
   SuccessFilledIcon,
+  SuccessOutlineIcon,
   UserIcon,
   WarningFilledIcon,
+  WarningOutlineIcon,
 } from "../components/icons";
 
 // Internal preview/demo harness only — not part of the shipped component library.
@@ -75,8 +80,10 @@ const ALL_ICONS = [
   DownloadIcon,
   EditIcon,
   FailureFilledIcon,
+  FailureOutlineIcon,
   HelpCircleIcon,
   InfoFilledIcon,
+  InfoOutlineIcon,
   InfoIcon,
   MenuIcon,
   MinusIcon,
@@ -90,8 +97,10 @@ const ALL_ICONS = [
   SortIcon,
   StatusAlertIcon,
   SuccessFilledIcon,
+  SuccessOutlineIcon,
   UserIcon,
   WarningFilledIcon,
+  WarningOutlineIcon,
 ];
 
 function PreviewSection({ title, children }: { title: string; children: ReactNode }) {
@@ -1132,6 +1141,41 @@ function NotificationBannerSection() {
   );
 }
 
+function ToastSection() {
+  const types: ToastType[] = ["info", "warning", "error", "success"];
+  const [openType, setOpenType] = useState<ToastType | null>(null);
+  const [noTimerOpen, setNoTimerOpen] = useState(false);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      <p className="type-body-regular" style={{ margin: 0 }}>
+        Toasts are fixed to the bottom-right of the viewport and auto-dismiss after 5 seconds. Click × to dismiss early.
+      </p>
+      <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+        {types.map((t) => (
+          <Button key={t} variant="secondary" onClick={() => setOpenType(t)}>
+            Show {t} toast
+          </Button>
+        ))}
+        <Button variant="secondary" onClick={() => setNoTimerOpen(true)}>
+          Show toast (duration=0, × only)
+        </Button>
+      </div>
+      {types.map((t) => (
+        <Toast key={t} type={t} open={openType === t} onClose={() => setOpenType((cur) => (cur === t ? null : cur))}>
+          {t === "error"
+            ? "The record is unavailable for all users."
+            : t === "warning"
+              ? "The record is temporary unavailable."
+              : "The record is available for all users."}
+        </Toast>
+      ))}
+      <Toast open={noTimerOpen} duration={0} onClose={() => setNoTimerOpen(false)}>
+        This toast stays until you click ×.
+      </Toast>
+    </div>
+  );
+}
+
 function ModalSection() {
   const [basicOpen, setBasicOpen] = useState(false);
   const [iconOpen, setIconOpen] = useState(false);
@@ -1401,6 +1445,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Notification Banner">
             <NotificationBannerSection />
+          </PreviewSection>
+
+          <PreviewSection title="Toast">
+            <ToastSection />
           </PreviewSection>
 
           <PreviewSection title="System Badge">

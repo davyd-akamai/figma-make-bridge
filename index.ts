@@ -56,6 +56,9 @@ export type { ModalProps } from "./components/Modal";
 export { default as NotificationBanner } from "./components/NotificationBanner";
 export type { NotificationBannerProps, NotificationBannerType } from "./components/NotificationBanner";
 
+export { default as Toast, DEFAULT_TOAST_DURATION } from "./components/Toast";
+export type { ToastProps, ToastType } from "./components/Toast";
+
 export { default as Table } from "./components/Table";
 export type {
   TableProps,

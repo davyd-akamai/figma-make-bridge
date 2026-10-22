@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toast — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="toast">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Toast</h1>
+        <p class="docs-lede">Floating notification fixed to the bottom-right of the viewport. Four types, auto-dismisses after 5 seconds, or immediately via the ×. Visibility is controlled by the consumer.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=123-5295" target="_blank" rel="noopener noreferrer">123:5295</a></span>
+          <span><code class="docs-code">import { Toast } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Toast.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Types</h2>
+          <p class="docs-section-note">Click a button to show that toast at the bottom-right of the window. It slides in, auto-dismisses after 5 seconds, and can be closed early with the ×. Only one toast should be open at a time (no stacking).</p>
+          <div class="docs-demo"><div class="docs-demo-stage" style="display:flex;flex-wrap:wrap;gap:12px;" id="toast-types"></div></div>
+        </section>
+
+        <section class="docs-section">
+          <h2>No auto-dismiss</h2>
+          <p class="docs-section-note"><code>duration={0}</code> disables the timer; the toast stays until the × is clicked.</p>
+          <div class="docs-demo"><div class="docs-demo-stage" style="display:flex;gap:12px;" id="toast-persistent"></div></div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">open</td><td class="docs-prop-type">boolean</td><td>—</td><td>Required. Controlled visibility. The toast never hides itself.</td></tr>
+              <tr><td class="docs-prop-name">onClose</td><td class="docs-prop-type">() =&gt; void</td><td>—</td><td>Required. Fired by the × and by the auto-dismiss timer. Set <code>open</code> to false in it.</td></tr>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required. The message text (one short line).</td></tr>
+              <tr><td class="docs-prop-name">type</td><td class="docs-prop-type">"info" | "warning" | "error" | "success"</td><td>"info"</td><td>Picks colors and the status icon.</td></tr>
+              <tr><td class="docs-prop-name">duration</td><td class="docs-prop-type">number</td><td>5000</td><td>Auto-dismiss delay in ms, counted from when it opens. <code>0</code> disables it.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td></td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">The 24px gap to the bottom-right corner is a library default (not in Figma). There is no stack, queue or global <code>toast.open()</code> service.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="toast.js"></script>
+</body>
+</html>

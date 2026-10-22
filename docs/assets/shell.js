@@ -24,6 +24,7 @@
     { id: "drawer", label: "Drawer", href: "components/drawer.html" },
     { id: "modal", label: "Modal", href: "components/modal.html" },
     { id: "notification-banner", label: "NotificationBanner", href: "components/notification-banner.html" },
+    { id: "toast", label: "Toast", href: "components/toast.html" },
     { id: "icons", label: "Icons", href: "components/icons.html" },
   ];
 

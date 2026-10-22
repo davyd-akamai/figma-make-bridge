@@ -80,6 +80,13 @@
           "value": "{global.color.neutrals.white}",
           "type": "color"
         }
+      },
+      "elevation": {
+        "s": {
+          "value": "{alias.elevation.s}",
+          "type": "boxShadow",
+          "description": "Drop shadow behind the floating toast (Figma Shadow S)"
+        }
       }
     }
   }
