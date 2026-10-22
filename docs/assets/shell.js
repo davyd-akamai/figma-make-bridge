@@ -22,6 +22,7 @@
     { id: "breadcrumbs", label: "Breadcrumbs", href: "components/breadcrumbs.html" },
     { id: "tabs-horizontal", label: "TabsHorizontal", href: "components/tabs-horizontal.html" },
     { id: "drawer", label: "Drawer", href: "components/drawer.html" },
+    { id: "modal", label: "Modal", href: "components/modal.html" },
     { id: "icons", label: "Icons", href: "components/icons.html" },
   ];
 

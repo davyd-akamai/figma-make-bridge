@@ -23,6 +23,7 @@ Read this file before using any component. Then read the file for that component
 | TabsHorizontal | Tab headers (no panels) | components/tabs-horizontal.md |
 | Table | Data table with sort, select, expand | components/table.md |
 | Drawer | Right-hand slide-in panel | components/drawer.md |
+| Modal | Centered confirmation/dialog box | components/modal.md |
 
 Icons: foundations/icons.md.
 
@@ -42,6 +43,7 @@ Icons: foundations/icons.md.
 - Switch between views -> `TabsHorizontal` + your own content.
 - Rows of data -> `Table`.
 - Edit or detail panel -> `Drawer`.
+- Short confirmation or blocking question -> `Modal`.
 
 ## Components that do NOT exist yet
 
@@ -50,7 +52,6 @@ Never invent these. If you are tempted to, say so in the reply before building c
 | Missing | Also forbidden as a name or import |
 |---|---|
 | Tooltip | `Tooltip`, `Popover` as a public component |
-| Modal (centered dialog) | `Modal`, `Dialog`, `AlertDialog` |
 | Switch | `Switch`, `Toggle` |
 | Dropdown (multi-select, grouped) | `Dropdown`, `DropdownMenu`, `MultiSelect`, `Combobox` |
 | Notification / Toast | `Toast`, `Snackbar`, `Notification`, `Banner` |

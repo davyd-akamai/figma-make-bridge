@@ -14,6 +14,7 @@ import Badge, { type BadgeType, type BadgeColor } from "../components/Badge";
 import SystemBadge from "../components/SystemBadge";
 import TabsHorizontal, { type TabsHorizontalTab } from "../components/TabsHorizontal";
 import Drawer, { type DrawerSize } from "../components/Drawer";
+import Modal from "../components/Modal";
 import Table, { type TableColumn, type TableRowData, type TableSortDirection } from "../components/Table";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
@@ -1085,6 +1086,56 @@ function DrawerLongContent() {
   );
 }
 
+function ModalSection() {
+  const [basicOpen, setBasicOpen] = useState(false);
+  const [iconOpen, setIconOpen] = useState(false);
+  const [noFooterOpen, setNoFooterOpen] = useState(false);
+  const [noOverlayClickOpen, setNoOverlayClickOpen] = useState(false);
+
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+      <Button variant="secondary" onClick={() => setBasicOpen(true)}>Open basic modal</Button>
+      <Button variant="secondary" onClick={() => setIconOpen(true)}>Open with icon + long title</Button>
+      <Button variant="secondary" onClick={() => setNoFooterOpen(true)}>Open without actions</Button>
+      <Button variant="secondary" onClick={() => setNoOverlayClickOpen(true)}>Open (overlay click disabled)</Button>
+
+      <Modal
+        open={basicOpen}
+        onClose={() => setBasicOpen(false)}
+        footer={
+          <>
+            <Button variant="secondary" onClick={() => setBasicOpen(false)}>Secondary action</Button>
+            <Button variant="primary" onClick={() => setBasicOpen(false)}>Primary action</Button>
+          </>
+        }
+      >
+        Are you sure you want to do this? I mean, are you really quite certain? Because I’ll be honest, you can’t really undo this.
+      </Modal>
+      <Modal
+        open={iconOpen}
+        onClose={() => setIconOpen(false)}
+        icon={<HelpCircleIcon />}
+        title="A considerably longer modal title that has to wrap onto a second line"
+        footer={<Button variant="primary" onClick={() => setIconOpen(false)}>Got it</Button>}
+      >
+        Optional leading icon, wrapping title and a single action.
+      </Modal>
+      <Modal open={noFooterOpen} onClose={() => setNoFooterOpen(false)} title="No actions">
+        Close with the ✕, Esc or by clicking the overlay.
+      </Modal>
+      <Modal
+        open={noOverlayClickOpen}
+        onClose={() => setNoOverlayClickOpen(false)}
+        closeOnOverlayClick={false}
+        title="Overlay click disabled"
+        footer={<Button variant="primary" onClick={() => setNoOverlayClickOpen(false)}>Done</Button>}
+      >
+        Clicking the backdrop does nothing here; Esc and ✕ still close.
+      </Modal>
+    </div>
+  );
+}
+
 function DrawerSection() {
   const [openSize, setOpenSize] = useState<DrawerSize | null>(null);
   const [noFooterOpen, setNoFooterOpen] = useState(false);
@@ -1296,6 +1347,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Drawer">
             <DrawerSection />
+          </PreviewSection>
+
+          <PreviewSection title="Modal">
+            <ModalSection />
           </PreviewSection>
 
           <PreviewSection title="System Badge">

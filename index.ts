@@ -50,6 +50,9 @@ export type { TabsHorizontalProps, TabsHorizontalTab, TabsHorizontalSize } from 
 export { default as Drawer } from "./components/Drawer";
 export type { DrawerProps, DrawerSize } from "./components/Drawer";
 
+export { default as Modal } from "./components/Modal";
+export type { ModalProps } from "./components/Modal";
+
 export { default as Table } from "./components/Table";
 export type {
   TableProps,

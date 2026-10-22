@@ -15,6 +15,7 @@ Node IDs below are taken from the header comments of the matching component in `
 | `dropdown.json` | `Dropdown` (77:4363), used by Select | node from Select header; variables not re-verified |
 | `footer.json` | `cm_footer` (1:926) | node from component header; variables not re-verified |
 | `header.json` | `cm_header` (1:882) | node from component header; variables not re-verified |
+| `modal.json` | `Modal` (123:4666) | variables checked via get_variable_defs; overlay/elevation added additively |
 | `menuButton.json` | no component in this repo cites a node | source unknown; to be confirmed in Figma |
 | `radioButton.json` | `Radio-button` (58:5044) | node from component header; variables not re-verified |
 | `search.json` | `Search-field` (91:3834) | node from component header; variables not re-verified |

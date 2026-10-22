@@ -5,7 +5,7 @@ Right-hand slide-in panel with a title, scrolling content and an optional sticky
 ## When to use / when not to use
 
 - Use for edit or detail panels opened from a trigger.
-- Do NOT use it as a centered modal dialog. No modal component exists in this version. Flag it.
+- Do NOT use it as a centered modal dialog. Use `Modal` for that.
 - Right side only. There is no `position` prop.
 
 ## Import

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modal — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="modal">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Modal</h1>
+        <p class="docs-lede">Centered dialog with a title, text body and right-aligned actions over a dimmed backdrop. One fixed 459px width. Focus-trapped, closes on the close button, backdrop click, or Esc.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=123-4666" target="_blank" rel="noopener noreferrer">123:4666</a></span>
+          <span><code class="docs-code">import { Modal } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Modal.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">The footer is a plain slot for library Buttons, and the description is just <code>children</code>. The icon, the footer and the overlay-click behavior are all optional.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage">
+              <button type="button" id="md-open-basic" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open basic modal</span></button>
+              <button type="button" id="md-open-icon" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open with icon + long title</span></button>
+              <button type="button" id="md-open-noactions" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open without actions</span></button>
+              <button type="button" id="md-open-nooverlay" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[34px] px-[var(--global-spacing-s12,12px)] py-[var(--global-spacing-s8,8px)] type-label-semibold-s cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)] hover:bg-[var(--component-button-secondary-hover-background,#EDF8FF)] hover:border-[var(--component-button-secondary-hover-border,#009CDE)] hover:text-[color:var(--component-button-secondary-hover-text,#0174BC)] active:bg-[var(--component-button-secondary-active-background,#FFFFFF)] active:border-[var(--component-button-secondary-active-border,#0174BC)] active:text-[color:var(--component-button-secondary-active-text,#0174BC)]"><span>Open (overlay click disabled)</span></button>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">open</td><td class="docs-prop-type">boolean</td><td>—</td><td>Required, fully controlled — this component never manages its own visibility.</td></tr>
+              <tr><td class="docs-prop-name">onClose</td><td class="docs-prop-type">() =&gt; void</td><td>—</td><td>Required. Fired by the close button, backdrop click, and Esc.</td></tr>
+              <tr><td class="docs-prop-name">title</td><td class="docs-prop-type">string</td><td>"Basic modal"</td><td></td></tr>
+              <tr><td class="docs-prop-name">icon</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Optional leading icon before the title.</td></tr>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Body text, styled Body/Regular.</td></tr>
+              <tr><td class="docs-prop-name">footer</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Actions slot, right-aligned with a 12px gap (Figma shows a Secondary + Primary Button).</td></tr>
+              <tr><td class="docs-prop-name">overlay</td><td class="docs-prop-type">boolean</td><td>true</td><td>Backdrop behind the panel.</td></tr>
+              <tr><td class="docs-prop-name">closeOnOverlayClick</td><td class="docs-prop-type">boolean</td><td>true</td><td></td></tr>
+              <tr><td class="docs-prop-name">closeOnEsc</td><td class="docs-prop-type">boolean</td><td>true</td><td></td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">No <code>size</code> prop — Figma only has the one 459px swatch, so CDS's small/medium sizes were not ported. For forms or long content use Drawer.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="modal.js"></script>
+</body>
+</html>
