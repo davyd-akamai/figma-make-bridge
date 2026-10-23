@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pagination — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="pagination">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Pagination</h1>
+        <p class="docs-lede">40px bar for paging through a large data set: total count, page-size picker, "1 - 20 of 50" range and previous/next chevrons. Table and List variants, plus an opt-in selection mode on lists (Select / Deselect / Selected only). It never slices data or stores the selection — it fires callbacks.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=128-4563" target="_blank" rel="noopener noreferrer">128:4563</a></span>
+          <span><code class="docs-code">import { Pagination } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Pagination.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Table</h2>
+          <p class="docs-section-note">Item counter on the left. Click the chevrons or open the page-size menu (changing the size keeps the first visible item on screen). State: <strong id="pg-table-log">page 1, size 20</strong></p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="background:#F5F5F5;">
+              <div id="pg-table"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>List</h2>
+          <p class="docs-section-note"><code>variant="list"</code> puts the page-size picker on the left (95 items here).</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="background:#F5F5F5;">
+              <div id="pg-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>List selected</h2>
+          <p class="docs-section-note"><code>variant="list" selectable</code>. Click items to toggle them; "Select" selects the whole list, "Deselect" clears, and "Selected only" hides the unselected items. The consumer owns the selection and the filtering — the page controls are not shown in this mode.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="background:#F5F5F5;">
+              <div id="pg-selected"></div>
+              <div id="pg-chips" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Disabled / empty</h2>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="background:#F5F5F5;">
+              <div id="pg-disabled"></div>
+              <div id="pg-empty"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">variant</td><td class="docs-prop-type">"table" | "list"</td><td>"table"</td><td>Table shows the item counter on the left; list shows the page-size picker.</td></tr>
+              <tr><td class="docs-prop-name">length</td><td class="docs-prop-type">number</td><td>50</td><td>Total items. Shown after "Items:" and as the "of N" total.</td></tr>
+              <tr><td class="docs-prop-name">pageIndex / defaultPageIndex</td><td class="docs-prop-type">number</td><td>— / 1</td><td>1-based page, controlled / uncontrolled. Clamped to the last page without firing <code>onPageChange</code>.</td></tr>
+              <tr><td class="docs-prop-name">onPageChange</td><td class="docs-prop-type">(pageIndex: number) =&gt; void</td><td>—</td><td>Fired by the chevrons only.</td></tr>
+              <tr><td class="docs-prop-name">pageSize / defaultPageSize</td><td class="docs-prop-type">number</td><td>— / 20</td><td>Items per page, controlled / uncontrolled.</td></tr>
+              <tr><td class="docs-prop-name">pageSizeOptions</td><td class="docs-prop-type">number[]</td><td>[10, 20, 50, 100]</td><td>Rows in the page-size menu. The menu flips above the picker when there is no room below.</td></tr>
+              <tr><td class="docs-prop-name">onPageSizeChange</td><td class="docs-prop-type">(pageSize, pageIndex) =&gt; void</td><td>—</td><td>Reports the new size and the page that keeps the first visible item on screen (page 2 of 10 becomes page 3 of 5).</td></tr>
+              <tr><td class="docs-prop-name">itemsLabel / pageSizeLabel / ofLabel</td><td class="docs-prop-type">string</td><td>"Items:" / "Page size:" / "of"</td><td>Copy overrides.</td></tr>
+              <tr><td class="docs-prop-name">disabled</td><td class="docs-prop-type">boolean</td><td>false</td><td>Greys out and disables every control.</td></tr>
+              <tr><td class="docs-prop-name">selectable</td><td class="docs-prop-type">boolean</td><td>false</td><td>List variant only: swaps the page controls for Select / Deselect / "Selected only".</td></tr>
+              <tr><td class="docs-prop-name">selectedCount</td><td class="docs-prop-type">number</td><td>0</td><td>Shown after "Deselect:" and "Selected only"; both are disabled at 0.</td></tr>
+              <tr><td class="docs-prop-name">onSelectAll / onDeselectAll</td><td class="docs-prop-type">() =&gt; void</td><td>—</td><td>"Select: N" always shows <code>length</code>; the consumer does the selecting.</td></tr>
+              <tr><td class="docs-prop-name">selectedOnly / defaultSelectedOnly</td><td class="docs-prop-type">boolean</td><td>— / false</td><td>"Selected only" checkbox, controlled / uncontrolled. Switched off automatically when <code>selectedCount</code> falls to 0.</td></tr>
+              <tr><td class="docs-prop-name">onSelectedOnlyChange</td><td class="docs-prop-type">(selectedOnly: boolean) =&gt; void</td><td>—</td><td>Hide the unselected items when true.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Appended to the default classes.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="pagination.js"></script>
+</body>
+</html>
