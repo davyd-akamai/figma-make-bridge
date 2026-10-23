@@ -4,9 +4,9 @@ On/off choice, with an indeterminate state for select-all.
 
 ## When to use / when not to use
 
-- Use for standalone form fields, settings toggles and filter lists.
+- Use for standalone form fields and filter lists.
+- For a setting that applies immediately when flipped, use `Switch` (components/switch.md).
 - For one choice out of a group, use `RadioButton` (components/radio-button.md).
-- There is no Switch component. Do not build one.
 - In a `Table`, do not build selection checkboxes yourself. Use `selectable` (components/table.md).
 
 ## Import

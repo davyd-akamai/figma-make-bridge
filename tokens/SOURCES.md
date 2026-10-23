@@ -25,6 +25,7 @@ Node IDs below are taken from the header comments of the matching component in `
 | `search.json` | `Search-field` (91:3834) | node from component header; variables not re-verified |
 | `select.json` | `Select` (47:7683) | node from component header; variables not re-verified |
 | `sideNavigation.json` | `cm_side-navigation` (17:2719) | **global tokens only, verified against 17:2719** |
+| `switch.json` | `Switch` (129:5474), `.base-switch` (129:5136) | variables checked via get_variable_defs (all matched); pre-seeded, `elevation.s` added additively |
 | `systemBadge.json` | `cm_global-badge` (29:3416) | node from component header; variables not re-verified |
 | `table.json` | `core_table-column` (47:4956) | node from component header; variables not re-verified |
 | `tabs.json` | `Tabs-horizontal` (74:5959) | node from component header; variables not re-verified |

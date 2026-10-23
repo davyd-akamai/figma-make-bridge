@@ -5,6 +5,7 @@ import SideNavigation from "../components/SideNavigation";
 import Button, { type ButtonVariant } from "../components/Button";
 import Checkbox from "../components/Checkbox";
 import RadioButton from "../components/RadioButton";
+import Switch from "../components/Switch";
 import Container from "../components/Container";
 import ContentPanel from "../components/ContentPanel";
 import Pagination from "../components/Pagination";
@@ -603,6 +604,35 @@ function RadioButtonSection() {
 const BADGE_COLORS: BadgeColor[] = ["ultramarine", "purple", "pink", "neutral", "amber", "green", "red"];
 const BADGE_TYPES: BadgeType[] = ["subtle", "accent"];
 
+function SwitchSection() {
+  const [on, setOn] = useState(true);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+        <Switch label="Off" />
+        <Switch label="On" defaultChecked />
+        <Switch label="Disabled off" disabled />
+        <Switch label="Disabled on" defaultChecked disabled />
+        <Switch aria-label="No label" defaultChecked />
+      </div>
+      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 24 }}>
+        <span className="type-body-regular">Small size:</span>
+        <Switch size="small" label="Off" />
+        <Switch size="small" label="On" defaultChecked />
+        <Switch size="small" label="Disabled off" disabled />
+        <Switch size="small" label="Disabled on" defaultChecked disabled />
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <Switch label={`Controlled (${on ? "on" : "off"})`} checked={on} onChange={setOn} />
+        <button type="button" className="type-body-regular" onClick={() => setOn((v) => !v)}>
+          Toggle from outside
+        </button>
+      </div>
+    </div>
+  );
+}
+
 function BadgeSection() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
@@ -959,9 +989,8 @@ const SHOWCASE_ROWS: ShowcaseRow[] = [{ id: "1", name: "Row 1" }];
 // One column per cell type Figma's `core_cells-table` breakdown demonstrates. "Checkbox with icon &
 // text" / "Radio with icon & text" / "Button" compose the real Checkbox/RadioButton/Button
 // components via cellType="custom" rather than a dedicated cell type each — see Table.tsx's header
-// comment for why. "Select [not coded]" and "Switcher [not coded]" are deliberately not shown: no
-// Select or Switch component exists in this library yet (Select is still open on the roadmap), and
-// this repo doesn't fabricate a placeholder for a component that isn't real. "[Don't use] Checkbox &
+// comment for why. "Switcher [not coded]" (node 47:5291) is a small, label-less, on `Switch`
+// composed the same way. "Select [not coded]" is still not shown. "[Don't use] Checkbox &
 // text" is Figma's own explicit "don't use" variant and is also deliberately excluded. The first
 // column ("Text only") doubles as the "Expandable text" demo via the table's own `expandable` prop
 // below — Figma's expand caret is part of that cell's content, not a separate column.
@@ -1014,6 +1043,12 @@ const CELL_TYPE_COLUMNS: TableColumn<ShowcaseRow>[] = [
         Button
       </Button>
     ),
+  },
+  {
+    key: "switch",
+    header: "Switch",
+    cellType: "custom",
+    render: () => <Switch size="small" aria-label="Enabled" defaultChecked />,
   },
   {
     key: "actionIcons",
@@ -1533,6 +1568,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Radio Button">
             <RadioButtonSection />
+          </PreviewSection>
+
+          <PreviewSection title="Switch">
+            <SwitchSection />
           </PreviewSection>
 
           <PreviewSection title="Badge">

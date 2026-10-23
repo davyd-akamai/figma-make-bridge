@@ -23,6 +23,7 @@ _Last updated: 2026-10-23. Source: local `core-design-system/packages/cds-compon
 | search-field | [Search](components/Search.tsx) | |
 | select | [Select](components/Select.tsx) | |
 | side-nav | [SideNavigation](components/SideNavigation.tsx) | |
+| switch | [Switch](components/Switch.tsx) | No read-only state; `master-switch` still planned |
 | table | [Table](components/Table.tsx) | |
 | tabs | [TabsHorizontal](components/TabsHorizontal.tsx) | No content panels |
 | text-field | [TextField](components/TextField.tsx) | |
@@ -34,7 +35,6 @@ Bridge-only (no CDS equivalent, built from Figma): Container, GlobalHeader, Glob
 | Group | CDS component | Status |
 |---|---|---|
 | Form inputs | text-area | Not started |
-| Form inputs | switch | Not started |
 | Form inputs | master-switch | Not started |
 | Form inputs | numeric-spinner | Not started |
 | Form inputs | tag-input | Not started |

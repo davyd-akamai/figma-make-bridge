@@ -523,6 +523,34 @@
     });
   }
 
+  // Small, label-less Switch (mirrors components/Switch.tsx, size="small"). Class strings are verbatim.
+  var SW_TRACK = "relative inline-block shrink-0 rounded-full transition-colors duration-150 ease-in-out h-[20px] w-[40px] ";
+  var SW_TRACK_ON = "bg-[var(--component-switch-active-default-background,#0174BC)] peer-hover:bg-[var(--component-switch-active-hover-background,#009CDE)] peer-focus-visible:bg-[var(--component-switch-active-focus-background,#0174BC)] peer-active:bg-[var(--component-switch-active-focus-background,#0174BC)]";
+  var SW_TRACK_OFF = "bg-[var(--component-switch-inactive-default-background,#83838C)] peer-hover:bg-[var(--component-switch-inactive-hover-background,#A3A3AB)] peer-focus-visible:bg-[var(--component-switch-inactive-focus-background,#83838C)] peer-active:bg-[var(--component-switch-inactive-focus-background,#83838C)]";
+  var SW_CHECK = "absolute top-1/2 -translate-y-1/2 transition-opacity duration-150 ease-in-out left-[6px] text-[color:var(--component-switch-active-default-icon,#FFFFFF)] ";
+  var SW_KNOB = "absolute left-[2px] top-[2px] rounded-full transition-[transform,background-color] duration-150 ease-in-out size-[16px] bg-[var(--component-switch-active-default-circle,#FFFFFF)] shadow-[var(--component-switch-elevation-s,0px_2px_8px_0px_rgba(58,59,63,0.18))] ";
+  function smallSwitchHtml(on) {
+    return (
+      '<label class="inline-flex items-start gap-[var(--global-spacing-s8,8px)] cursor-pointer"><span class="relative inline-flex shrink-0 items-center">' +
+      '<input type="checkbox" role="switch" aria-label="Enabled" data-switch-small class="peer sr-only"' + (on ? " checked" : "") + " />" +
+      '<span aria-hidden="true" class="' + SW_TRACK + (on ? SW_TRACK_ON : SW_TRACK_OFF) + '">' +
+      '<svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="' + SW_CHECK + (on ? "opacity-100" : "opacity-0") + '">' +
+      '<path fill-rule="evenodd" clip-rule="evenodd" d="M1.46967 6.06952C1.76256 5.77663 2.23744 5.77663 2.53033 6.06952L4.93032 8.46951C5.22321 8.76241 5.22321 9.23728 4.93032 9.53017C4.63743 9.82307 4.16255 9.82307 3.86966 9.53017L1.46967 7.13018C1.17678 6.83729 1.17678 6.36242 1.46967 6.06952Z"/>' +
+      '<path fill-rule="evenodd" clip-rule="evenodd" d="M10.5303 2.86957C10.8232 3.16247 10.8232 3.63734 10.5303 3.93023L4.93032 9.53017C4.63743 9.82307 4.16255 9.82307 3.86966 9.53017C3.57677 9.23728 3.57669 8.76256 3.86958 8.46966L9.46967 2.86957C9.76256 2.57668 10.2374 2.57668 10.5303 2.86957Z"/></svg>' +
+      '<span class="' + SW_KNOB + (on ? "translate-x-[20px]" : "translate-x-0") + '"></span></span></span></label>'
+    );
+  }
+  // Delegated: only class strings change, so the knob transition and focus survive.
+  document.addEventListener("change", function (e) {
+    var input = e.target;
+    if (!input || !input.hasAttribute || !input.hasAttribute("data-switch-small")) return;
+    var track = input.nextElementSibling;
+    var on = input.checked;
+    track.className = SW_TRACK + (on ? SW_TRACK_ON : SW_TRACK_OFF);
+    track.firstElementChild.setAttribute("class", SW_CHECK + (on ? "opacity-100" : "opacity-0"));
+    track.lastElementChild.className = SW_KNOB + (on ? "translate-x-[20px]" : "translate-x-0");
+  });
+
   document.addEventListener("DOMContentLoaded", function () {
     var playgroundEl = document.getElementById("tbl-playground");
     if (playgroundEl) {
@@ -598,6 +626,15 @@
             return (
               '<button type="button" class="relative box-border inline-flex shrink-0 items-center justify-center gap-[var(--global-spacing-s4,4px)] whitespace-nowrap text-center transition-colors h-[26px] px-[var(--global-spacing-s8,8px)] py-[var(--global-spacing-s4,4px)] type-label-semibold-xs cursor-pointer border border-solid bg-[var(--component-button-secondary-default-background,#FFFFFF)] border-[var(--component-button-secondary-default-border,#0174BC)] text-[color:var(--component-button-secondary-default-text,#0174BC)]"><span>Button</span></button>'
             );
+          },
+        },
+        {
+          key: "switch",
+          header: "Switch",
+          cellType: "custom",
+          render: function () {
+            // Small, label-less, on Switch (same class strings as components/Switch.tsx); toggled by the delegated listener at the bottom of this file.
+            return smallSwitchHtml(true);
           },
         },
         {

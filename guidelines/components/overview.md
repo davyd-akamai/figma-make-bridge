@@ -16,6 +16,7 @@ Read this file before using any component. Then read the file for that component
 | Container | Bordered surface that groups content | components/container.md |
 | ContentPanel | Titled, collapsible section with header actions and a body | components/content-panel.md |
 | Checkbox | On/off choice, select-all | components/checkbox.md |
+| Switch | Immediate on/off setting toggle | components/switch.md |
 | RadioButton | One choice from a group | components/radio-button.md |
 | TextField | Single-line text input | components/text-field.md |
 | Select | Single-select dropdown | components/select.md |
@@ -43,7 +44,8 @@ Icons: foundations/icons.md.
 - Search-style input -> `Search`.
 - Pick one value from a list -> `Select`.
 - Pick one option from a visible group -> `RadioButton`.
-- Toggle or multi-pick -> `Checkbox`.
+- A setting that applies immediately when flipped -> `Switch`.
+- Multi-pick or a form-submitted yes/no -> `Checkbox`.
 - Show where the user is in a hierarchy -> `Breadcrumbs`.
 - Switch between views -> `TabsHorizontal` + your own content.
 - Rows of data -> `Table`.
@@ -60,7 +62,7 @@ Never invent these. If you are tempted to, say so in the reply before building c
 | Missing | Also forbidden as a name or import |
 |---|---|
 | Tooltip | `Tooltip`, `Popover` as a public component |
-| Switch | `Switch`, `Toggle` |
+| Master switch (select-all switch) | `MasterSwitch` |
 | Dropdown (multi-select, grouped) | `Dropdown`, `DropdownMenu`, `MultiSelect`, `Combobox` |
 | Toast stack / queue / `toast.open()` service | `ToastContainer`, `ToastProvider`, `useToast`, `Snackbar` |
 | Topbar | `Topbar` |

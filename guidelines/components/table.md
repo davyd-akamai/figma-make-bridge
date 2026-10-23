@@ -81,7 +81,7 @@ import { Table, type TableProps, type TableColumn, type TableRowData, type Table
 ## Known footguns
 
 - **Sorting is fully controlled. `Table` never reorders `rows`.** On `onSortChange`, you re-sort your rows and pass back `sortColumnKey` and `sortDirection` so the header shows the active state.
-- A `Button`, `Checkbox`, `RadioButton`, `Select` or switch in a cell goes through `cellType: "custom"` with `render`. There is no dedicated cell type.
+- A `Button`, `Checkbox`, `RadioButton`, `Select` or `Switch` in a cell goes through `cellType: "custom"` with `render`. There is no dedicated cell type. In a cell, use `<Switch size="small" aria-label="..." />`.
 - A `text` cell with `undefined`, `null` or `""` shows a placeholder-colored "No data". Do not pre-fill empty cells with dashes.
 - `selectable` adds a checkbox and a select-all to the first column. `expandable` adds a caret to the first column and renders `renderExpandedContent`. Built-in checkboxes are already `size="small"`.
 - **`zebra` is ignored whenever `expandable` is true.** Do not combine them expecting stripes.

@@ -132,6 +132,13 @@
             "type": "color"
           }
         }
+      },
+      "elevation": {
+        "s": {
+          "value": "{alias.elevation.s}",
+          "type": "boxShadow",
+          "description": "Drop shadow under the knob (Figma Shadow S); every non-disabled state"
+        }
       }
     }
   }

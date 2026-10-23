@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Switch — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="switch">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Switch</h1>
+        <p class="docs-lede">Immediate on/off toggle for a setting. A visually hidden native <code>&lt;input type="checkbox" role="switch"&gt;</code> inside a <code>&lt;label&gt;</code>, with a custom track and knob; large (48×24) by default, small (40×20) for tables and dense lists.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=129-5474" target="_blank" rel="noopener noreferrer">129:5474</a></span>
+          <span><code class="docs-code">import { Switch } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Switch.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Large (default)</h2>
+          <p class="docs-section-note">Off, on, disabled off, disabled on, and a bare switch with no label (needs an <code>aria-label</code>). Click, hover, and Tab/Space all work.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" data-switch-row data-size="large"></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Small</h2>
+          <p class="docs-section-note">Reserved for tables and dense lists where a 24px control would crowd the row.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" data-switch-row data-size="small"></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Controlled</h2>
+          <p class="docs-section-note"><code>onChange</code> receives the new boolean. Current value: <strong id="switch-controlled-state">on</strong></p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" id="switch-controlled"></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">checked / defaultChecked</td><td class="docs-prop-type">boolean</td><td>false</td><td>Controlled / uncontrolled, same split as Checkbox.</td></tr>
+              <tr><td class="docs-prop-name">onChange</td><td class="docs-prop-type">(checked: boolean) =&gt; void</td><td>—</td><td>Receives the new boolean, not an event.</td></tr>
+              <tr><td class="docs-prop-name">label</td><td class="docs-prop-type">string</td><td>—</td><td>Always to the right. Omit for a bare switch and pass <code>aria-label</code>.</td></tr>
+              <tr><td class="docs-prop-name">size</td><td class="docs-prop-type">"small" | "large"</td><td>"large"</td><td></td></tr>
+              <tr><td class="docs-prop-name">disabled</td><td class="docs-prop-type">boolean</td><td>false</td><td>No read-only state.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="switch.js"></script>
+</body>
+</html>

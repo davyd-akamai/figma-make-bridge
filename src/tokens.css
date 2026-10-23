@@ -480,6 +480,7 @@
   --component-switch-inactive-disabled-background: #E5E5EA;
   --component-switch-inactive-disabled-circle: rgba(255,255,255,0.5);
   --component-switch-inactive-disabled-text: #A3A3AB;
+  --component-switch-elevation-s: 0px 2px 8px 0px rgba(58,59,63,0.18);
   --component-systembadge-text: #FFFFFF;
   --component-systembadge-new-background: #7259D6;
   --component-systembadge-beta-background: #696970;
