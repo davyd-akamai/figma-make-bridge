@@ -196,8 +196,8 @@
     var type = column.cellType || "text";
 
     if (type === "custom") {
-      var holder = document.createElement("span");
-      holder.className = "contents";
+      var holder = document.createElement("div");
+      holder.className = "flex items-center";
       holder.innerHTML = column.render(row);
       return holder;
     }

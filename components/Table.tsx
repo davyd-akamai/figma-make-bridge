@@ -412,7 +412,9 @@ function RowActionMenu<T extends TableRowData>({
 function renderCellContent<T extends TableRowData>(column: TableColumn<T>, row: T, rowIndex: number): ReactNode {
   const type = column.cellType ?? "text";
 
-  if (type === "custom") return column.render?.(row, rowIndex);
+  // Wrapped in a flex row so inline-level content (a Switch, a Button) is blockified: as bare inline
+  // content it sits on a line box taller than itself and ends up pushed toward the top of the cell.
+  if (type === "custom") return <div className="flex items-center">{column.render?.(row, rowIndex)}</div>;
 
   if (type === "actionIcons") {
     return (
