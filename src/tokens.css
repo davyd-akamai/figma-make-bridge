@@ -176,6 +176,11 @@
   --component-checkbox-indeterminated-readonly-icon: #A3A3AB;
   --component-container-background: #FFFFFF;
   --component-container-border: #D6D6DD;
+  --component-contentpanel-background: #FFFFFF;
+  --component-contentpanel-border: #D6D6DD;
+  --component-contentpanel-text: #343438;
+  --component-contentpanel-divider: #D6D6DD;
+  --component-contentpanel-icon: #3D3D42;
   --component-drawer-background: #FFFFFF;
   --component-drawer-text: #343438;
   --component-drawer-icon-default: #3D3D42;

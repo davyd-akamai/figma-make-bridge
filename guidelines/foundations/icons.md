@@ -25,7 +25,7 @@ Default size 24px:
 
 Default size 20px:
 
-`InfoIcon`, `EditIcon`, `DownloadIcon`, `DeleteIcon`, `CaretIcon`, `StatusAlertIcon`, `InfoFilledIcon`, `WarningFilledIcon`, `SuccessFilledIcon`, `FailureFilledIcon` (filled status glyphs; they take their color from the surrounding text color, except the dark "!" in `WarningFilledIcon`, which is fixed)
+`InfoIcon`, `EditIcon`, `DownloadIcon`, `DeleteIcon`, `CaretIcon`, `CaretFilledIcon` (solid down-pointing triangle), `StatusAlertIcon`, `InfoFilledIcon`, `WarningFilledIcon`, `SuccessFilledIcon`, `FailureFilledIcon` (filled status glyphs; they take their color from the surrounding text color, except the dark "!" in `WarningFilledIcon`, which is fixed)
 
 Default size 16px:
 

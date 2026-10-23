@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Library progress — figma-make-bridge</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/site.css" />
+</head>
+<body data-root="" data-repo="davyd-akamai/figma-make-bridge" data-page="library-progress">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Library progress</h1>
+        <p class="docs-lede">Which components are built in figma-make-bridge and which are planned. Compared against Akamai's CDS (<code class="docs-code">@akamai/cds-components</code>), which is used as a reference only.</p>
+        <div class="docs-meta">
+          <span>Last updated 2026-10-23</span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/COVERAGE.md" target="_blank" rel="noopener noreferrer">COVERAGE.md ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Built (22)</h2>
+          <p class="docs-section-note">Click a component to open its preview page.</p>
+          <table class="docs-props">
+            <thead><tr><th>Component</th><th>CDS counterpart</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name"><a href="components/badge.html">Badge</a></td><td>badge</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/breadcrumbs.html">Breadcrumbs</a></td><td>breadcrumb</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/button.html">Button</a></td><td>button</td><td>Tertiary / Launch / icon variants held back until Figma has swatches</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/checkbox.html">Checkbox</a></td><td>checkbox</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/container.html">Container</a></td><td>—</td><td>Bridge-only (built from Figma)</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/content-panel.html">ContentPanel</a></td><td>content-panel</td><td>Single panel only; no <code class="docs-code">content-panel-group</code>, no <code class="docs-code">stripe</code></td></tr>
+              <tr><td class="docs-prop-name"><a href="templates/default-cm-page-template.html">DefaultCmPageTemplate</a></td><td>—</td><td>Template; bridge-only (built from Figma)</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/drawer.html">Drawer</a></td><td>drawer</td><td>Right side only</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/global-footer.html">GlobalFooter</a></td><td>—</td><td>Bridge-only (built from Figma)</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/global-header.html">GlobalHeader</a></td><td>—</td><td>Bridge-only (built from Figma)</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/icons.html">Icons</a></td><td>icon</td><td>41 exact-vector icons</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/modal.html">Modal</a></td><td>modal</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/notification-banner.html">NotificationBanner</a></td><td>notification-banner</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/radio-button.html">RadioButton</a></td><td>radio-button</td><td>No <code class="docs-code">RadioGroup</code> wrapper (deliberate)</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/search.html">Search</a></td><td>search-field</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/select.html">Select</a></td><td>select</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/side-navigation.html">SideNavigation</a></td><td>side-nav</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/system-badge.html">SystemBadge</a></td><td>—</td><td>Bridge-only (built from Figma)</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/table.html">Table</a></td><td>table</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/tabs-horizontal.html">TabsHorizontal</a></td><td>tabs</td><td>No content panels</td></tr>
+              <tr><td class="docs-prop-name"><a href="components/text-field.html">TextField</a></td><td>text-field</td><td></td></tr>
+              <tr><td class="docs-prop-name"><a href="components/toast.html">Toast</a></td><td>notification-toast</td><td></td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="docs-section">
+          <h2>Planned (16)</h2>
+          <p class="docs-section-note">Not started. Several items depend on each other (for example date-picker builds on calendar and date-field), so build order matters.</p>
+          <table class="docs-props">
+            <thead><tr><th>Group</th><th>CDS component</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr><td>Form inputs</td><td class="docs-prop-name">text-area</td><td>Not started</td></tr>
+              <tr><td>Form inputs</td><td class="docs-prop-name">switch</td><td>Not started</td></tr>
+              <tr><td>Form inputs</td><td class="docs-prop-name">master-switch</td><td>Not started</td></tr>
+              <tr><td>Form inputs</td><td class="docs-prop-name">numeric-spinner</td><td>Not started</td></tr>
+              <tr><td>Form inputs</td><td class="docs-prop-name">tag-input</td><td>Not started</td></tr>
+              <tr><td>Form inputs</td><td class="docs-prop-name">segmented-button</td><td>Not started</td></tr>
+              <tr><td>Form inputs</td><td class="docs-prop-name">form-field</td><td>Not started</td></tr>
+              <tr><td>Date and time</td><td class="docs-prop-name">calendar</td><td>Not started</td></tr>
+              <tr><td>Date and time</td><td class="docs-prop-name">date-field</td><td>Not started</td></tr>
+              <tr><td>Date and time</td><td class="docs-prop-name">date-picker</td><td>Not started</td></tr>
+              <tr><td>Date and time</td><td class="docs-prop-name">date-range</td><td>Not started</td></tr>
+              <tr><td>Date and time</td><td class="docs-prop-name">date-range-field</td><td>Not started</td></tr>
+              <tr><td>Navigation and data</td><td class="docs-prop-name">pagination</td><td>Not started</td></tr>
+              <tr><td>Feedback and overlay</td><td class="docs-prop-name">tooltip</td><td>Not started</td></tr>
+              <tr><td>Feedback and overlay</td><td class="docs-prop-name">progress-bar</td><td>Not started</td></tr>
+              <tr><td>Feedback and overlay</td><td class="docs-prop-name">zero-error-state</td><td>Not started</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="assets/shell.js"></script>
+</body>
+</html>

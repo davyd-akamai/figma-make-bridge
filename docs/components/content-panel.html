@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContentPanel — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="content-panel">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>ContentPanel</h1>
+        <p class="docs-lede">Titled, collapsible section: a 56px header (caret, bold title, icon actions) over an optional body. Default (1px border) or borderless. Header actions are data-driven — at most 3 icons including the "..." trigger, the rest live in its label-only dropdown.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=126-4081" target="_blank" rel="noopener noreferrer">126:4081</a></span>
+          <span><code class="docs-code">import { ContentPanel } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/ContentPanel.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground</h2>
+          <p class="docs-section-note">Click the caret or title to collapse and expand. Click the icons or open the "..." menu — the last action is shown below. Last action: <strong id="cp-log">none</strong></p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="background:#F5F5F5;max-width:642px;">
+              <div id="cp-default"></div>
+              <div id="cp-borderless"></div>
+              <div id="cp-collapsed"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Header actions</h2>
+          <p class="docs-section-note">Three icons and no menu is the maximum. With a "..." menu the cap is two icon buttons plus "...". A fourth icon action is demoted into the menu.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="background:#F5F5F5;max-width:642px;">
+              <div id="cp-three"></div>
+              <div id="cp-four"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Not expandable / header only</h2>
+          <p class="docs-section-note"><code>expandable={false}</code> removes the caret and toggling. With no <code>children</code> there is no body.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="background:#F5F5F5;max-width:642px;">
+              <div id="cp-static"></div>
+              <div id="cp-header-only"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">title</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required. Bold header label.</td></tr>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Body. Omit for a header-only panel. Body padding is 24px / 16px with a divider under the header.</td></tr>
+              <tr><td class="docs-prop-name">type</td><td class="docs-prop-type">"default" | "borderless"</td><td>"default"</td><td>Borderless removes the 1px border.</td></tr>
+              <tr><td class="docs-prop-name">expandable</td><td class="docs-prop-type">boolean</td><td>true</td><td>Caret and toggling. <code>false</code> keeps the body always shown.</td></tr>
+              <tr><td class="docs-prop-name">expanded</td><td class="docs-prop-type">boolean</td><td>—</td><td>Controlled state; pair with <code>onExpandedChange</code>.</td></tr>
+              <tr><td class="docs-prop-name">defaultExpanded</td><td class="docs-prop-type">boolean</td><td>true</td><td>Initial state when uncontrolled.</td></tr>
+              <tr><td class="docs-prop-name">onExpandedChange</td><td class="docs-prop-type">(expanded: boolean) =&gt; void</td><td>—</td><td>Fires with the next value on toggle.</td></tr>
+              <tr><td class="docs-prop-name">actions</td><td class="docs-prop-type">ContentPanelAction[]</td><td>[]</td><td><code>{ id, label, icon?, onClick, disabled?, placement?: "icon" | "menu" }</code>. Max 3 icons including the "..." trigger; menu rows show the label only.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Appended to the default classes.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="content-panel.js"></script>
+</body>
+</html>

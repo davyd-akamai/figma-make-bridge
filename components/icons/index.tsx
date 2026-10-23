@@ -679,3 +679,18 @@ export function SuccessOutlineIcon(props: IconProps) {
     </BaseIcon>
   );
 }
+
+// Figma: caret-filled-20 (node 126:3949, Content panel header) — natively 20px, a solid down-pointing
+// triangle (different glyph from the outlined right-pointing `CaretIcon`). Path taken from the exported
+// frame, already in local 20px coordinates.
+export function CaretFilledIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 20 20" size={20} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M15.5905 8.09047L10.5905 13.0905C10.2644 13.4166 9.73572 13.4166 9.40963 13.0905L4.40963 8.09047C4.17082 7.85167 4.09938 7.49252 4.22862 7.1805C4.35787 6.86848 4.66234 6.66504 5.00006 6.66504H15.0001C15.3378 6.66504 15.6423 6.86848 15.7715 7.1805C15.9007 7.49252 15.8293 7.85167 15.5905 8.09047Z"
+      />
+    </BaseIcon>
+  );
+}

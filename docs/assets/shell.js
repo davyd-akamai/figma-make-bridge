@@ -18,6 +18,7 @@
     { id: "select", label: "Select", href: "components/select.html" },
     { id: "search", label: "Search", href: "components/search.html" },
     { id: "checkbox", label: "Checkbox", href: "components/checkbox.html" },
+    { id: "content-panel", label: "ContentPanel", href: "components/content-panel.html" },
     { id: "radio-button", label: "RadioButton", href: "components/radio-button.html" },
     { id: "breadcrumbs", label: "Breadcrumbs", href: "components/breadcrumbs.html" },
     { id: "tabs-horizontal", label: "TabsHorizontal", href: "components/tabs-horizontal.html" },
@@ -27,6 +28,14 @@
     { id: "toast", label: "Toast", href: "components/toast.html" },
     { id: "icons", label: "Icons", href: "components/icons.html" },
   ];
+
+  // Components are listed alphabetically (case-insensitive) so they are easy to find; sorting at runtime
+  // means a newly added entry lands in the right place no matter where it is appended above.
+  COMPONENTS.sort(function (a, b) {
+    return a.label.toLowerCase().localeCompare(b.label.toLowerCase());
+  });
+
+  var LIBRARY = [{ id: "library-progress", label: "Built & planned", href: "library-progress.html" }];
 
   var TEMPLATES = [{ id: "default-cm-page-template", label: "DefaultCmPageTemplate", href: "templates/default-cm-page-template.html" }];
 
@@ -60,6 +69,14 @@
   templatesTitle.textContent = "Templates";
   nav.appendChild(templatesTitle);
   TEMPLATES.forEach(function (item) {
+    nav.appendChild(link(item));
+  });
+
+  var libraryTitle = document.createElement("div");
+  libraryTitle.className = "docs-nav-group-title";
+  libraryTitle.textContent = "Library progress";
+  nav.appendChild(libraryTitle);
+  LIBRARY.forEach(function (item) {
     nav.appendChild(link(item));
   });
 

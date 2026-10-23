@@ -11,6 +11,7 @@ Node IDs below are taken from the header comments of the matching component in `
 | `button.json` | `Button` (47:14865) | node from component header; variables not re-verified |
 | `checkbox.json` | `core_checkbox` (58:4716), `.base-checkbox` (58:4359) | node from component header; variables not re-verified |
 | `container.json` | `Container` (58:5033) | node from component header; variables not re-verified |
+| `contentPanel.json` | `Content panel` (126:4081) | variables checked via get_variable_defs (background/border/icon matched); pre-seeded, `divider` added additively |
 | `drawer.json` | `Drawer` (47:8675) | node from component header; variables not re-verified |
 | `dropdown.json` | `Dropdown` (77:4363), used by Select | node from Select header; variables not re-verified |
 | `footer.json` | `cm_footer` (1:926) | node from component header; variables not re-verified |

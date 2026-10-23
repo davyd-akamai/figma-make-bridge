@@ -1,0 +1,63 @@
+# Component Coverage
+
+Tracks which Akamai CDS (`core-design-system`, `@akamai/cds-components`) components exist in `figma-make-bridge`, and which ones we plan to build. CDS is reference only (see [GUIDELINES.md](GUIDELINES.md)); this doc is the scoped to-do view, not a full CDS inventory — CDS components we have no plan to build are intentionally left out.
+
+_Last updated: 2026-10-23. Source: local `core-design-system/packages/cds-components/src/components/` vs. `components/`._
+
+## Built
+
+| CDS component | Bridge component | Notes |
+|---|---|---|
+| badge | [Badge](components/Badge.tsx) | |
+| breadcrumb | [Breadcrumbs](components/Breadcrumbs.tsx) | |
+| button | [Button](components/Button.tsx) | Tertiary / Launch / icon variants held back until Figma has swatches |
+| checkbox | [Checkbox](components/Checkbox.tsx) | |
+| content-panel | [ContentPanel](components/ContentPanel.tsx) | Single panel only; no `content-panel-group`, no `stripe` |
+| drawer | [Drawer](components/Drawer.tsx) | Right side only |
+| icon | [Icons](components/icons/index.tsx) | 41 exact-vector icons |
+| modal | [Modal](components/Modal.tsx) | |
+| notification-banner | [NotificationBanner](components/NotificationBanner.tsx) | |
+| notification-toast | [Toast](components/Toast.tsx) | |
+| radio-button | [RadioButton](components/RadioButton.tsx) | No `RadioGroup` wrapper (deliberate) |
+| search-field | [Search](components/Search.tsx) | |
+| select | [Select](components/Select.tsx) | |
+| side-nav | [SideNavigation](components/SideNavigation.tsx) | |
+| table | [Table](components/Table.tsx) | |
+| tabs | [TabsHorizontal](components/TabsHorizontal.tsx) | No content panels |
+| text-field | [TextField](components/TextField.tsx) | |
+
+Bridge-only (no CDS equivalent, built from Figma): Container, GlobalHeader, GlobalFooter, SystemBadge, DefaultCmPageTemplate.
+
+## Planned
+
+| Group | CDS component | Status |
+|---|---|---|
+| Form inputs | text-area | Not started |
+| Form inputs | switch | Not started |
+| Form inputs | master-switch | Not started |
+| Form inputs | numeric-spinner | Not started |
+| Form inputs | tag-input | Not started |
+| Form inputs | segmented-button | Not started |
+| Form inputs | form-field | Not started |
+| Date and time | calendar | Not started |
+| Date and time | date-field | Not started |
+| Date and time | date-picker | Not started |
+| Date and time | date-range | Not started |
+| Date and time | date-range-field | Not started |
+| Navigation and data | pagination | Not started |
+| Feedback and overlay | tooltip | Not started |
+| Feedback and overlay | progress-bar | Not started |
+| Feedback and overlay | zero-error-state | Not started |
+
+## Partial / internal
+
+| CDS component | Current state |
+|---|---|
+| loading-spinner | Only `SpinnerIcon`, no standalone component |
+| menu | Only the table `actionMenu` cell type |
+| popover | Internal-only ([components/internal/Popover.tsx](components/internal/Popover.tsx)) |
+
+## Open items
+
+- **Topbar** — Figma-only (not in CDS); roadmap item 3b in GUIDELINES.md, Figma node still unidentified.
+- Several planned items (date components, form-field) depend on each other — e.g. date-picker builds on calendar and date-field — so build order matters.

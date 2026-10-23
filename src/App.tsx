@@ -6,6 +6,7 @@ import Button, { type ButtonVariant } from "../components/Button";
 import Checkbox from "../components/Checkbox";
 import RadioButton from "../components/RadioButton";
 import Container from "../components/Container";
+import ContentPanel from "../components/ContentPanel";
 import TextField from "../components/TextField";
 import Select, { type SelectOption } from "../components/Select";
 import Search from "../components/Search";
@@ -23,6 +24,7 @@ import {
   ArrowLeftIcon,
   BellIcon,
   BucketIcon,
+  CaretFilledIcon,
   CaretIcon,
   CheckIcon,
   CheckmarkIcon,
@@ -67,6 +69,7 @@ const ALL_ICONS = [
   ArrowLeftIcon,
   BellIcon,
   BucketIcon,
+  CaretFilledIcon,
   CaretIcon,
   CheckIcon,
   CheckmarkIcon,
@@ -102,6 +105,49 @@ const ALL_ICONS = [
   WarningFilledIcon,
   WarningOutlineIcon,
 ];
+
+function ContentPanelDemos() {
+  const [log, setLog] = useState("none");
+  const [controlled, setControlled] = useState(false);
+  const body = (
+    <p className="type-body-regular" style={{ margin: 0 }}>
+      Panel body content goes here. The body height is intrinsic.
+    </p>
+  );
+  const download = { id: "download", label: "Download", icon: <DownloadIcon size={20} />, onClick: () => setLog("download") };
+  const edit = { id: "edit", label: "Edit", icon: <EditIcon size={20} />, onClick: () => setLog("edit") };
+  const del = { id: "delete", label: "Delete", icon: <DeleteIcon size={20} />, onClick: () => setLog("delete") };
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 16, background: "#F5F5F5", maxWidth: 642 }}>
+      <p className="type-body-regular" style={{ margin: 0 }}>Last action: {log}</p>
+      <ContentPanel
+        title="Default — download + menu"
+        actions={[download, { id: "rename", label: "Rename", placement: "menu", onClick: () => setLog("rename") }, { id: "dup", label: "Duplicate", placement: "menu", onClick: () => setLog("duplicate") }, { id: "arch", label: "Archive (disabled)", placement: "menu", disabled: true, onClick: () => setLog("archive") }]}
+      >
+        {body}
+      </ContentPanel>
+      <ContentPanel title="Borderless" type="borderless" actions={[download, { id: "more", label: "Share", placement: "menu", onClick: () => setLog("share") }]}>
+        {body}
+      </ContentPanel>
+      <ContentPanel title="Starts collapsed" defaultExpanded={false} actions={[download]}>
+        {body}
+      </ContentPanel>
+      <ContentPanel title="Three icons, no menu" actions={[download, edit, del]}>
+        {body}
+      </ContentPanel>
+      <ContentPanel title="Four icons — fourth demoted to menu" actions={[download, edit, del, { id: "x", label: "Export CSV", icon: <PlusIcon size={20} />, onClick: () => setLog("export") }]}>
+        {body}
+      </ContentPanel>
+      <ContentPanel title="Not expandable" expandable={false} actions={[download]}>
+        {body}
+      </ContentPanel>
+      <ContentPanel title="Header only (no body)" actions={[download]} />
+      <ContentPanel title={`Controlled — ${controlled ? "expanded" : "collapsed"}`} expanded={controlled} onExpandedChange={setControlled}>
+        {body}
+      </ContentPanel>
+    </div>
+  );
+}
 
 function PreviewSection({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -1401,6 +1447,10 @@ function PreviewHarness() {
                 </p>
               </Container>
             </div>
+          </PreviewSection>
+
+          <PreviewSection title="Content Panel">
+            <ContentPanelDemos />
           </PreviewSection>
 
           <PreviewSection title="Text Field">

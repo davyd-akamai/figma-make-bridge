@@ -14,6 +14,7 @@ Read this file before using any component. Then read the file for that component
 | SystemBadge | Fixed NEW/BETA marker next to a nav label | components/system-badge.md |
 | Button | Every button and action | components/button.md |
 | Container | Bordered surface that groups content | components/container.md |
+| ContentPanel | Titled, collapsible section with header actions and a body | components/content-panel.md |
 | Checkbox | On/off choice, select-all | components/checkbox.md |
 | RadioButton | One choice from a group | components/radio-button.md |
 | TextField | Single-line text input | components/text-field.md |
@@ -33,6 +34,7 @@ Icons: foundations/icons.md.
 
 - Full screen -> `DefaultCmPageTemplate`.
 - Group related content on a page -> `Container`, stacked vertically.
+- A titled section that can collapse, with header icon actions -> `ContentPanel`.
 - Any clickable action -> `Button`.
 - Status or category label -> `Badge`.
 - NEW/BETA next to a nav label -> `SystemBadge` (set via `SideNavPage.badge`).

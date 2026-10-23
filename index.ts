@@ -29,6 +29,9 @@ export type { ButtonProps, ButtonVariant, ButtonSize } from "./components/Button
 export { default as Container } from "./components/Container";
 export type { ContainerProps } from "./components/Container";
 
+export { default as ContentPanel } from "./components/ContentPanel";
+export type { ContentPanelProps, ContentPanelType, ContentPanelAction } from "./components/ContentPanel";
+
 export { default as TextField } from "./components/TextField";
 export type { TextFieldProps, TextFieldLabelPosition } from "./components/TextField";
 
