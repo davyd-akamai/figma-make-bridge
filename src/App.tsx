@@ -911,6 +911,8 @@ function TableCompactSection() {
         <Table columns={COMPACT_COLUMNS} rows={INSTANCE_ROWS} headerVariant="outlined" zebra aria-label="Compact instances table" />
       </div>
 
+      <TablePaginationDemo />
+
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
         <span className="type-body-regular">Bare usage — no props, default dataset:</span>
         <Table aria-label="Default table example" />
@@ -1129,6 +1131,34 @@ function TableHeaderVariationsSection() {
         <span className="type-body-regular">Select-all checkbox in header:</span>
         <Table columns={HEADER_VARIATION_SELECTABLE_COLUMN} rows={SHOWCASE_ROWS} selectable aria-label="Selectable header example" />
       </div>
+    </div>
+  );
+}
+
+function TablePaginationDemo() {
+  const [page, setPage] = useState(1);
+  const [size, setSize] = useState(10);
+  const all = Array.from({ length: 35 }, (_, i) => ({ ...INSTANCE_ROWS[i % INSTANCE_ROWS.length], id: `p-${i}`, name: `${INSTANCE_ROWS[i % INSTANCE_ROWS.length].name}-${i + 1}` }));
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <span className="type-body-regular">
+        With pagination — passed via the `pagination` slot, so it is the table's last row inside the same
+        border (no gap, one shared line under the last data row):
+      </span>
+      <Table
+        columns={COMPACT_COLUMNS}
+        rows={all.slice((page - 1) * size, page * size)}
+        aria-label="Paginated instances table"
+        pagination={
+          <Pagination
+            length={all.length}
+            pageIndex={page}
+            onPageChange={setPage}
+            pageSize={size}
+            onPageSizeChange={(s, p) => { setSize(s); setPage(p); }}
+          />
+        }
+      />
     </div>
   );
 }

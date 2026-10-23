@@ -295,6 +295,9 @@
   function renderTable(container, config) {
     var headerVariant = config.headerVariant || "filled";
     var bordered = config.bordered !== false;
+    // Same rule as Table.tsx: the last row's bottom border is redundant when the wrapper border (bordered) or
+    // the Pagination's top border (pagination slot) already draws the table's bottom edge.
+    var dropLastRowBorder = bordered || !!config.pagination;
     var zebra = !config.expandable && !!config.zebra;
     var selectedIds = {};
     (config.defaultSelectedIds || []).forEach(function (id) { selectedIds[id] = true; });
@@ -331,13 +334,15 @@
 
       rows.forEach(function (row, rowIndex) {
         var isExpanded = !!expandedIds[row.id];
+        var isLast = rowIndex === rows.length - 1;
+        var dropCellBorder = dropLastRowBorder && isLast && !(config.expandable && isExpanded);
         var rowBg = zebra && rowIndex % 2 === 1 ? ROW_BG_ZEBRA : ROW_BG_DEFAULT;
 
         var rowWrap = document.createElement("div");
         rowWrap.setAttribute("role", "row");
         rowWrap.className = "group contents";
         config.columns.forEach(function (column, colIndex) {
-          rowWrap.appendChild(bodyCell(column, row, rowIndex, colIndex === 0, rowBg, isExpanded));
+          rowWrap.appendChild(bodyCell(column, row, rowIndex, colIndex === 0, rowBg, isExpanded, dropCellBorder));
         });
         container.appendChild(rowWrap);
 
@@ -349,12 +354,21 @@
           expandedCell.setAttribute("role", "cell");
           expandedCell.style.gridColumn = "1 / -1";
           expandedCell.className =
-            "flex px-[var(--global-spacing-s24,24px)] py-[var(--global-spacing-s16,16px)] border-b border-solid " + ROW_BORDER + " " + rowBg;
+            "flex px-[var(--global-spacing-s24,24px)] py-[var(--global-spacing-s16,16px)] " + (dropLastRowBorder && isLast ? "border-b-0" : "border-b") + " border-solid " + ROW_BORDER + " " + rowBg;
           expandedCell.appendChild(config.renderExpandedContent(row));
           expandedRow.appendChild(expandedCell);
           container.appendChild(expandedRow);
         }
       });
+
+      if (config.pagination) {
+        // `config.pagination` is the Pagination host element itself, so its bar is the wrapper's direct child
+        // (matching the [&>div] selector in Table.tsx). Spans every column; a bordered table drops the bar's
+        // bottom border.
+        config.pagination.style.gridColumn = "1 / -1";
+        config.pagination.className = bordered ? "[&>div]:border-b-0" : "";
+        container.appendChild(config.pagination);
+      }
 
       if (config.onStateChange) config.onStateChange({ selectedIds: Object.keys(selectedIds).filter(function (k) { return selectedIds[k]; }), expandedIds: Object.keys(expandedIds).filter(function (k) { return expandedIds[k]; }) });
     }
@@ -419,11 +433,11 @@
       return cell;
     }
 
-    function bodyCell(column, row, rowIndex, isFirst, rowBg, isExpanded) {
+    function bodyCell(column, row, rowIndex, isFirst, rowBg, isExpanded, dropCellBorder) {
       var cell = document.createElement("div");
       cell.setAttribute("role", "cell");
       cell.className =
-        "flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[10px] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] border-b border-solid " +
+        "flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[10px] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] " + (dropCellBorder ? "border-b-0" : "border-b") + " border-solid " +
         ROW_BORDER + " " + rowBg + " " + ROW_HOVER_GROUP;
 
       if (isFirst && config.selectable) {
@@ -575,6 +589,34 @@
           if (el) el.textContent = "Selected: " + (state.selectedIds.join(", ") || "none") + " · Expanded: " + (state.expandedIds.join(", ") || "none");
         },
       });
+    }
+
+    var pagedEl = document.getElementById("tbl-paged");
+    if (pagedEl && window.FMBPagination) {
+      var all = [];
+      for (var n = 0; n < 35; n++) {
+        var src = INSTANCE_ROWS[n % INSTANCE_ROWS.length];
+        all.push(Object.assign({}, src, { id: "p-" + n, name: src.name + "-" + (n + 1) }));
+      }
+      var pagState = { page: 1, size: 10 };
+      var pagHost = document.createElement("div");
+      var draw = function () {
+        renderTable(pagedEl, {
+          columns: COMPACT_COLUMNS,
+          rows: all.slice((pagState.page - 1) * pagState.size, pagState.page * pagState.size),
+          pagination: pagHost,
+        });
+      };
+      window.FMBPagination.mount(pagHost, {
+        variant: "table", length: all.length, size: 10,
+        onChange: function (st) {
+          pagState.page = Math.min(st.page, Math.max(1, Math.ceil(st.length / st.size)));
+          pagState.size = st.size;
+          // renderTable rebuilds the container; the Pagination host element is reused, so re-append only.
+          draw();
+        },
+      });
+      draw();
     }
 
     var compactEl = document.getElementById("tbl-compact");

@@ -4,7 +4,7 @@
 
 ## When to use / when not to use
 
-- Use under a `Table` or a list that shows only part of a bigger data set (`variant="table"` or `"list"`).
+- Use with a `Table` (pass it to the table's `pagination` prop) or under a list that shows only part of a bigger data set (`variant="table"` or `"list"`).
 - Use `selectable` on a list (not a table) to select every item in that list and filter it down to the selected ones.
 - Pagination only displays state and fires callbacks. It never slices your data, never stores the selection and never filters anything. You do all three.
 - There are no numbered page buttons, no jump-to-page input and no first/last buttons.
@@ -50,19 +50,32 @@ interface PaginationProps {
 - `variant`: `"table"` (item counter on the left) or `"list"` (page-size picker on the left).
 - Invalid or non-existent: `page`, `count`, `total`, `totalItems`, `totalPages`, `onChange`, `onPageSizeChanged`, `pageSizes`, `showSizeChanger`, `hideControls`, `size`, `compact`.
 
+## With a Table: pagination is the table's last row
+
+Pagination is part of the table, not a neighbor of it. Always hand it to the table's `pagination` prop.
+
+- The table draws it inside its own border, flush against the last data row: no gap, and one border between them (the last row's bottom border and Pagination's bottom border are dropped automatically).
+- Never render `<Pagination>` as a sibling below a `<Table>`, never put a gap, margin, padding or flex `gap` between them, and never wrap it in a `Container` or add your own border or `className` to fake the join. A sibling placement leaves a gap and a double border.
+- Standalone `<Pagination>` (no `Table`) is only for lists or other custom content; it brings its own top and bottom border.
+
 ## Correct
 
 ```tsx
 const [page, setPage] = useState(1);
 const [size, setSize] = useState(20);
 
-<Table rows={rows.slice((page - 1) * size, page * size)} columns={columns} />
-<Pagination
-  length={rows.length}
-  pageIndex={page}
-  onPageChange={setPage}
-  pageSize={size}
-  onPageSizeChange={(s, p) => { setSize(s); setPage(p); }}
+<Table
+  columns={columns}
+  rows={rows.slice((page - 1) * size, page * size)}
+  pagination={
+    <Pagination
+      length={rows.length}
+      pageIndex={page}
+      onPageChange={setPage}
+      pageSize={size}
+      onPageSizeChange={(s, p) => { setSize(s); setPage(p); }}
+    />
+  }
 />
 ```
 
@@ -85,6 +98,13 @@ Selection mode on a list:
 ## Incorrect
 
 ```tsx
+<Table columns={columns} rows={pageRows} />
+<div className="mt-4"><Pagination length={rows.length} /></div>
+```
+
+Pagination must be in the table's `pagination` prop, with no gap. A sibling below the table leaves a gap and two borders.
+
+```tsx
 <Pagination page={2} total={200} onChange={setPage} pageSizes={[10, 25]} />
 ```
 
@@ -100,4 +120,4 @@ Selection mode on a list:
 - `selectable` only works with `variant="list"`; it is ignored on `"table"` (a dev warning is logged). In selection mode the page-size picker, range and chevrons are NOT shown, so the list should not be paged.
 - "Select: N" fires `onSelectAll` and always shows `length`; "Deselect" and "Selected only" are disabled while `selectedCount` is 0. If the count drops to 0 while "Selected only" is on, it is switched off and `onSelectedOnlyChange(false)` fires.
 - The page-size menu opens above the picker when there is no room below it.
-- Use it full width, directly under the content it pages. It is always 40px tall.
+- Use it full width. In a table it is the last row; on a list it sits directly under the list. It is always 40px tall.

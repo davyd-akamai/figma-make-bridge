@@ -26,8 +26,10 @@
 // file — confirmed via a full-page metadata search, only these header/cell primitives exist. This
 // matches the roadmap's own note ("Table owns its own bordered wrapper, do not compose it inside
 // Container") and the precedent set by Container/TabsHorizontal: this component stays scoped to
-// header+body rows, no pagination footer invented. Consumers compose pagination/search/toolbar
-// around it.
+// header+body rows. Search/toolbar are composed around it by the consumer. Pagination is the one
+// exception that attaches to the table: ADS guidelines treat it as the table's last row, so it goes in
+// the `pagination` slot (inside the bordered wrapper — no gap, a single shared border; the last row's own
+// bottom border is dropped to match).
 //
 // Cell content is data-driven via `TableColumn.accessor`/`render`, never hardcoded JSX — cellType
 // picks Figma's structural treatment (layout/text color), `accessor` supplies the value. Sorting is
@@ -176,6 +178,9 @@ export interface TableProps<T extends TableRowData = TableRowData> {
   /** Outer border/background. Default true — set false when nesting a `Table`
    * inside another `Table`'s `renderExpandedContent`, so it doesn't paint a redundant outline. */
   bordered?: boolean;
+  /** A `<Pagination />` rendered as the table's final row, inside the same bordered box — no gap, one shared
+   * border. Always pass Pagination here rather than placing it under the table yourself. */
+  pagination?: ReactNode;
   selectable?: boolean;
   selectedRowIds?: string[];
   defaultSelectedRowIds?: string[];
@@ -497,6 +502,7 @@ export default function Table<T extends TableRowData = TableRowData>({
   headerVariant = "filled",
   zebra = false,
   bordered = true,
+  pagination,
   selectable = false,
   selectedRowIds,
   defaultSelectedRowIds = [],
@@ -559,6 +565,10 @@ export default function Table<T extends TableRowData = TableRowData>({
 
   const allSelected = rows.length > 0 && rows.every((r) => effectiveSelectedIds.has(r.id));
   const someSelected = !allSelected && rows.some((r) => effectiveSelectedIds.has(r.id));
+  // The last row's own bottom border is redundant whenever something else draws the table's bottom edge:
+  // the outer wrapper border (bordered) or the Pagination's top border (pagination slot). A borderless table
+  // with no pagination (nested tables) keeps it as its only bottom line.
+  const dropLastRowBorder = bordered || pagination != null;
 
   return (
     <div
@@ -586,6 +596,8 @@ export default function Table<T extends TableRowData = TableRowData>({
       {rows.map((row, rowIndex) => {
         const isSelected = effectiveSelectedIds.has(row.id);
         const isExpanded = effectiveExpandedIds.has(row.id);
+        const isLast = rowIndex === rows.length - 1;
+        const dropCellBorder = dropLastRowBorder && isLast && !(expandable && isExpanded);
         const rowBg = !expandable && zebra && rowIndex % 2 === 1 ? ROW_BG_ZEBRA : ROW_BG_DEFAULT;
         return (
           <Fragment key={row.id}>
@@ -594,7 +606,7 @@ export default function Table<T extends TableRowData = TableRowData>({
                 <div
                   key={column.key}
                   role="cell"
-                  className={`flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[10px] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] border-b border-solid ${ROW_BORDER} ${rowBg} ${ROW_HOVER_GROUP}`}
+                  className={`flex h-[40px] min-w-0 items-center gap-[var(--global-spacing-s8,8px)] px-[var(--global-spacing-s12,12px)] py-[10px] first:pl-[var(--global-spacing-s24,24px)] last:pr-[var(--global-spacing-s24,24px)] ${dropCellBorder ? "border-b-0" : "border-b"} border-solid ${ROW_BORDER} ${rowBg} ${ROW_HOVER_GROUP}`}
                 >
                   {colIndex === 0 && selectable && (
                     <Checkbox
@@ -625,7 +637,7 @@ export default function Table<T extends TableRowData = TableRowData>({
                 <div
                   role="cell"
                   style={{ gridColumn: "1 / -1" }}
-                  className={`flex px-[var(--global-spacing-s24,24px)] py-[var(--global-spacing-s16,16px)] border-b border-solid ${ROW_BORDER} ${rowBg}`}
+                  className={`flex px-[var(--global-spacing-s24,24px)] py-[var(--global-spacing-s16,16px)] ${dropLastRowBorder && isLast ? "border-b-0" : "border-b"} border-solid ${ROW_BORDER} ${rowBg}`}
                 >
                   {renderExpandedContent?.(row, rowIndex)}
                 </div>
@@ -634,6 +646,13 @@ export default function Table<T extends TableRowData = TableRowData>({
           </Fragment>
         );
       })}
+      {pagination != null && (
+        // Spans every column; the wrapper's own border is the bottom edge, so a bordered table drops
+        // Pagination's bottom border (its top border is the single divider under the last row).
+        <div style={{ gridColumn: "1 / -1" }} className={bordered ? "[&>div]:border-b-0" : ""}>
+          {pagination}
+        </div>
+      )}
     </div>
   );
 }

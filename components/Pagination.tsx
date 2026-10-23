@@ -11,6 +11,9 @@
 //    that list, and the page-size picker/range/chevrons are not rendered in that mode.
 //  - "Items: N" is the total item count (`length`), same as CDS — the same number as the "of N" in the range.
 //  - Pagination never slices data or tracks the selection itself; it fires callbacks and the consumer owns both.
+//  - With a Table, ADS guidelines treat Pagination as the table's last row: pass it to `<Table pagination={...}>`,
+//    which renders it flush inside the table's border (no gap, one shared border — Pagination's own bottom
+//    border is dropped by the Table). Standalone use is for lists, where it keeps its own top and bottom border.
 //  - The page-size picker is a small shared-Popover menu (10/20/50/100 by default), not the `Select` component.
 
 import { useEffect, useId, useRef, useState, type KeyboardEvent } from "react";

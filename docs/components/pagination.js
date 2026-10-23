@@ -175,7 +175,10 @@
     return { state: s, set: function (patch) { for (var k in patch) s[k] = patch[k]; paint(); } };
   }
 
+  window.FMBPagination = { mount: mount };
+
   document.addEventListener("DOMContentLoaded", function () {
+    if (!document.getElementById("pg-table")) return;
     var logTable = document.getElementById("pg-table-log");
     mount(document.getElementById("pg-table"), { variant: "table", length: 50, size: 20, onChange: function (s) {
       logTable.textContent = "page " + Math.min(s.page, Math.max(1, Math.ceil(s.length / s.size))) + ", size " + s.size;

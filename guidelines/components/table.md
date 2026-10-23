@@ -5,7 +5,8 @@ Data table with typed cells, sorting, row selection and row expansion.
 ## When to use / when not to use
 
 - Use for rows of data.
-- Scope is the table only. There is no pagination, toolbar, search or whole-table empty state. Compose those around it.
+- Scope is the table only. There is no toolbar, search or whole-table empty state. Compose those around it.
+- Pagination is the exception. It is the table's last row, so pass it through the `pagination` prop. Never render `<Pagination>` as a separate element under a table (see components/pagination.md).
 - Do NOT wrap it in a `Container`. It owns its bordered wrapper.
 
 ## Import
@@ -23,6 +24,7 @@ import { Table, type TableProps, type TableColumn, type TableRowData, type Table
 | `headerVariant` | `TableHeaderVariant` | `"filled"` | `"filled"`, `"outlined"` |
 | `zebra` | `boolean` | `false` | |
 | `bordered` | `boolean` | `true` | |
+| `pagination` | `ReactNode` | none | A `<Pagination />`. Rendered inside the table's border as its last row |
 | `selectable` | `boolean` | `false` | |
 | `selectedRowIds` / `defaultSelectedRowIds` | `string[]` | unset / `[]` | |
 | `onSelectedRowIdsChange` | `(ids: string[]) => void` | none | |
@@ -80,6 +82,8 @@ import { Table, type TableProps, type TableColumn, type TableRowData, type Table
 
 ## Known footguns
 
+- Pagination under a table goes in `pagination={<Pagination ... />}`, never next to the table. In the slot there is no gap and exactly one border between the last row and the pagination bar. Placed separately you get a gap and a double border. You still slice `rows` yourself for the current page.
+- A bordered table draws no extra line under its last row (the table border is the bottom edge). Do not add your own bottom border or margin under it.
 - **Sorting is fully controlled. `Table` never reorders `rows`.** On `onSortChange`, you re-sort your rows and pass back `sortColumnKey` and `sortDirection` so the header shows the active state.
 - A `Button`, `Checkbox`, `RadioButton`, `Select` or `Switch` in a cell goes through `cellType: "custom"` with `render`. There is no dedicated cell type. In a cell, use `<Switch size="small" aria-label="..." />`.
 - A `text` cell with `undefined`, `null` or `""` shows a placeholder-colored "No data". Do not pre-fill empty cells with dashes.
