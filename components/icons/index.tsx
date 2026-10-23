@@ -694,3 +694,30 @@ export function CaretFilledIcon(props: IconProps) {
     </BaseIcon>
   );
 }
+
+// Figma: chevron (Pagination, nodes 128:4472 left / 128:4476 right) — natively 20px, paths taken from the
+// exported frames (already in local 20px coordinates). Figma paints them #A3A3AB/#3D3D42 only to demo
+// disabled/enabled; here they take currentColor so Pagination can drive the per-state color.
+export function ChevronLeftIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 20 20" size={20} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.9096 10.5904C6.58352 10.2643 6.58352 9.73561 6.9096 9.40953L11.9096 4.40953C12.2357 4.08344 12.7644 4.08344 13.0905 4.40953C13.4166 4.73561 13.4166 5.26431 13.0905 5.59039L8.68091 9.99996L13.0905 14.4095C13.4166 14.7356 13.4166 15.2643 13.0905 15.5904C12.7644 15.9165 12.2357 15.9165 11.9096 15.5904L6.9096 10.5904Z"
+      />
+    </BaseIcon>
+  );
+}
+
+export function ChevronRightIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 20 20" size={20} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M13.0904 9.40961C13.4165 9.73569 13.4165 10.2644 13.0904 10.5905L8.09039 15.5905C7.76431 15.9166 7.23561 15.9166 6.90953 15.5905C6.58344 15.2644 6.58344 14.7357 6.90953 14.4096L11.3191 10L6.90953 5.59047C6.58344 5.26439 6.58344 4.73569 6.90953 4.4096C7.23561 4.08352 7.76431 4.08352 8.09039 4.4096L13.0904 9.40961Z"
+      />
+    </BaseIcon>
+  );
+}

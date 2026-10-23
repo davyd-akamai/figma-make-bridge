@@ -7,6 +7,7 @@ import Checkbox from "../components/Checkbox";
 import RadioButton from "../components/RadioButton";
 import Container from "../components/Container";
 import ContentPanel from "../components/ContentPanel";
+import Pagination from "../components/Pagination";
 import TextField from "../components/TextField";
 import Select, { type SelectOption } from "../components/Select";
 import Search from "../components/Search";
@@ -29,6 +30,8 @@ import {
   CheckIcon,
   CheckmarkIcon,
   ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   ChevronUpIcon,
   CloseIcon,
   CommunityIcon,
@@ -74,6 +77,8 @@ const ALL_ICONS = [
   CheckIcon,
   CheckmarkIcon,
   ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
   ChevronUpIcon,
   CloseIcon,
   CommunityIcon,
@@ -105,6 +110,59 @@ const ALL_ICONS = [
   WarningFilledIcon,
   WarningOutlineIcon,
 ];
+
+function PaginationDemos() {
+  const [tablePage, setTablePage] = useState(1);
+  const [tableSize, setTableSize] = useState(20);
+  const [listPage, setListPage] = useState(1);
+  const [listSize, setListSize] = useState(10);
+  const [selected, setSelected] = useState<number[]>([]);
+  const [selectedOnly, setSelectedOnly] = useState(false);
+  const items = Array.from({ length: 20 }, (_, i) => i + 1);
+  const shown = selectedOnly ? items.filter((i) => selected.includes(i)) : items;
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+      <div>
+        <p className="type-label-bold-s">Table (50 items) — page {tablePage}, size {tableSize}</p>
+        <Pagination length={50} pageIndex={tablePage} onPageChange={setTablePage} pageSize={tableSize} onPageSizeChange={(s, p) => { setTableSize(s); setTablePage(p); }} />
+      </div>
+      <div>
+        <p className="type-label-bold-s">List (uncontrolled, 95 items)</p>
+        <Pagination variant="list" length={95} defaultPageSize={10} />
+      </div>
+      <div>
+        <p className="type-label-bold-s">List, controlled — page {listPage}, size {listSize}</p>
+        <Pagination variant="list" length={95} pageIndex={listPage} onPageChange={setListPage} pageSize={listSize} onPageSizeChange={(s, p) => { setListSize(s); setListPage(p); }} />
+      </div>
+      <div>
+        <p className="type-label-bold-s">Disabled / empty</p>
+        <Pagination disabled />
+        <div style={{ height: 8 }} />
+        <Pagination length={0} />
+      </div>
+      <div>
+        <p className="type-label-bold-s">List selected — click items to toggle, Select/Deselect/Selected only drive the list below</p>
+        <Pagination
+          variant="list"
+          selectable
+          length={items.length}
+          selectedCount={selected.length}
+          onSelectAll={() => setSelected(items)}
+          onDeselectAll={() => setSelected([])}
+          selectedOnly={selectedOnly}
+          onSelectedOnlyChange={setSelectedOnly}
+        />
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, paddingTop: 8 }}>
+          {shown.map((i) => (
+            <Button key={i} variant={selected.includes(i) ? "primary" : "secondary"} size="small" onClick={() => setSelected((s) => (s.includes(i) ? s.filter((x) => x !== i) : [...s, i]))}>
+              Item {i}
+            </Button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ContentPanelDemos() {
   const [log, setLog] = useState("none");
@@ -1451,6 +1509,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Content Panel">
             <ContentPanelDemos />
+          </PreviewSection>
+
+          <PreviewSection title="Pagination">
+            <PaginationDemos />
           </PreviewSection>
 
           <PreviewSection title="Text Field">

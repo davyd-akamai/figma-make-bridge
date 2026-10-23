@@ -32,6 +32,9 @@ export type { ContainerProps } from "./components/Container";
 export { default as ContentPanel } from "./components/ContentPanel";
 export type { ContentPanelProps, ContentPanelType, ContentPanelAction } from "./components/ContentPanel";
 
+export { default as Pagination, DEFAULT_PAGE_SIZE_OPTIONS } from "./components/Pagination";
+export type { PaginationProps, PaginationVariant } from "./components/Pagination";
+
 export { default as TextField } from "./components/TextField";
 export type { TextFieldProps, TextFieldLabelPosition } from "./components/TextField";
 

@@ -20,6 +20,7 @@ Node IDs below are taken from the header comments of the matching component in `
 | `menuButton.json` | no component in this repo cites a node | source unknown; to be confirmed in Figma |
 | `notificationBanner.json` | `Notification banner` (123:5210) | variable colors cross-checked against the exported icon/frame fills (all matched); pre-seeded, used as-is |
 | `notificationToast.json` | `Notification toast` (123:5295) | variables checked via get_variable_defs (all matched); pre-seeded, `elevation.s` added additively |
+| `pagination.json` | `Pagination` (128:4563) | variables checked via get_variable_defs (all matched); pre-seeded, `divider.border` added additively |
 | `radioButton.json` | `Radio-button` (58:5044) | node from component header; variables not re-verified |
 | `search.json` | `Search-field` (91:3834) | node from component header; variables not re-verified |
 | `select.json` | `Select` (47:7683) | node from component header; variables not re-verified |

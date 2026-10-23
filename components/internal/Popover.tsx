@@ -24,6 +24,9 @@ export interface PopoverProps {
   align?: "start" | "end";
   /** Match the popover's width to the anchor's width (Select's listbox only). */
   matchAnchorWidth?: boolean;
+  /** "bottom" (default) opens below the anchor; "top" opens above it (Pagination's footer picker flips
+   * up when there isn't room below). */
+  placement?: "bottom" | "top";
   role?: string;
   "aria-label"?: string;
   id?: string;
@@ -37,6 +40,7 @@ export default function Popover({
   anchorRef,
   align = "start",
   matchAnchorWidth = false,
+  placement = "bottom",
   role,
   "aria-label": ariaLabel,
   id,
@@ -54,7 +58,8 @@ export default function Popover({
       const rect = anchor.getBoundingClientRect();
       setStyle({
         position: "fixed",
-        top: rect.bottom,
+        top: placement === "bottom" ? rect.bottom : undefined,
+        bottom: placement === "top" ? window.innerHeight - rect.top : undefined,
         left: align === "start" ? rect.left : undefined,
         right: align === "end" ? window.innerWidth - rect.right : undefined,
         width: matchAnchorWidth ? rect.width : undefined,
@@ -68,7 +73,7 @@ export default function Popover({
       window.removeEventListener("scroll", updatePosition, true);
       window.removeEventListener("resize", updatePosition);
     };
-  }, [open, anchorRef, align, matchAnchorWidth]);
+  }, [open, anchorRef, align, matchAnchorWidth, placement]);
 
   useEffect(() => {
     if (!open) return;

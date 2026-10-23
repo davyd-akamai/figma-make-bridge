@@ -23,6 +23,7 @@ Read this file before using any component. Then read the file for that component
 | Breadcrumbs | Location trail with optional inline rename of the current page | components/breadcrumbs.md |
 | TabsHorizontal | Tab headers (no panels) | components/tabs-horizontal.md |
 | Table | Data table with sort, select, expand | components/table.md |
+| Pagination | Page-size picker, range and prev/next under a table or list; selection bar for lists | components/pagination.md |
 | Drawer | Right-hand slide-in panel | components/drawer.md |
 | Modal | Centered confirmation/dialog box | components/modal.md |
 | NotificationBanner | Inline status message with optional action and dismiss | components/notification-banner.md |
@@ -46,6 +47,7 @@ Icons: foundations/icons.md.
 - Show where the user is in a hierarchy -> `Breadcrumbs`.
 - Switch between views -> `TabsHorizontal` + your own content.
 - Rows of data -> `Table`.
+- Paging through a large `Table` or list -> `Pagination`.
 - Edit or detail panel -> `Drawer`.
 - Short confirmation or blocking question -> `Modal`.
 - Inline status message inside a page (info, warning, success, error) -> `NotificationBanner`.

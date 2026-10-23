@@ -18,6 +18,7 @@ _Last updated: 2026-10-23. Source: local `core-design-system/packages/cds-compon
 | modal | [Modal](components/Modal.tsx) | |
 | notification-banner | [NotificationBanner](components/NotificationBanner.tsx) | |
 | notification-toast | [Toast](components/Toast.tsx) | |
+| pagination | [Pagination](components/Pagination.tsx) | `table`/`list` variants plus opt-in list selection mode; no numbered pages |
 | radio-button | [RadioButton](components/RadioButton.tsx) | No `RadioGroup` wrapper (deliberate) |
 | search-field | [Search](components/Search.tsx) | |
 | select | [Select](components/Select.tsx) | |
@@ -44,7 +45,6 @@ Bridge-only (no CDS equivalent, built from Figma): Container, GlobalHeader, Glob
 | Date and time | date-picker | Not started |
 | Date and time | date-range | Not started |
 | Date and time | date-range-field | Not started |
-| Navigation and data | pagination | Not started |
 | Feedback and overlay | tooltip | Not started |
 | Feedback and overlay | progress-bar | Not started |
 | Feedback and overlay | zero-error-state | Not started |
