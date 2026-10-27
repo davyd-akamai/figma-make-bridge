@@ -27,6 +27,7 @@ Workflow (repeat per component):
 8. **Confirm before pushing** — `add_code_connect_map` writes to a shared team-visible library; don't push without checking in first, same as every mapping done so far.
 9. Verify with `get_code_connect_map` (confirms `componentName`/`source` resolve for every variant instance).
 10. Log the result in `GUIDELINES.md`'s Code Connect section — what got mapped, any judgment calls, any new gotchas.
+11. Tick the **Code Connect** column for each newly mapped component in the Built table of `docs/library-progress.html` (copy an existing row's check mark markup) and in `COVERAGE.md`. Icons stay "Partial" in their one row.
 
 Currently blocked: `InfoIcon` (local `info` component, node `58:5219`, already wired into Checkbox and RadioButton in Figma) — still hasn't been published, so its mapping push keeps failing. Check `search_design_system` for it first; if it's published now, finish that one before starting anything new.
 

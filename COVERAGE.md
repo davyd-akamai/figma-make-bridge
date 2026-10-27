@@ -6,30 +6,30 @@ _Last updated: 2026-10-27. Source: local `core-design-system/packages/cds-compon
 
 ## Built
 
-| CDS component | Bridge component | Notes |
-|---|---|---|
-| badge | [Badge](components/Badge.tsx) | |
-| breadcrumb | [Breadcrumbs](components/Breadcrumbs.tsx) | |
-| button | [Button](components/Button.tsx) | Tertiary / Launch / icon variants held back until Figma has swatches |
-| checkbox | [Checkbox](components/Checkbox.tsx) | |
-| content-panel | [ContentPanel](components/ContentPanel.tsx) | Single panel only; no `content-panel-group`, no `stripe` |
-| drawer | [Drawer](components/Drawer.tsx) | Right side only |
-| icon | [Icons](components/icons/index.tsx) | 41 exact-vector icons |
-| modal | [Modal](components/Modal.tsx) | |
-| notification-banner | [NotificationBanner](components/NotificationBanner.tsx) | |
-| notification-toast | [Toast](components/Toast.tsx) | |
-| pagination | [Pagination](components/Pagination.tsx) | `table`/`list` variants plus opt-in list selection mode; no numbered pages |
-| radio-button | [RadioButton](components/RadioButton.tsx) | No `RadioGroup` wrapper (deliberate) |
-| search-field | [Search](components/Search.tsx) | |
-| select | [Select](components/Select.tsx) | |
-| side-nav | [SideNavigation](components/SideNavigation.tsx) | |
-| switch | [Switch](components/Switch.tsx) | No read-only state; `master-switch` still planned |
-| table | [Table](components/Table.tsx) | |
-| tabs | [TabsHorizontal](components/TabsHorizontal.tsx) | No content panels |
-| text-area | [TextArea](components/TextArea.tsx) | Native vertical resize with Figma's handle overlaid |
-| text-field | [TextField](components/TextField.tsx) | |
+| CDS component | Bridge component | Code Connect | Notes |
+|---|---|---|---|
+| badge | [Badge](components/Badge.tsx) |  |  |
+| breadcrumb | [Breadcrumbs](components/Breadcrumbs.tsx) |  |  |
+| button | [Button](components/Button.tsx) | ✓ | Tertiary / Launch / icon variants held back until Figma has swatches |
+| checkbox | [Checkbox](components/Checkbox.tsx) | ✓ |  |
+| content-panel | [ContentPanel](components/ContentPanel.tsx) |  | Single panel only; no `content-panel-group`, no `stripe` |
+| drawer | [Drawer](components/Drawer.tsx) |  | Right side only |
+| icon | [Icons](components/icons/index.tsx) | Partial | 41 exact-vector icons |
+| modal | [Modal](components/Modal.tsx) | ✓ |  |
+| notification-banner | [NotificationBanner](components/NotificationBanner.tsx) | ✓ |  |
+| notification-toast | [Toast](components/Toast.tsx) | ✓ |  |
+| pagination | [Pagination](components/Pagination.tsx) | ✓ | `table`/`list` variants plus opt-in list selection mode; no numbered pages |
+| radio-button | [RadioButton](components/RadioButton.tsx) | ✓ | No `RadioGroup` wrapper (deliberate) |
+| search-field | [Search](components/Search.tsx) |  |  |
+| select | [Select](components/Select.tsx) |  |  |
+| side-nav | [SideNavigation](components/SideNavigation.tsx) |  |  |
+| switch | [Switch](components/Switch.tsx) | ✓ | No read-only state; `master-switch` still planned |
+| table | [Table](components/Table.tsx) |  |  |
+| tabs | [TabsHorizontal](components/TabsHorizontal.tsx) | ✓ | No content panels |
+| text-area | [TextArea](components/TextArea.tsx) | ✓ | Native vertical resize with Figma's handle overlaid |
+| text-field | [TextField](components/TextField.tsx) | ✓ |  |
 
-Bridge-only (no CDS equivalent, built from Figma): Container, GlobalHeader, GlobalFooter, SystemBadge, DefaultCmPageTemplate.
+Bridge-only (no CDS equivalent, built from Figma; Container is Code Connect ✓): Container, GlobalHeader, GlobalFooter, SystemBadge, DefaultCmPageTemplate.
 
 ## Planned
 
