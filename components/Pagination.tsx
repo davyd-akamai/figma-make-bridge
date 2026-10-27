@@ -308,7 +308,7 @@ export default function Pagination({
 
   if (inSelectionMode) {
     return (
-      <div className={`${rootClass} gap-[var(--global-spacing-s24,24px)]`}>
+      <div data-pagination-root className={`${rootClass} gap-[var(--global-spacing-s24,24px)]`}>
         <div className="flex shrink-0 items-center">
           <div className="flex shrink-0 items-center gap-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s8,8px)] pr-[var(--global-spacing-s8,8px)]">
             <span>{itemsLabel}</span>
@@ -345,7 +345,7 @@ export default function Pagination({
 
   if (variant === "list") {
     return (
-      <div className={rootClass}>
+      <div data-pagination-root className={rootClass}>
         <div className="flex min-w-0 flex-1 items-center">{pageSizePicker}</div>
         {pageControls}
       </div>
@@ -353,7 +353,7 @@ export default function Pagination({
   }
 
   return (
-    <div className={rootClass}>
+    <div data-pagination-root className={rootClass}>
       <div className="flex min-w-0 flex-1 items-center gap-[var(--global-spacing-s4,4px)] py-[var(--global-spacing-s8,8px)] pr-[var(--global-spacing-s8,8px)]">
         <span>{itemsLabel}</span>
         <span>{length}</span>

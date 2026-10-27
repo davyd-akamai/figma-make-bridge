@@ -80,7 +80,7 @@ function HeaderIconButton({ label, onClick, badgeCount, children }: HeaderIconBu
       type="button"
       aria-label={label}
       onClick={onClick}
-      className="relative flex size-6 shrink-0 items-center justify-center text-[color:var(--component-globalheader-icon-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-icon-hover,#FFFFFF)]"
+      className="relative flex size-6 shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-globalheader-icon-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-icon-hover,#FFFFFF)]"
     >
       {children}
       {badgeCount != null && <NotificationBadge count={badgeCount} />}
@@ -109,7 +109,7 @@ interface HeaderAccountProps {
 // rendered directly at the call site.
 function HeaderAccount({ user }: HeaderAccountProps) {
   return (
-    <button type="button" className="hidden h-[34px] items-center gap-[var(--global-spacing-s8,8px)] desktop:flex">
+    <button type="button" className="hidden h-[34px] cursor-pointer items-center gap-[var(--global-spacing-s8,8px)] desktop:flex">
       <UserAvatar initial={user.avatarInitial} />
       <span className="type-body-semibold text-[color:var(--component-globalheader-text-default,#D6D6DD)]">
         {user.name}
@@ -128,7 +128,7 @@ function SignInLink({ onClick }: SignInLinkProps) {
     <button
       type="button"
       onClick={onClick}
-      className="type-body-semibold text-[color:var(--component-globalheader-text-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-text-hover,#FFFFFF)]"
+      className="type-body-semibold cursor-pointer text-[color:var(--component-globalheader-text-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-text-hover,#FFFFFF)]"
     >
       Sign in
     </button>
@@ -197,7 +197,7 @@ export default function GlobalHeader({
           type="button"
           aria-label="Open menu"
           onClick={onMenuClick}
-          className="flex size-6 shrink-0 items-center justify-center text-[color:var(--component-globalheader-icon-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-icon-hover,#FFFFFF)] desktop:hidden"
+          className="flex size-6 shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-globalheader-icon-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-icon-hover,#FFFFFF)] desktop:hidden"
         >
           <MenuIcon className="size-6" />
         </button>

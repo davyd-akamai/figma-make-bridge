@@ -262,6 +262,7 @@ const HEADER_VARIANT_CLASSES: Record<
 };
 
 const ROW_BORDER = "border-[var(--component-table-row-border,#D6D6DD)]";
+const TRUNCATING_CELL_TYPES: TableCellType[] = ["text", "link", "iconText"];
 const ROW_BG_DEFAULT = "bg-[var(--component-table-row-background-default,#FFFFFF)]";
 const ROW_BG_ZEBRA = "bg-[var(--component-table-row-background-zebra,#F7F7FA)]";
 const ROW_HOVER_GROUP = "group-hover:bg-[var(--component-table-row-background-hover,#EDF8FF)]";
@@ -419,7 +420,7 @@ function renderCellContent<T extends TableRowData>(column: TableColumn<T>, row: 
 
   // Wrapped in a flex row so inline-level content (a Switch, a Button) is blockified: as bare inline
   // content it sits on a line box taller than itself and ends up pushed toward the top of the cell.
-  if (type === "custom") return <div className="flex items-center">{column.render?.(row, rowIndex)}</div>;
+  if (type === "custom") return <div className="flex min-w-0 items-center">{column.render?.(row, rowIndex)}</div>;
 
   if (type === "actionIcons") {
     return (
@@ -434,7 +435,7 @@ function renderCellContent<T extends TableRowData>(column: TableColumn<T>, row: 
               onClick={() => action.onClick(row, rowIndex)}
               aria-label={action.label}
               title={action.label}
-              className={`flex shrink-0 items-center justify-center ${ROW_ICON_DEFAULT} ${ROW_ICON_HOVER} ${ROW_ICON_DISABLED} disabled:cursor-not-allowed`}
+              className={`flex shrink-0 items-center justify-center ${ROW_ICON_DEFAULT} ${ROW_ICON_HOVER} ${ROW_ICON_DISABLED} cursor-pointer disabled:cursor-not-allowed`}
             >
               {action.icon}
             </button>
@@ -457,7 +458,8 @@ function renderCellContent<T extends TableRowData>(column: TableColumn<T>, row: 
       <a
         href={v.href}
         onClick={v.onClick}
-        className="flex min-w-0 items-center gap-[var(--global-spacing-s8,8px)] text-[color:var(--component-table-row-text-link,#0174BC)] hover:underline"
+        title={typeof v.label === "string" ? v.label : undefined}
+        className="flex min-w-0 cursor-pointer items-center gap-[var(--global-spacing-s8,8px)] text-[color:var(--alias-content-text-link-default,#0174BC)] hover:text-[color:var(--alias-content-text-link-hover,#009CDE)]"
       >
         {v.icon}
         <span className="type-body-regular truncate">{v.label}</span>
@@ -469,7 +471,7 @@ function renderCellContent<T extends TableRowData>(column: TableColumn<T>, row: 
     const v = value as TableIconTextValue | undefined;
     if (!v) return null;
     return (
-      <span className="flex min-w-0 items-center gap-[var(--global-spacing-s8,8px)]">
+      <span className="flex min-w-0 items-center gap-[var(--global-spacing-s8,8px)]" title={typeof v.label === "string" ? v.label : undefined}>
         <span className={`shrink-0 ${ROW_ICON_DEFAULT}`}>{v.icon}</span>
         <span className={`type-body-regular truncate ${ROW_TEXT_DEFAULT}`}>{v.label}</span>
       </span>
@@ -488,12 +490,16 @@ function renderCellContent<T extends TableRowData>(column: TableColumn<T>, row: 
   const text = value === undefined || value === null || value === "" ? undefined : String(value);
   if (!text) {
     return (
-      <span className="type-body-regular truncate text-[color:var(--component-table-row-text-placeholder,#696970)]">
+      <span className="type-body-regular block truncate text-[color:var(--component-table-row-text-placeholder,#696970)]">
         No data
       </span>
     );
   }
-  return <span className={`type-body-regular truncate ${ROW_TEXT_DEFAULT}`}>{text}</span>;
+  return (
+    <span className={`type-body-regular block truncate ${ROW_TEXT_DEFAULT}`} title={text}>
+      {text}
+    </span>
+  );
 }
 
 export default function Table<T extends TableRowData = TableRowData>({
@@ -623,12 +629,12 @@ export default function Table<T extends TableRowData = TableRowData>({
                       aria-expanded={isExpanded}
                       aria-label={isExpanded ? "Collapse row" : "Expand row"}
                       onClick={() => toggleRowExpanded(row.id)}
-                      className={`flex shrink-0 items-center justify-center transition-transform duration-200 ${isExpanded ? "rotate-90" : ""} ${ROW_ICON_DEFAULT} ${ROW_ICON_HOVER}`}
+                      className={`flex shrink-0 cursor-pointer items-center justify-center transition-transform duration-200 ${isExpanded ? "rotate-90" : ""} ${ROW_ICON_DEFAULT} ${ROW_ICON_HOVER}`}
                     >
                       <CaretIcon size={20} />
                     </button>
                   )}
-                  <div className="min-w-0 flex-1">{renderCellContent(column, row, rowIndex)}</div>
+                  <div className={`min-w-0 flex-1 ${TRUNCATING_CELL_TYPES.includes(column.cellType ?? "text") ? "overflow-hidden" : ""}`}>{renderCellContent(column, row, rowIndex)}</div>
                 </div>
               ))}
             </div>
@@ -649,7 +655,7 @@ export default function Table<T extends TableRowData = TableRowData>({
       {pagination != null && (
         // Spans every column; the wrapper's own border is the bottom edge, so a bordered table drops
         // Pagination's bottom border (its top border is the single divider under the last row).
-        <div style={{ gridColumn: "1 / -1" }} className={bordered ? "[&>div]:border-b-0" : ""}>
+        <div style={{ gridColumn: "1 / -1" }} className={bordered ? "[&_[data-pagination-root]]:border-b-0" : ""}>
           {pagination}
         </div>
       )}

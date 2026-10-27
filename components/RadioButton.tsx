@@ -144,7 +144,7 @@ export default function RadioButton({
           onClick={onInfoIconClick}
           title={infoText}
           aria-label={infoText ?? "More information"}
-          className="flex shrink-0 items-center justify-center text-[color:var(--component-textfield-info-icon,#696970)]"
+          className="flex shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-textfield-info-icon,#696970)]"
         >
           <InfoIcon size={20} />
         </button>

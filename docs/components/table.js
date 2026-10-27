@@ -242,7 +242,7 @@
       var a = document.createElement("a");
       a.href = value.href || "#";
       a.className =
-        "flex min-w-0 items-center gap-[var(--global-spacing-s8,8px)] text-[color:var(--component-table-row-text-link,#0174BC)] hover:underline";
+        "flex min-w-0 items-center gap-[var(--global-spacing-s8,8px)] text-[color:var(--alias-content-text-link-default,#0174BC)] hover:text-[color:var(--alias-content-text-link-hover,#009CDE)]";
       a.innerHTML = '<span class="type-body-regular truncate">' + value.label + "</span>";
       return a;
     }

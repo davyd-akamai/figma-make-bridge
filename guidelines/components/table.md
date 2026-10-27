@@ -82,6 +82,9 @@ import { Table, type TableProps, type TableColumn, type TableRowData, type Table
 
 ## Known footguns
 
+- All cell text truncates on one line with an ellipsis. Never write custom truncation or wrapping per column.
+- Pagination always goes through the `pagination` prop. It acts as the last row of the table. Never place `<Pagination>` below the table. Never wrap it in your own container, border or margin.
+- When converting a design that has pagination under a table, move it into the `pagination` prop and delete its wrapper.
 - Pagination under a table goes in `pagination={<Pagination ... />}`, never next to the table. In the slot there is no gap and exactly one border between the last row and the pagination bar. Placed separately you get a gap and a double border. You still slice `rows` yourself for the current page.
 - A bordered table draws no extra line under its last row (the table border is the bottom edge). Do not add your own bottom border or margin under it.
 - **Sorting is fully controlled. `Table` never reorders `rows`.** On `onSortChange`, you re-sort your rows and pass back `sortColumnKey` and `sortDirection` so the header shows the active state.
@@ -92,3 +95,8 @@ import { Table, type TableProps, type TableColumn, type TableRowData, type Table
 - Columns share the row equally. A column with no `header` gets a fixed narrow width. `actionIcons` and `actionMenu` columns size to content and never stretch.
 - All actions render in the same default style. There is no destructive styling.
 - Nested table: render a second `Table` in `renderExpandedContent` with `bordered={false}` and the default `headerVariant`.
+
+## Custom UI
+
+- Links have no underline in any state.
+- Interactive elements use `cursor-pointer`.

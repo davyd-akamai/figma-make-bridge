@@ -1,7 +1,7 @@
 // Mirrors components/Breadcrumbs.tsx's markup and class strings (copied verbatim from the TSX so
 // Tailwind's scan of components/ has already generated every class used here).
 (function () {
-  var ITEM_TEXT = "type-label-semibold-l leading-[20px] text-[color:var(--component-breadcrumb-normal-text-default,#696970)]";
+  var ITEM_TEXT = "type-label-semibold-l leading-[20px] text-[color:var(--component-breadcrumb-normal-text-default,#696970)] hover:text-[color:var(--alias-content-text-link-hover,#009CDE)]";
   var LAST_TEXT = "type-label-bold-l leading-[20px] text-[color:var(--component-breadcrumb-lastitem-text-default,#343438)]";
   var ICON_BUTTON = "flex size-[20px] shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-breadcrumb-lastitem-icon-default,#3D3D42)]";
   var FOCUS_RING = "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--alias-interaction-border-focus,#0174BC)]";
@@ -36,7 +36,7 @@
       if (i < last) {
         html +=
           '<li class="flex items-center gap-[var(--global-spacing-s4,4px)]">' +
-          '<button type="button" data-nav="' + i + '" class="' + ITEM_TEXT + " cursor-pointer whitespace-nowrap no-underline hover:underline hover:decoration-[6%] " + FOCUS_RING + ' border-none bg-transparent p-0">' + esc(item.label) + "</button>" +
+          '<button type="button" data-nav="' + i + '" class="' + ITEM_TEXT + " cursor-pointer whitespace-nowrap no-underline " + FOCUS_RING + ' border-none bg-transparent p-0">' + esc(item.label) + "</button>" +
           badgeHtml(item) +
           '<span aria-hidden="true" class="type-label-semibold-l shrink-0 leading-[20px] text-[color:var(--component-breadcrumb-separator-text-default,#696970)]">/</span></li>';
       } else if (opts.editing) {

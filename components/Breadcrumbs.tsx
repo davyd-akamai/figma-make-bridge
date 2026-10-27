@@ -2,8 +2,8 @@
 // Per-item states/interactions: `.breadcrumb-item`, node 123:4208 — https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=123-4208
 // Figma shows 1-5 items (Property 1=1..5), each non-last item rendered as `label` (+ optional BETA
 // badge) + a "/" separator, the last item bold/primary with no separator. Last-item states: Hover
-// (pencil appears) and Editable (inline TextField + confirm/cancel). Default-item Hover is an
-// underline only (no color change — CDS's blue hover was deliberately not ported).
+// (pencil appears) and Editable (inline TextField + confirm/cancel). Default-item links have no
+// underline in any state and no color change.
 // Rename editing is opt-in via `editable`; Breadcrumbs never mutates `items`, the consumer applies
 // the new title from `onRename`. No overflow/collapse behavior — Figma has no such state.
 
@@ -41,7 +41,7 @@ export const DEFAULT_BREADCRUMBS_ITEMS: BreadcrumbsItem[] = [
   { id: "current", label: "Last Item Title" },
 ];
 
-const ITEM_TEXT = "type-label-semibold-l leading-[20px] text-[color:var(--component-breadcrumb-normal-text-default,#696970)]";
+const ITEM_TEXT = "type-label-semibold-l leading-[20px] text-[color:var(--component-breadcrumb-normal-text-default,#696970)] hover:text-[color:var(--alias-content-text-link-hover,#009CDE)]";
 const LAST_TEXT = "type-label-bold-l leading-[20px] text-[color:var(--component-breadcrumb-lastitem-text-default,#343438)]";
 const ICON_BUTTON =
   "flex size-[20px] shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-breadcrumb-lastitem-icon-default,#3D3D42)]";
@@ -159,7 +159,7 @@ export default function Breadcrumbs({
             item.onClick?.();
             onNavigate?.(item, index);
           };
-          const linkClass = `${ITEM_TEXT} cursor-pointer whitespace-nowrap no-underline hover:underline hover:decoration-[6%] ${FOCUS_RING}`;
+          const linkClass = `${ITEM_TEXT} cursor-pointer whitespace-nowrap no-underline ${FOCUS_RING}`;
           return (
             <li key={key} className="flex items-center gap-[var(--global-spacing-s4,4px)]">
               {item.href ? (

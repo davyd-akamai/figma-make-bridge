@@ -155,7 +155,7 @@ export default function Drawer({
               type="button"
               onClick={onClose}
               aria-label="Close"
-              className="shrink-0 size-5 inline-flex items-center justify-center text-[color:var(--component-drawer-icon-default,#3D3D42)] hover:opacity-80"
+              className="shrink-0 size-5 inline-flex items-center justify-center cursor-pointer text-[color:var(--component-drawer-icon-default,#3D3D42)] hover:opacity-80"
             >
               <CloseIcon size={20} />
             </button>

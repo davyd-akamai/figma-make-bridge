@@ -9,7 +9,7 @@
 // variant (flex-1 halves + gap-y), but that's redundant with the dedicated Tablet-Mobile variant already
 // covering everything below 960px, so it's collapsed into the same single breakpoint switch GlobalHeader
 // uses rather than reimplemented.
-// Links (cm_link, node 1:793): plain text links, underline on hover per that component's usage notes —
+// Links (cm_link, node 1:793): plain text links, never underlined —
 // no icon overrides are present on any of the three instances actually used here, so no icon slot is built.
 
 export interface GlobalFooterLink {
@@ -37,7 +37,7 @@ function FooterLink({ label, href, target }: GlobalFooterLink) {
       href={href}
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
-      className="type-body-regular text-[color:var(--component-globalfooter-link-default,#0174BC)] hover:text-[color:var(--component-globalfooter-link-hover,#009CDE)] hover:underline"
+      className="type-body-regular text-[color:var(--alias-content-text-link-default,#0174BC)] hover:text-[color:var(--alias-content-text-link-hover,#009CDE)]"
     >
       {label}
     </a>

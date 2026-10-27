@@ -187,7 +187,7 @@ function PageRow({ label, badge, selected, onClick }: PageRowProps) {
       type="button"
       onClick={onClick}
       aria-current={selected ? "page" : undefined}
-      className={`flex h-8 w-[232px] shrink-0 items-center gap-[12px] pl-[48px] pr-[8px] hover:bg-[var(--component-sidenavigation-page-background-hover,#343438)] ${
+      className={`flex h-8 w-[232px] shrink-0 cursor-pointer items-center gap-[12px] pl-[48px] pr-[8px] hover:bg-[var(--component-sidenavigation-page-background-hover,#343438)] ${
         selected
           ? "bg-[var(--component-sidenavigation-page-background-selected,#343438)]"
           : "bg-[var(--component-sidenavigation-page-background-default,#3D3D42)]"
@@ -317,7 +317,7 @@ export default function SideNavigation({
           onClick={togglePin}
           aria-pressed={effectivePinned}
           aria-label={effectivePinned ? "Unpin navigation" : "Pin navigation"}
-          className="flex size-4 items-center justify-center text-[color:var(--component-sidenavigation-pin-icon-default,#D6D6DD)] hover:text-[color:var(--component-sidenavigation-pin-icon-hover,#FFFFFF)]"
+          className="flex size-4 cursor-pointer items-center justify-center text-[color:var(--component-sidenavigation-pin-icon-default,#D6D6DD)] hover:text-[color:var(--component-sidenavigation-pin-icon-hover,#FFFFFF)]"
         >
           <PinIcon filled={effectivePinned} />
         </button>

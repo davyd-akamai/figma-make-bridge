@@ -55,7 +55,8 @@ interface PaginationProps {
 Pagination is part of the table, not a neighbor of it. Always hand it to the table's `pagination` prop.
 
 - The table draws it inside its own border, flush against the last data row: no gap, and one border between them (the last row's bottom border and Pagination's bottom border are dropped automatically).
-- Never render `<Pagination>` as a sibling below a `<Table>`, never put a gap, margin, padding or flex `gap` between them, and never wrap it in a `Container` or add your own border or `className` to fake the join. A sibling placement leaves a gap and a double border.
+- Never render `<Pagination>` as a sibling below a `<Table>`. Never wrap it in your own container, border or margin, and never add a gap, padding, `className` or flex `gap` between them. It acts as the last row of the table.
+- When converting a design that has pagination under a table, move it into the `pagination` prop and delete its wrapper.
 - Standalone `<Pagination>` (no `Table`) is only for lists or other custom content; it brings its own top and bottom border.
 
 ## Correct
@@ -95,14 +96,17 @@ Selection mode on a list:
 {(selectedOnly ? items.filter((i) => selected.includes(i.id)) : items).map(renderItem)}
 ```
 
-## Incorrect
+## Incorrect (do not copy)
+
+WRONG. Pagination below the table, in its own wrapper:
 
 ```tsx
+// WRONG: do not do this
 <Table columns={columns} rows={pageRows} />
 <div className="mt-4"><Pagination length={rows.length} /></div>
 ```
 
-Pagination must be in the table's `pagination` prop, with no gap. A sibling below the table leaves a gap and two borders.
+Use the table's `pagination` prop instead. A sibling below the table leaves a gap and two borders.
 
 ```tsx
 <Pagination page={2} total={200} onChange={setPage} pageSizes={[10, 25]} />

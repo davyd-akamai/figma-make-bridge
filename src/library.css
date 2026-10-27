@@ -35,6 +35,45 @@ body {
   font-family: var(--font-family-brand, 'Nunito Sans'), sans-serif;
 }
 
+/* Base layer so component utilities (cursor-text, cursor-not-allowed, ...) still win. */
+@layer base {
+  a,
+  a:hover,
+  a:focus,
+  a:visited {
+    text-decoration: none;
+  }
+
+  a,
+  button,
+  summary,
+  select,
+  label[for],
+  [role="button"],
+  [role="tab"],
+  [role="menuitem"],
+  [role="menuitemradio"],
+  [role="option"],
+  [role="switch"],
+  [role="checkbox"],
+  [role="radio"] {
+    cursor: pointer;
+  }
+
+  :disabled,
+  [aria-disabled="true"],
+  [role="button"][aria-disabled="true"],
+  [role="tab"][aria-disabled="true"],
+  [role="menuitem"][aria-disabled="true"],
+  [role="menuitemradio"][aria-disabled="true"],
+  [role="option"][aria-disabled="true"],
+  [role="switch"][aria-disabled="true"],
+  [role="checkbox"][aria-disabled="true"],
+  [role="radio"][aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
 /* SideNavigation (node 17:2743) uses a 4px custom scrollbar thumb over the menu-items list;
    a styled native scrollbar gets the same look without reimplementing drag/scroll physics. */
 .side-nav-scroll {
