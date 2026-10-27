@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TextArea — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="text-area">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>TextArea</h1>
+        <p class="docs-lede">Multi-line text input with label, helper/error text, a clear (×) button, two info-icon slots and a vertical resize handle. Hover/focus are plain CSS pseudo-classes; only the current value is real state.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=140-6170" target="_blank" rel="noopener noreferrer">140:6170</a></span>
+          <span><code class="docs-code">import { TextArea } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/TextArea.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Default (label top)</h2>
+          <p class="docs-section-note">Type to see the clear (×) button appear. Drag the bottom-right handle to resize vertically; hover, then focus, to see focus keep its blue border.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column" style="max-width:416px;" data-ta-demo>
+              <div class="flex w-full items-start flex-col">
+                <label for="ta1" class="type-label-bold-s flex shrink-0 items-center gap-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-label,#343438)] pb-[var(--global-spacing-s8,8px)]">Description<span class="text-[color:var(--component-textarea-default-infoicon,#696970)]" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 3.33333C6.3181 3.33333 3.33333 6.3181 3.33333 10C3.33333 13.6819 6.3181 16.6667 10 16.6667C13.6819 16.6667 16.6667 13.6819 16.6667 10C16.6667 6.3181 13.6819 3.33333 10 3.33333ZM1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10ZM9.16667 5.83333C9.16667 5.3731 9.53976 5 10 5H10.0083C10.4686 5 10.8417 5.3731 10.8417 5.83333C10.8417 6.29357 10.4686 6.66667 10.0083 6.66667H10C9.53976 6.66667 9.16667 6.29357 9.16667 5.83333ZM10 7.91667C10.4602 7.91667 10.8333 8.28976 10.8333 8.75V14.1667C10.8333 14.6269 10.4602 15 10 15C9.53976 15 9.16667 14.6269 9.16667 14.1667V8.75C9.16667 8.28976 9.53976 7.91667 10 7.91667Z"/></svg></span></label>
+                <div class="w-full">
+                  <div class="flex w-full items-start gap-[var(--global-spacing-s8,8px)]">
+                    <div class="relative box-border min-w-0 flex-1 border border-solid bg-[var(--component-textarea-default-background,#FFFFFF)] border-[var(--component-textarea-default-border,#83838C)] [&:hover:not(:focus-within)]:border-[var(--component-textarea-hoverempty-border,#3D3D42)] focus-within:border-[var(--component-textarea-focus-border,#0174BC)]">
+                      <textarea id="ta1" class="ta-input type-body-regular block min-h-[36px] w-full resize-y appearance-none border-none bg-transparent py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[40px] text-[color:var(--component-textarea-filled-text,#343438)] outline-none [&::-webkit-resizer]:opacity-0 placeholder:italic placeholder:text-[color:var(--component-textarea-placeholder-text,#696970)] disabled:cursor-not-allowed disabled:text-[color:var(--component-textarea-disabled-text,#A3A3AB)] disabled:placeholder:text-[color:var(--component-textarea-disabled-text,#A3A3AB)]" rows="3" placeholder="Describe this cluster">Production cluster for the east region.</textarea>
+                      <button type="button" class="ta-clear absolute top-[var(--global-spacing-s8,8px)] flex cursor-pointer items-center justify-center text-[color:var(--component-textarea-filled-icon-default,#3D3D42)] hover:text-[color:var(--component-textarea-filled-icon-hover,#009CDE)] active:text-[color:var(--component-textarea-filled-icon-active,#0174BC)] right-[var(--global-spacing-s8,8px)]" aria-label="Clear field"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.4702 4.47023C12.7299 4.21053 12.7299 3.78947 12.4702 3.52977C12.2105 3.27008 11.7895 3.27008 11.5298 3.52977L8 7.05955L4.47023 3.52977C4.21053 3.27008 3.78947 3.27008 3.52977 3.52977C3.27008 3.78947 3.27008 4.21053 3.52977 4.47023L7.05955 8L3.52977 11.5298C3.27008 11.7895 3.27008 12.2105 3.52977 12.4702C3.78947 12.7299 4.21053 12.7299 4.47023 12.4702L8 8.94045L11.5298 12.4702C11.7895 12.7299 12.2105 12.7299 12.4702 12.4702C12.7299 12.2105 12.7299 11.7895 12.4702 11.5298L8.94045 8L12.4702 4.47023Z"/></svg></button>
+                      <span class="pointer-events-none absolute bottom-[2px] right-[2px] text-[color:var(--component-textarea-resizeicon,#696970)]" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 1.35355L1.35355 7.35355L0.646447 6.64645L6.64645 0.646447L7.35355 1.35355Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 4.85355L4.85355 7.35355L4.14645 6.64645L6.64645 4.14645L7.35355 4.85355Z"/></svg></span>
+                    </div>
+                    
+                  </div><p class="type-label-semibold-xs w-full pt-[var(--global-spacing-s4,4px)] pr-[var(--global-spacing-s24,24px)] text-[color:var(--component-textarea-default-hinttext,#696970)]">Shown on the cluster details page.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>labelPosition="left"</h2>
+          <p class="docs-section-note">The label sits on the first line of text, not centred in the box.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column" style="max-width:460px;" data-ta-demo>
+              <div class="flex w-full items-start gap-[var(--global-spacing-s12,12px)]">
+                <label for="ta2" class="type-label-bold-s flex shrink-0 items-center gap-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-label,#343438)] pt-[var(--global-spacing-s8,8px)]">Notes</label>
+                <div class="min-w-0 flex-1">
+                  <div class="flex w-full items-start gap-[var(--global-spacing-s8,8px)]">
+                    <div class="relative box-border min-w-0 flex-1 border border-solid bg-[var(--component-textarea-default-background,#FFFFFF)] border-[var(--component-textarea-default-border,#83838C)] [&:hover:not(:focus-within)]:border-[var(--component-textarea-hoverempty-border,#3D3D42)] focus-within:border-[var(--component-textarea-focus-border,#0174BC)]">
+                      <textarea id="ta2" class="ta-input type-body-regular block min-h-[36px] w-full resize-y appearance-none border-none bg-transparent py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[40px] text-[color:var(--component-textarea-filled-text,#343438)] outline-none [&::-webkit-resizer]:opacity-0 placeholder:italic placeholder:text-[color:var(--component-textarea-placeholder-text,#696970)] disabled:cursor-not-allowed disabled:text-[color:var(--component-textarea-disabled-text,#A3A3AB)] disabled:placeholder:text-[color:var(--component-textarea-disabled-text,#A3A3AB)]" rows="3" placeholder="Placeholder text"></textarea>
+                      <button type="button" class="ta-clear absolute top-[var(--global-spacing-s8,8px)] flex cursor-pointer items-center justify-center text-[color:var(--component-textarea-filled-icon-default,#3D3D42)] hover:text-[color:var(--component-textarea-filled-icon-hover,#009CDE)] active:text-[color:var(--component-textarea-filled-icon-active,#0174BC)] right-[var(--global-spacing-s8,8px)]" aria-label="Clear field"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.4702 4.47023C12.7299 4.21053 12.7299 3.78947 12.4702 3.52977C12.2105 3.27008 11.7895 3.27008 11.5298 3.52977L8 7.05955L4.47023 3.52977C4.21053 3.27008 3.78947 3.27008 3.52977 3.52977C3.27008 3.78947 3.27008 4.21053 3.52977 4.47023L7.05955 8L3.52977 11.5298C3.27008 11.7895 3.27008 12.2105 3.52977 12.4702C3.78947 12.7299 4.21053 12.7299 4.47023 12.4702L8 8.94045L11.5298 12.4702C11.7895 12.7299 12.2105 12.7299 12.4702 12.4702C12.7299 12.2105 12.7299 11.7895 12.4702 11.5298L8.94045 8L12.4702 4.47023Z"/></svg></button>
+                      <span class="pointer-events-none absolute bottom-[2px] right-[2px] text-[color:var(--component-textarea-resizeicon,#696970)]" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 1.35355L1.35355 7.35355L0.646447 6.64645L6.64645 0.646447L7.35355 1.35355Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 4.85355L4.85355 7.35355L4.14645 6.64645L6.64645 4.14645L7.35355 4.85355Z"/></svg></span>
+                    </div>
+                    <button type="button" class="flex shrink-0 cursor-pointer items-start pt-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-default-infoicon,#696970)]" title="Free text shown on the cluster details page" aria-label="More information"><svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 3.33333C6.3181 3.33333 3.33333 6.3181 3.33333 10C3.33333 13.6819 6.3181 16.6667 10 16.6667C13.6819 16.6667 16.6667 13.6819 16.6667 10C16.6667 6.3181 13.6819 3.33333 10 3.33333ZM1.66667 10C1.66667 5.39763 5.39763 1.66667 10 1.66667C14.6024 1.66667 18.3333 5.39763 18.3333 10C18.3333 14.6024 14.6024 18.3333 10 18.3333C5.39763 18.3333 1.66667 14.6024 1.66667 10ZM9.16667 5.83333C9.16667 5.3731 9.53976 5 10 5H10.0083C10.4686 5 10.8417 5.3731 10.8417 5.83333C10.8417 6.29357 10.4686 6.66667 10.0083 6.66667H10C9.53976 6.66667 9.16667 6.29357 9.16667 5.83333ZM10 7.91667C10.4602 7.91667 10.8333 8.28976 10.8333 8.75V14.1667C10.8333 14.6269 10.4602 15 10 15C9.53976 15 9.16667 14.6269 9.16667 14.1667V8.75C9.16667 8.28976 9.53976 7.91667 10 7.91667Z"/></svg></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>Error state</h2>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column" style="max-width:416px;" data-ta-demo>
+              <div class="flex w-full items-start flex-col">
+                <label for="ta3" class="type-label-bold-s flex shrink-0 items-center gap-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-label,#343438)] pb-[var(--global-spacing-s8,8px)]">Description</label>
+                <div class="w-full">
+                  <div class="flex w-full items-start gap-[var(--global-spacing-s8,8px)]">
+                    <div class="relative box-border min-w-0 flex-1 border border-solid bg-[var(--component-textarea-default-background,#FFFFFF)] border-[var(--component-textarea-error-border,#D63C42)]">
+                      <textarea id="ta3" class="ta-input type-body-regular block min-h-[36px] w-full resize-y appearance-none border-none bg-transparent py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[40px] text-[color:var(--component-textarea-filled-text,#343438)] outline-none [&::-webkit-resizer]:opacity-0 placeholder:italic placeholder:text-[color:var(--component-textarea-placeholder-text,#696970)] disabled:cursor-not-allowed disabled:text-[color:var(--component-textarea-disabled-text,#A3A3AB)] disabled:placeholder:text-[color:var(--component-textarea-disabled-text,#A3A3AB)]" rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                      <button type="button" class="ta-clear absolute top-[var(--global-spacing-s8,8px)] flex cursor-pointer items-center justify-center text-[color:var(--component-textarea-filled-icon-default,#3D3D42)] hover:text-[color:var(--component-textarea-filled-icon-hover,#009CDE)] active:text-[color:var(--component-textarea-filled-icon-active,#0174BC)] right-[var(--global-spacing-s8,8px)]" aria-label="Clear field"><svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.4702 4.47023C12.7299 4.21053 12.7299 3.78947 12.4702 3.52977C12.2105 3.27008 11.7895 3.27008 11.5298 3.52977L8 7.05955L4.47023 3.52977C4.21053 3.27008 3.78947 3.27008 3.52977 3.52977C3.27008 3.78947 3.27008 4.21053 3.52977 4.47023L7.05955 8L3.52977 11.5298C3.27008 11.7895 3.27008 12.2105 3.52977 12.4702C3.78947 12.7299 4.21053 12.7299 4.47023 12.4702L8 8.94045L11.5298 12.4702C11.7895 12.7299 12.2105 12.7299 12.4702 12.4702C12.7299 12.2105 12.7299 11.7895 12.4702 11.5298L8.94045 8L12.4702 4.47023Z"/></svg></button>
+                      <span class="pointer-events-none absolute bottom-[2px] right-[2px] text-[color:var(--component-textarea-resizeicon,#696970)]" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 1.35355L1.35355 7.35355L0.646447 6.64645L6.64645 0.646447L7.35355 1.35355Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 4.85355L4.85355 7.35355L4.14645 6.64645L6.64645 4.14645L7.35355 4.85355Z"/></svg></span>
+                    </div>
+                    
+                  </div><p class="type-label-semibold-xs w-full pt-[var(--global-spacing-s4,4px)] pr-[var(--global-spacing-s24,24px)] text-[color:var(--component-textarea-error-hinttext,#B82329)]">Description must be under 100 characters.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>Disabled &amp; read-only</h2>
+          <div class="docs-demo">
+            <div class="docs-demo-stage is-column" style="max-width:300px;">
+              <div class="flex w-full items-start flex-col">
+                <label for="ta4" class="type-label-bold-s flex shrink-0 items-center gap-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-label,#343438)] pb-[var(--global-spacing-s8,8px)]">Description</label>
+                <div class="w-full">
+                  <div class="flex w-full items-start gap-[var(--global-spacing-s8,8px)]">
+                    <div class="relative box-border min-w-0 flex-1 border border-solid bg-[var(--component-textarea-default-background,#FFFFFF)] cursor-not-allowed border-[var(--component-textarea-disabled-border,#C2C2CA)] bg-[var(--component-textarea-disabled-background,#EDEDF2)]">
+                      <textarea id="ta4" class="type-body-regular block min-h-[36px] w-full resize-y appearance-none border-none bg-transparent py-[var(--global-spacing-s8,8px)] pl-[var(--global-spacing-s12,12px)] pr-[40px] text-[color:var(--component-textarea-filled-text,#343438)] outline-none [&::-webkit-resizer]:opacity-0 placeholder:italic placeholder:text-[color:var(--component-textarea-placeholder-text,#696970)] disabled:cursor-not-allowed disabled:text-[color:var(--component-textarea-disabled-text,#A3A3AB)] disabled:placeholder:text-[color:var(--component-textarea-disabled-text,#A3A3AB)]" rows="3" disabled>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</textarea>
+                      
+                      <span class="pointer-events-none absolute bottom-[2px] right-[2px] text-[color:var(--component-textarea-resizeicon,#696970)]" aria-hidden="true"><svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 1.35355L1.35355 7.35355L0.646447 6.64645L6.64645 0.646447L7.35355 1.35355Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M7.35355 4.85355L4.85355 7.35355L4.14645 6.64645L6.64645 4.14645L7.35355 4.85355Z"/></svg></span>
+                    </div>
+                    
+                  </div><p class="type-label-semibold-xs w-full pt-[var(--global-spacing-s4,4px)] pr-[var(--global-spacing-s24,24px)] text-[color:var(--component-textarea-default-hinttext,#696970)]">Hint text</p>
+                </div>
+              </div>
+            </div><div class="docs-demo-stage" style="align-items:flex-start;">
+              <div class="flex w-full items-start flex-col" style="max-width:300px;">
+                <span class="type-label-bold-s flex shrink-0 items-center gap-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-label,#343438)] pb-[var(--global-spacing-s8,8px)]">Description</span>
+                <div class="w-full"><div class="flex w-full items-start gap-[var(--global-spacing-s8,8px)]"><span role="textbox" aria-readonly="true" class="type-body-regular min-w-0 flex-1 whitespace-pre-line break-words text-[color:var(--component-textarea-readonly-text,#343438)] pt-[var(--global-spacing-s4,4px)] pb-[var(--global-spacing-s8,8px)] pr-[var(--global-spacing-s8,8px)]">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">label / labelPosition</td><td class="docs-prop-type">string / "top" | "left"</td><td>— / "top"</td><td>Omitting <code>label</code> renders no label at all (Figma's "Label=No label").</td></tr>
+              <tr><td class="docs-prop-name">value / defaultValue / onChange</td><td class="docs-prop-type">string / string / (value) =&gt; void</td><td>— / "" / —</td><td>Controlled/uncontrolled split; onChange receives the string.</td></tr>
+              <tr><td class="docs-prop-name">rows</td><td class="docs-prop-type">number</td><td>3</td><td>Initial height. The user can drag the corner handle to resize vertically; there is no auto-grow.</td></tr>
+              <tr><td class="docs-prop-name">helperText / errorText</td><td class="docs-prop-type">string</td><td>—</td><td>helperText is hidden while errorText is shown; errorText also switches the border to error red.</td></tr>
+              <tr><td class="docs-prop-name">clearable</td><td class="docs-prop-type">boolean</td><td>true</td><td>Clear (×) button shows only when true, the field has a value, and it isn't disabled.</td></tr>
+              <tr><td class="docs-prop-name">infoIcon / labelInfoIcon / infoText / onInfoIconClick</td><td class="docs-prop-type">boolean / boolean / string / () =&gt; void</td><td>false</td><td>Tooltip-basement pattern: <code>infoIcon</code> is a sibling outside the box, <code>labelInfoIcon</code> sits after the label text.</td></tr>
+              <tr><td class="docs-prop-name">disabled / readOnly</td><td class="docs-prop-type">boolean</td><td>false</td><td>readOnly renders plain text — no box, resize handle or clear button.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="text-area.js"></script>
+</body>
+</html>

@@ -38,6 +38,9 @@ export type { PaginationProps, PaginationVariant } from "./components/Pagination
 export { default as TextField } from "./components/TextField";
 export type { TextFieldProps, TextFieldLabelPosition } from "./components/TextField";
 
+export { default as TextArea } from "./components/TextArea";
+export type { TextAreaProps, TextAreaLabelPosition } from "./components/TextArea";
+
 export { default as Select } from "./components/Select";
 export type { SelectProps, SelectOption, SelectLabelPosition } from "./components/Select";
 

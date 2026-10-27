@@ -2,7 +2,7 @@
 
 Tracks which Akamai CDS (`core-design-system`, `@akamai/cds-components`) components exist in `figma-make-bridge`, and which ones we plan to build. CDS is reference only (see [GUIDELINES.md](GUIDELINES.md)); this doc is the scoped to-do view, not a full CDS inventory — CDS components we have no plan to build are intentionally left out.
 
-_Last updated: 2026-10-23. Source: local `core-design-system/packages/cds-components/src/components/` vs. `components/`._
+_Last updated: 2026-10-27. Source: local `core-design-system/packages/cds-components/src/components/` vs. `components/`._
 
 ## Built
 
@@ -26,6 +26,7 @@ _Last updated: 2026-10-23. Source: local `core-design-system/packages/cds-compon
 | switch | [Switch](components/Switch.tsx) | No read-only state; `master-switch` still planned |
 | table | [Table](components/Table.tsx) | |
 | tabs | [TabsHorizontal](components/TabsHorizontal.tsx) | No content panels |
+| text-area | [TextArea](components/TextArea.tsx) | Native vertical resize with Figma's handle overlaid |
 | text-field | [TextField](components/TextField.tsx) | |
 
 Bridge-only (no CDS equivalent, built from Figma): Container, GlobalHeader, GlobalFooter, SystemBadge, DefaultCmPageTemplate.
@@ -34,7 +35,6 @@ Bridge-only (no CDS equivalent, built from Figma): Container, GlobalHeader, Glob
 
 | Group | CDS component | Status |
 |---|---|---|
-| Form inputs | text-area | Not started |
 | Form inputs | master-switch | Not started |
 | Form inputs | numeric-spinner | Not started |
 | Form inputs | tag-input | Not started |

@@ -10,6 +10,7 @@ import Container from "../components/Container";
 import ContentPanel from "../components/ContentPanel";
 import Pagination from "../components/Pagination";
 import TextField from "../components/TextField";
+import TextArea from "../components/TextArea";
 import Select, { type SelectOption } from "../components/Select";
 import Search from "../components/Search";
 import Breadcrumbs, { type BreadcrumbsItem } from "../components/Breadcrumbs";
@@ -54,6 +55,7 @@ import {
   NetworkIcon,
   PinIcon,
   PlusIcon,
+  ResizeIcon,
   SearchIcon,
   ServerIcon,
   SortIcon,
@@ -101,6 +103,7 @@ const ALL_ICONS = [
   NetworkIcon,
   PinIcon,
   PlusIcon,
+  ResizeIcon,
   SearchIcon,
   ServerIcon,
   SortIcon,
@@ -307,6 +310,48 @@ function ResizableTemplatePreview({ title, variant }: { title: string; variant: 
           style={{ width: "100%", height: "100%", border: "none", display: "block" }}
           title={`${title} preview`}
         />
+      </div>
+    </div>
+  );
+}
+
+function TextAreaSection() {
+  const [controlledValue, setControlledValue] = useState("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+  const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ width: 416 }}>
+        <TextArea />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label" placeholder="Placeholder text" helperText="Hint text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label" labelPosition="left" placeholder="Placeholder text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label (controlled)" labelInfoIcon infoIcon infoText="More information about this field" value={controlledValue} onChange={setControlledValue} />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label" defaultValue={lorem} errorText="Warning text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label" labelPosition="left" defaultValue={lorem} errorText="Warning text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label" defaultValue={lorem} disabled helperText="Hint text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label" defaultValue={lorem} readOnly helperText="Hint text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea defaultValue={lorem} readOnly />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Label" labelPosition="left" defaultValue={lorem} readOnly />
+      </div>
+      <div style={{ width: 416 }}>
+        <TextArea label="Five rows, no clear button" rows={5} clearable={false} defaultValue="Resize me with the corner handle" />
       </div>
     </div>
   );
@@ -1582,6 +1627,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Text Field">
             <TextFieldSection />
+          </PreviewSection>
+
+          <PreviewSection title="Text Area">
+            <TextAreaSection />
           </PreviewSection>
 
           <PreviewSection title="Select">

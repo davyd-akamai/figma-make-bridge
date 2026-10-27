@@ -15,6 +15,7 @@
     { id: "table", label: "Table", href: "components/table.html" },
     { id: "container", label: "Container", href: "components/container.html" },
     { id: "text-field", label: "TextField", href: "components/text-field.html" },
+    { id: "text-area", label: "TextArea", href: "components/text-area.html" },
     { id: "select", label: "Select", href: "components/select.html" },
     { id: "search", label: "Search", href: "components/search.html" },
     { id: "checkbox", label: "Checkbox", href: "components/checkbox.html" },
@@ -37,7 +38,10 @@
     return a.label.toLowerCase().localeCompare(b.label.toLowerCase());
   });
 
-  var LIBRARY = [{ id: "library-progress", label: "Built & planned", href: "library-progress.html" }];
+  var LIBRARY = [
+    { id: "library-progress", label: "Built & planned", href: "library-progress.html" },
+    { id: "release-notes", label: "Release notes", href: "release-notes.html" },
+  ];
 
   var TEMPLATES = [{ id: "default-cm-page-template", label: "DefaultCmPageTemplate", href: "templates/default-cm-page-template.html" }];
 

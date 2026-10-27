@@ -35,6 +35,10 @@ Default size 12px:
 
 `CheckIcon`, `CheckmarkIcon`, `MinusIcon`, `DotIcon`
 
+Default size 8px:
+
+`ResizeIcon` (resize grabber used inside `TextArea`; do not use as a standalone interface icon)
+
 Extra props:
 
 | Icon | Prop | Type | Default |

@@ -29,6 +29,7 @@ Node IDs below are taken from the header comments of the matching component in `
 | `systemBadge.json` | `cm_global-badge` (29:3416) | node from component header; variables not re-verified |
 | `table.json` | `core_table-column` (47:4956) | node from component header; variables not re-verified |
 | `tabs.json` | `Tabs-horizontal` (74:5959) | node from component header; variables not re-verified |
+| `textArea.json` | `Text area` (140:6170) | created from `textField.json`'s identical alias shape; every hex checked against get_variable_defs on 140:6170 (all matched); `resizeIcon` added |
 | `textField.json` | `core_text-field` (47:7385) | node from component header; variables not re-verified |
 
 `global.json`, `light.json` and `dark.json` are the primitive and theme-alias layers, not component sources.

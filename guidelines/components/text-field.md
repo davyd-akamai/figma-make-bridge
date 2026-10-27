@@ -39,7 +39,7 @@ Standard `<input>` props (`placeholder`, `name`, `required`, etc.) pass through.
 ## Valid values
 
 - `labelPosition`: `"top"`, `"left"`.
-- Invalid or non-existent: `startIcon`, `leadingIcon`, `prefix`, `suffix`, `size`, `variant`, `error` (boolean), `multiline`, `rows`.
+- Invalid or non-existent: `startIcon`, `leadingIcon`, `prefix`, `suffix`, `size`, `variant`, `error` (boolean), `multiline`, `rows` (for multi-line text use `TextArea`).
 
 ## Correct
 

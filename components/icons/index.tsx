@@ -721,3 +721,22 @@ export function ChevronRightIcon(props: IconProps) {
     </BaseIcon>
   );
 }
+
+// Figma: Resize Handle (node 140:5571, instance of "Resize" 140:6124 inside "Text area" 140:6170) — 8px, currentColor.
+// Limited usage per Figma: only for components with a resize option (TextArea), never as a standalone interface icon.
+export function ResizeIcon(props: IconProps) {
+  return (
+    <BaseIcon viewBox="0 0 8 8" size={8} {...props}>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.35355 1.35355L1.35355 7.35355L0.646447 6.64645L6.64645 0.646447L7.35355 1.35355Z"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M7.35355 4.85355L4.85355 7.35355L4.14645 6.64645L6.64645 4.14645L7.35355 4.85355Z"
+      />
+    </BaseIcon>
+  );
+}
