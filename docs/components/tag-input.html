@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TagInput — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="tag-input">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>TagInput &amp; Tag</h1>
+        <p class="docs-lede">Field for entering several values as removable tags, with optional suggestions and free-text creation, built from the shared <code>Tag</code> chip. Hover/focus are plain CSS pseudo-classes; the tag list, search text and open state are the only real state.</p>
+        <div class="docs-meta">
+          <span>Figma nodes <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=140-8688" target="_blank" rel="noopener noreferrer">140:8688</a> (Tag input), <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=140-6272" target="_blank" rel="noopener noreferrer">140:6272</a> (Tag item)</span>
+          <span><code class="docs-code">import { TagInput, Tag } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/TagInput.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Playground (label top)</h2>
+          <p class="docs-section-note">Type <code>ap</code> to see matching options plus the <code>+ "typed"</code> row. Enter picks the highlighted row (or adds the typed text); a comma or semicolon commits a tag; paste splits on commas, semicolons and newlines. Backspace on an empty input removes the last tag; ArrowLeft moves onto the tags, then Backspace/Delete removes the focused one.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:480px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Keywords", "labelInfoIcon": true, "labelInfoText": "More information", "placeholder": "Placeholder text", "helperText": "Hint text", "options": [{"value": "apple", "label": "apple (fruit)"}, {"value": "apricot", "label": "apricot"}, {"value": "banana", "label": "banana"}, {"value": "cherry", "label": "cherry"}], "tags": [{"value": "apple", "label": "apple (fruit)"}]}'></div>
+            </div>
+            <p class="docs-section-note" style="margin-top:12px;">Tags: <strong data-tag-input-state></strong></p>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>labelPosition="left"</h2>
+          <p class="docs-section-note">The label is centred on the first row, 12px from the field.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:520px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Label", "labelPosition": "left", "placeholder": "Placeholder text", "options": [{"value": "apple", "label": "apple (fruit)"}, {"value": "apricot", "label": "apricot"}, {"value": "banana", "label": "banana"}, {"value": "cherry", "label": "cherry"}], "tags": []}'></div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>Filled and multiline</h2>
+          <p class="docs-section-note">Tags wrap onto extra rows; the box grows to 100px, then the tag area scrolls. No "+N" collapse.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:480px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Label", "tags": [{"value": "Tag one"}, {"value": "Tag two"}, {"value": "Tag three"}]}'></div>
+            </div>
+          </div>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:480px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Label (multiline)", "tags": [{"value": "Tag 1"}, {"value": "Tag 2"}, {"value": "Tag 3"}, {"value": "Tag 4"}, {"value": "Tag 5"}, {"value": "Tag 6"}, {"value": "Tag 7"}, {"value": "Tag 8"}, {"value": "Tag 9"}, {"value": "Tag 10"}, {"value": "Tag 11"}, {"value": "Tag 12"}]}'></div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>Error</h2>
+          <p class="docs-section-note">Invalid tags are the consumer's call (<code>invalid: true</code> on a tag). <code>errorText</code> turns the box red and shows the message; set both.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:480px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Label", "tags": [{"value": "Tag one"}, {"value": "Tag two"}, {"value": "Tag three", "invalid": true}], "errorText": "Warning text"}'></div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>Locked tag and options only</h2>
+          <p class="docs-section-note"><code>removable: false</code> with a lock icon keeps a tag permanently. <code>creatable={false}</code> allows only the options list (no <code>+ "typed"</code> row).</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:480px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Label", "tags": [{"value": "system", "icon": true, "removable": false}, {"value": "custom"}], "creatable": false, "options": [{"value": "apple", "label": "apple (fruit)"}, {"value": "apricot", "label": "apricot"}, {"value": "banana", "label": "banana"}, {"value": "cherry", "label": "cherry"}], "helperText": "Options only (creatable=false)"}'></div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>Disabled and read-only</h2>
+          <p class="docs-section-note">Disabled shows only the greyed tags (no input, chevron or ×). Read-only drops the box entirely.</p>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:480px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Label", "tags": [{"value": "Tag one"}, {"value": "Tag two"}, {"value": "Tag three"}], "disabled": true, "helperText": "Hint text"}'></div>
+            </div>
+          </div>
+          <div class="docs-demo" style="overflow:visible;">
+            <div class="docs-demo-stage is-column" style="max-width:480px;">
+              <div class="w-full" data-tag-input data-config='{"label": "Label", "tags": [{"value": "Tag one"}, {"value": "Tag two"}, {"value": "Tag three"}], "readOnly": true}'></div>
+            </div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>Tag</h2>
+          <p class="docs-section-note">Default (hover for the darker border, Tab then focus for blue), with lock icon, invalid, disabled, read-only, not removable, and the "+N" overflow chip. Click an × to remove it.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="gap:12px;flex-wrap:wrap;" data-tag-row></div>
+          </div>
+        </section>
+        <section class="docs-section">
+          <h2>TagInput props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">tags / defaultTags</td><td class="docs-prop-type">TagInputTag[]</td><td>[]</td><td><code>{ value, label?, icon?, removable?, invalid? }</code>. Controlled / uncontrolled. <code>value</code> is the identity (case-insensitive duplicates ignored).</td></tr>
+              <tr><td class="docs-prop-name">onChange</td><td class="docs-prop-type">(tags: TagInputTag[]) =&gt; void</td><td>—</td><td>Receives the full new list after an add, remove or clear.</td></tr>
+              <tr><td class="docs-prop-name">options</td><td class="docs-prop-type">TagInputOption[]</td><td>[]</td><td><code>{ value, label, disabled? }</code>. Options already used as tags are hidden. Never mutated.</td></tr>
+              <tr><td class="docs-prop-name">creatable</td><td class="docs-prop-type">boolean</td><td>true</td><td>Shows the <code>+ "typed"</code> row; Enter, comma and paste add free text. <code>false</code> = options only.</td></tr>
+              <tr><td class="docs-prop-name">placeholder</td><td class="docs-prop-type">string</td><td>"Add tag"</td><td>Only visible while there are no tags.</td></tr>
+              <tr><td class="docs-prop-name">label / labelPosition</td><td class="docs-prop-type">string / "top" | "left"</td><td>— / "top"</td><td>Omit <code>label</code> for no label (pass <code>aria-label</code>).</td></tr>
+              <tr><td class="docs-prop-name">labelInfoIcon / labelInfoText</td><td class="docs-prop-type">boolean / string</td><td>false</td><td>16px info icon after the label; native <code>title</code> tooltip placeholder.</td></tr>
+              <tr><td class="docs-prop-name">helperText / errorText</td><td class="docs-prop-type">string</td><td>—</td><td><code>errorText</code> also turns the box red and hides <code>helperText</code>.</td></tr>
+              <tr><td class="docs-prop-name">clearable</td><td class="docs-prop-type">boolean</td><td>true</td><td>Clear-all (×) once there are tags.</td></tr>
+              <tr><td class="docs-prop-name">disabled / readOnly</td><td class="docs-prop-type">boolean</td><td>false</td><td>Read-only renders plain tags with no box.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="docs-section">
+          <h2>Tag props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">label</td><td class="docs-prop-type">ReactNode</td><td>required</td><td>For <code>more</code>, the count text, e.g. "+7".</td></tr>
+              <tr><td class="docs-prop-name">icon</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>12px leading icon, e.g. <code>&lt;LockIcon /&gt;</code>.</td></tr>
+              <tr><td class="docs-prop-name">removable / onRemove</td><td class="docs-prop-type">boolean / () =&gt; void</td><td>true / —</td><td>The tag never removes itself; × click or Backspace/Delete on the focused tag only fires <code>onRemove</code>.</td></tr>
+              <tr><td class="docs-prop-name">invalid</td><td class="docs-prop-type">boolean</td><td>false</td><td>Red error styling.</td></tr>
+              <tr><td class="docs-prop-name">disabled / readOnly</td><td class="docs-prop-type">boolean</td><td>false</td><td>Both hide the ×. Read-only has a border and no fill.</td></tr>
+              <tr><td class="docs-prop-name">more / onClick</td><td class="docs-prop-type">boolean / () =&gt; void</td><td>false / —</td><td>The "+N" overflow chip (no × and no icon). <code>onClick</code> makes it a button.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="tag-input.js"></script>
+</body>
+</html>

@@ -11,6 +11,8 @@ import ContentPanel from "../components/ContentPanel";
 import Pagination from "../components/Pagination";
 import TextField from "../components/TextField";
 import TextArea from "../components/TextArea";
+import Tag from "../components/Tag";
+import TagInput, { type TagInputTag } from "../components/TagInput";
 import Select, { type SelectOption } from "../components/Select";
 import Search from "../components/Search";
 import Breadcrumbs, { type BreadcrumbsItem } from "../components/Breadcrumbs";
@@ -35,6 +37,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronUpIcon,
+  Close12Icon,
   CloseIcon,
   CommunityIcon,
   ComputeIcon,
@@ -48,6 +51,7 @@ import {
   InfoFilledIcon,
   InfoOutlineIcon,
   InfoIcon,
+  LockIcon,
   MenuIcon,
   MinusIcon,
   MonitorIcon,
@@ -83,6 +87,7 @@ const ALL_ICONS = [
   ChevronLeftIcon,
   ChevronRightIcon,
   ChevronUpIcon,
+  Close12Icon,
   CloseIcon,
   CommunityIcon,
   ComputeIcon,
@@ -96,6 +101,7 @@ const ALL_ICONS = [
   InfoFilledIcon,
   InfoOutlineIcon,
   InfoIcon,
+  LockIcon,
   MenuIcon,
   MinusIcon,
   MonitorIcon,
@@ -310,6 +316,80 @@ function ResizableTemplatePreview({ title, variant }: { title: string; variant: 
           style={{ width: "100%", height: "100%", border: "none", display: "block" }}
           title={`${title} preview`}
         />
+      </div>
+    </div>
+  );
+}
+
+const TAG_OPTIONS = [
+  { value: "apple", label: "apple (fruit)" },
+  { value: "apricot", label: "apricot" },
+  { value: "banana", label: "banana" },
+  { value: "cherry", label: "cherry" },
+];
+
+function TagSection() {
+  const [removed, setRemoved] = useState(false);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 12, alignItems: "center" }}>
+        <Tag label="Tag label" onRemove={() => setRemoved(true)} />
+        <Tag label="Tag label" icon={<LockIcon />} />
+        <Tag label="Tag label" invalid />
+        <Tag label="Tag label" disabled />
+        <Tag label="Tag label" readOnly />
+        <Tag label="Tag label" removable={false} />
+        <Tag label="+7" more onClick={() => undefined} />
+      </div>
+      <p className="type-label-regular-s">Remove clicked on first tag: {String(removed)}</p>
+    </div>
+  );
+}
+
+function TagInputSection() {
+  const threeTags: TagInputTag[] = [{ value: "Tag one" }, { value: "Tag two" }, { value: "Tag three" }];
+  const manyTags: TagInputTag[] = Array.from({ length: 12 }, (_, i) => ({ value: `Tag ${i + 1}` }));
+  const [controlled, setControlled] = useState<TagInputTag[]>([{ value: "apple", label: "apple (fruit)" }, { value: "kiwi" }]);
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ width: 416 }}>
+        <TagInput />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label" labelInfoIcon labelInfoText="More information" placeholder="Placeholder text" helperText="Hint text" options={TAG_OPTIONS} />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label" labelPosition="left" placeholder="Placeholder text" options={TAG_OPTIONS} />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label (controlled)" options={TAG_OPTIONS} tags={controlled} onChange={setControlled} helperText={`${controlled.length} tag(s): ${controlled.map((t) => t.value).join(", ")}`} />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label" defaultTags={threeTags} />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label (multiline)" defaultTags={manyTags} />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label" labelPosition="left" defaultTags={[...threeTags.slice(0, 2), { value: "Tag three", invalid: true }]} errorText="Warning text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label (locked first tag)" defaultTags={[{ value: "system", icon: <LockIcon />, removable: false }, { value: "custom" }]} creatable={false} options={TAG_OPTIONS} helperText="Options only (creatable=false)" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label" defaultTags={threeTags} disabled helperText="Hint text" />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label" labelPosition="left" defaultTags={threeTags} disabled />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput label="Label" defaultTags={threeTags} readOnly />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput defaultTags={threeTags} readOnly />
+      </div>
+      <div style={{ width: 416 }}>
+        <TagInput defaultTags={threeTags} />
       </div>
     </div>
   );
@@ -1631,6 +1711,14 @@ function PreviewHarness() {
 
           <PreviewSection title="Text Area">
             <TextAreaSection />
+          </PreviewSection>
+
+          <PreviewSection title="Tag">
+            <TagSection />
+          </PreviewSection>
+
+          <PreviewSection title="Tag Input">
+            <TagInputSection />
           </PreviewSection>
 
           <PreviewSection title="Select">

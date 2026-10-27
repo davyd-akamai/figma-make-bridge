@@ -5,7 +5,7 @@ Single-select dropdown with type-to-filter.
 ## When to use / when not to use
 
 - Use to pick one value from a list of options.
-- Do NOT use it for multi-select, checkbox items, grouped lists or async loading. None exist. Say so in the reply. Do not fake it with `Select`.
+- Do NOT use it for multi-select, checkbox items, grouped lists or async loading. None exist. Say so in the reply. Do not fake it with `Select`. To collect several free-text or suggested values as tags, use `TagInput` (components/tag-input.md).
 - For a short visible group, `RadioButton` may fit better (components/radio-button.md).
 
 ## Import

@@ -14,7 +14,7 @@ _Last updated: 2026-10-27. Source: local `core-design-system/packages/cds-compon
 | checkbox | [Checkbox](components/Checkbox.tsx) | ✓ |  |
 | content-panel | [ContentPanel](components/ContentPanel.tsx) |  | Single panel only; no `content-panel-group`, no `stripe` |
 | drawer | [Drawer](components/Drawer.tsx) |  | Right side only |
-| icon | [Icons](components/icons/index.tsx) | Partial | 41 exact-vector icons |
+| icon | [Icons](components/icons/index.tsx) | Partial | 43 exact-vector icons |
 | modal | [Modal](components/Modal.tsx) | ✓ |  |
 | notification-banner | [NotificationBanner](components/NotificationBanner.tsx) | ✓ |  |
 | notification-toast | [Toast](components/Toast.tsx) | ✓ |  |
@@ -26,6 +26,7 @@ _Last updated: 2026-10-27. Source: local `core-design-system/packages/cds-compon
 | switch | [Switch](components/Switch.tsx) | ✓ | No read-only state; `master-switch` still planned |
 | table | [Table](components/Table.tsx) |  |  |
 | tabs | [TabsHorizontal](components/TabsHorizontal.tsx) | ✓ | No content panels |
+| tag-input | [TagInput](components/TagInput.tsx), [Tag](components/Tag.tsx) | ✓ | `options` + `creatable`; per-tag `invalid`; wraps, scrolls at 100px (no "+N" collapse, no drag-reorder) |
 | text-area | [TextArea](components/TextArea.tsx) | ✓ | Native vertical resize with Figma's handle overlaid |
 | text-field | [TextField](components/TextField.tsx) | ✓ |  |
 
@@ -37,7 +38,6 @@ Bridge-only (no CDS equivalent, built from Figma; Container is Code Connect ✓)
 |---|---|---|
 | Form inputs | master-switch | Not started |
 | Form inputs | numeric-spinner | Not started |
-| Form inputs | tag-input | Not started |
 | Form inputs | segmented-button | Not started |
 | Form inputs | form-field | Not started |
 | Date and time | calendar | Not started |

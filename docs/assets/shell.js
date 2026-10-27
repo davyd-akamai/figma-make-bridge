@@ -16,6 +16,7 @@
     { id: "container", label: "Container", href: "components/container.html" },
     { id: "text-field", label: "TextField", href: "components/text-field.html" },
     { id: "text-area", label: "TextArea", href: "components/text-area.html" },
+    { id: "tag-input", label: "TagInput", href: "components/tag-input.html" },
     { id: "select", label: "Select", href: "components/select.html" },
     { id: "search", label: "Search", href: "components/search.html" },
     { id: "checkbox", label: "Checkbox", href: "components/checkbox.html" },

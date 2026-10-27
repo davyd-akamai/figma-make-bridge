@@ -27,6 +27,8 @@ Node IDs below are taken from the header comments of the matching component in `
 | `sideNavigation.json` | `cm_side-navigation` (17:2719) | **global tokens only, verified against 17:2719** |
 | `switch.json` | `Switch` (129:5474), `.base-switch` (129:5136) | variables checked via get_variable_defs (all matched); pre-seeded, `elevation.s` added additively |
 | `systemBadge.json` | `cm_global-badge` (29:3416) | node from component header; variables not re-verified |
+| `tag.json` | `Tag item` (140:6272) | variables checked via get_variable_defs (all matched); pre-seeded, used as-is (`readOnly.background` unused: Figma's read-only tag has no fill) |
+| `tagInput.json` | `Tag input` (140:8688) | variables checked via get_variable_defs (all matched); pre-seeded, `label`/`labelInfoIcon` added additively |
 | `table.json` | `core_table-column` (47:4956) | node from component header; variables not re-verified |
 | `tabs.json` | `Tabs-horizontal` (74:5959) | node from component header; variables not re-verified |
 | `textArea.json` | `Text area` (140:6170) | created from `textField.json`'s identical alias shape; every hex checked against get_variable_defs on 140:6170 (all matched); `resizeIcon` added |

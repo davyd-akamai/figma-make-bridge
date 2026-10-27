@@ -17,7 +17,7 @@ import { Button, Container } from "figma-make-bridge";
 ## Styling rules
 
 - Use library components exactly as they are. Do not add `className`, `style` props or CSS that changes their look (colors, borders, radius, fonts). Layout wrappers (spacing, grid, flex) around a component are fine. Do not add borders, backgrounds, margins or styles to the component itself, and never wrap Pagination. Take colors only from the component's Tokens section.
-- All corners are square. Use no border radius on any element, including tables, cards, inputs, panels and custom UI. Do not add `rounded-*` classes or `border-radius` styles. Exceptions: shapes that are round by definition (radio buttons, switch tracks and knobs, avatars, notification dots). Add any other radius only if the prompt explicitly asks for it for that element.
+- All corners are square. Use no border radius on any element, including tables, cards, inputs, panels and custom UI. Do not add `rounded-*` classes or `border-radius` styles. Exceptions: shapes that are round by definition (radio buttons, switch tracks and knobs, tag pills, avatars, notification dots). Add any other radius only if the prompt explicitly asks for it for that element.
 - Build only what the prompt asks for.
 
 ## Global rules

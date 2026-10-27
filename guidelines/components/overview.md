@@ -21,6 +21,8 @@ Read this file before using any component. Then read the file for that component
 | TextField | Single-line text input | components/text-field.md |
 | TextArea | Multi-line text input with vertical resize | components/text-area.md |
 | Select | Single-select dropdown | components/select.md |
+| TagInput | Multi-value entry as removable tags, optional suggestions | components/tag-input.md |
+| Tag | Removable pill chip, also the "+N" overflow chip | components/tag.md |
 | Search | Search box with optional suggestions | components/search.md |
 | Breadcrumbs | Location trail with optional inline rename of the current page | components/breadcrumbs.md |
 | TabsHorizontal | Tab headers (no panels) | components/tabs-horizontal.md |
@@ -44,6 +46,7 @@ Icons: foundations/icons.md.
 - Free text input -> `TextField`; multi-line text -> `TextArea`.
 - Search-style input -> `Search`.
 - Pick one value from a list -> `Select`.
+- Enter several short values (keywords, emails, labels) -> `TagInput`. A lone removable chip -> `Tag`.
 - Pick one option from a visible group -> `RadioButton`.
 - A setting that applies immediately when flipped -> `Switch`.
 - Multi-pick or a form-submitted yes/no -> `Checkbox`.
@@ -78,7 +81,7 @@ Also not available: a mobile navigation drawer, tab content panels, a table tool
 - Do not hand-build what a library component already does: buttons, inputs, selects, tabs, tables, drawers, badges, headers, footers.
 - Never pass raw colors, or `style`/`className` color overrides, to a library component. Customization is never a prop.
 - `infoIcon` on form fields is a placeholder for a future Tooltip. It shows only the browser's native `title` text.
-- Form field width: `TextField`, `TextArea`, `Select` and `Search` fill 100% of their wrapper. Size the wrapper. Do not let them stretch edge-to-edge.
+- Form field width: `TextField`, `TextArea`, `Select`, `TagInput` and `Search` fill 100% of their wrapper. Size the wrapper. Do not let them stretch edge-to-edge.
   - About 400px for a normal single-line field (name, label, short free text).
   - About 160-200px for something short (number, port, short code).
   - Full width only when the content is long (URL, long description).

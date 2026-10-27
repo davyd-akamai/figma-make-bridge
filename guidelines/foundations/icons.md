@@ -33,7 +33,7 @@ Default size 16px:
 
 Default size 12px:
 
-`CheckIcon`, `CheckmarkIcon`, `MinusIcon`, `DotIcon`
+`CheckIcon`, `CheckmarkIcon`, `MinusIcon`, `DotIcon`, `Close12Icon`, `LockIcon`
 
 Default size 8px:
 

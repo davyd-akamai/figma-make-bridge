@@ -41,6 +41,12 @@ export type { TextFieldProps, TextFieldLabelPosition } from "./components/TextFi
 export { default as TextArea } from "./components/TextArea";
 export type { TextAreaProps, TextAreaLabelPosition } from "./components/TextArea";
 
+export { default as Tag } from "./components/Tag";
+export type { TagProps } from "./components/Tag";
+
+export { default as TagInput } from "./components/TagInput";
+export type { TagInputProps, TagInputTag, TagInputOption, TagInputLabelPosition } from "./components/TagInput";
+
 export { default as Select } from "./components/Select";
 export type { SelectProps, SelectOption, SelectLabelPosition } from "./components/Select";
 
