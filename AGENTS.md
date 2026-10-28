@@ -8,7 +8,7 @@ Figma Make loads its own Tailwind after our styles.css. Its later
 .hidden, .flex, .flex-col and similar utilities have the same
 specificity as ours and override our tablet:* / desktop:* rules.
 This hid the side navigation and left the header in the mobile
-layout on wide screens (fixed in 0.1.12).
+layout on wide screens (fixed in the next release after 0.1.16).
 
 Rules for every component, new or changed:
 - Never put a base utility and a tablet:/desktop:/md:/lg: utility
