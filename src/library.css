@@ -109,3 +109,126 @@ body {
 .drawer-scroll::-webkit-scrollbar-track {
   background: var(--component-drawer-scrollbar-track, #F7F7FA);
 }
+
+/* Responsive component classes. Each base value and its tablet (600px) / desktop (960px)
+   override live side by side, unlayered and each on a single class, so they never depend on
+   stylesheet order. Tailwind utilities like `hidden` + `desktop:block` have equal specificity,
+   and a host project that loads its own Tailwind after this file re-emits `.hidden`/`.flex`
+   later and silently beats the media-query variants. */
+
+/* DefaultCmPageTemplate */
+.fmb-sidenav-wrapper {
+  display: none;
+}
+@media (min-width: 960px) {
+  .fmb-sidenav-wrapper {
+    display: block;
+  }
+}
+
+/* GlobalFooter */
+.fmb-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+@media (min-width: 960px) {
+  .fmb-footer {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.fmb-footer-copyright {
+  width: 100%;
+}
+@media (min-width: 960px) {
+  .fmb-footer-copyright {
+    width: auto;
+    text-align: right;
+  }
+}
+
+/* GlobalHeader */
+.fmb-header-px {
+  padding-left: var(--global-spacing-s24);
+  padding-right: var(--global-spacing-s24);
+}
+@media (min-width: 960px) {
+  .fmb-header-px {
+    padding-left: var(--global-spacing-s16);
+    padding-right: var(--global-spacing-s16);
+  }
+}
+.fmb-header-gap {
+  gap: var(--global-spacing-s24);
+}
+@media (min-width: 600px) {
+  .fmb-header-gap {
+    gap: var(--global-spacing-s32);
+  }
+}
+.fmb-header-icons-gap {
+  gap: var(--global-spacing-s24);
+}
+@media (min-width: 600px) {
+  .fmb-header-icons-gap {
+    gap: var(--global-spacing-s32);
+  }
+}
+@media (min-width: 960px) {
+  .fmb-header-icons-gap {
+    gap: var(--global-spacing-s16);
+  }
+}
+.fmb-header-menu-button,
+.fmb-header-avatar {
+  display: flex;
+}
+@media (min-width: 960px) {
+  .fmb-header-menu-button,
+  .fmb-header-avatar {
+    display: none;
+  }
+}
+.fmb-header-logo,
+.fmb-header-search-desktop,
+.fmb-header-account {
+  display: none;
+}
+@media (min-width: 960px) {
+  .fmb-header-logo,
+  .fmb-header-search-desktop,
+  .fmb-header-account {
+    display: flex;
+  }
+}
+.fmb-header-search-mobile {
+  display: flex;
+}
+@media (min-width: 600px) {
+  .fmb-header-search-mobile {
+    display: none;
+  }
+}
+.fmb-header-search-tablet {
+  display: none;
+}
+@media (min-width: 600px) {
+  .fmb-header-search-tablet {
+    display: flex;
+  }
+}
+@media (min-width: 960px) {
+  .fmb-header-search-tablet {
+    display: none;
+  }
+}
+.fmb-header-create {
+  display: none;
+}
+@media (min-width: 600px) {
+  .fmb-header-create {
+    display: flex;
+  }
+}

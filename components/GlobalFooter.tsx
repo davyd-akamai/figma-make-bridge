@@ -51,7 +51,7 @@ export default function GlobalFooter({ links = DEFAULT_FOOTER_LINKS, copyrightTe
     <footer
       className={
         className ??
-        "flex w-full flex-col items-start gap-[var(--global-spacing-s16,16px)] border-t border-solid bg-[var(--component-globalfooter-background,#F7F7FA)] border-[var(--component-globalfooter-border,#D6D6DD)] px-[var(--global-spacing-s16,16px)] py-[var(--global-spacing-s12,12px)] desktop:flex-row desktop:items-center desktop:justify-between"
+        "fmb-footer w-full gap-[var(--global-spacing-s16,16px)] border-t border-solid bg-[var(--component-globalfooter-background,#F7F7FA)] border-[var(--component-globalfooter-border,#D6D6DD)] px-[var(--global-spacing-s16,16px)] py-[var(--global-spacing-s12,12px)]"
       }
     >
       <div className="flex flex-wrap items-center gap-x-[var(--global-spacing-s24,24px)] gap-y-[var(--global-spacing-s8,8px)]">
@@ -59,7 +59,7 @@ export default function GlobalFooter({ links = DEFAULT_FOOTER_LINKS, copyrightTe
           <FooterLink key={link.id} {...link} />
         ))}
       </div>
-      <p className="type-body-regular m-0 w-full text-[color:var(--component-globalfooter-text,#343438)] desktop:w-auto desktop:text-right">
+      <p className="type-body-regular fmb-footer-copyright m-0 text-[color:var(--component-globalfooter-text,#343438)]">
         {copyright}
       </p>
     </footer>

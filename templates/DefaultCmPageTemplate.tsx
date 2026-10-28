@@ -76,7 +76,7 @@ export default function DefaultCmPageTemplate({
       <GlobalHeader {...headerProps} />
       <div className="flex flex-1">
         <div
-          className="hidden shrink-0 desktop:block"
+          className="fmb-sidenav-wrapper shrink-0"
           style={{ position: "sticky", top: 0, bottom: 0, height: navHeight }}
         >
           <SideNavigation {...sideNavProps} />

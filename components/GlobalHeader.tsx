@@ -109,7 +109,7 @@ interface HeaderAccountProps {
 // rendered directly at the call site.
 function HeaderAccount({ user }: HeaderAccountProps) {
   return (
-    <button type="button" className="hidden h-[34px] cursor-pointer items-center gap-[var(--global-spacing-s8,8px)] desktop:flex">
+    <button type="button" className="fmb-header-account h-[34px] cursor-pointer items-center gap-[var(--global-spacing-s8,8px)]">
       <UserAvatar initial={user.avatarInitial} />
       <span className="type-body-semibold text-[color:var(--component-globalheader-text-default,#D6D6DD)]">
         {user.name}
@@ -162,12 +162,11 @@ function SearchField({ placeholder, onChange, className }: SearchFieldProps) {
 
 // Header padding: 24px mobile+tablet, 16px desktop ("changed from 16 to 24" reads backwards
 // from a desktop baseline — the annotation sits on the tablet frame). Header/icon gaps: 24
-// mobile, 32 tablet, 16 (icons only) or 32 (everything else) desktop. All literal strings so
-// Tailwind's JIT scanner can find them — see the note this replaced, same reasoning still holds.
-const HEADER_PADDING_X = "px-[var(--global-spacing-s24,24px)] desktop:px-[var(--global-spacing-s16,16px)]";
-const HEADER_GAP = "gap-[var(--global-spacing-s24,24px)] tablet:gap-[var(--global-spacing-s32,32px)]";
-const HEADER_ICONS_GAP =
-  "gap-[var(--global-spacing-s24,24px)] tablet:gap-[var(--global-spacing-s32,32px)] desktop:gap-[var(--global-spacing-s16,16px)]";
+// mobile, 32 tablet, 16 (icons only) or 32 (everything else) desktop. Defined as .fmb-* classes
+// in src/library.css so the media queries don't depend on stylesheet order in a host project.
+const HEADER_PADDING_X = "fmb-header-px";
+const HEADER_GAP = "fmb-header-gap";
+const HEADER_ICONS_GAP = "fmb-header-icons-gap";
 
 export default function GlobalHeader({
   isAuthenticated = true,
@@ -197,18 +196,18 @@ export default function GlobalHeader({
           type="button"
           aria-label="Open menu"
           onClick={onMenuClick}
-          className="flex size-6 shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-globalheader-icon-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-icon-hover,#FFFFFF)] desktop:hidden"
+          className="fmb-header-menu-button size-6 shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-globalheader-icon-default,#D6D6DD)] hover:text-[color:var(--component-globalheader-icon-hover,#FFFFFF)]"
         >
           <MenuIcon className="size-6" />
         </button>
 
         {/* Logo: desktop only */}
-        <div className="hidden h-[34px] shrink-0 items-center desktop:flex">{logo ?? <DefaultLogo />}</div>
+        <div className="fmb-header-logo h-[34px] shrink-0 items-center">{logo ?? <DefaultLogo />}</div>
 
         {showSearch && (
           <>
             {/* Mobile: icon-only search trigger, no field ("no search field, icon size 24") */}
-            <div className="flex tablet:hidden">
+            <div className="fmb-header-search-mobile">
               <HeaderIconButton label="Search">
                 <SearchIcon className="size-6" />
               </HeaderIconButton>
@@ -218,14 +217,14 @@ export default function GlobalHeader({
             <SearchField
               placeholder={tabletPlaceholder}
               onChange={onSearchChange}
-              className="hidden h-[34px] w-full tablet:flex desktop:hidden"
+              className="fmb-header-search-tablet h-[34px] w-full"
             />
 
             {/* Desktop: field capped at 800px, long hint ("search field max width 800") */}
             <SearchField
               placeholder={desktopPlaceholder}
               onChange={onSearchChange}
-              className="hidden h-[34px] min-w-0 max-w-[800px] flex-1 desktop:flex"
+              className="fmb-header-search-desktop h-[34px] min-w-0 max-w-[800px] flex-1"
             />
           </>
         )}
@@ -235,7 +234,7 @@ export default function GlobalHeader({
         {/* Create button: hidden on mobile ("no create button"). Visibility toggled on a wrapper
             div, not on Button's own className, so its unconditional `inline-flex` base class never
             has to fight a `hidden` override for the `display` property. */}
-        <div className="hidden shrink-0 tablet:flex">
+        <div className="fmb-header-create shrink-0">
           <Button variant="primary" size="large" onClick={onCreateClick} startIcon={<PlusIcon />}>
             Create
           </Button>
@@ -256,7 +255,7 @@ export default function GlobalHeader({
         {isAuthenticated ? (
           <>
             {/* Mobile + tablet: avatar only ("no username, no chevron" below 960px) */}
-            <div className="flex desktop:hidden">
+            <div className="fmb-header-avatar">
               <UserAvatar initial={user.avatarInitial} />
             </div>
             {/* Desktop: avatar + name + chevron */}
