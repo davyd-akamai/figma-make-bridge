@@ -772,3 +772,13 @@ export function LockIcon(props: IconProps) {
     </BaseIcon>
   );
 }
+
+// Figma: Arrow (node 149:6597, inside "Tooltip" 149:6624, Property 1=Top) — natively 24x4 (not square, so no
+// `size` prop and no BaseIcon), currentColor. Points up; Tooltip rotates it for the other three sides.
+export function TooltipArrowIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width={24} height={4} viewBox="0 0 24 4" fill="currentColor" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path d="M12.7071 0.707107L16 4L8 4L11.2929 0.707107C11.6834 0.316583 12.3166 0.316582 12.7071 0.707107Z" />
+    </svg>
+  );
+}

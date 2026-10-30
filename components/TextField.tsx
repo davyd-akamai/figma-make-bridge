@@ -11,6 +11,7 @@
 
 import { useId, useState, type ChangeEvent, type InputHTMLAttributes } from "react";
 import { CloseIcon, InfoIcon } from "./icons";
+import Tooltip from "./Tooltip";
 
 export type TextFieldLabelPosition = "top" | "left";
 
@@ -93,15 +94,16 @@ export default function TextField({
   // input/clear button — see node-id=47-14252 for the dedicated variants callout. Its own px-8
   // padding is the only spacing between it and the box; the row itself carries no extra gap.
   const infoIconButton = infoIcon && (
-    <button
-      type="button"
-      onClick={onInfoIconClick}
-      title={infoText}
-      aria-label={infoText ?? "More information"}
-      className="flex h-[34px] shrink-0 cursor-pointer items-center justify-center px-[var(--global-spacing-s8,8px)] text-[color:var(--component-textfield-info-icon,#696970)]"
-    >
-      <InfoIcon size={20} />
-    </button>
+    <Tooltip content={infoText} className="shrink-0">
+      <button
+        type="button"
+        onClick={onInfoIconClick}
+        aria-label={infoText ?? "More information"}
+        className="flex h-[34px] shrink-0 cursor-pointer items-center justify-center px-[var(--global-spacing-s8,8px)] text-[color:var(--component-textfield-info-icon,#696970)]"
+      >
+        <InfoIcon size={20} />
+      </button>
+    </Tooltip>
   );
 
   if (readOnly) {

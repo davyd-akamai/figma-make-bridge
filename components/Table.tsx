@@ -108,6 +108,7 @@ import { CaretIcon, DeleteIcon, DownloadIcon, EditIcon, InfoIcon, MoreIcon, Sort
 import Checkbox from "./Checkbox";
 import Badge, { type BadgeColor, type BadgeType } from "./Badge";
 import Popover from "./internal/Popover";
+import Tooltip from "./Tooltip";
 
 export type TableHeaderVariant = "filled" | "outlined";
 export type TableSortDirection = "asc" | "desc";
@@ -346,7 +347,20 @@ function HeaderCell<T extends TableRowData>({
         </span>
       )}
       <span className={`type-label-bold-s truncate ${c.text}`}>{column.header}</span>
-      {column.infoIcon && <InfoIcon size={16} className={`shrink-0 ${c.iconDefault}`} aria-label={column.infoText} />}
+      {column.infoIcon && (
+        <Tooltip content={column.infoText} className="shrink-0">
+          {/* Stops click/keys reaching the header, so focusing or pressing the icon never toggles the sort. */}
+          <button
+            type="button"
+            aria-label={column.infoText ?? "More information"}
+            onClick={(e) => e.stopPropagation()}
+            onKeyDown={(e) => e.stopPropagation()}
+            className={`flex cursor-default ${c.iconDefault}`}
+          >
+            <InfoIcon size={16} />
+          </button>
+        </Tooltip>
+      )}
       {column.sortable && (
         <SortIcon size={16} className={`shrink-0 ${sorted ? c.iconActive : `${c.iconDefault} ${c.iconGroupHover}`} ${sorted === "desc" ? "rotate-180" : ""}`} />
       )}

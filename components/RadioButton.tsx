@@ -33,6 +33,7 @@
 
 import { type ChangeEvent, type InputHTMLAttributes, useId } from "react";
 import { InfoIcon } from "./icons";
+import Tooltip from "./Tooltip";
 
 export type RadioButtonSize = "small" | "large";
 
@@ -139,15 +140,16 @@ export default function RadioButton({
         )}
       </label>
       {infoIcon && (
-        <button
-          type="button"
-          onClick={onInfoIconClick}
-          title={infoText}
-          aria-label={infoText ?? "More information"}
-          className="flex shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-textfield-info-icon,#696970)]"
-        >
-          <InfoIcon size={20} />
-        </button>
+        <Tooltip content={infoText} className="shrink-0">
+          <button
+            type="button"
+            onClick={onInfoIconClick}
+            aria-label={infoText ?? "More information"}
+            className="flex shrink-0 cursor-pointer items-center justify-center text-[color:var(--component-textfield-info-icon,#696970)]"
+          >
+            <InfoIcon size={20} />
+          </button>
+        </Tooltip>
       )}
     </div>
   );

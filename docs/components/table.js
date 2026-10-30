@@ -409,9 +409,14 @@
       cell.appendChild(label);
 
       if (column.infoIcon) {
-        var info = document.createElement("span");
-        info.className = "shrink-0 " + c.iconDefault;
-        info.title = column.infoText || "";
+        var info = document.createElement("button");
+        info.type = "button";
+        info.className = "flex shrink-0 cursor-default " + c.iconDefault;
+        info.setAttribute("data-fmb-tooltip", column.infoText || "");
+        info.setAttribute("aria-label", column.infoText || "More information");
+        // Same as Table.tsx: focusing or pressing the icon never reaches the header's sort handler.
+        info.addEventListener("click", function (e) { e.stopPropagation(); });
+        info.addEventListener("keydown", function (e) { e.stopPropagation(); });
         info.innerHTML = ICONS.info;
         cell.appendChild(info);
       }

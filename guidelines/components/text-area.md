@@ -66,5 +66,5 @@ Standard `<textarea>` props (`placeholder`, `name`, `required`, `maxLength`, etc
 - `errorText` shows the message below the field and switches to the red-border error state in one prop. Do not drive the error visual separately. `helperText` is hidden while `errorText` is present.
 - `clearable` shows a clear (×) button once there is a value. Set `false` only when clearing makes no sense.
 - `readOnly` renders plain text with no box, resize handle or clear button. `disabled` stays box-shaped and greyed out. Use `readOnly` for a value the user cannot edit here, `disabled` for a value that is temporarily not editable.
-- `infoIcon` (beside the field) and `labelInfoIcon` (next to the label text) with `infoText`/`onInfoIconClick` are a placeholder for a future Tooltip. Use only when the label needs supplementary explanation.
+- `infoIcon` (beside the field) and `labelInfoIcon` (next to the label text) both show a `Tooltip` with `infoText` on hover or keyboard focus (`onInfoIconClick` only applies to the icon beside the field). Always pass `infoText`, or the icon shows nothing. Use only when the label needs supplementary explanation.
 - Width is the wrapper's job. Follow the form field width rule in components/overview.md.

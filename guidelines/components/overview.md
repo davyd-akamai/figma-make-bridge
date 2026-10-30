@@ -32,6 +32,7 @@ Read this file before using any component. Then read the file for that component
 | Modal | Centered confirmation/dialog box | components/modal.md |
 | NotificationBanner | Inline status message with optional action and dismiss | components/notification-banner.md |
 | Toast | Floating bottom-right notification, auto-dismisses after 5s | components/toast.md |
+| Tooltip | Short hover/focus label on a control | components/tooltip.md |
 
 Icons: foundations/icons.md.
 
@@ -58,6 +59,7 @@ Icons: foundations/icons.md.
 - Short confirmation or blocking question -> `Modal`.
 - Inline status message inside a page (info, warning, success, error) -> `NotificationBanner`.
 - Brief floating feedback after an action (auto-dismisses) -> `Toast`.
+- Short label or hint on hover/focus of a control (icon-only buttons, info icons) -> `Tooltip`.
 
 ## Components that do NOT exist yet
 
@@ -65,7 +67,7 @@ Never invent these. If you are tempted to, say so in the reply before building c
 
 | Missing | Also forbidden as a name or import |
 |---|---|
-| Tooltip | `Tooltip`, `Popover` as a public component |
+| Popover (public) | `Popover` as a public component. For hover/focus hints use `Tooltip` |
 | Master switch (select-all switch) | `MasterSwitch` |
 | Dropdown (multi-select, grouped) | `Dropdown`, `DropdownMenu`, `MultiSelect`, `Combobox` |
 | Toast stack / queue / `toast.open()` service | `ToastContainer`, `ToastProvider`, `useToast`, `Snackbar` |
@@ -80,7 +82,7 @@ Also not available: a mobile navigation drawer, tab content panels, a table tool
 - Do not invent variants, props or states. No extra `variant` values, no new props, no `theme`.
 - Do not hand-build what a library component already does: buttons, inputs, selects, tabs, tables, drawers, badges, headers, footers.
 - Never pass raw colors, or `style`/`className` color overrides, to a library component. Customization is never a prop.
-- `infoIcon` on form fields is a placeholder for a future Tooltip. It shows only the browser's native `title` text.
+- `infoIcon` on form fields shows a `Tooltip` with `infoText` on hover or keyboard focus. Always pass `infoText`.
 - Form field width: `TextField`, `TextArea`, `Select`, `TagInput` and `Search` fill 100% of their wrapper. Size the wrapper. Do not let them stretch edge-to-edge.
   - About 400px for a normal single-line field (name, label, short free text).
   - About 160-200px for something short (number, port, short code).

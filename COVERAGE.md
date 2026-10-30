@@ -2,7 +2,7 @@
 
 Tracks which Akamai CDS (`core-design-system`, `@akamai/cds-components`) components exist in `figma-make-bridge`, and which ones we plan to build. CDS is reference only (see [GUIDELINES.md](GUIDELINES.md)); this doc is the scoped to-do view, not a full CDS inventory — CDS components we have no plan to build are intentionally left out.
 
-_Last updated: 2026-10-27. Source: local `core-design-system/packages/cds-components/src/components/` vs. `components/`._
+_Last updated: 2026-10-30. Source: local `core-design-system/packages/cds-components/src/components/` vs. `components/`._
 
 ## Built
 
@@ -14,7 +14,7 @@ _Last updated: 2026-10-27. Source: local `core-design-system/packages/cds-compon
 | checkbox | [Checkbox](components/Checkbox.tsx) | ✓ |  |
 | content-panel | [ContentPanel](components/ContentPanel.tsx) |  | Single panel only; no `content-panel-group`, no `stripe` |
 | drawer | [Drawer](components/Drawer.tsx) |  | Right side only |
-| icon | [Icons](components/icons/index.tsx) | Partial | 43 exact-vector icons |
+| icon | [Icons](components/icons/index.tsx) | Partial | 44 exact-vector icons |
 | modal | [Modal](components/Modal.tsx) | ✓ |  |
 | notification-banner | [NotificationBanner](components/NotificationBanner.tsx) | ✓ |  |
 | notification-toast | [Toast](components/Toast.tsx) | ✓ |  |
@@ -29,6 +29,7 @@ _Last updated: 2026-10-27. Source: local `core-design-system/packages/cds-compon
 | tag-input | [TagInput](components/TagInput.tsx), [Tag](components/Tag.tsx) | ✓ | `options` + `creatable`; per-tag `invalid`; wraps, scrolls at 100px (no "+N" collapse, no drag-reorder) |
 | text-area | [TextArea](components/TextArea.tsx) | ✓ | Native vertical resize with Figma's handle overlaid |
 | text-field | [TextField](components/TextField.tsx) | ✓ |  |
+| tooltip | [Tooltip](components/Tooltip.tsx) | ✓ | Wraps its trigger; hover/focus, flips to fit; `arrow={false}` is Figma's "None"; no show-on-overflow-only mode |
 
 Bridge-only (no CDS equivalent, built from Figma; Container is Code Connect ✓): Container, GlobalHeader, GlobalFooter, SystemBadge, DefaultCmPageTemplate.
 
@@ -45,7 +46,6 @@ Bridge-only (no CDS equivalent, built from Figma; Container is Code Connect ✓)
 | Date and time | date-picker | Not started |
 | Date and time | date-range | Not started |
 | Date and time | date-range-field | Not started |
-| Feedback and overlay | tooltip | Not started |
 | Feedback and overlay | progress-bar | Not started |
 | Feedback and overlay | zero-error-state | Not started |
 

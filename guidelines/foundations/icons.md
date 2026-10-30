@@ -39,6 +39,10 @@ Default size 8px:
 
 `ResizeIcon` (resize grabber used inside `TextArea`; do not use as a standalone interface icon)
 
+Other sizes:
+
+`TooltipArrowIcon` (24x4 arrow used inside `Tooltip`; do not use as a standalone interface icon; no `size` prop)
+
 Extra props:
 
 | Icon | Prop | Type | Default |

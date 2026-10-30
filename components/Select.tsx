@@ -54,6 +54,7 @@
 import { useId, useLayoutEffect, useRef, useState, type ChangeEvent, type KeyboardEvent, type MouseEvent, type ReactNode } from "react";
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon, InfoIcon } from "./icons";
 import Popover from "./internal/Popover";
+import Tooltip from "./Tooltip";
 
 export type SelectLabelPosition = "top" | "left";
 
@@ -309,15 +310,16 @@ export default function Select({
   // Figma keeps the info icon as a sibling *outside* the bordered field box, matching the pattern
   // TextField/Checkbox already established for this same slot.
   const infoIconButton = infoIcon && (
-    <button
-      type="button"
-      onClick={onInfoIconClick}
-      title={infoText}
-      aria-label={infoText ?? "More information"}
-      className="flex h-[34px] shrink-0 cursor-pointer items-center justify-center px-[var(--global-spacing-s8,8px)] text-[color:var(--component-select-default-infoicon,#696970)]"
-    >
-      <InfoIcon size={20} />
-    </button>
+    <Tooltip content={infoText} className="shrink-0">
+      <button
+        type="button"
+        onClick={onInfoIconClick}
+        aria-label={infoText ?? "More information"}
+        className="flex h-[34px] shrink-0 cursor-pointer items-center justify-center px-[var(--global-spacing-s8,8px)] text-[color:var(--component-select-default-infoicon,#696970)]"
+      >
+        <InfoIcon size={20} />
+      </button>
+    </Tooltip>
   );
 
   const labelNode = label && (

@@ -76,6 +76,8 @@ export type { NotificationBannerProps, NotificationBannerType } from "./componen
 
 export { default as Toast, DEFAULT_TOAST_DURATION } from "./components/Toast";
 export type { ToastProps, ToastType } from "./components/Toast";
+export { default as Tooltip } from "./components/Tooltip";
+export type { TooltipProps, TooltipPlacement } from "./components/Tooltip";
 
 export { default as Table } from "./components/Table";
 export type {

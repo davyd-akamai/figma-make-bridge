@@ -65,6 +65,6 @@ Standard `<input>` props (`placeholder`, `name`, `required`, etc.) pass through.
 - `helperText` is hidden automatically while `errorText` is present. No need to omit one when passing the other.
 - `clearable` shows a clear button once the field has a value. Set `false` only when clearing makes no sense (a fixed or derived value).
 - `readOnly` renders plain text with no input box or clear button. `disabled` is greyed-out but still box-shaped. Use `readOnly` for a value the user cannot edit here, `disabled` for a value that is temporarily not editable.
-- `infoIcon`, `infoText`, `onInfoIconClick` are a placeholder for a future Tooltip. Use only when the label needs supplementary explanation.
+- `infoIcon` shows an info icon beside the field. Hovering or tabbing to it shows a `Tooltip` with `infoText`; `onInfoIconClick` is optional. Always pass `infoText`, or the icon shows nothing. Use only when the label needs supplementary explanation.
 - Do not fake a leading icon by absolutely positioning one over a `TextField`.
 - Width is the wrapper's job. Follow the form field width rule in components/overview.md (about 400px by default).

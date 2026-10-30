@@ -59,4 +59,4 @@ Standard `<input>` props (`name`, `value`, `required`, etc.) pass through. `type
 - **`size="small"` is reserved for tables and dense lists** where a 20px control would crowd the row. Never use it as a general stylistic choice. `Table` already renders its own selection checkboxes at `small`.
 - `indeterminate` is a separate visual flag from `checked`, not a third value. For select-all, compute it on every render as `someChecked && !allChecked`. It does not clear itself on click. Parent state drives it.
 - `readOnly` and `disabled` are both non-interactive but look different (readOnly: thin border, no fill; disabled: greyed fill). Do not substitute one for the other.
-- `infoIcon`, `infoText`, `onInfoIconClick` are a placeholder for a future Tooltip. Use only when the label needs supplementary explanation. Not as a decorative default.
+- `infoIcon` shows an info icon after the label. Hovering or tabbing to it shows a `Tooltip` with `infoText`; `onInfoIconClick` is optional. Always pass `infoText`, or the icon shows nothing. Use only when the label needs supplementary explanation. Not as a decorative default.

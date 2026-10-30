@@ -43,7 +43,7 @@ import { Table, type TableProps, type TableColumn, type TableRowData, type Table
 |---|---|---|
 | `key` | `string` | Required |
 | `header` | `string` | Omit for an icon-only header. Never pass `""` |
-| `headerIcon`, `infoIcon`, `infoText` | `ReactNode`, `boolean`, `string` | Optional |
+| `headerIcon`, `infoIcon`, `infoText` | `ReactNode`, `boolean`, `string` | Optional. `infoIcon` shows a `Tooltip` with `infoText` on hover or keyboard focus; always pass `infoText` |
 | `sortable` | `boolean` | Makes the header clickable |
 | `width` | `string` | CSS grid track, e.g. `"160px"`. Omit for an equal share |
 | `cellType` | `TableCellType` | Default `"text"` |

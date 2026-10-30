@@ -30,6 +30,7 @@
     { id: "modal", label: "Modal", href: "components/modal.html" },
     { id: "notification-banner", label: "NotificationBanner", href: "components/notification-banner.html" },
     { id: "toast", label: "Toast", href: "components/toast.html" },
+    { id: "tooltip", label: "Tooltip", href: "components/tooltip.html" },
     { id: "icons", label: "Icons", href: "components/icons.html" },
   ];
 

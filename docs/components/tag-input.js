@@ -150,9 +150,11 @@
       var lab = el("label", labelClass(), esc(cfg.label));
       lab.htmlFor = id;
       if (cfg.labelInfoIcon) {
-        var info = el("span", "inline-flex text-[color:var(--component-taginput-labelinfoicon,#696970)]", ICONS.info16);
-        info.title = cfg.labelInfoText || "";
-        info.setAttribute("aria-hidden", "true");
+        var info = el("span", "inline-flex cursor-default text-[color:var(--component-taginput-labelinfoicon,#696970)]", ICONS.info16);
+        info.setAttribute("data-fmb-tooltip", cfg.labelInfoText || "");
+        info.tabIndex = 0;
+        info.setAttribute("role", "img");
+        info.setAttribute("aria-label", cfg.labelInfoText || "More information");
         lab.appendChild(info);
       }
       wrap.appendChild(lab);

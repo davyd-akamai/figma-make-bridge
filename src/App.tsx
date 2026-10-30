@@ -23,6 +23,7 @@ import Drawer, { type DrawerSize } from "../components/Drawer";
 import Modal from "../components/Modal";
 import NotificationBanner, { type NotificationBannerType } from "../components/NotificationBanner";
 import Toast, { type ToastType } from "../components/Toast";
+import Tooltip, { type TooltipPlacement } from "../components/Tooltip";
 import Table, { type TableColumn, type TableRowData, type TableSortDirection } from "../components/Table";
 import DefaultCmPageTemplate from "../templates/DefaultCmPageTemplate";
 import {
@@ -66,6 +67,7 @@ import {
   StatusAlertIcon,
   SuccessFilledIcon,
   SuccessOutlineIcon,
+  TooltipArrowIcon,
   UserIcon,
   WarningFilledIcon,
   WarningOutlineIcon,
@@ -116,6 +118,7 @@ const ALL_ICONS = [
   StatusAlertIcon,
   SuccessFilledIcon,
   SuccessOutlineIcon,
+  TooltipArrowIcon,
   UserIcon,
   WarningFilledIcon,
   WarningOutlineIcon,
@@ -1470,6 +1473,43 @@ function ToastSection() {
   );
 }
 
+function TooltipSection() {
+  const placements: TooltipPlacement[] = ["top", "bottom", "left", "right"];
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+      <p className="type-body-regular" style={{ margin: 0 }}>
+        Hover or Tab to a trigger to show its tooltip; Esc dismisses it. A tooltip flips to the opposite side when the preferred side does not fit the viewport.
+      </p>
+      <div style={{ display: "flex", gap: 80, flexWrap: "wrap", padding: "48px 96px", border: "1px solid #E5E5EA", justifyContent: "center" }}>
+        {placements.map((p) => (
+          <Tooltip key={p} content="Tooltip" placement={p}>
+            <Button variant="secondary">{p}</Button>
+          </Tooltip>
+        ))}
+        <Tooltip content="Tooltip" arrow={false}>
+          <Button variant="secondary">no arrow</Button>
+        </Tooltip>
+        <Tooltip content="Tooltip" disabled>
+          <Button variant="secondary">disabled</Button>
+        </Tooltip>
+      </div>
+      <div style={{ display: "flex", gap: 24, flexWrap: "wrap", padding: 24, border: "1px solid #E5E5EA", alignItems: "center" }}>
+        <Tooltip content="Longer help text wraps once it reaches the 240px maximum width of the bubble." placement="right">
+          <Button variant="secondary">long text</Button>
+        </Tooltip>
+        <Tooltip content="More information" placement="bottom">
+          <button type="button" aria-label="More information" style={{ display: "inline-flex", border: 0, background: "none", padding: 0, cursor: "pointer", color: "#696970" }}>
+            <InfoIcon />
+          </button>
+        </Tooltip>
+        <Tooltip content="Flips below when there is no room above" placement="top">
+          <Button variant="link">top (flips when no room)</Button>
+        </Tooltip>
+      </div>
+    </div>
+  );
+}
+
 function ModalSection() {
   const [basicOpen, setBasicOpen] = useState(false);
   const [iconOpen, setIconOpen] = useState(false);
@@ -1767,6 +1807,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Toast">
             <ToastSection />
+          </PreviewSection>
+
+          <PreviewSection title="Tooltip">
+            <TooltipSection />
           </PreviewSection>
 
           <PreviewSection title="System Badge">

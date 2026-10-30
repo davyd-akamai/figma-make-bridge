@@ -57,4 +57,4 @@ No shared `name`, and `onChange` receives no argument.
 - **Group related radios with a shared `name`.** That makes them mutually exclusive. The component does not manage group state. Each `RadioButton` is independent.
 - `onChange` takes no argument and fires only when this radio becomes selected (native behavior). Do not expect a call with `false` when a sibling is selected.
 - Same `size`, `disabled`, `readOnly` and `infoIcon` conventions as `Checkbox`. Default `size="large"`. Reserve `size="small"` for tables and dense lists only.
-- `infoIcon` is a placeholder for a future Tooltip.
+- `infoIcon` shows a `Tooltip` with `infoText` on hover or keyboard focus. Always pass `infoText`.

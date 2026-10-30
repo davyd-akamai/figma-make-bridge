@@ -384,9 +384,9 @@
         "</button></span></div>";
       if (config.infoIcon) {
         html +=
-          '<button type="button" data-select-info title="' +
+          '<button type="button" data-select-info data-fmb-tooltip="' +
           (config.infoText || "") +
-          '" aria-label="More information" class="flex h-[34px] shrink-0 cursor-pointer items-center justify-center px-[var(--global-spacing-s8,8px)]" style="color:var(--component-select-default-infoicon,#696970);">' +
+          '" aria-label="' + (config.infoText || "More information") + '" class="flex h-[34px] shrink-0 cursor-pointer items-center justify-center px-[var(--global-spacing-s8,8px)]" style="color:var(--component-select-default-infoicon,#696970);">' +
           ICONS.info +
           "</button>";
       }

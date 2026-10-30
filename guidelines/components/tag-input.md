@@ -27,7 +27,7 @@ import { TagInput, type TagInputProps, type TagInputTag, type TagInputOption, ty
 | `label` | `string` | none | omit for an unlabeled field |
 | `labelPosition` | `TagInputLabelPosition` | `"top"` | `"top"`, `"left"` |
 | `labelInfoIcon` | `boolean` | `false` | info icon right after the label text |
-| `labelInfoText` | `string` | none | native tooltip for that icon |
+| `labelInfoText` | `string` | none | text of the `Tooltip` shown on hover or keyboard focus of that icon |
 | `helperText` | `string` | none | |
 | `errorText` | `string` | none | |
 | `clearable` | `boolean` | `true` | clear-all (×) button once there are tags |
@@ -75,5 +75,5 @@ const [tags, setTags] = useState<TagInputTag[]>([{ value: "apple", label: "apple
 - `removable: false` on a tag (for example with a `<LockIcon />`) keeps it permanently; it is also skipped by Backspace.
 - `disabled` shows only the greyed tags (no input, chevron or ×). `readOnly` renders plain tags with no box, like `TextField`. Use `readOnly` for a value the user cannot edit here, `disabled` for a temporarily locked one.
 - Omit `label` for an unlabeled field and pass an explicit `aria-label`.
-- `labelInfoIcon` with `labelInfoText` is a placeholder for a future Tooltip. It shows only the browser's native `title` text.
+- `labelInfoIcon` shows a `Tooltip` with `labelInfoText` on hover or keyboard focus. Always pass `labelInfoText`, or the icon shows nothing.
 - Width is the wrapper's job. Follow the form field width rule in components/overview.md.

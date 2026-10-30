@@ -65,6 +65,6 @@ import { Select, type SelectProps, type SelectOption, type SelectLabelPosition }
 - No match with `creatable={false}` shows `emptyMessage`. With `creatable` the dropdown shows a `Create "<query>"` row and fires `onCreateOption(query)`.
 - **`Select` never changes its own `options`.** In `onCreateOption`, add the new option to your `options` state and set `value` yourself.
 - Per-option `icon` is a plain `ReactNode` slot (an icon from foundations/icons.md or a flag element). No default. `disabled` options are skipped by the keyboard and cannot be chosen.
-- `label`, `labelPosition`, `helperText`, `errorText`, `infoIcon`, `clearable`, `disabled`, `readOnly` follow the same rules as `TextField` (components/text-field.md). Omit `label` for an unlabeled field and pass `aria-label`.
+- `label`, `labelPosition`, `helperText`, `errorText`, `infoIcon` (with `infoText`, shown as a `Tooltip`), `clearable`, `disabled`, `readOnly` follow the same rules as `TextField` (components/text-field.md). Omit `label` for an unlabeled field and pass `aria-label`.
 - Keyboard (ArrowUp/ArrowDown, Enter, Escape) is built in. Nothing to wire.
 - Width is the wrapper's job. Follow the form field width rule in components/overview.md.

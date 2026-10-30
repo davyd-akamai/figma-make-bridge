@@ -21,6 +21,7 @@ import { useId, useLayoutEffect, useRef, useState, type ChangeEvent, type Clipbo
 import { ChevronDownIcon, ChevronUpIcon, CloseIcon, InfoIcon, PlusIcon } from "./icons";
 import Popover from "./internal/Popover";
 import Tag from "./Tag";
+import Tooltip from "./Tooltip";
 
 export type TagInputLabelPosition = "top" | "left";
 
@@ -334,9 +335,17 @@ export default function TagInput({
     <>
       {label}
       {labelInfoIcon && (
-        <span title={labelInfoText} className="inline-flex text-[color:var(--component-taginput-labelinfoicon,#696970)]" aria-hidden="true">
-          <InfoIcon size={16} />
-        </span>
+        <Tooltip content={labelInfoText}>
+          {/* A focusable span, not a button: this sits inside the <label>, where a button would steal the label's click. */}
+          <span
+            tabIndex={0}
+            role="img"
+            aria-label={labelInfoText ?? "More information"}
+            className="inline-flex cursor-default text-[color:var(--component-taginput-labelinfoicon,#696970)]"
+          >
+            <InfoIcon size={16} />
+          </span>
+        </Tooltip>
       )}
     </>
   );

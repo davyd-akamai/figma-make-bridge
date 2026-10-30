@@ -10,6 +10,7 @@
 
 import { useEffect, useId, useRef, useState, type ChangeEvent, type TextareaHTMLAttributes } from "react";
 import { CloseIcon, InfoIcon, ResizeIcon } from "./icons";
+import Tooltip from "./Tooltip";
 
 export type TextAreaLabelPosition = "top" | "left";
 
@@ -106,9 +107,17 @@ export default function TextArea({
     <>
       {label}
       {labelInfoIcon && (
-        <span className="text-[color:var(--component-textarea-default-infoicon,#696970)]" aria-hidden="true">
-          <InfoIcon size={16} />
-        </span>
+        <Tooltip content={infoText}>
+          {/* A focusable span, not a button: this sits inside the <label>, where a button would steal the label's click. */}
+          <span
+            tabIndex={0}
+            role="img"
+            aria-label={infoText ?? "More information"}
+            className="inline-flex cursor-default text-[color:var(--component-textarea-default-infoicon,#696970)]"
+          >
+            <InfoIcon size={16} />
+          </span>
+        </Tooltip>
       )}
     </>
   );
@@ -118,15 +127,16 @@ export default function TextArea({
   }`;
 
   const infoIconButton = infoIcon && (
-    <button
-      type="button"
-      onClick={onInfoIconClick}
-      title={infoText}
-      aria-label={infoText ?? "More information"}
-      className="flex shrink-0 cursor-pointer items-start pt-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-default-infoicon,#696970)]"
-    >
-      <InfoIcon size={20} />
-    </button>
+    <Tooltip content={infoText} className="shrink-0 items-start">
+      <button
+        type="button"
+        onClick={onInfoIconClick}
+        aria-label={infoText ?? "More information"}
+        className="flex shrink-0 cursor-pointer items-start pt-[var(--global-spacing-s4,4px)] text-[color:var(--component-textarea-default-infoicon,#696970)]"
+      >
+        <InfoIcon size={20} />
+      </button>
+    </Tooltip>
   );
 
   const messageId = `${fieldId}-message`;

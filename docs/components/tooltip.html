@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tooltip — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="tooltip">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>Tooltip</h1>
+        <p class="docs-lede">Short text label that appears next to a control on hover or keyboard focus. Wraps the control it describes, flips to a side that fits the viewport, and closes with Esc.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=149-6624" target="_blank" rel="noopener noreferrer">149:6624</a></span>
+          <span><code class="docs-code">import { Tooltip } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/Tooltip.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Placements</h2>
+          <p class="docs-section-note">Hover a button, or Tab to it. <code>placement</code> is the side of the trigger the tooltip sits on; Figma names its swatches after the side the <em>arrow</em> is on, so <code>placement="top"</code> is Figma's "Bottom" swatch. <code>arrow={false}</code> is Figma's "None".</p>
+          <div class="docs-demo"><div class="docs-demo-stage" style="display:flex;flex-wrap:wrap;gap:80px;justify-content:center;padding:56px 96px;" id="tooltip-placements"></div></div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Text, icon triggers and flipping</h2>
+          <p class="docs-section-note">Text wraps once it reaches 240px. An icon-only control is a good fit, and must be a focusable button with an <code>aria-label</code>. A tooltip flips to the opposite side when its preferred side doesn't fit the viewport: scroll this page so the last trigger is near the top edge and hover it.</p>
+          <div class="docs-demo"><div class="docs-demo-stage" style="display:flex;flex-wrap:wrap;gap:32px;align-items:center;" id="tooltip-more"></div></div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">content</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required. The tooltip text. Empty content shows nothing.</td></tr>
+              <tr><td class="docs-prop-name">children</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Required. The trigger. Wrapped in an <code>inline-flex</code> span that listens for hover and focus.</td></tr>
+              <tr><td class="docs-prop-name">placement</td><td class="docs-prop-type">"top" | "bottom" | "left" | "right"</td><td>"top"</td><td>Side of the trigger the tooltip sits on. Flips if there isn't room.</td></tr>
+              <tr><td class="docs-prop-name">arrow</td><td class="docs-prop-type">boolean</td><td>true</td><td><code>false</code> hides the arrow (Figma's "None").</td></tr>
+              <tr><td class="docs-prop-name">disabled</td><td class="docs-prop-type">boolean</td><td>false</td><td>Never shows the tooltip.</td></tr>
+              <tr><td class="docs-prop-name">className</td><td class="docs-prop-type">string</td><td>—</td><td>Applied to the wrapping span.</td></tr>
+            </tbody>
+          </table>
+          <p class="docs-section-note" style="margin-top:12px;">Shows on hover and keyboard focus only (no touch, no <code>open</code> prop), so never put essential text in a tooltip. This page's tooltips come from <code>assets/tooltip.js</code>, a vanilla mirror of the React component.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="../assets/tooltip.js"></script>
+  <script src="tooltip.js"></script>
+</body>
+</html>

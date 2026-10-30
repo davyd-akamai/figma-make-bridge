@@ -311,6 +311,13 @@
   --component-pagination-icon-active: #0174BC;
   --component-pagination-icon-disabled: #A3A3AB;
   --component-pagination-divider-border: #D6D6DD;
+  --component-progressbar-text-default: #343438;
+  --component-progressbar-text-link-default: #0174BC;
+  --component-progressbar-text-link-hover: #009CDE;
+  --component-progressbar-statusline-default: #E5E5EA;
+  --component-progressbar-statusline-success: #00B050;
+  --component-progressbar-statusline-error: #D63C42;
+  --component-progressbar-statusline-inprogress: linear-gradient(270deg, #00B050 0%, #12A594 51%, #009CDE 100%);
   --component-radiobutton-inactive-default-background: #FFFFFF;
   --component-radiobutton-inactive-default-border: #83838C;
   --component-radiobutton-inactive-default-text: #343438;
@@ -710,6 +717,8 @@
   --component-textfield-focus-icon-active: #0174BC;
   --component-textfield-readonly-text: #343438;
   --component-textfield-readonly-hinttext: #696970;
+  --component-tooltip-background: #343438;
+  --component-tooltip-text: #FFFFFF;
 
   --global-spacing-s0: 0;
   --global-spacing-s2: 2px;
