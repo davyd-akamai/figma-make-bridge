@@ -61,6 +61,9 @@ export type { CheckboxProps, CheckboxSize } from "./components/Checkbox";
 export { default as RadioButton } from "./components/RadioButton";
 export type { RadioButtonProps, RadioButtonSize } from "./components/RadioButton";
 
+export { default as ProgressBar } from "./components/ProgressBar";
+export type { ProgressBarProps, ProgressBarSize, ProgressBarState } from "./components/ProgressBar";
+
 export { default as Switch } from "./components/Switch";
 export type { SwitchProps, SwitchSize } from "./components/Switch";
 

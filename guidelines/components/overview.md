@@ -29,6 +29,7 @@ Read this file before using any component. Then read the file for that component
 | TabsHorizontal | Tab headers (no panels) | components/tabs-horizontal.md |
 | Table | Data table with sort, select, expand | components/table.md |
 | Pagination | Page-size picker, range and prev/next; the last row of a Table (via its `pagination` prop) or under a list; selection bar for lists | components/pagination.md |
+| ProgressBar | Measurable task progress line with optional title, status text, description and link | components/progress-bar.md |
 | Drawer | Right-hand slide-in panel | components/drawer.md |
 | Modal | Centered confirmation/dialog box | components/modal.md |
 | NotificationBanner | Inline status message with optional action and dismiss | components/notification-banner.md |
@@ -61,6 +62,7 @@ Icons: foundations/icons.md.
 - Short confirmation or blocking question -> `Modal`.
 - Inline status message inside a page (info, warning, success, error) -> `NotificationBanner`.
 - Brief floating feedback after an action (auto-dismisses) -> `Toast`.
+- How far along a measurable task is (deploy, upload, job) -> `ProgressBar`. There is no spinner or indeterminate bar.
 - Short label or hint on hover/focus of a control (icon-only buttons, info icons) -> `Tooltip`.
 
 ## Components that do NOT exist yet

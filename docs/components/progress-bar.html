@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProgressBar — figma-make-bridge</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <link rel="stylesheet" href="../assets/site.css" />
+</head>
+<body data-root="../" data-repo="davyd-akamai/figma-make-bridge" data-page="progress-bar">
+  <div id="site-shell">
+    <aside id="site-nav"></aside>
+    <div class="site-main">
+      <header class="page-header">
+        <h1>ProgressBar</h1>
+        <p class="docs-lede">Horizontal bar showing measurable progress of a task, with optional title, right-aligned status text, description and link. <code>value</code>/<code>max</code> drive the fill and the state is derived from them (empty, in progress, success); error is always set explicitly. The in-progress fill animates a light band across the gradient.</p>
+        <div class="docs-meta">
+          <span>Figma node <a href="https://www.figma.com/design/BP7Y1Gc9sz2HLrcXFHMFhg/Internal-ADS-library?node-id=150-7570" target="_blank" rel="noopener noreferrer">150:7570</a></span>
+          <span><code class="docs-code">import { ProgressBar } from "figma-make-bridge"</code></span>
+          <span><a href="https://github.com/davyd-akamai/figma-make-bridge/blob/main/components/ProgressBar.tsx" target="_blank" rel="noopener noreferrer">Source ↗</a></span>
+        </div>
+      </header>
+
+      <div class="page-body">
+        <section class="docs-section">
+          <h2>Line only</h2>
+          <p class="docs-section-note">Empty, in progress, success and error, large (8px) then small (4px). With no text, give it an <code>aria-label</code>.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="flex-direction:column;align-items:stretch;gap:16px;max-width:432px;" data-pb-lines></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>With title, description and link</h2>
+          <p class="docs-section-note">The status text on the right only shows while the bar is empty or in progress.</p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="flex-direction:column;align-items:stretch;gap:20px;max-width:432px;" data-pb-titles></div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Controlled</h2>
+          <p class="docs-section-note">State derived from the value: <strong id="pb-controlled-state">30% (in progress)</strong></p>
+          <div class="docs-demo">
+            <div class="docs-demo-stage" style="flex-direction:column;align-items:stretch;gap:12px;max-width:432px;">
+              <div id="pb-controlled"></div>
+              <div style="display:flex;gap:8px;">
+                <button type="button" class="type-body-regular" id="pb-minus">-25</button>
+                <button type="button" class="type-body-regular" id="pb-plus">+25</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="docs-section">
+          <h2>Props</h2>
+          <table class="docs-props">
+            <thead><tr><th>Prop</th><th>Type</th><th>Default</th><th>Notes</th></tr></thead>
+            <tbody>
+              <tr><td class="docs-prop-name">value</td><td class="docs-prop-type">number</td><td>0</td><td>0 to <code>max</code>, clamped.</td></tr>
+              <tr><td class="docs-prop-name">max</td><td class="docs-prop-type">number</td><td>100</td><td>Value that counts as 100%.</td></tr>
+              <tr><td class="docs-prop-name">state</td><td class="docs-prop-type">"empty" | "in-progress" | "success" | "error"</td><td>derived</td><td><code>value &lt;= 0</code> empty, <code>&gt;= max</code> success, otherwise in progress. Error is always explicit and fills the line.</td></tr>
+              <tr><td class="docs-prop-name">size</td><td class="docs-prop-type">"small" | "large"</td><td>"large"</td><td>8px / 4px line.</td></tr>
+              <tr><td class="docs-prop-name">title</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Also the accessible name when it is a string.</td></tr>
+              <tr><td class="docs-prop-name">meta</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Right-aligned text beside the title; hidden in success and error.</td></tr>
+              <tr><td class="docs-prop-name">description</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>Regular text under the title.</td></tr>
+              <tr><td class="docs-prop-name">link</td><td class="docs-prop-type">ReactNode</td><td>—</td><td>An <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>, styled with the link color.</td></tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+  <script src="../assets/shell.js"></script>
+  <script src="progress-bar.js"></script>
+</body>
+</html>

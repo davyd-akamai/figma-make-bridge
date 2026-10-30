@@ -12,6 +12,7 @@ import Pagination from "../components/Pagination";
 import TextField from "../components/TextField";
 import TextArea from "../components/TextArea";
 import NumericSpinner from "../components/NumericSpinner";
+import ProgressBar, { type ProgressBarState } from "../components/ProgressBar";
 import Tag from "../components/Tag";
 import TagInput, { type TagInputTag } from "../components/TagInput";
 import Select, { type SelectOption } from "../components/Select";
@@ -779,6 +780,59 @@ function RadioButtonSection() {
 
 const BADGE_COLORS: BadgeColor[] = ["ultramarine", "purple", "pink", "neutral", "amber", "green", "red"];
 const BADGE_TYPES: BadgeType[] = ["subtle", "accent"];
+
+const PROGRESS_STATES: { state: ProgressBarState; value: number; title: string; meta?: string }[] = [
+  { state: "empty", value: 0, title: "Property deploying...", meta: "Est. 1 minute left" },
+  { state: "in-progress", value: 56, title: "Property deploying...", meta: "Est. 1 minute left" },
+  { state: "success", value: 100, title: "Property successfully deployed!" },
+  { state: "error", value: 40, title: "Error deploying property!" },
+];
+
+function ProgressBarSection() {
+  const [value, setValue] = useState(30);
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 20, padding: 12, border: "1px solid #E5E5EA" }}>
+      {(["large", "small"] as const).map((size) => (
+        <div key={size} style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 400 }}>
+          <span className="type-body-regular">Line only, {size}:</span>
+          {PROGRESS_STATES.map(({ state, value: v }) => (
+            <ProgressBar key={state} size={size} state={state} value={v} aria-label={`${state} (${size})`} />
+          ))}
+          <span className="type-body-regular">With title, description and link, {size}:</span>
+          {PROGRESS_STATES.map(({ state, value: v, title, meta }) => (
+            <ProgressBar
+              key={state}
+              size={size}
+              state={state}
+              value={v}
+              title={title}
+              meta={meta}
+              description="Optional text lorem ipsum"
+              link={<a href="#">Optional link</a>}
+            />
+          ))}
+        </div>
+      ))}
+      <div style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 400 }}>
+        <span className="type-body-regular">Controlled, state derived from value ({value}%):</span>
+        <ProgressBar
+          value={value}
+          title={value >= 100 ? "Property successfully deployed!" : "Property deploying..."}
+          meta="Est. 1 minute left"
+        />
+        <div style={{ display: "flex", gap: 8 }}>
+          <button type="button" className="type-body-regular" onClick={() => setValue((v) => Math.max(0, v - 25))}>
+            -25
+          </button>
+          <button type="button" className="type-body-regular" onClick={() => setValue((v) => Math.min(100, v + 25))}>
+            +25
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function SwitchSection() {
   const [on, setOn] = useState(true);
@@ -1827,6 +1881,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Radio Button">
             <RadioButtonSection />
+          </PreviewSection>
+
+          <PreviewSection title="Progress Bar">
+            <ProgressBarSection />
           </PreviewSection>
 
           <PreviewSection title="Switch">

@@ -20,6 +20,7 @@ _Last updated: 2026-10-30. Source: local `core-design-system/packages/cds-compon
 | notification-toast | [Toast](components/Toast.tsx) | ✓ |  |
 | numeric-spinner | [NumericSpinner](components/NumericSpinner.tsx) | ✓ | Single number; min/max/step, hold-to-repeat chevrons; behavior from CDS (Figma has static swatches only) |
 | pagination | [Pagination](components/Pagination.tsx) | ✓ | `table`/`list` variants plus opt-in list selection mode; no numbered pages |
+| progress-bar | [ProgressBar](components/ProgressBar.tsx) | ✓ | `value`/`max` + derived or explicit `state`; title/meta/description/link slots; no indeterminate mode |
 | radio-button | [RadioButton](components/RadioButton.tsx) | ✓ | No `RadioGroup` wrapper (deliberate) |
 | search-field | [Search](components/Search.tsx) |  |  |
 | select | [Select](components/Select.tsx) |  |  |
@@ -43,7 +44,6 @@ Bridge-only (no CDS equivalent, built from Figma; Container is Code Connect ✓)
 | Date and time | date-picker | Not started |
 | Date and time | date-range | Not started |
 | Date and time | date-range-field | Not started |
-| Feedback and overlay | progress-bar | Not started |
 | Feedback and overlay | zero-error-state | Not started |
 
 ## Partial / internal

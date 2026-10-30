@@ -24,6 +24,7 @@
     { id: "content-panel", label: "ContentPanel", href: "components/content-panel.html" },
     { id: "pagination", label: "Pagination", href: "components/pagination.html" },
     { id: "radio-button", label: "RadioButton", href: "components/radio-button.html" },
+    { id: "progress-bar", label: "ProgressBar", href: "components/progress-bar.html" },
     { id: "switch", label: "Switch", href: "components/switch.html" },
     { id: "breadcrumbs", label: "Breadcrumbs", href: "components/breadcrumbs.html" },
     { id: "tabs-horizontal", label: "TabsHorizontal", href: "components/tabs-horizontal.html" },

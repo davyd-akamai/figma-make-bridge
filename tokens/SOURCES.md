@@ -21,6 +21,7 @@ Node IDs below are taken from the header comments of the matching component in `
 | `notificationBanner.json` | `Notification banner` (123:5210) | variable colors cross-checked against the exported icon/frame fills (all matched); pre-seeded, used as-is |
 | `notificationToast.json` | `Notification toast` (123:5295) | variables checked via get_variable_defs (all matched); pre-seeded, `elevation.s` added additively |
 | `pagination.json` | `Pagination` (128:4563) | variables checked via get_variable_defs (all matched); pre-seeded, `divider.border` added additively |
+| `progressBar.json` | `Progress bar` (150:7570) | variables checked via get_variable_defs (statusLine default/success/error, text default/link and the gradient, brand `#009CDE` end, all matched); pre-seeded, used as-is (`text.link.hover` has no Figma swatch, kept as pre-seeded) |
 | `numericSpinner.json` | `Numeric spinner` (158:8448) | variables checked via get_variable_defs (all matched); pre-seeded, `label`/`labelInfoIcon` added additively (hover text/icon not in Figma, kept as pre-seeded) |
 | `radioButton.json` | `Radio-button` (58:5044) | node from component header; variables not re-verified |
 | `search.json` | `Search-field` (91:3834) | node from component header; variables not re-verified |
