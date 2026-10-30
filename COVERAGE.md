@@ -18,12 +18,13 @@ _Last updated: 2026-10-30. Source: local `core-design-system/packages/cds-compon
 | modal | [Modal](components/Modal.tsx) | ✓ |  |
 | notification-banner | [NotificationBanner](components/NotificationBanner.tsx) | ✓ |  |
 | notification-toast | [Toast](components/Toast.tsx) | ✓ |  |
+| numeric-spinner | [NumericSpinner](components/NumericSpinner.tsx) | ✓ | Single number; min/max/step, hold-to-repeat chevrons; behavior from CDS (Figma has static swatches only) |
 | pagination | [Pagination](components/Pagination.tsx) | ✓ | `table`/`list` variants plus opt-in list selection mode; no numbered pages |
 | radio-button | [RadioButton](components/RadioButton.tsx) | ✓ | No `RadioGroup` wrapper (deliberate) |
 | search-field | [Search](components/Search.tsx) |  |  |
 | select | [Select](components/Select.tsx) |  |  |
 | side-nav | [SideNavigation](components/SideNavigation.tsx) |  |  |
-| switch | [Switch](components/Switch.tsx) | ✓ | No read-only state; `master-switch` still planned |
+| switch | [Switch](components/Switch.tsx) | ✓ | No read-only state |
 | table | [Table](components/Table.tsx) |  |  |
 | tabs | [TabsHorizontal](components/TabsHorizontal.tsx) | ✓ | No content panels |
 | tag-input | [TagInput](components/TagInput.tsx), [Tag](components/Tag.tsx) | ✓ | `options` + `creatable`; per-tag `invalid`; wraps, scrolls at 100px (no "+N" collapse, no drag-reorder) |
@@ -37,10 +38,6 @@ Bridge-only (no CDS equivalent, built from Figma; Container is Code Connect ✓)
 
 | Group | CDS component | Status |
 |---|---|---|
-| Form inputs | master-switch | Not started |
-| Form inputs | numeric-spinner | Not started |
-| Form inputs | segmented-button | Not started |
-| Form inputs | form-field | Not started |
 | Date and time | calendar | Not started |
 | Date and time | date-field | Not started |
 | Date and time | date-picker | Not started |
@@ -60,4 +57,4 @@ Bridge-only (no CDS equivalent, built from Figma; Container is Code Connect ✓)
 ## Open items
 
 - **Topbar** — Figma-only (not in CDS); roadmap item 3b in GUIDELINES.md, Figma node still unidentified.
-- Several planned items (date components, form-field) depend on each other — e.g. date-picker builds on calendar and date-field — so build order matters.
+- Several planned items (the date components) depend on each other — e.g. date-picker builds on calendar and date-field — so build order matters.

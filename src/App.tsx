@@ -11,6 +11,7 @@ import ContentPanel from "../components/ContentPanel";
 import Pagination from "../components/Pagination";
 import TextField from "../components/TextField";
 import TextArea from "../components/TextArea";
+import NumericSpinner from "../components/NumericSpinner";
 import Tag from "../components/Tag";
 import TagInput, { type TagInputTag } from "../components/TagInput";
 import Select, { type SelectOption } from "../components/Select";
@@ -435,6 +436,53 @@ function TextAreaSection() {
       </div>
       <div style={{ width: 416 }}>
         <TextArea label="Five rows, no clear button" rows={5} clearable={false} defaultValue="Resize me with the corner handle" />
+      </div>
+    </div>
+  );
+}
+
+function NumericSpinnerSection() {
+  const [controlled, setControlled] = useState<number | null>(1000);
+  return (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: 24, padding: 12, border: "1px solid #E5E5EA" }}>
+      <div style={{ width: 120 }}>
+        <NumericSpinner label="Label" />
+      </div>
+      <div style={{ width: 120 }}>
+        <NumericSpinner label="Label" defaultValue={1000} />
+      </div>
+      <div style={{ width: 120 }}>
+        <NumericSpinner />
+      </div>
+      <div style={{ width: 168 }}>
+        <NumericSpinner label="Label" labelPosition="left" defaultValue={1000} />
+      </div>
+      <div style={{ width: 160 }}>
+        <NumericSpinner label="Label" labelInfoIcon infoText="More information about this field" defaultValue={5} helperText="Hint text" />
+      </div>
+      <div style={{ width: 160 }}>
+        <NumericSpinner label="Min 0, max 10, step 2" min={0} max={10} step={2} defaultValue={4} />
+      </div>
+      <div style={{ width: 160 }}>
+        <NumericSpinner label="Step 0.25" step={0.25} defaultValue={1} />
+      </div>
+      <div style={{ width: 160 }}>
+        <NumericSpinner label={`Controlled: ${controlled ?? "empty"}`} value={controlled} onChange={setControlled} />
+      </div>
+      <div style={{ width: 120 }}>
+        <NumericSpinner label="Label" defaultValue={1000} errorText="Warning text" />
+      </div>
+      <div style={{ width: 120 }}>
+        <NumericSpinner label="Label" defaultValue={1000} disabled />
+      </div>
+      <div style={{ width: 120 }}>
+        <NumericSpinner label="Label" disabled />
+      </div>
+      <div style={{ width: 120 }}>
+        <NumericSpinner label="Label" defaultValue={1000} readOnly />
+      </div>
+      <div style={{ width: 168 }}>
+        <NumericSpinner label="Label" labelPosition="left" defaultValue={1000} readOnly />
       </div>
     </div>
   );
@@ -1747,6 +1795,10 @@ function PreviewHarness() {
 
           <PreviewSection title="Text Field">
             <TextFieldSection />
+          </PreviewSection>
+
+          <PreviewSection title="Numeric Spinner">
+            <NumericSpinnerSection />
           </PreviewSection>
 
           <PreviewSection title="Text Area">
